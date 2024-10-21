@@ -28,7 +28,7 @@ th, td {
 }
 
 th {
-    background-color: #27ae60;  
+    background-color: #3498db;  /* Cambiar color si lo deseas */
     color: black;
     font-weight: bold;
     font-size: 1.2rem;
@@ -41,25 +41,39 @@ td {
 }
 
 tr:nth-child(even) td {
-    background-color: #dfe6e9; 
+    background-color: #dfe6e9;
 }
 
 tr:hover td {
-    background-color: #82e0aa;  
-    color: black;
+    background-color: #82ccdd;  /* Cambiar color si lo deseas */
+    color: white;
     transition: background-color 0.3s ease-in-out;
+}
+
+/* Ajustar el ancho de las columnas si es necesario */
+th:nth-child(4), td:nth-child(4) {  /* Esto puede cambiar dependiendo de la posición de "Fecha" */
+    width: 30%;  /* Ajusta este valor según tus necesidades */
 }
 
 .mat-elevation-z8 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .mat-header-row, .mat-row {
     border-bottom: 1px solid #bdc3c7;
 }
 
+.mat-header-row {
+    font-size: 1.1rem;
+}
+
+.mat-row {
+    cursor: pointer;
+}
+
 .mat-row:hover {
-    background-color: #27ae60 !important;  
+    background-color: #74b9ff !important;  /* Cambia este color si es necesario */
     transition: background-color 0.3s ease;
 }

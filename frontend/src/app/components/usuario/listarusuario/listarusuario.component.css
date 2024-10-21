@@ -19,6 +19,9 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 0 auto;
+    max-width: 100%; /* Limita el ancho máximo de la tabla */
+    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
+    display: block; /* Para que el desplazamiento horizontal funcione */
 }
 
 th, td {
@@ -28,31 +31,31 @@ th, td {
 }
 
 th {
-    background-color: #3498db;
-    color: black;
+    background-color: #3498db;  /* Color del encabezado */
+    color: black;  /* Color del texto del encabezado */
     font-weight: bold;
     font-size: 1.2rem;
 }
 
 td {
-    background-color: #ecf0f1;
-    color: #34495e;
+    background-color: #ecf0f1;  /* Color del fondo de las celdas */
+    color: #34495e;  /* Color del texto */
     font-size: 1rem;
 }
 
 tr:nth-child(even) td {
-    background-color: #dfe6e9;
+    background-color: #dfe6e9;  /* Color de las filas pares */
 }
 
 tr:hover td {
-    background-color: #82ccdd;
-    color: white;
+    background-color: #82ccdd;  /* Color al pasar el mouse */
+    color: white;  /* Color del texto al pasar el mouse */
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Especifica el ancho de la columna "Fecha de Vencimiento" */
-th:nth-child(4), td:nth-child(4) {
-    width: 30%;  /* Ajusta este valor para hacer más pequeña la columna */
+/* Ajustar el ancho de columnas específicas si es necesario */
+th:nth-child(4), td:nth-child(4) {  /* Ajusta según la posición de "Usuario" */
+    width: 15%;  /* Cambia este valor si deseas un ancho diferente */
 }
 
 .mat-elevation-z8 {
@@ -74,6 +77,6 @@ th:nth-child(4), td:nth-child(4) {
 }
 
 .mat-row:hover {
-    background-color: #74b9ff !important;
+    background-color: #74b9ff !important;  /* Color de fondo al pasar el mouse */
     transition: background-color 0.3s ease;
 }
