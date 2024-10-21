@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { CentroReciclaje } from '../models/CentroReciclaje';
+import { Noticias } from '../models/Noticias';
 const base_url = environment.base;
 
 @Injectable({
   providedIn: 'root'
 })
-export class CentroReciclajeService {
-  private url = `${base_url}/centro-reciclaje`; 
+export class NoticiasService {
+  private url = `${base_url}/noticias`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {  }
     list() {
-      return this.http.get<CentroReciclaje[]>(this.url);
+      return this.http.get<Noticias[]>(this.url); 
     }
 }
