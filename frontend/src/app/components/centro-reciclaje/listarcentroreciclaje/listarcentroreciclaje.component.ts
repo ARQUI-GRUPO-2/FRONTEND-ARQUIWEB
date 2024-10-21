@@ -12,7 +12,7 @@ import { CentroReciclajeService } from '../../../services/centro-reciclaje.servi
 })
 export class ListarcentroreciclajeComponent implements OnInit {
   dataSource: MatTableDataSource<CentroReciclaje> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
 
   constructor(private cS: CentroReciclajeService) { }
 
