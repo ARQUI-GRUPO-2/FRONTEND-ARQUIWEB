@@ -1,0 +1,50 @@
+<div class="container">
+  <div style="text-align: center;margin: 10%;"><h1>Lista de Notificaciones</h1></div>
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="c1">
+              <th mat-header-cell *matHeaderCellDef> IDNotificacion. </th>
+              <td mat-cell *matCellDef="let element"> {{element.idNotificaciones}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="c2">
+              <th mat-header-cell *matHeaderCellDef> Mensaje </th>
+              <td mat-cell *matCellDef="let element"> {{element.mensaje}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="c3">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+              <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="c4">
+              <th mat-header-cell *matHeaderCellDef> Fecha. </th>
+              <td mat-cell *matCellDef="let element"> {{element.fecha_notificacion}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="c5">
+              <th mat-header-cell *matHeaderCellDef> IDNoticia </th>
+              <td mat-cell *matCellDef="let element"> {{element.idNoticias}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="c6">
+              <th mat-header-cell *matHeaderCellDef> IDUsuario </th>
+              <td mat-cell *matCellDef="let element"> {{element.idUser}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+          
+    </div>
+</div>
