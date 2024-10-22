@@ -7,12 +7,13 @@ import { NotificacionComponent } from './components/notificacion/notificacion.co
 import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 import { CentroReciclajeComponent } from './components/centro-reciclaje/centro-reciclaje.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ActividadComponent } from './components/actividad/actividad.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CentroReciclajeComponent, NoticiasComponent, TipoactividadComponent, UsuarioComponent, NotificacionComponent, RecompensaComponent],
+  imports: [RouterOutlet, CentroReciclajeComponent, NoticiasComponent, TipoactividadComponent, UsuarioComponent, NotificacionComponent, RecompensaComponent, ActividadComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
