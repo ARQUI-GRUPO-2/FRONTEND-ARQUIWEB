@@ -1,4 +1,3 @@
-
 <mat-toolbar class="custom-toolbar">
     <!-- REGRESA AUTOMATICAMENTE AL INICIO 
     <mat-icon routerLink="/" style="cursor: pointer;">menu</mat-icon>  --> 
@@ -10,6 +9,26 @@
     <!-- Para que salga la elecion inicio -->
     <mat-menu #menuInicio="matMenu">  
     <button mat-menu-item routerLink="/">Inicio</button>
+    </mat-menu>
+
+     <div>
+    <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: rgb(201, 21, 21)">
+      Usuario
+    </button>
+    </div>
+    <mat-menu #menuUsuario="matMenu">
+    <button mat-menu-item routerLink="/usuarios">Listar Usuarios</button>
+    <button mat-menu-item routerLink="/usuarios/nuevo">Registrar Usuario</button>
+    </mat-menu>
+
+    <div>
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: rgb(21, 21, 201)">
+      Notificación
+    </button>
+    </div>
+    <mat-menu #menuNotificacion="matMenu">
+    <button mat-menu-item routerLink="/notificaciones">Listar Notificaciones</button>
+    <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar Notificación</button>
     </mat-menu>
 
     <div>
@@ -33,13 +52,9 @@
         <button mat-menu-item routerLink="/centro-reciclaje/nuevo">Registrar</button>
     </mat-menu>
 </mat-toolbar>
-
-
-  
-<app-usuario></app-usuario>
-<app-notificacion></app-notificacion>
-<app-recompensa></app-recompensa>
-<app-tipoactividad></app-tipoactividad>
-
 <router-outlet></router-outlet>
 
+
+<app-recompensa></app-recompensa>
+<app-tipoactividad></app-tipoactividad>
+<app-actividad></app-actividad>

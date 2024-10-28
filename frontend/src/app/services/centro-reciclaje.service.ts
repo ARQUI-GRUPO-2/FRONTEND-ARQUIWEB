@@ -5,7 +5,6 @@ import { CentroReciclaje } from '../models/CentroReciclaje';
 import { Subject } from 'rxjs';
 const base_url = environment.base;
 
-
 @Injectable({
   providedIn: 'root'
 })
