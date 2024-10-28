@@ -6,5 +6,4 @@ export class CentroReciclaje {
     horario:Date=new Date(Date.now())
     favoritos:boolean=false
     idUser:number=0
-    //us:User=new User()
 }

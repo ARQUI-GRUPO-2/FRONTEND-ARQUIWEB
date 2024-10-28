@@ -1,0 +1,38 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registro de Recompensas</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()">
+        <mat-form-field class="example-full-width" >
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo"/>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width" >
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="hnombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Código Qr</mat-label>
+          <input matInput formControlName="hcodigoqr" />
+        </mat-form-field>
+  
+        <br/>
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="hfecha"/>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+  
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
