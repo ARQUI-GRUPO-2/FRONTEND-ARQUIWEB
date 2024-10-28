@@ -30,7 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatButtonModule,
     RouterModule,
-  ],
+    ActividadComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

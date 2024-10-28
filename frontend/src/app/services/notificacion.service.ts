@@ -10,12 +10,12 @@ const base_url = environment.base;
 })
 export class NotificacionService {
   private url = `${base_url}/Notificaciones`;
-  private listaCambio = new Subject<Notificacion[]>();
+  private listaCambio = new Subject<Notificaciones[]>();
   constructor(private http: HttpClient) {}
   list() {
     return this.http.get<Notificaciones[]>(this.url);
   }
-  insert(n: Notificacion) {
+  insert(n: Notificaciones) {
     return this.http.post(this.url, n);
   }
 
@@ -24,7 +24,7 @@ export class NotificacionService {
     return this.listaCambio.asObservable();
   }
 
-  setList(listaNueva: Notificacion[]) {
+  setList(listaNueva: Notificaciones[]) {
     this.listaCambio.next(listaNueva);
   }
 
@@ -33,10 +33,10 @@ export class NotificacionService {
   }
 
   listId(id:number){
-    return this.http.get<Notificacion>(`${this.url}/${id}`)
+    return this.http.get<Notificaciones>(`${this.url}/${id}`)
   }
   
-  update(noti: Notificacion){
+  update(noti: Notificaciones){
     return this.http.put(this.url, noti);
   }
 }
