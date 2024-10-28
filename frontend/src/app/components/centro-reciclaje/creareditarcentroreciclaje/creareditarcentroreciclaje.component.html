@@ -26,10 +26,10 @@
             </mat-form-field>
         <br />
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Horario</mat-label>
-            <input matInput type="horario" formControlName="hhorario"/>
-            <mat-hint>HH:MM</mat-hint>
+            <input matInput [ngxTimepicker]="picker" formControlName="hhorario" placeholder="HH:MM" readonly>
+            <ngx-material-timepicker #picker></ngx-material-timepicker>
         </mat-form-field>
 
         <mat-form-field>

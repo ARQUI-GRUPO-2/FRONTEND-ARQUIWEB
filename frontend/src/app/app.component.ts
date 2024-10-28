@@ -13,12 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, CentroReciclajeComponent, NoticiasComponent, TipoactividadComponent, UsuarioComponent, NotificacionComponent, RecompensaComponent, 
-    MatToolbarModule, MatIconModule, MatMenuModule, MatButtonModule, RouterModule ],
+    MatToolbarModule, MatIconModule, MatMenuModule, MatButtonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

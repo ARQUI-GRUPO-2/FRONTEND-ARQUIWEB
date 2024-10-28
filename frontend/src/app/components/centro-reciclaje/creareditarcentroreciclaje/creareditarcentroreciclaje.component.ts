@@ -9,11 +9,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule],
+  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule], 
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
