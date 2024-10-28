@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Notificacion } from '../models/Notificacion';
+import { Notificaciones } from '../models/Notificaciones';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class NotificacionService {
   private listaCambio = new Subject<Notificacion[]>();
   constructor(private http: HttpClient) {}
   list() {
-    return this.http.get<Notificacion[]>(this.url);
+    return this.http.get<Notificaciones[]>(this.url);
   }
   insert(n: Notificacion) {
     return this.http.post(this.url, n);

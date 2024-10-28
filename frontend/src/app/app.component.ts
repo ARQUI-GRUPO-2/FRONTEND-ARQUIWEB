@@ -7,6 +7,8 @@ import { NotificacionComponent } from './components/notificacion/notificacion.co
 import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 import { CentroReciclajeComponent } from './components/centro-reciclaje/centro-reciclaje.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ActividadComponent } from './components/actividad/actividad.component';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';

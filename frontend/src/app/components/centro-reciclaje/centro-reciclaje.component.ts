@@ -10,7 +10,5 @@ import { ListarcentroreciclajeComponent } from './listarcentroreciclaje/listarce
   styleUrl: './centro-reciclaje.component.css'
 })
 export class CentroReciclajeComponent {
-  constructor(public route: ActivatedRoute) {
-
-  }
+  constructor(public route: ActivatedRoute) { }
 }

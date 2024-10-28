@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { Notificacion } from '../../../models/Notificacion';
+import { Notificaciones } from '../../../models/Notificaciones';
 import { NotificacionService } from '../../../services/notificacion.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -16,7 +16,7 @@ import { MatSort } from '@angular/material/sort';
 })
 
 export class ListarnotificacionComponent {
-  dataSource:MatTableDataSource<Notificacion> =new MatTableDataSource();
+  dataSource:MatTableDataSource<Notificaciones> =new MatTableDataSource();
 
   displayedColumns: string[]=['c1','c2','c3','c4','c5','c6','accion01','accion02']
   
