@@ -15,14 +15,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    max-width: 100%; /* Limita el ancho máximo de la tabla */
-    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
-    display: block; /* Para que el desplazamiento horizontal funcione */
-}
 
 th, td {
     padding: 12px 15px;

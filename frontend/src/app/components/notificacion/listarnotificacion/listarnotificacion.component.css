@@ -15,11 +15,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-}
 
 th, td {
     padding: 12px 15px;
@@ -28,31 +23,31 @@ th, td {
 }
 
 th {
-    background-color: #3498db;  /* Cambiar color si lo deseas */
-    color: black;
+    background-color: #3498db;  /* Color del encabezado */
+    color: black;  /* Color del texto del encabezado */
     font-weight: bold;
     font-size: 1.2rem;
 }
 
 td {
-    background-color: #ecf0f1;
-    color: #34495e;
+    background-color: #ecf0f1;  /* Color del fondo de las celdas */
+    color: #34495e;  /* Color del texto */
     font-size: 1rem;
 }
 
 tr:nth-child(even) td {
-    background-color: #dfe6e9;
+    background-color: #dfe6e9;  /* Color de las filas pares */
 }
 
 tr:hover td {
-    background-color: #82ccdd;  /* Cambiar color si lo deseas */
-    color: white;
+    background-color: #82ccdd;  /* Color al pasar el mouse */
+    color: white;  /* Color del texto al pasar el mouse */
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Ajustar el ancho de las columnas si es necesario */
-th:nth-child(4), td:nth-child(4) {  /* Esto puede cambiar dependiendo de la posición de "Fecha" */
-    width: 30%;  /* Ajusta este valor según tus necesidades */
+/* Ajustar el ancho de columnas específicas si es necesario */
+th:nth-child(4), td:nth-child(4) {  /* Ajusta según la posición de "Usuario" */
+    width: 15%;  /* Cambia este valor si deseas un ancho diferente */
 }
 
 .mat-elevation-z8 {
@@ -74,6 +69,6 @@ th:nth-child(4), td:nth-child(4) {  /* Esto puede cambiar dependiendo de la posi
 }
 
 .mat-row:hover {
-    background-color: #74b9ff !important;  /* Cambia este color si es necesario */
+    background-color: #74b9ff !important;  /* Color de fondo al pasar el mouse */
     transition: background-color 0.3s ease;
 }
