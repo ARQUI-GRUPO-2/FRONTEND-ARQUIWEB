@@ -1,4 +1,4 @@
-export class Usuario {
+export class Usuario{
     idUser:number=0
     nombres:string=""
     apellidos:string=""

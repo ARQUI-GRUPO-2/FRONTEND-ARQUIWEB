@@ -15,6 +15,11 @@ h1 {
     margin-bottom: 20px;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
 
 th, td {
     padding: 12px 15px;
@@ -23,52 +28,38 @@ th, td {
 }
 
 th {
-    background-color: #3498db;  /* Color del encabezado */
-    color: black;  /* Color del texto del encabezado */
+    background-color: #27ae60;  
+    color: black;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
 td {
-    background-color: #ecf0f1;  /* Color del fondo de las celdas */
-    color: #34495e;  /* Color del texto */
+    background-color: #ecf0f1;
+    color: #34495e;
     font-size: 1rem;
 }
 
 tr:nth-child(even) td {
-    background-color: #dfe6e9;  /* Color de las filas pares */
+    background-color: #dfe6e9; 
 }
 
 tr:hover td {
-    background-color: #82ccdd;  /* Color al pasar el mouse */
-    color: white;  /* Color del texto al pasar el mouse */
+    background-color: #82e0aa;  
+    color: black;
     transition: background-color 0.3s ease-in-out;
-}
-
-/* Ajustar el ancho de columnas específicas si es necesario */
-th:nth-child(4), td:nth-child(4) {  /* Ajusta según la posición de "Usuario" */
-    width: 15%;  /* Cambia este valor si deseas un ancho diferente */
 }
 
 .mat-elevation-z8 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    overflow: hidden;
 }
 
 .mat-header-row, .mat-row {
     border-bottom: 1px solid #bdc3c7;
 }
 
-.mat-header-row {
-    font-size: 1.1rem;
-}
-
-.mat-row {
-    cursor: pointer;
-}
-
 .mat-row:hover {
-    background-color: #74b9ff !important;  /* Color de fondo al pasar el mouse */
+    background-color: #27ae60 !important;  
     transition: background-color 0.3s ease;
 }

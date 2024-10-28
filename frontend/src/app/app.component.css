@@ -1,7 +1,10 @@
 .custom-toolbar {
+    background-color: #ffffff;
+    color: black;
+}
 
-    background-color: darkblue;
+.line-1, .line-2 {
+    display: block;
+    font-weight: bold; 
+}
   
-    color: white;
-  
-   }
