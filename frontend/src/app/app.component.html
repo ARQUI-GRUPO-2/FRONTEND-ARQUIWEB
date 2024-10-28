@@ -1,4 +1,5 @@
 <mat-toolbar class="custom-toolbar">
+  
     <!-- REGRESA AUTOMATICAMENTE AL INICIO 
     <mat-icon routerLink="/" style="cursor: pointer;">menu</mat-icon>  --> 
 
@@ -13,7 +14,7 @@
 
      <div>
     <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: rgb(201, 21, 21)">
-      Usuario
+      USUARIO
     </button>
     </div>
     <mat-menu #menuUsuario="matMenu">
@@ -23,7 +24,7 @@
 
     <div>
     <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: rgb(21, 21, 201)">
-      Notificación
+      NOTIFICACIÓN
     </button>
     </div>
     <mat-menu #menuNotificacion="matMenu">
@@ -51,10 +52,19 @@
         <button mat-menu-item routerLink="/centro-reciclaje">Listar</button>
         <button mat-menu-item routerLink="/centro-reciclaje/nuevo">Registrar</button>
     </mat-menu>
+  
+    <div>
+      <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: white" >
+        RECOMPENSAS
+      </button>
+    </div>  
+    <mat-menu #menuRecompensas="matMenu">
+        <button mat-menu-item routerLink="/recompensas">Listar</button>
+        <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
+    </mat-menu>
+
 </mat-toolbar>
 <router-outlet></router-outlet>
 
-
-<app-recompensa></app-recompensa>
 <app-tipoactividad></app-tipoactividad>
 <app-actividad></app-actividad>

@@ -10,6 +10,9 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { CentroReciclajeComponent } from './components/centro-reciclaje/centro-reciclaje.component';
 import { CreareditarcentroreciclajeComponent } from './components/centro-reciclaje/creareditarcentroreciclaje/creareditarcentroreciclaje.component';
 
+import { RecompensaComponent } from './components/recompensa/recompensa.component';
+import { CreareditarrecompensaComponent } from './components/recompensa/creareditarrecompensa/creareditarrecompensa.component';
+
 export const routes: Routes = [
     {
        path: 'usuarios', component: UsuarioComponent,
@@ -53,7 +56,18 @@ export const routes: Routes = [
             },
             {
                 path: 'ediciones/:id',component:CreareditarcentroreciclajeComponent
-    
+
+            }
+        ]
+    },
+    {
+        path:'recompensas',component:RecompensaComponent,
+        children:[
+            {
+                path:'nuevo',component:CreareditarrecompensaComponent
+            },
+            {
+              path:'ediciones/:id',component:CreareditarrecompensaComponent
             }
         ]
     }
