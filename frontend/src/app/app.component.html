@@ -1,6 +1,23 @@
+<mat-toolbar class="custom-toolbar">
+    <mat-icon>menu</mat-icon>
+    <div>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menuRecompensas"
+        style="color: white"
+      >
+        Recompensas
+      </button>
+    </div>
+  </mat-toolbar>
+  
+  <mat-menu #menuRecompensas="matMenu">
+    <button mat-menu-item routerLink="/recompensas">Listar</button>
+    <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
+  </mat-menu>
+  <router-outlet></router-outlet>
 <app-usuario></app-usuario>
 <app-notificacion></app-notificacion>
-<app-recompensa></app-recompensa>
 <app-centro-reciclaje></app-centro-reciclaje>
 <app-tipoactividad></app-tipoactividad>
 <app-noticias></app-noticias>
