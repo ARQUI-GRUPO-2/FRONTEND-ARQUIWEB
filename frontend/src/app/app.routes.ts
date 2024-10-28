@@ -13,6 +13,9 @@ import { CreareditarcentroreciclajeComponent } from './components/centro-recicla
 import { RecompensaComponent } from './components/recompensa/recompensa.component';
 import { CreareditarrecompensaComponent } from './components/recompensa/creareditarrecompensa/creareditarrecompensa.component';
 
+import { ActividadComponent } from './components/actividad/actividad.component';
+import { CreaeditaactividadComponent } from './components/actividad/creaeditaactividad/creaeditaactividad.component';
+
 export const routes: Routes = [
     {
        path: 'usuarios', component: UsuarioComponent,
@@ -69,6 +72,17 @@ export const routes: Routes = [
             {
               path:'ediciones/:id',component:CreareditarrecompensaComponent
             }
+        ]
+    },
+    {
+        path:'actividades',component:ActividadComponent,
+        children:[
+            {
+            path:'nuevo',component:CreaeditaactividadComponent
+            }
+            //{
+            //path:'ediciones/:id',component:CreaeditaactividadComponent
+            //}
         ]
     }
 ];
