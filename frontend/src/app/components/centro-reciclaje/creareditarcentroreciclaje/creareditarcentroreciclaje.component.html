@@ -1,0 +1,48 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registro de Centro de Reciclajes</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+          <mat-label>Direccion</mat-label>
+          <input matInput formControlName="hdireccion" />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+        <mat-label>Latitud</mat-label>
+        <input matInput formControlName="hlatitud" />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+            <mat-label>Longitud</mat-label>
+            <input matInput formControlName="hlongitud" />
+            </mat-form-field>
+        <br />
+
+        <mat-form-field>
+            <mat-label>Horario</mat-label>
+            <input matInput type="horario" formControlName="hhorario"/>
+            <mat-hint>HH:MM</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Favorito</mat-label>
+            <mat-select formControlName="hfavoritos" >
+              @for (m of listaFavoritos; track m) {
+              <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
+              }
+            </mat-select>
+        </mat-form-field>
+        <div>
+            <button mat-flat-button class="custom-button">Registrar</button>
+          </div>
+        </form>
+      </div>
+    </div>    
