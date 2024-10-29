@@ -15,6 +15,7 @@ import { CreareditarrecompensaComponent } from './components/recompensa/crearedi
 
 import { ActividadComponent } from './components/actividad/actividad.component';
 import { CreaeditaactividadComponent } from './components/actividad/creaeditaactividad/creaeditaactividad.component';
+import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 
 export const routes: Routes = [
     {
@@ -80,6 +81,17 @@ export const routes: Routes = [
             {
             path:'nuevo',component:CreaeditaactividadComponent
             }
+            //{
+            //path:'ediciones/:id',component:CreaeditaactividadComponent
+            //}
+        ]
+    },
+    {
+        path:'tipodeactividades',component:TipoactividadComponent,
+        children:[
+            //{
+            //path:'nuevo',component:CreaeditaactividadComponent
+            //}
             //{
             //path:'ediciones/:id',component:CreaeditaactividadComponent
             //}

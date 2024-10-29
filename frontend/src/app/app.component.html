@@ -14,22 +14,22 @@
 
      <div>
     <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: rgb(201, 21, 21)">
-      USUARIO
+      <span class="line-1">U S U A R I O </span> 
     </button>
     </div>
     <mat-menu #menuUsuario="matMenu">
-    <button mat-menu-item routerLink="/usuarios">Listar Usuarios</button>
-    <button mat-menu-item routerLink="/usuarios/nuevo">Registrar Usuario</button>
+    <button mat-menu-item routerLink="/usuarios">Listar</button>
+    <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
     </mat-menu>
 
     <div>
     <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: rgb(21, 21, 201)">
-      NOTIFICACIÓN
+      <span class="line-1">N O T I F I C A C I Ó N </span> 
     </button>
     </div>
     <mat-menu #menuNotificacion="matMenu">
-    <button mat-menu-item routerLink="/notificaciones">Listar Notificaciones</button>
-    <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar Notificación</button>
+    <button mat-menu-item routerLink="/notificaciones">Listar</button>
+    <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
     </mat-menu>
 
     <div>
@@ -54,8 +54,8 @@
     </mat-menu>
   
     <div>
-      <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: white" >
-        RECOMPENSAS
+      <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: rgb(255, 213, 0)" >
+        <span class="line-1">R E C O M P E N S A S </span>
       </button>
     </div>  
     <mat-menu #menuRecompensas="matMenu">
@@ -63,8 +63,24 @@
         <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
     </mat-menu>
 
+    <div>
+      <button mat-button [matMenuTriggerFor]="menuActividad" style="color: rgb(195, 95, 13)" >
+        <span class="line-1">A C T I V I D A D </span>
+      </button>
+    </div>  
+    <mat-menu #menuActividad="matMenu">
+        <button mat-menu-item routerLink="/actividades">Listar</button>
+    </mat-menu>
+
+    <div>
+      <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: rgb(3, 171, 143)" >
+        <span class="line-1">T I P O &nbsp; D E</span>
+        <span class="line-2">A C T I V I D A D</span>
+      </button>
+    </div>  
+    <mat-menu #menuTipoActividad="matMenu">
+        <button mat-menu-item routerLink="/tipodeactividades">Listar</button>
+    </mat-menu>
+
 </mat-toolbar>
 <router-outlet></router-outlet>
-
-<app-tipoactividad></app-tipoactividad>
-<app-actividad></app-actividad>
