@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Notificacion } from '../../../models/Notificacion';
+import { Notificaciones } from '../../../models/Notificaciones';
 import { NotificacionService } from '../../../services/notificacion.service';
 
 @Component({
@@ -33,7 +33,7 @@ import { NotificacionService } from '../../../services/notificacion.service';
 })
 export class CreareditarnotificacionComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  notificacion: Notificacion = new Notificacion();
+  notificacion: Notificaciones = new Notificaciones();
 
   id: number = 0;
   edicion: boolean = false;
@@ -64,7 +64,7 @@ export class CreareditarnotificacionComponent implements OnInit {
       this.notificacion.idNotificaciones = this.form.value.hcodigo;
       this.notificacion.mensaje = this.form.value.hmensaje;
       this.notificacion.estado = this.form.value.hestado;
-      this.notificacion.fecha_notificacion = this.form.value.hfecha;
+      this.notificacion.fecha = this.form.value.hfecha;
       this.notificacion.idNoticias = this.form.value.hcodenoticia;
       this.notificacion.idUser = this.form.value.hcodeuser;
       if (this.edicion) {
@@ -90,7 +90,7 @@ export class CreareditarnotificacionComponent implements OnInit {
           hcodigo: new FormControl(data.idNotificaciones),
           hmensaje: new FormControl(data.mensaje),
           hestado: new FormControl(data.estado),
-          hfecha: new FormControl(data.fecha_notificacion),
+          hfecha: new FormControl(data.fecha),
           hcodenoticia: new FormControl(data.idNoticias),
           hcodeuser: new FormControl(data.idUser),
         });
