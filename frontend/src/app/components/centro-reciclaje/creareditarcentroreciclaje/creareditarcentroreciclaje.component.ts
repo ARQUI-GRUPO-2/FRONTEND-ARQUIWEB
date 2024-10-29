@@ -56,7 +56,7 @@ export class CreareditarcentroreciclajeComponent {
   }
 
   insertar(): void {
-    if (this.form.invalid) {
+    if (this.form.valid) {
       this.centroReciclaje.idCentroReciclaje = this.form.value.hcodigo;
       this.centroReciclaje.direccion = this.form.value.hdireccion;
       this.centroReciclaje.latitud = this.form.value.hlatitud;
