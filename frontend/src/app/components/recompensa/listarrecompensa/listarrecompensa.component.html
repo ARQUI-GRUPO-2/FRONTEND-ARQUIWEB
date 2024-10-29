@@ -22,6 +22,11 @@
           <td mat-cell *matCellDef="let element">{{element.fechaVencimiento}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="c5">
+          <th mat-header-cell *matHeaderCellDef>Descripción de la Recompensa</th>
+          <td mat-cell *matCellDef="let element">{{element.descripcionRecompensa}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="accion01">
           <th mat-header-cell *matHeaderCellDef>Eliminar</th>
           <td mat-cell *matCellDef="let element" (click)="eliminar(element.idRecompensas)">

@@ -36,7 +36,7 @@ export class RecompensaService {
     return this.http.get<Recompensas>(`${this.url}/${id}`);
   }
 
-  update(veh: Recompensas) {
-    return this.http.put(this.url, veh);
+  update(rec: Recompensas) {
+    return this.http.put(this.url, rec);
   }
 }

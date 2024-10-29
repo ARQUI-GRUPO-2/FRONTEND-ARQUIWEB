@@ -55,6 +55,7 @@ export class CreareditarrecompensaComponent implements OnInit {
       hnombre: ['', Validators.required],
       hcodigoqr: ['', Validators.required],
       hcolor: ['', Validators.required],
+      hdescripcion: ['', Validators.required],
       hfechavencimiento: ['', Validators.required],
     });
   }
@@ -64,6 +65,7 @@ export class CreareditarrecompensaComponent implements OnInit {
       this.recompensas.nombreRecompensa = this.form.value.hnombre;
       this.recompensas.codigoQR = this.form.value.hcodigoqr;
       this.recompensas.fechaVencimiento = this.form.value.hfecha;
+      this.recompensas.descripcionRecompensa= this.form.value.hdescripcion;
       if (this.edicion) {
         this.rS.update(this.recompensas).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -78,7 +80,7 @@ export class CreareditarrecompensaComponent implements OnInit {
         });
       }
     }
-    this.router.navigate(['vehiculos']);
+    this.router.navigate(['recompensas']);
   }
 
   init() {
@@ -89,6 +91,7 @@ export class CreareditarrecompensaComponent implements OnInit {
           hnombre: new FormControl(data.nombreRecompensa),
           hcodigoqr: new FormControl(data.codigoQR),
           hfecha: new FormControl(data.fechaVencimiento),
+          hdescripcion: new FormControl(data.descripcionRecompensa),
         });
       });
     }
