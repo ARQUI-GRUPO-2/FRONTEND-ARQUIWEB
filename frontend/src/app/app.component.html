@@ -69,23 +69,25 @@
             <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
         </mat-menu>
 
-        <div>
-            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: rgb(195, 95, 13)">
+         <div>
+            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: rgb(195, 95, 13)" >
                 <span class="line-1">A C T I V I D A D </span>
             </button>
-        </div>  
-        <mat-menu #menuActividad="matMenu">
-            <button mat-menu-item routerLink="/actividades">Listar</button>
-        </mat-menu>
+         </div>  
+         <mat-menu #menuActividad="matMenu">
+             <button mat-menu-item routerLink="/actividades">Listar</button>
+             <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
+         </mat-menu>
 
-        <div>
-          <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: rgb(3, 171, 143)" >
-            <span class="line-1">T I P O &nbsp; D E</span>
-            <span class="line-2">A C T I V I D A D</span>
-          </button>
-        </div>  
+         <div>
+            <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: rgb(3, 171, 143)" >
+               <span class="line-1">T I P O &nbsp; D E</span>
+               <span class="line-2">A C T I V I D A D</span>
+            </button>
+         </div>  
         <mat-menu #menuTipoActividad="matMenu">
             <button mat-menu-item routerLink="/tipodeactividades">Listar</button>
+            <button mat-menu-item routerLink="/tipodeactividades/nuevo">Registrar</button>
         </mat-menu>
     
     </mat-toolbar>
@@ -105,7 +107,6 @@
       <p>Aquí puedes encontrar información sobre reciclaje y cómo contribuir a cuidar el medio ambiente.</p>
       <!-- Más contenido informativo... -->
   
-
   <footer>
       <div class="contenedor">
           <h2 class="titulo-footer">CONTACTANOS</h2>
