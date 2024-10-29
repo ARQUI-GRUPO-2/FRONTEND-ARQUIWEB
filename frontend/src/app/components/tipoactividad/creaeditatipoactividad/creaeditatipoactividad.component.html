@@ -1,0 +1,27 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registro de Actividades</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Invitar</mat-label>
+            <input matInput formControlName="invitar" />
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Reciclar</mat-label>
+            <input matInput formControlName="reciclar" />
+        </mat-form-field>
+        <br>
+        <div>
+            <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+

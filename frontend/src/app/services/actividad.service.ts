@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Actividad } from '../models/Actividad';
-import { CentroReciclaje } from '../models/CentroReciclaje';
 import { Subject } from 'rxjs';
 const base_url=environment.base
 @Injectable({
