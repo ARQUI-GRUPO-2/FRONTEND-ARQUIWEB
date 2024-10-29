@@ -1,43 +1,38 @@
-/* Importar Open Sans */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Navbar */
 .navbar {
     display: flex;
-    margin-right: 5px;
+    margin-right: 5px 0;
 }
 
 .navbar a {
     display: block;
-    padding: 20px 75px;
+    padding: 15px 5vw;
     color: #000000;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 20px;
-    transition: background 0.3s ease; /* Añadir transición */
+    font-size: 2vw;
+    transition: background 0.3s ease; 
 }
 
 .navbar a:hover {
     background: #3f3f3f;
 }
 
-/* Body */
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
 }
 
-/* Header */
 header {
     width: 100%;
-    height: 650px;
+    height: 50vh;
     background-image: url(https://www.eldondelaenergia.com/wp-content/uploads/2022/09/Articulo-41-DE-1.png);
     background-attachment: fixed;
     background-position: center;
@@ -49,34 +44,32 @@ header {
 }
 
 header .textos {
-    margin-top: 152px;
+    margin-top: 10%;
 }
 
 header .titulo {
-    font-size: 95px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra en el texto */
+    font-size: 16vh;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); 
 }
 
 header .subtitulo {
-    font-size: 42px;
+    font-size: 4vw;
     font-weight: 300;
     margin-bottom: 32px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra en el texto */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); 
 }
 
 header .boton {
     display: inline-block;
-    padding: 6px;
-    width: 128px;
+    padding: 10px;
     border: 1px solid #fff;
     color: #fff;
-    font-size: 19px;
+    font-size: 2vw;
     text-align: center;
     text-decoration: none;
     border-radius: 16px;
 }
 
-/* Sesgos */
 .sesgoabajo, .sesgoarriba, .sesgoabajo-unico {
     z-index: 10;
     position: absolute;
@@ -86,7 +79,7 @@ header .boton {
 .sesgoabajo {
     bottom: 0;
     left: 0;
-    border-width: 0 0 35vh 100vw;
+    border-width: 0 0 25vh 100vw;
     border-color: transparent transparent #fff transparent;
 }
 
@@ -104,19 +97,17 @@ header .boton {
     border-color: transparent transparent #2c3e50 transparent;
 }
 
-/* Contenedor */
 .contenedor {
     width: 90%;
     max-width: 1000px;
     margin: auto;
     overflow: hidden;
-    padding: 52px 0;
+    padding: 5vh 0;
 }
 
-/* Sobre Nosotros */
 .sobre-nosotros {
     text-align: center;
-    font-size: 56px;
+    font-size: 5vw;
     margin-bottom: 10px;
     font-weight: 600;
 }
@@ -133,7 +124,6 @@ header .boton {
     line-height: 24px;
 }
 
-/* Acerca de */
 .acerca-de .boton {
     display: inline-block;
     padding: 6px;
@@ -141,32 +131,32 @@ header .boton {
     font-weight: 300;
     border: 1px solid rgba(24, 16, 16, .7);
     color: rgb(24, 16, 16);
-    font-size: 16px;
+    font-size: 2vw;
     text-align: center;
     text-decoration: none;
     border-radius: 16px;
     margin-top: 24px;
 }
 
-/* Galería */
 .galeria {
     width: 100%;
-    height: 500px;
+    height: auto;
     display: flex;
-    position: relative;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .imagenes {
     width: 20%;
-    height: 500px;
+    height: auto;
     overflow: hidden;
     position: relative;
+    margin: 1%;
 }
 
 .imagenes img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 }
 
@@ -177,7 +167,7 @@ header .boton {
     width: 100%;
     height: 100%;
     background: rgba(61, 190, 14, 0.815);
-    transition: background 0.3s ease; /* Añadir transición en hover */
+    transition: background 0.3s ease; 
 }
 
 .imagenes:hover .encima {
@@ -199,10 +189,8 @@ header .boton {
     width: 40px;
     height: 5px;
     background: #fff;
-    margin: auto;
 }
 
-/* Cards */
 .cards {
     width: 100%;
     margin: auto;
@@ -212,48 +200,46 @@ header .boton {
 }
 
 .card {
-    margin: 20px 0;
-    width: 45%;
-    height: 250px;
+    margin: 20px 1%;
+    width: calc(45% - 20px);
+    height: auto;
     text-align: center;
     padding: 10px;
     box-shadow: 0px 0px 4px 0 rgba(52, 73, 94, 0.849);
 }
 
-/* Footer */
 footer {
     background: #2c3e50;
     height: auto;
+    padding: 20px 0;
 }
 
 .titulo-footer,
 .subtitulo-footer {
     color: #fff;
     text-align: center;
-    font-weight: 400;
+    font-weight: 150;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 56px;
+    font-size: 40x;
 }
 
 .subtitulo-footer {
-    font-size: 16px;
+    font-size: 2vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 64px;
 }
 
-/* Formulario */
 form {
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: space-between;
-    flex-wrap: wrap;
     margin: auto;
 }
 
 input[type="text"],
 input[type="email"] {
-    display: inline-block;
-    width: 48%;
+    width: 100%;
     padding: 13px;
     border: none;
     color: #fff;
@@ -271,8 +257,6 @@ textarea:focus {
 textarea {
     display: block;
     width: 100%;
-    max-width: 100%;
-    min-width: 100%;
     max-height: 200px;
     min-height: 200px;
     background: rgba(37, 37, 33, .7);
@@ -289,17 +273,21 @@ input[type="submit"] {
     color: #fff;
     background: rgba(37, 37, 33, .7);
     width: 96px;
+    margin-top: 10px;
 }
 
-/* Responsividad */
 @media (max-width: 768px) {
     .navbar a {
-        padding: 10px 30px;
-        font-size: 18px;
+        padding: 10px 5vw;
+        font-size: 4vw;
     }
 
     header .titulo {
-        font-size: 48px;
+        font-size: 6vw;
+    }
+
+    header .subtitulo {
+        font-size: 3vw; 
     }
 
     .galeria {
@@ -307,7 +295,7 @@ input[type="submit"] {
     }
 
     .card {
-        width: 100%;
+        width: calc(90% - 20px);
     }
 
     input[type="text"],
@@ -325,6 +313,3 @@ input[type="submit"] {
     display: block;
     font-weight: bold; 
 }
-
-
-

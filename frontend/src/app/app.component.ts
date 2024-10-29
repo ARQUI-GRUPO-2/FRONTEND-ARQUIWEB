@@ -26,13 +26,13 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
-  isHomePage: boolean = true; // Por defecto, no está en la página de inicio
+  isHomePage: boolean = true; 
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.router.events.subscribe(() => {
-      this.isHomePage = this.router.url === '/'; // Verifica si la URL actual es la de inicio
+      this.isHomePage = this.router.url === '/'; 
     });
   }
 }
