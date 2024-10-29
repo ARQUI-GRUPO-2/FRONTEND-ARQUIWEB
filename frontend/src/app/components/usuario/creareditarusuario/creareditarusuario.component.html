@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center; margin: 2%">
-  <div><h1>Actualizacion de datos del Usuario</h1></div>
+  <div><h1>{{ edicion ? 'Actualizar Noticias' : 'Registro de Usuario'}}</h1></div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -11,7 +11,6 @@
         <mat-label>Nombres</mat-label>
         <input
           matInput
-          placeholder="Jesus Ricardo"
           formControlName="hnombres"
         />
       </mat-form-field>
@@ -20,7 +19,6 @@
         <mat-label>Apellidos</mat-label>
         <input
           matInput
-          placeholder="Sulca Sedano"
           formControlName="hapellidos"
         />
       </mat-form-field>
@@ -46,8 +44,8 @@
 
       <br />
       <mat-form-field>
-        <mat-label>Marca</mat-label>
-        <mat-select formControlName="hmarca">
+        <mat-label>Genero</mat-label>
+        <mat-select formControlName="hgenero">
           @for (m of listaGenero; track m) {
           <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
           }
@@ -81,16 +79,16 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Enabled</mat-label>
-        <input matInput placeholder="" formControlName="henabled" />
+        <input matInput placeholder="true/false" formControlName="henabled" />
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Roles</mat-label>
         <input matInput placeholder="" formControlName="hroles" />
-      </mat-form-field>
+      </mat-form-field> 
 
       <div>
-        <button mat-flat-button class="custom-button">Actualizar</button>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
       </div>
     </form>
   </div>

@@ -25,6 +25,9 @@ export class ListarnoticiasComponent implements OnInit {
     this.nS.list().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
     });
+    this.nS.getList().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
   }
 
   eliminar(id: number) {
