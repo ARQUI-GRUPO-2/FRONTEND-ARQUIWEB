@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
 export class ListarrecompensaComponent implements OnInit{
   dataSource: MatTableDataSource<Recompensas>= new MatTableDataSource();
 
-  displayedColumns: string[]=['c1','c2','c3','c4','accion01','accion02']
+  displayedColumns: string[]=['c1','c2','c3','c4','c5','accion01','accion02']
 
   constructor(private rS: RecompensaService) {}
 
