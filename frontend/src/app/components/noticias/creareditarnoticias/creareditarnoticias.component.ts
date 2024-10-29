@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './creareditarnoticias.component.html',
   styleUrl: './creareditarnoticias.component.css',
 })
-export class CreareditarnoticiasComponent {
+export class CreareditarnoticiasComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   noticias: Noticias = new Noticias();
 
@@ -54,7 +54,7 @@ export class CreareditarnoticiasComponent {
   }
 
   insertar(): void {
-    if (this.form.invalid) {
+    if (this.form.valid) {
       this.noticias.idNoticias = this.form.value.hcodigo;
       this.noticias.titulo = this.form.value.htitulo;
       this.noticias.informacion = this.form.value.hinformacion;
