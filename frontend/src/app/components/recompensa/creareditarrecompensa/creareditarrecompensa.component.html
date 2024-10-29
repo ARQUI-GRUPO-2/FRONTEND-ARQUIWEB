@@ -2,7 +2,7 @@
     <div><h1>Registro de Recompensas</h1></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()">
-        <mat-form-field class="example-full-width" >
+        <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>Código</mat-label>
           <input matInput formControlName="hcodigo"/>
         </mat-form-field>
