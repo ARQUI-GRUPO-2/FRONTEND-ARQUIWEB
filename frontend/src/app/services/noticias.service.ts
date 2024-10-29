@@ -17,6 +17,7 @@ export class NoticiasService {
     list() {
       return this.http.get<Noticias[]>(this.url); 
     }
+
     insert(n: Noticias) {
       return this.http.post(this.url, n);
     }
