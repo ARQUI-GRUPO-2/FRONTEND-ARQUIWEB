@@ -1,130 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0," />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Recycling</title>
-    <link rel="stylesheet" href="app.component.css">
-</head>
+    <link rel="stylesheet" href="app.component.css" />
+  </head>
 
-<body>
-  <mat-toolbar class="custom-toolbar">
-      <button mat-icon-button [matMenuTriggerFor]="menuInicio">
-          <mat-icon>menu</mat-icon>       
-      </button>
+  <body>
+    <mat-toolbar class="custom-toolbar">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+      </div>
+      <div class="menu-section">
+        <button class="menu" [matMenuTriggerFor]="menuInicio">
+            <mat-icon>menu</mat-icon>
+          </button>
     
-      <mat-menu #menuInicio="matMenu">  
-          <button mat-menu-item routerLink="/">Inicio</button>
-      </mat-menu>
-
-        <div>
-            <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: rgb(201, 21, 21)">
-                <span class="line-1">U S U A R I O </span> 
+          <mat-menu #menuInicio="matMenu">
+            <button mat-menu-item routerLink="/">Inicio</button>
+          </mat-menu>
+    
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuUsuario">
+              <span class="line-1">USUARIO</span>
             </button>
-        </div>
-        <mat-menu #menuUsuario="matMenu">
+          </div>
+          <mat-menu #menuUsuario="matMenu">
             <button mat-menu-item routerLink="/usuarios">Listar</button>
             <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
-        </mat-menu>
-
-        <div>
-            <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: rgb(21, 21, 201)">
-                <span class="line-1">N O T I F I C A C I Ó N </span> 
+          </mat-menu>
+    
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuNotificacion">
+              <span class="line-1">NOTIFICACIÓN</span>
             </button>
-        </div>
-        <mat-menu #menuNotificacion="matMenu">
+          </div>
+          <mat-menu #menuNotificacion="matMenu">
             <button mat-menu-item routerLink="/notificaciones">Listar</button>
-            <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
-        </mat-menu>
-
-        <div>
-            <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: rgb(157, 86, 215)">
-                <span class="line-1">N O T I C I A S </span> 
+            <button mat-menu-item routerLink="/notificaciones/nuevo">
+              Registrar
             </button>
-        </div>
-        <mat-menu #menuNoticias="matMenu">
+          </mat-menu>
+    
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuNoticias">
+              <span class="line-1">NOTICIAS</span>
+            </button>
+          </div>
+          <mat-menu #menuNoticias="matMenu">
             <button mat-menu-item routerLink="/noticias">Listar</button>
             <button mat-menu-item routerLink="/noticias/nuevo">Registrar</button>
-        </mat-menu>
-
-        <div>
-            <button mat-button [matMenuTriggerFor]="menuCentroReciclaje" style="color: #27ae60">
-                <span class="line-1">C E N T R O S &nbsp; D E </span>
-                <span class="line-2">R E C I C L A J E</span>
+          </mat-menu>
+    
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuCentroReciclaje">
+              <span class="line-1">CENTROS &nbsp; DE &nbsp; RECICLAJE</span>
             </button>
-        </div>
-        <mat-menu #menuCentroReciclaje="matMenu">
+          </div>
+          <mat-menu #menuCentroReciclaje="matMenu">
             <button mat-menu-item routerLink="/centro-reciclaje">Listar</button>
-            <button mat-menu-item routerLink="/centro-reciclaje/nuevo">Registrar</button>
-        </mat-menu>
-
-        <div>
-            <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: rgb(255, 213, 0)">
-                <span class="line-1">R E C O M P E N S A S </span>
+            <button mat-menu-item routerLink="/centro-reciclaje/nuevo">
+              Registrar
             </button>
-        </div>  
-        <mat-menu #menuRecompensas="matMenu">
+          </mat-menu>
+    
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuRecompensas">
+              <span class="line-1">RECOMPENSAS</span>
+            </button>
+          </div>
+          <mat-menu #menuRecompensas="matMenu">
             <button mat-menu-item routerLink="/recompensas">Listar</button>
             <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
-        </mat-menu>
-
-         <div>
-            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: rgb(195, 95, 13)" >
-                <span class="line-1">A C T I V I D A D </span>
-            </button>
-         </div>  
-         <mat-menu #menuActividad="matMenu">
-             <button mat-menu-item routerLink="/actividades">Listar</button>
-             <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
-         </mat-menu>
-
-         <div>
-            <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: rgb(3, 171, 143)" >
-               <span class="line-1">T I P O &nbsp; D E</span>
-               <span class="line-2">A C T I V I D A D</span>
-            </button>
-         </div>  
-        <mat-menu #menuTipoActividad="matMenu">
-            <button mat-menu-item routerLink="/tipodeactividades">Listar</button>
-            <button mat-menu-item routerLink="/tipodeactividades/nuevo">Registrar</button>
-        </mat-menu>
+          </mat-menu>
     
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuActividad">
+              <span class="line-1">ACTIVIDAD</span>
+            </button>
+          </div>
+          <mat-menu #menuActividad="matMenu">
+            <button mat-menu-item routerLink="/actividades">Listar</button>
+            <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
+          </mat-menu>
+    
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuTipoActividad">
+              <span class="line-1">TIPO &nbsp; DE &nbsp; ACTIVIDAD</span>
+            </button>
+          </div>
+          <mat-menu #menuTipoActividad="matMenu">
+            <button mat-menu-item routerLink="/tipodeactividades">Listar</button>
+            <button mat-menu-item routerLink="/tipodeactividades/nuevo">
+              Registrar
+            </button>
+          </mat-menu>
+      </div>
+      
     </mat-toolbar>
     <router-outlet></router-outlet>
 
-
-  <main *ngIf="isHomePage">
-    <header>
-      <div class="textos">
+    <main *ngIf="isHomePage">
+      <header>
+        <div class="textos">
           <h1 class="titulo">RECYCLING</h1>
-      </div>
-      <div class="sesgoabajo"></div>
-    </header>
+        </div>
+        <div class="sesgoabajo"></div>
+      </header>
 
       <!-- Contenido principal que solo aparece en la página de inicio -->
       <h2>Bienvenido a Recycling</h2>
-      <p>Aquí puedes encontrar información sobre reciclaje y cómo contribuir a cuidar el medio ambiente.</p>
+      <p>
+        Aquí puedes encontrar información sobre reciclaje y cómo contribuir a
+        cuidar el medio ambiente.
+      </p>
       <!-- Más contenido informativo... -->
-  
-  <footer>
-      <div class="contenedor">
+
+      <footer>
+        <div class="contenedor">
           <h2 class="titulo-footer">CONTACTANOS</h2>
           <h3 class="subtitulo-footer">Esperamos su mensaje</h3>
           <div class="footer">
-              <form action="">
-                  <input type="text" placeholder="Nombre(s) y apellido(s)">
-                  <input type="email" placeholder="Email">
-                  <textarea cols="30" rows="10" placeholder="Ingrese su mensaje..."></textarea>
-                  <input type="submit" value="Enviar">
-              </form>
+            <form action="">
+              <input type="text" placeholder="Nombre(s) y apellido(s)" />
+              <input type="email" placeholder="Email" />
+              <textarea
+                cols="30"
+                rows="10"
+                placeholder="Ingrese su mensaje..."
+              ></textarea>
+              <input type="submit" value="Enviar" />
+            </form>
           </div>
-      </div>
-  </footer>
-</main>
-
-</body>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
-
-
-   

@@ -8,30 +8,85 @@
     box-sizing: border-box;
 }
 
-/* Navbar */
-.navbar {
-    display: flex;
-    margin-right: 5px;
-}
-
-.navbar a {
-    display: block;
-    padding: 20px 75px;
-    color: #000000;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 20px;
-    transition: background 0.3s ease; /* Añadir transición */
-}
-
-.navbar a:hover {
-    background: #3f3f3f;
-}
-
 /* Body */
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    font-size: 17px;
+}
+
+
+.custom-toolbar {
+    background-color: white; /* Fondo blanco */
+    color: #333; /* Color de texto oscuro */
+    display: flex;
+    padding: auto; /* Espaciado más amplio */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 8px;
+}
+
+.custom-toolbar button {
+    color: #000000; /* Color de texto oscuro */
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 5px;
+    background: none;
+    border: none;
+}
+
+.custom-toolbar .menu-section button:hover {
+    color: #ffffff; /* Color verde similar al ejemplo en hover */
+    background: rgb(32, 163, 32);
+    cursor: pointer;
+}
+
+.custom-toolbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.custom-toolbar .logo img {
+    height: 50px; /* Tamaño del logo */
+    margin-right: 15px;
+}
+
+.custom-toolbar .menu-section {
+    display: flex;
+    gap: 2px; /* Espaciado entre los botones */
+}
+
+.custom-toolbar .menu-section button {
+    color: #333;
+    font-weight: 400px;
+    font-size: 15px;
+    padding: auto;
+}
+
+.custom-toolbar .botones {
+    margin: -4px;
+}
+
+.custom-toolbar .mat-icon {
+    color: #27ae60; /* Icono de color verde */
+    background-color: #ffffff;
+}
+
+.custom-toolbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.custom-toolbar .logo img {
+    height: 70px; /* Tamaño del logo */
+    margin-right: 15px;
+}
+
+
+.custom-toolbar .line-1 {
+    display: block;
+    line-height: 1.2;
+    font-size: 12px;
+    margin: 1px;
 }
 
 /* Header */
@@ -111,113 +166,6 @@ header .boton {
     margin: auto;
     overflow: hidden;
     padding: 52px 0;
-}
-
-/* Sobre Nosotros */
-.sobre-nosotros {
-    text-align: center;
-    font-size: 56px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.slogan, .parrafo {
-    text-align: center;
-    font-weight: 300;
-    color: rgb(24, 16, 16);
-}
-
-.parrafo {
-    margin-bottom: 13px;
-    text-align: justify;
-    line-height: 24px;
-}
-
-/* Acerca de */
-.acerca-de .boton {
-    display: inline-block;
-    padding: 6px;
-    width: 128px;
-    font-weight: 300;
-    border: 1px solid rgba(24, 16, 16, .7);
-    color: rgb(24, 16, 16);
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 16px;
-    margin-top: 24px;
-}
-
-/* Galería */
-.galeria {
-    width: 100%;
-    height: 500px;
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-}
-
-.imagenes {
-    width: 20%;
-    height: 500px;
-    overflow: hidden;
-    position: relative;
-}
-
-.imagenes img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.encima {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(61, 190, 14, 0.815);
-    transition: background 0.3s ease; /* Añadir transición en hover */
-}
-
-.imagenes:hover .encima {
-    background: rgba(61, 190, 14, 0.6);
-}
-
-.encima h2 {
-    position: relative;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    top: 45%;
-    text-align: center;
-    color: #fff;
-}
-
-.encima div {
-    position: relative;
-    display: block;
-    top: 46%;
-    width: 40px;
-    height: 5px;
-    background: #fff;
-    margin: auto;
-}
-
-/* Cards */
-.cards {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    margin: 20px 0;
-    width: 45%;
-    height: 250px;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0px 0px 4px 0 rgba(52, 73, 94, 0.849);
 }
 
 /* Footer */
@@ -313,18 +261,37 @@ input[type="submit"] {
     input[type="text"],
     input[type="email"] {
         width: 100%;
+    }    
+}
+/* Para pantallas pequeñas (teléfonos) */
+@media (max-width: 600px) {
+    .custom-toolbar {
+        background-color: #ffffff; /* Cambia a un gris claro */
+        color: black; /* Cambia el color del texto */
     }
 }
 
-.custom-toolbar {
-    background-color: #ffffff;
-    color: black;
+/* Para pantallas medianas (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .custom-toolbar {
+        background-color: #ffffff; /* Cambia a otro color */
+        color: #222222;
+    }
 }
 
-.line-1, .line-2 {
-    display: block;
-    font-weight: bold; 
+/* Para pantallas grandes (desktop) */
+@media (min-width: 1025px) {
+    .custom-toolbar {
+        background-color: #ffffff;
+        color: black;
+    }
 }
+
+.line-1{
+    display: block;
+}
+
+
 
 
 
