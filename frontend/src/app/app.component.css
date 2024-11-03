@@ -14,7 +14,6 @@ body {
     font-size: 17px;
 }
 
-
 .custom-toolbar {
     background-color: white; /* Fondo blanco */
     color: #333; /* Color de texto oscuro */
@@ -80,7 +79,6 @@ body {
     height: 70px; /* Tamaño del logo */
     margin-right: 15px;
 }
-
 
 .custom-toolbar .line-1 {
     display: block;
@@ -290,8 +288,3 @@ input[type="submit"] {
 .line-1{
     display: block;
 }
-
-
-
-
-

@@ -31,6 +31,16 @@
             <button mat-menu-item routerLink="/usuarios">Listar</button>
             <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
           </mat-menu>
+
+          <div class="botones">
+            <button mat-button [matMenuTriggerFor]="menuRoles">
+              <span class="line-1">ROLES</span>
+            </button>
+          </div>
+          <mat-menu #menuRoles="matMenu">
+            <button mat-menu-item routerLink="/roles">Listar</button>
+            <button mat-menu-item routerLink="/roles/nuevo">Registrar</button>
+          </mat-menu>
     
           <div class="botones">
             <button mat-button [matMenuTriggerFor]="menuNotificacion">
