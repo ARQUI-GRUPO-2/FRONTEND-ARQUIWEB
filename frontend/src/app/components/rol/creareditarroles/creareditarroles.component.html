@@ -1,30 +1,19 @@
-<div class="container" style="text-align: center;margin:2%">
-    <div><h1>Registro de Roles</h1></div>
-    <div>
-      <form [formGroup]="form" (submit)=" insertar()">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
-          <mat-label>Código</mat-label>
-          <input matInput formControlName="hcodigo"/>
-        </mat-form-field>
-        <br />
-        <mat-form-field class="example-full-width" >
-          <mat-label>Nombre</mat-label>
-          <input matInput formControlName="hnombre" />
-        </mat-form-field>
-        <br />
-        <mat-form-field>
-            <mat-label>Usuario</mat-label>
-            <mat-select formControlName="hvehiculo" >
-              @for (u of listaUsuarios; track u) {
-              <mat-option [value]="u.idUser">{{ u.username}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-  
-        <div>
-          <button mat-flat-button class="custom-button">Registrar</button>
-        </div>
-      </form>
-    </div>
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? "Actualizar Rol" : "Registro de Rol" }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hcodigo" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="hnombre" />
+      </mat-form-field>
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? "Actualizar" : "Registrar" }}</button>
+      </div>
+    </form>
   </div>
-  
+</div>

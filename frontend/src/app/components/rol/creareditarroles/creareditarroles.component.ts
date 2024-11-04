@@ -9,8 +9,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { Usuario } from '../../../models/Usuario';
-import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-creareditarroles',
@@ -27,7 +25,6 @@ import { UsuarioService } from '../../../services/usuario.service';
 })
 export class CreareditarrolesComponent implements OnInit{
   form: FormGroup = new FormGroup({});
-  listaUsuarios: Usuario[]=[];
   roles: Rol = new Rol();
 
   id: number = 0;
@@ -38,7 +35,6 @@ export class CreareditarrolesComponent implements OnInit{
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private uS: UsuarioService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -50,23 +46,15 @@ export class CreareditarrolesComponent implements OnInit{
 
     this.form = this.formBuilder.group({
       hcodigo: [''],
-      hnombre: ['', Validators.required],
-      hcodigoqr: ['', Validators.required],
-      hcolor: ['', Validators.required],
-      hdescripcion: ['', Validators.required],
-      hfechavencimiento: ['', Validators.required],
+      hnombre: ['', Validators.required]
     });
 
-    this.uS.list().subscribe((data) => {
-      this.listaUsuarios = data;
-    });
   }
 
   insertar(): void {
     if (this.form.valid) {
       this.roles.idRol = this.form.value.hcodigo;
       this.roles.nombreRol = this.form.value.hnombre;
-      this.roles.user.idUser = this.form.value.husuario;
       if (this.edicion) {
         this.rS.update(this.roles).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -90,7 +78,6 @@ export class CreareditarrolesComponent implements OnInit{
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idRol),
           hnombre: new FormControl(data.nombreRol),
-          husuario: new FormControl(data.user.idUser),
         });
       });
     }

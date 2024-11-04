@@ -31,7 +31,7 @@ export class ListarusuarioComponent implements OnInit {
     'c12',
     'c13',
     'accion01',
-    'accion02'
+    'accion02',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -10,19 +10,19 @@ import { RolService } from '../../../services/rol.service';
   standalone: true,
   imports: [MatTableModule, MatIconModule, RouterLink],
   templateUrl: './listarroles.component.html',
-  styleUrl: './listarroles.component.css'
+  styleUrl: './listarroles.component.css',
 })
-export class ListarrolesComponent implements OnInit{
-  dataSource: MatTableDataSource<Rol>= new MatTableDataSource();
+export class ListarrolesComponent implements OnInit {
+  dataSource: MatTableDataSource<Rol> = new MatTableDataSource();
 
-  displayedColumns: string[]=['c1','c2','c3','accion01','accion02']
+  displayedColumns: string[] = ['c1', 'c2','accion01', 'accion02'];
 
   constructor(private rS: RolService) {}
 
   ngOnInit(): void {
-    this.rS.list().subscribe(data=>{
-      this.dataSource=new MatTableDataSource(data)
-    })
+    this.rS.list().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
     this.rS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     });
@@ -35,5 +35,4 @@ export class ListarrolesComponent implements OnInit{
       });
     });
   }
-
 }

@@ -15,6 +15,8 @@ import { Recompensas } from '../../../models/Recompensas';
 import { RecompensaService } from '../../../services/recompensa.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ActividadService } from '../../../services/actividad.service';
+import { Actividad } from '../../../models/Actividad';
 
 @Component({
   selector: 'app-creareditarrecompensa',
@@ -32,6 +34,7 @@ import { CommonModule } from '@angular/common';
 export class CreareditarrecompensaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   recompensas: Recompensas = new Recompensas();
+  listaActividad: Actividad[] = [];
 
   id: number = 0;
   edicion: boolean = false;
@@ -40,7 +43,8 @@ export class CreareditarrecompensaComponent implements OnInit {
     private rS: RecompensaService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private aS: ActividadService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -57,6 +61,11 @@ export class CreareditarrecompensaComponent implements OnInit {
       hcolor: ['', Validators.required],
       hdescripcion: ['', Validators.required],
       hfechavencimiento: ['', Validators.required],
+      hactividad: ['', Validators.required]
+    });
+
+    this.aS.list().subscribe((data) => {
+      this.listaActividad = data;
     });
   }
   insertar(): void {
@@ -66,6 +75,7 @@ export class CreareditarrecompensaComponent implements OnInit {
       this.recompensas.codigoQR = this.form.value.hcodigoqr;
       this.recompensas.fechaVencimiento = this.form.value.hfecha;
       this.recompensas.descripcionRecompensa= this.form.value.hdescripcion;
+      this.recompensas.ac.puntos = this.form.value.hactividad
       if (this.edicion) {
         this.rS.update(this.recompensas).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -92,6 +102,7 @@ export class CreareditarrecompensaComponent implements OnInit {
           hcodigoqr: new FormControl(data.codigoQR),
           hfecha: new FormControl(data.fechaVencimiento),
           hdescripcion: new FormControl(data.descripcionRecompensa),
+          hactividad: new FormControl(data.ac.puntos)
         });
       });
     }
