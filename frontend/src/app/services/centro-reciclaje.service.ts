@@ -9,10 +9,11 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class CentroReciclajeService {
-  private url = `${base_url}/centro-reciclaje`; 
+  private url = `${base_url}/centroreciclaje`; 
   private listaCambio = new Subject<CentroReciclaje[]>();
 
   constructor(private http: HttpClient) { }
+
     list() {
       return this.http.get<CentroReciclaje[]>(this.url);
     }

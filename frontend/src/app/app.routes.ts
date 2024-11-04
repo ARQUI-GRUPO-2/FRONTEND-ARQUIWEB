@@ -17,6 +17,9 @@ import { ActividadComponent } from './components/actividad/actividad.component';
 import { CreaeditaactividadComponent } from './components/actividad/creaeditaactividad/creaeditaactividad.component';
 import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 import { CreaeditatipoactividadComponent } from './components/tipoactividad/creaeditatipoactividad/creaeditatipoactividad.component';
+import { AppComponent } from './app.component';
+
+
 
 export const routes: Routes = [
     {
@@ -54,7 +57,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'centro-reciclaje',component:CentroReciclajeComponent,
+        path: 'centroreciclaje',component:CentroReciclajeComponent,
         children: [
             {
                 path: 'nuevo',component:CreareditarcentroreciclajeComponent
@@ -97,5 +100,5 @@ export const routes: Routes = [
             path:'ediciones/:id',component:CreaeditatipoactividadComponent
             }
         ]
-    }
+    },
 ];

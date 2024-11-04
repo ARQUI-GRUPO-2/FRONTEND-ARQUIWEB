@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Frontend</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="mat-typography">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="welcome-container"> 
+  <!-- Barra de navegación -->
+    <header class="navbar">
+        <div class="logo"></div>
+        <button class="login-button" onclick="showAppRoot()">INICIAR SESIÓN</button>
+    </header>
+
+    <!-- Contenido principal de bienvenida -->
+    <main class="welcome-section" id="welcome-section">
+        <div class="welcome-text">
+            <h1>¡Bienvenido a Recycling!</h1>
+            <h2>Aquí puedes aprender sobre reciclaje y su importancia</h2>
+            <button class="register-button" onclick="showAppRoot()">REGÍSTRATE</button>
+        </div>
+    </main>
+  </div> 
+
+  <div id="app-root-container" style="display: none;">
     <app-root></app-root>
-  </body>
+  </div>
+
+    <script>
+      function showAppRoot() {
+          // Oculta la sección de bienvenida
+          document.getElementById('welcome-container').style.display = 'none';
+          // Muestra el contenedor de app-root
+          document.getElementById('app-root-container').style.display = 'block';
+      }
+  </script>
+</body>
+
 </html>

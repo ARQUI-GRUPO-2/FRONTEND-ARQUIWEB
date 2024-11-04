@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 import { RecompensaComponent } from './components/recompensa/recompensa.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -13,20 +13,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, CentroReciclajeComponent, NoticiasComponent, TipoactividadComponent, UsuarioComponent, NotificacionComponent, RecompensaComponent, ActividadComponent, 
-    MatToolbarModule, MatIconModule, MatMenuModule, MatButtonModule, RouterModule, RouterModule, CommonModule],
+    MatToolbarModule, MatIconModule, MatMenuModule, MatButtonModule, RouterModule, NgxMaterialTimepickerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
+
 export class AppComponent implements OnInit {
   title = 'frontend';
-  isHomePage: boolean = true; // Por defecto, no está en la página de inicio
+
+  isHomePage: boolean = true; 
 
   constructor(private router: Router) {}
 
@@ -35,4 +36,8 @@ export class AppComponent implements OnInit {
       this.isHomePage = this.router.url === '/'; // Verifica si la URL actual es la de inicio
     });
   }
+ /* goToHome() {
+    // Redirige a la ruta de inicio
+    this.router.navigate(['/principal']);
+  }*/
 }
