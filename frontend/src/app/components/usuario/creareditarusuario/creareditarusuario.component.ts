@@ -16,6 +16,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
+import { Rol } from '../../../models/Rol';
+import { RolService } from '../../../services/rol.service';
 
 @Component({
   selector: 'app-creareditarusuario',
@@ -34,6 +36,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 })
 export class creareditarusuarioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
+  listaRoles: Rol[]=[];
   usuario: Usuario = new Usuario();
 
   id: number = 0;
@@ -48,7 +51,8 @@ export class creareditarusuarioComponent implements OnInit {
     private uS: UsuarioService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private rS: RolService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -69,7 +73,11 @@ export class creareditarusuarioComponent implements OnInit {
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
       henabled: ['', Validators.required],
-      hroles: [''],
+      hroles: ['', Validators.required]
+    });
+
+    this.rS.list().subscribe((data) => {
+      this.listaRoles = data;
     });
   }
   insertar(): void {
@@ -86,7 +94,8 @@ export class creareditarusuarioComponent implements OnInit {
       this.usuario.correo = this.form.value.hcorreo;
       this.usuario.password = this.form.value.hpassword;
       this.usuario.enabled = this.form.value.henabled;
-      this.usuario.roles = this.form.value.hroles;
+      this.usuario.roles.nombreRol = this.form.value.hroles;
+
       if (this.edicion) {
         this.uS.update(this.usuario).subscribe((data) => {
           this.uS.list().subscribe((data) => {
@@ -119,7 +128,7 @@ export class creareditarusuarioComponent implements OnInit {
           hcorreo: new FormControl(data.correo),
           hpassword: new FormControl(data.password),
           henabled: new FormControl(data.enabled),
-          hroles: new FormControl(data.roles)
+          hroles: new FormControl(data.roles.nombreRol)
         });
       });
     }

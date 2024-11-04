@@ -1,38 +1,96 @@
+/* Importar Open Sans */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.navbar {
-    display: flex;
-    margin-right: 5px 0;
-}
-
-.navbar a {
-    display: block;
-    padding: 15px 5vw;
-    color: #000000;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 2vw;
-    transition: background 0.3s ease; 
-}
-
-.navbar a:hover {
-    background: #3f3f3f;
-}
-
+/* Body */
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    font-size: 17px;
 }
 
+.custom-toolbar {
+    background-color: white; /* Fondo blanco */
+    color: #333; /* Color de texto oscuro */
+    display: flex;
+    padding: auto; /* Espaciado más amplio */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 8px;
+}
+
+.custom-toolbar button {
+    color: #000000; /* Color de texto oscuro */
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 5px;
+    background: none;
+    border: none;
+}
+
+.custom-toolbar .menu-section button:hover {
+    color: #ffffff; /* Color verde similar al ejemplo en hover */
+    background: rgb(32, 163, 32);
+    cursor: pointer;
+}
+
+.custom-toolbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.custom-toolbar .logo img {
+    height: 50px; /* Tamaño del logo */
+    margin-right: 15px;
+}
+
+.custom-toolbar .menu-section {
+    display: flex;
+    gap: 2px; /* Espaciado entre los botones */
+}
+
+.custom-toolbar .menu-section button {
+    color: #333;
+    font-weight: 400px;
+    font-size: 15px;
+    padding: auto;
+}
+
+.custom-toolbar .botones {
+    margin: -4px;
+}
+
+.custom-toolbar .mat-icon {
+    color: #27ae60; /* Icono de color verde */
+    background-color: #ffffff;
+}
+
+.custom-toolbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.custom-toolbar .logo img {
+    height: 70px; /* Tamaño del logo */
+    margin-right: 15px;
+}
+
+.custom-toolbar .line-1 {
+    display: block;
+    line-height: 1.2;
+    font-size: 12px;
+    margin: 1px;
+}
+
+/* Header */
 header {
     width: 100%;
-    height: 70vh;
+    height: 650px;
     background-image: url(https://www.eldondelaenergia.com/wp-content/uploads/2022/09/Articulo-41-DE-1.png);
     background-attachment: fixed;
     background-position: center;
@@ -40,44 +98,50 @@ header {
     position: relative;
     overflow: hidden;
     color: #fff;
-    text-align: left;
+    text-align: center;
 }
 
 header .textos {
-    margin-top: 10%;
+    margin-top: 152px;
 }
 
 header .titulo {
-    font-size: 16vh;
-    margin-left: 70px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); 
+    font-size: 95px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra en el texto */
 }
 
 header .subtitulo {
-    font-size: 4vw;
+    font-size: 42px;
     font-weight: 300;
     margin-bottom: 32px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); 
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra en el texto */
 }
 
 header .boton {
     display: inline-block;
-    padding: 10px;
+    padding: 6px;
+    width: 128px;
     border: 1px solid #fff;
     color: #fff;
-    font-size: 2vw;
+    font-size: 19px;
     text-align: center;
     text-decoration: none;
     border-radius: 16px;
 }
 
+/* Sesgos */
 .sesgoabajo, .sesgoarriba, .sesgoabajo-unico {
     z-index: 10;
     position: absolute;
     border-style: solid;
 }
 
-
+.sesgoabajo {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 35vh 100vw;
+    border-color: transparent transparent #fff transparent;
+}
 
 .sesgoarriba {
     top: 0;
@@ -93,142 +157,49 @@ header .boton {
     border-color: transparent transparent #2c3e50 transparent;
 }
 
+/* Contenedor */
 .contenedor {
     width: 90%;
     max-width: 1000px;
     margin: auto;
     overflow: hidden;
-    padding: 5vh 0;
+    padding: 52px 0;
 }
 
-.slogan, .parrafo {
-    text-align: center;
-    font-weight: 300;
-    color: rgb(24, 16, 16);
-}
-
-.parrafo {
-    margin-bottom: 13px;
-    text-align: justify;
-    line-height: 24px;
-}
-
-.acerca-de .boton {
-    display: inline-block;
-    padding: 6px;
-    width: 128px;
-    font-weight: 300;
-    border: 1px solid rgba(24, 16, 16, .7);
-    color: rgb(24, 16, 16);
-    font-size: 2vw;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 16px;
-    margin-top: 24px;
-}
-
-.galeria {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.imagenes {
-    width: 20%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
-    margin: 1%;
-}
-
-.imagenes img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.encima {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(61, 190, 14, 0.815);
-    transition: background 0.3s ease; 
-}
-
-.imagenes:hover .encima {
-    background: rgba(61, 190, 14, 0.6);
-}
-
-.encima h2 {
-    position: relative;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    top: 45%;
-    text-align: center;
-    color: #fff;
-}
-
-.encima div {
-    position: relative;
-    display: block;
-    top: 46%;
-    width: 40px;
-    height: 5px;
-    background: #fff;
-}
-
-.cards {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    margin: 20px 1%;
-    width: calc(45% - 20px);
-    height: auto;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0px 0px 4px 0 rgba(52, 73, 94, 0.849);
-}
-
+/* Footer */
 footer {
     background: #2c3e50;
     height: auto;
-    padding: 0% 0;
 }
 
 .titulo-footer,
 .subtitulo-footer {
     color: #fff;
     text-align: center;
-    font-weight: 150;
+    font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 40x;
+    font-size: 56px;
 }
 
 .subtitulo-footer {
-    font-size: 2vw;
+    font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 64px;
 }
 
+/* Formulario */
 form {
     display: flex;
-    flex-direction: column;
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin: auto;
 }
 
 input[type="text"],
 input[type="email"] {
-    width: 100%;
+    display: inline-block;
+    width: 48%;
     padding: 13px;
     border: none;
     color: #fff;
@@ -246,6 +217,8 @@ textarea:focus {
 textarea {
     display: block;
     width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     max-height: 200px;
     min-height: 200px;
     background: rgba(37, 37, 33, .7);
@@ -262,21 +235,17 @@ input[type="submit"] {
     color: #fff;
     background: rgba(37, 37, 33, .7);
     width: 96px;
-    margin-top: 10px;
 }
 
+/* Responsividad */
 @media (max-width: 768px) {
     .navbar a {
-        padding: 10px 5vw;
-        font-size: 4vw;
+        padding: 10px 30px;
+        font-size: 18px;
     }
 
     header .titulo {
-        font-size: 6vw;
-    }
-
-    header .subtitulo {
-        font-size: 3vw; 
+        font-size: 48px;
     }
 
     .galeria {
@@ -284,27 +253,38 @@ input[type="submit"] {
     }
 
     .card {
-        width: calc(90% - 20px);
+        width: 100%;
     }
 
     input[type="text"],
     input[type="email"] {
         width: 100%;
+    }    
+}
+/* Para pantallas pequeñas (teléfonos) */
+@media (max-width: 600px) {
+    .custom-toolbar {
+        background-color: #ffffff; /* Cambia a un gris claro */
+        color: black; /* Cambia el color del texto */
     }
 }
 
-.custom-toolbar {
-    background-color: rgb(86, 136, 62);
-    color: white;
+/* Para pantallas medianas (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .custom-toolbar {
+        background-color: #ffffff; /* Cambia a otro color */
+        color: #222222;
+    }
 }
 
-.line-1, .line-2 {
-    display: block;
-    font-weight: bold; 
+/* Para pantallas grandes (desktop) */
+@media (min-width: 1025px) {
+    .custom-toolbar {
+        background-color: #ffffff;
+        color: black;
+    }
 }
-.info {
-    margin-left: 100px;
-    margin-bottom: 30px;
-    text-align: left;
-    color: black;
+
+.line-1{
+    display: block;
 }

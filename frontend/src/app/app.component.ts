@@ -15,12 +15,29 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RolComponent } from './components/rol/rol.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CentroReciclajeComponent, NoticiasComponent, TipoactividadComponent, UsuarioComponent, NotificacionComponent, RecompensaComponent, ActividadComponent, 
-    MatToolbarModule, MatIconModule, MatMenuModule, MatButtonModule, RouterModule, RouterModule, CommonModule],
+  imports: [
+    RouterOutlet,
+    CentroReciclajeComponent,
+    NoticiasComponent,
+    TipoactividadComponent,
+    UsuarioComponent,
+    NotificacionComponent,
+    RecompensaComponent,
+    ActividadComponent,
+    RolComponent,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    RouterModule,
+    RouterModule,
+    CommonModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
