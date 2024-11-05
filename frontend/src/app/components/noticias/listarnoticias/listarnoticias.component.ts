@@ -6,11 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listarnoticias',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, MatCardModule, MatPaginatorModule],
+  imports: [MatTableModule, MatIconModule, RouterLink, MatCardModule, MatPaginatorModule,CommonModule],
   templateUrl: './listarnoticias.component.html',
   styleUrl: './listarnoticias.component.css'
 })
