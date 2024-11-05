@@ -1,330 +1,116 @@
-/* Importar Open Sans */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
-
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Navbar */
-.navbar {
-    display: flex;
-    margin-right: 5px;
-}
-
-.navbar a {
-    display: block;
-    padding: 20px 75px;
-    color: #000000;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 20px;
-    transition: background 0.3s ease; /* Añadir transición */
-}
-
-.navbar a:hover {
-    background: #3f3f3f;
-}
-
-/* Body */
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-}
-
-/* Header */
-header {
-    width: 100%;
-    height: 650px;
-    background-image: url(https://www.eldondelaenergia.com/wp-content/uploads/2022/09/Articulo-41-DE-1.png);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-    color: #fff;
-    text-align: center;
-}
-
-header .textos {
-    margin-top: 152px;
-}
-
-header .titulo {
-    font-size: 95px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra en el texto */
-}
-
-header .subtitulo {
-    font-size: 42px;
-    font-weight: 300;
-    margin-bottom: 32px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra en el texto */
-}
-
-header .boton {
-    display: inline-block;
-    padding: 6px;
-    width: 128px;
-    border: 1px solid #fff;
-    color: #fff;
-    font-size: 19px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 16px;
-}
-
-/* Sesgos */
-.sesgoabajo, .sesgoarriba, .sesgoabajo-unico {
-    z-index: 10;
-    position: absolute;
-    border-style: solid;
-}
-
-.sesgoabajo {
-    bottom: 0;
-    left: 0;
-    border-width: 0 0 35vh 100vw;
-    border-color: transparent transparent #fff transparent;
-}
-
-.sesgoarriba {
-    top: 0;
-    left: 0;
-    border-width: 35vh 100vw 0 0;
-    border-color: #fff transparent transparent transparent;
-}
-
-.sesgoabajo-unico {
-    bottom: 0;
-    left: 0;
-    border-width: 0 0 35vh 100vw;
-    border-color: transparent transparent #2c3e50 transparent;
-}
-
-/* Contenedor */
-.contenedor {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
-    overflow: hidden;
-    padding: 52px 0;
-}
-
-/* Sobre Nosotros */
-.sobre-nosotros {
-    text-align: center;
-    font-size: 56px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.slogan, .parrafo {
-    text-align: center;
-    font-weight: 300;
-    color: rgb(24, 16, 16);
-}
-
-.parrafo {
-    margin-bottom: 13px;
-    text-align: justify;
-    line-height: 24px;
-}
-
-/* Acerca de */
-.acerca-de .boton {
-    display: inline-block;
-    padding: 6px;
-    width: 128px;
-    font-weight: 300;
-    border: 1px solid rgba(24, 16, 16, .7);
-    color: rgb(24, 16, 16);
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 16px;
-    margin-top: 24px;
-}
-
-/* Galería */
-.galeria {
-    width: 100%;
-    height: 500px;
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-}
-
-.imagenes {
-    width: 20%;
-    height: 500px;
-    overflow: hidden;
-    position: relative;
-}
-
-.imagenes img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.encima {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(61, 190, 14, 0.815);
-    transition: background 0.3s ease; /* Añadir transición en hover */
-}
-
-.imagenes:hover .encima {
-    background: rgba(61, 190, 14, 0.6);
-}
-
-.encima h2 {
-    position: relative;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    top: 45%;
-    text-align: center;
-    color: #fff;
-}
-
-.encima div {
-    position: relative;
-    display: block;
-    top: 46%;
-    width: 40px;
-    height: 5px;
-    background: #fff;
-    margin: auto;
-}
-
-/* Cards */
-.cards {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    margin: 20px 0;
-    width: 45%;
-    height: 250px;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0px 0px 4px 0 rgba(52, 73, 94, 0.849);
-}
-
-/* Footer */
-footer {
-    background: #2c3e50;
-    height: auto;
-}
-
-.titulo-footer,
-.subtitulo-footer {
-    color: #fff;
-    text-align: center;
-    font-weight: 400;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 56px;
-}
-
-.subtitulo-footer {
-    font-size: 16px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 64px;
-}
-
-/* Formulario */
-form {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: auto;
-}
-
-input[type="text"],
-input[type="email"] {
-    display: inline-block;
-    width: 48%;
-    padding: 13px;
-    border: none;
-    color: #fff;
-    background: rgba(37, 37, 33, .7);
-    margin-bottom: 16px;
-    border-top: 5px solid rgba(37, 37, 33, .7);
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-top: 5px solid rgba(255, 255, 255, 0.7);
-}
-
-textarea {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 200px;
-    min-height: 200px;
-    background: rgba(37, 37, 33, .7);
-    padding: 13px;
-    border: none;
-    color: #fff;
-    margin-bottom: 16px;
-}
-
-input[type="submit"] {
-    display: inline-block;
-    padding: 13px;
-    border: none;
-    color: #fff;
-    background: rgba(37, 37, 33, .7);
-    width: 96px;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    .navbar a {
-        padding: 10px 30px;
-        font-size: 18px;
-    }
-
-    header .titulo {
-        font-size: 48px;
-    }
-
-    .galeria {
-        flex-direction: column;
-    }
-
-    .card {
-        width: 100%;
-    }
-
-    input[type="text"],
-    input[type="email"] {
-        width: 100%;
-    }
-}
-
 .custom-toolbar {
-    background-color: #ffffff;
-    color: black;
+    display: flex;
+    align-items: center;
+    background-color: rgb(133, 202, 100);
+    top: 0; /* Asegura que esté en la parte superior */
+    left: 0; /* Asegura que esté alineada a la izquierda */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
 }
 
-.line-1, .line-2 {
-    display: block;
+.menu-button {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Centra el contenido del botón */
+    width: 150px; /* Ajusta el ancho del botón según sea necesario */
+    height: 80px; /* Ajusta la altura del botón según sea necesario */
+    background-color: transparent; /* Evita que el botón tenga un fondo */
+    border: none; /* Elimina el borde si no es necesario */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.spacer {
+    flex: 1;
+}
+
+.button-noti {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-weight: bold; 
+    z-index: 1;
 }
 
+.logo {
+    width: 150px; /* Ajusta el ancho según sea necesario */
+    height: 80px; /* Ajusta la altura según sea necesario */
+    background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
+    background-size: contain; /* Mantiene la proporción de la imagen y evita recortes */
+    background-position: center; /* Centra la imagen en el div */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: transparent;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el logo */
+}
 
+ /* Estilos para el contenedor principal */
+ .main-container {
+    display: flex;
+    height: 100vh; /* Ocupa toda la altura de la ventana */    
+}
 
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(249, 247, 235);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    z-index: 1000; /* Asegura que la barra lateral esté por encima de otros elementos */
+
+}
+
+/* Botones del menú */
+.menu-item {
+    display: flex; /* Usar Flexbox para alinear ícono y texto */
+    align-items: center; /* Alinea verticalmente íconos y texto */
+    margin-bottom: 10px; /* Espaciado entre los botones */
+    background-color: rgb(197, 198, 197);
+    border-radius: 10px; /* Bordes redondeados opcionales */
+    width: 100%; /* Asegura que los botones ocupen el ancho completo */
+    padding: 10px; /* Espacio interno del botón */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional para un efecto elevado */
+}
+
+/* Texto del menú */
+.menu-text {
+    margin-left: 2px; /* Espaciado entre el ícono y el texto */
+    font-weight: bold;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 0.8rem;
+    text-align: left; /* Alinea el texto a la izquierda */
+
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Ajusta el margen izquierdo para dejar espacio a la barra lateral */
+    padding: 20px; /* Espaciado interno para el contenido */
+    flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+    height: 100vh; /* Altura completa de la ventana */
+    overflow-y: auto; /* Permite desplazamiento vertical si es necesario */
+}
+
+.content-noticias {
+    font-family: 'Gabarito', sans-serif; /* Usar 'font-family' para definir la fuente */
+    font-size: 2.5rem; /* Tamaño de la fuente */
+    font-weight: 300; /* Peso de la fuente */
+    color: rgb(0, 0, 0); /* Color del texto */
+    font-weight:bolder;
+    margin: 25px 5px; /* Espacio arriba y abajo, 0 a los lados */
+}
+
+/*Logo persona*/
+.sidebar-icon {
+    text-align: center; /* Centra la imagen dentro de la barra lateral */
+    margin-top: auto; /* Empuja la imagen hacia la parte inferior de la barra lateral */
+}
+
+.recycling-icon {
+    width: 80%; /* Hace que la imagen ocupe todo el ancho de la barra lateral */
+    height: auto; /* Mantiene la proporción de la imagen */
+}

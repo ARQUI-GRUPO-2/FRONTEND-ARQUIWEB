@@ -1,9 +1,11 @@
+import { Usuario } from "./Usuario"
+
 export class CentroReciclaje {
     idCentroReciclaje:number=0
     direccion:string=""
     latitud:string=""
     longitud:string=""
-    horario:Date=new Date(Date.now())
+    horario:string=""
     favoritos:boolean=false
-    idUser:number=0
+    us:Usuario=new Usuario()
 }
