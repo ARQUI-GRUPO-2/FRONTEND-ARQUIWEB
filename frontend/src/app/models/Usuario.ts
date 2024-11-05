@@ -1,3 +1,5 @@
+import { Rol } from "./Rol"
+
 export class Usuario{
     idUser:number=0
     nombres:string=""
@@ -11,5 +13,5 @@ export class Usuario{
     correo:string=""
     password:string=""
     enabled:boolean=true
-    roles:string=""
+    roles: Rol = new Rol()
 }

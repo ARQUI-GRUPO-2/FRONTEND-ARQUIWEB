@@ -10,7 +10,7 @@
   
   h1 {
     color: #2c3e50;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
@@ -28,7 +28,7 @@
   }
   
   th {
-    background-color: #3498db;
+    background-color: #27ae60;
     color: black;
     font-weight: bold;
     font-size: 1.2rem;
@@ -45,15 +45,10 @@
   }
   
   tr:hover td {
-    background-color: #82ccdd;
-    color: white;
+    background-color: #9bd3c3;  
+    color: black;
     transition: background-color 0.3s ease-in-out;
-  }
-  
-  /* Especifica el ancho de la columna "Fecha de Vencimiento" */
-  th:nth-child(4), td:nth-child(4) {
-    width: 30%;  /* Ajusta este valor para hacer más pequeña la columna */
-  }
+}
   
   .mat-elevation-z8 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -74,7 +69,7 @@
   }
   
   .mat-row:hover {
-    background-color: #74b9ff !important;
+    background-color: #27ae60 !important;
     transition: background-color 0.3s ease;
   }
   
