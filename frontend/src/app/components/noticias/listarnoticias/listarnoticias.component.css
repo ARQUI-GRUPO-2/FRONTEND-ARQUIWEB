@@ -10,7 +10,7 @@
 
 h1 {
     color: #2c3e50;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
@@ -28,25 +28,25 @@ th, td {
 }
 
 th {
-    background-color: #82ccdd; 
+    background-color: #27ae60;  
     color: black;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
 td {
-    background-color: #ecf0f1;  
+    background-color: #ecf0f1;
     color: #34495e;
     font-size: 1rem;
 }
 
 tr:nth-child(even) td {
-    background-color: #dfe6e9;
+    background-color: #dfe6e9; 
 }
 
 tr:hover td {
-    background-color: #74b9ff;  
-    color: white;
+    background-color: #9bd3c3;  
+    color: black;
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -60,6 +60,7 @@ tr:hover td {
 }
 
 .mat-row:hover {
-    background-color: rgb(157, 86, 215) !important;  
+    background-color: #27ae60 !important;  
     transition: background-color 0.3s ease;
 }
+

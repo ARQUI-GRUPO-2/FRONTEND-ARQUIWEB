@@ -17,6 +17,7 @@ import { ActividadComponent } from './components/actividad/actividad.component';
 import { CreaeditaactividadComponent } from './components/actividad/creaeditaactividad/creaeditaactividad.component';
 import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 import { CreaeditatipoactividadComponent } from './components/tipoactividad/creaeditatipoactividad/creaeditatipoactividad.component';
+
 import { RolComponent } from './components/rol/rol.component';
 import { CreareditarrolesComponent } from './components/rol/creareditarroles/creareditarroles.component';
 
@@ -56,7 +57,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'centro-reciclaje',component:CentroReciclajeComponent,
+        path: 'centroreciclaje',component:CentroReciclajeComponent,
         children: [
             {
                 path: 'nuevo',component:CreareditarcentroreciclajeComponent
