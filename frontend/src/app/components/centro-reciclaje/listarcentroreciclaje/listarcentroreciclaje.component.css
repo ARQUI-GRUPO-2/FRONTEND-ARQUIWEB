@@ -45,7 +45,7 @@ tr:nth-child(even) td {
 }
 
 tr:hover td {
-    background-color: #b39e00;  
+    background-color: #9bd3c3;  
     color: black;
     transition: background-color 0.3s ease-in-out;
 }

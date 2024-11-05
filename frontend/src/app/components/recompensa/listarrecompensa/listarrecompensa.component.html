@@ -30,13 +30,13 @@
         <ng-container matColumnDef="accion01">
           <th mat-header-cell *matHeaderCellDef>Eliminar</th>
           <td mat-cell *matCellDef="let element" (click)="eliminar(element.idRecompensas)">
-            <mat-icon style="color:darkblue">delete</mat-icon>
+            <mat-icon style="color:#27ae60">delete</mat-icon>
           </td>
         </ng-container>
         <ng-container matColumnDef="accion02">
           <th mat-header-cell *matHeaderCellDef>Editar</th>
           <td mat-cell *matCellDef="let element" [routerLink]="['ediciones',element.idRecompensas]">
-            <mat-icon style="color:darkblue">edit</mat-icon>
+            <mat-icon style="color: #27ae60">edit</mat-icon>
           </td>
         </ng-container>
   

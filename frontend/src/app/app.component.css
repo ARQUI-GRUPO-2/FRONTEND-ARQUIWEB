@@ -1,7 +1,11 @@
 .custom-toolbar {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio entre elementos */
+    background-color: rgb(133, 202, 100);
+    top: 0; /* Asegura que esté en la parte superior */
+    left: 0; /* Asegura que esté alineada a la izquierda */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
 }
 
 .menu-button {
@@ -15,6 +19,21 @@
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
 }
 
+.spacer {
+    flex: 1;
+}
+
+.button-noti {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold; 
+    z-index: 1;
+}
+
 .logo {
     width: 150px; /* Ajusta el ancho según sea necesario */
     height: 80px; /* Ajusta la altura según sea necesario */
@@ -26,8 +45,72 @@
     cursor: pointer; /* Cambia el cursor al pasar sobre el logo */
 }
 
+ /* Estilos para el contenedor principal */
+ .main-container {
+    display: flex;
+    height: 100vh; /* Ocupa toda la altura de la ventana */    
+}
 
-.line-1, .line-2 {
-    display: block;
-    font-weight: bold; 
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(249, 247, 235);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    z-index: 1000; /* Asegura que la barra lateral esté por encima de otros elementos */
+
+}
+
+/* Botones del menú */
+.menu-item {
+    display: flex; /* Usar Flexbox para alinear ícono y texto */
+    align-items: center; /* Alinea verticalmente íconos y texto */
+    margin-bottom: 10px; /* Espaciado entre los botones */
+    background-color: rgb(197, 198, 197);
+    border-radius: 10px; /* Bordes redondeados opcionales */
+    width: 100%; /* Asegura que los botones ocupen el ancho completo */
+    padding: 10px; /* Espacio interno del botón */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional para un efecto elevado */
+}
+
+/* Texto del menú */
+.menu-text {
+    margin-left: 2px; /* Espaciado entre el ícono y el texto */
+    font-weight: bold;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 0.8rem;
+    text-align: left; /* Alinea el texto a la izquierda */
+
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Ajusta el margen izquierdo para dejar espacio a la barra lateral */
+    padding: 20px; /* Espaciado interno para el contenido */
+    flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+    height: 100vh; /* Altura completa de la ventana */
+    overflow-y: auto; /* Permite desplazamiento vertical si es necesario */
+}
+
+.content-noticias {
+    font-family: 'Gabarito', sans-serif; /* Usar 'font-family' para definir la fuente */
+    font-size: 2.5rem; /* Tamaño de la fuente */
+    font-weight: 300; /* Peso de la fuente */
+    color: rgb(0, 0, 0); /* Color del texto */
+    font-weight:bolder;
+    margin: 25px 5px; /* Espacio arriba y abajo, 0 a los lados */
+}
+
+/*Logo persona*/
+.sidebar-icon {
+    text-align: center; /* Centra la imagen dentro de la barra lateral */
+    margin-top: auto; /* Empuja la imagen hacia la parte inferior de la barra lateral */
+}
+
+.recycling-icon {
+    width: 80%; /* Hace que la imagen ocupe todo el ancho de la barra lateral */
+    height: auto; /* Mantiene la proporción de la imagen */
 }

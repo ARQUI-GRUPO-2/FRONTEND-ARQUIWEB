@@ -45,9 +45,9 @@ tr:nth-child(even) td {
 }
 
 tr:hover td {
-    background-color: #27ae60;
-    color: white;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #9bd3c3;  
+  color: black;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .mat-elevation-z8 {

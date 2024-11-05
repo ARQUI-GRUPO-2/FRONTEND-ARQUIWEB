@@ -1,100 +1,103 @@
+<!-- app.component.html -->
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>frontend</title>
-    <link rel="stylesheet" href="app.component.css" />
-</head>
-
-<body>
 <mat-toolbar class="custom-toolbar">
-
-    <button mat-icon-button [matMenuTriggerFor]="menuInicio" class="menu-button">
+    <button mat-icon-button (click)="navigateToHome()" class="menu-button">
         <div class="logo"></div>
     </button>
 
-    <mat-menu #menuInicio="matMenu">  
-      <button mat-menu-item routerLink="/inicio">Inicio</button>
+    <mat-menu #menuInicio="matMenu">
+        <button mat-menu-item routerLink="/">Inicio</button>
     </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: #27ae60">
-        <span class="line-1">U S U A R I O </span> 
-      </button>
-    </div>
-    <mat-menu #menuUsuario="matMenu">
-      <button mat-menu-item routerLink="/usuarios">Listar</button>
-      <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
-    </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: #27ae60">
-        <span class="line-1">N O T I F I C A C I Ó N </span> 
-      </button>
+
+    <span class="spacer"></span>
+
+    <!-- Botón de notificación con menú desplegable -->
+    <div class="button-noti">
+        <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: black">
+            <mat-icon>notification_important</mat-icon>
+        </button>
     </div>
     <mat-menu #menuNotificacion="matMenu">
-      <button mat-menu-item routerLink="/notificaciones">Listar</button>
-      <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+    <button mat-menu-item routerLink="/notificaciones">Listar</button>
+    <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
     </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: #27ae60">
-        <span class="line-1">N O T I C I A S </span> 
-      </button>
+
+    <!-- Botón de Noticias -->
+    <div class="button-noticias">
+        <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: black">
+            <mat-icon>article</mat-icon> <!-- Icono de Noticias -->
+        </button>
     </div>
     <mat-menu #menuNoticias="matMenu">
-      <button mat-menu-item routerLink="/noticias">Listar</button>
-      <button mat-menu-item routerLink="/noticias/nuevo">Registrar</button>
+        <button mat-menu-item routerLink="/noticias">Listar</button>
+        <button mat-menu-item routerLink="/noticias/nuevo">Registrar</button>
     </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuCentroReciclaje" style="color: #27ae60">
-        <span class="line-1">C E N T R O S &nbsp; D E </span>
-        <span class="line-2">R E C I C L A J E</span>
-      </button>
-    </div>
-    <mat-menu #menuCentroReciclaje="matMenu">
-      <button mat-menu-item routerLink="/centroreciclaje">Listar</button>
-      <button mat-menu-item routerLink="/centroreciclaje/nuevo">Registrar</button>
-    </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: #27ae60">
-        <span class="line-1">R E C O M P E N S A S </span>
-      </button>
-    </div>  
-    <mat-menu #menuRecompensas="matMenu">
-      <button mat-menu-item routerLink="/recompensas">Listar</button>
-      <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
-    </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #27ae60">
-        <span class="line-1">A C T I V I D A D </span>
-      </button>
-    </div>  
-    <mat-menu #menuActividad="matMenu">
-      <button mat-menu-item routerLink="/actividades">Listar</button>
-      <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
-    </mat-menu>
-  
-    <div>
-      <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: #27ae60">
-        <span class="line-1">T I P O &nbsp; D E</span>
-        <span class="line-2">A C T I V I D A D</span>
-      </button>
-    </div>  
-    <mat-menu #menuTipoActividad="matMenu">
-      <button mat-menu-item routerLink="/tipodeactividades">Listar</button>
-      <button mat-menu-item routerLink="/tipodeactividades/nuevo">Registrar</button>
-    </mat-menu>
-
+    
 </mat-toolbar>
-  
-<router-outlet></router-outlet>
-</body>
-</html>
 
-  
+
+<div class="main-container">
+    <!-- Barra de navegación lateral -->
+    <div class="sidebar">
+        <!-- Usuario -->
+        <div class="menu-item">
+            <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: #000;">
+                <mat-icon>person</mat-icon> <!-- Icono de usuario de Material Icons -->
+                <span class="menu-text">Usuario</span>
+            </button>
+        </div>
+        <mat-menu #menuUsuario="matMenu">
+            <button mat-menu-item routerLink="/usuarios">Listar</button>
+            <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+        </mat-menu>
+
+        <!-- Centros de Reciclaje -->
+        <div class="menu-item">
+            <button mat-button [matMenuTriggerFor]="menuCentroReciclaje" style="color: #000;">
+                <mat-icon>location_on</mat-icon> <!-- Icono de ubicación de Material Icons -->
+                <span class="menu-text">Centros de Reciclaje</span>
+            </button>
+        </div>
+        <mat-menu #menuCentroReciclaje="matMenu">
+            <button mat-menu-item routerLink="/centroreciclaje">Listar</button>
+            <button mat-menu-item routerLink="/centroreciclaje/nuevo">Registrar</button>
+        </mat-menu>
+
+        <!-- Actividad -->
+        <div class="menu-item">
+            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #000;">
+                <mat-icon>assignment</mat-icon> <!-- Icono de actividad de Material Icons -->
+                <span class="menu-text">Actividad</span>
+            </button>
+        </div>
+        <mat-menu #menuActividad="matMenu">
+            <button mat-menu-item routerLink="/actividades">Listar</button>
+            <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
+        </mat-menu>
+
+        <!-- Recompensas -->
+        <div class="menu-item">
+            <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: #000;">
+                <mat-icon>star</mat-icon> <!-- Icono de estrella de Material Icons -->
+                <span class="menu-text">Recompensas</span>
+            </button>
+        </div>
+        <mat-menu #menuRecompensas="matMenu">
+            <button mat-menu-item routerLink="/recompensas">Listar</button>
+            <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
+        </mat-menu>
+
+        <div class="sidebar-icon">
+            <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">
+        </div>
+
+    </div>
+    <!-- Contenido principal -->
+    <div class="content">
+        <div class="content-noticias">
+            <h1 *ngIf="isHomeRoute()">¡Entérate de las noticias actuales!</h1>
+            <app-noticias></app-noticias>
+        </div>
+    <router-outlet></router-outlet>
+    </div>
+</div>
