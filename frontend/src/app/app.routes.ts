@@ -17,9 +17,9 @@ import { ActividadComponent } from './components/actividad/actividad.component';
 import { CreaeditaactividadComponent } from './components/actividad/creaeditaactividad/creaeditaactividad.component';
 import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 import { CreaeditatipoactividadComponent } from './components/tipoactividad/creaeditatipoactividad/creaeditatipoactividad.component';
-import { AppComponent } from './app.component';
 
-
+import { RolComponent } from './components/rol/rol.component';
+import { CreareditarrolesComponent } from './components/rol/creareditarroles/creareditarroles.component';
 
 export const routes: Routes = [
     {
@@ -101,4 +101,15 @@ export const routes: Routes = [
             }
         ]
     },
+    {
+        path:'roles',component:RolComponent,
+        children:[
+            {
+            path:'nuevo',component:CreareditarrolesComponent
+            },
+            {
+            path:'ediciones/:id',component:CreareditarrolesComponent
+            }
+        ]
+    }
 ];

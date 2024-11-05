@@ -15,12 +15,31 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CommonModule } from '@angular/common';
+import { RolComponent } from './components/rol/rol.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CentroReciclajeComponent, NoticiasComponent, TipoactividadComponent, UsuarioComponent, NotificacionComponent, RecompensaComponent, ActividadComponent, 
-    MatToolbarModule, MatIconModule, MatMenuModule, MatButtonModule, RouterModule, NgxMaterialTimepickerModule, CommonModule],
+
+  imports: [
+    RouterOutlet,
+    CentroReciclajeComponent,
+    NoticiasComponent,
+    TipoactividadComponent,
+    UsuarioComponent,
+    NotificacionComponent,
+    RecompensaComponent,
+    ActividadComponent,
+    RolComponent,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    RouterModule,
+    NgxMaterialTimepickerModule,
+    CommonModule,
+  ],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -30,12 +49,12 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() { }
+  
   navigateToHome() {
     this.router.navigate(['/']); // Redirige a la ruta principal
   }
   
   isHomeRoute(): boolean {return this.router.url === '/'}
 }
+
