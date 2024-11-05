@@ -10,7 +10,7 @@
 
 h1 {
     color: #2c3e50;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
@@ -45,7 +45,7 @@ tr:nth-child(even) td {
 }
 
 tr:hover td {
-    background-color: #82e0aa;  
+    background-color: #9bd3c3;  
     color: black;
     transition: background-color 0.3s ease-in-out;
 }

@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{ edicion ? 'Actualizar Noticias' : 'Registro de Centro de Reciclaje'}}s</h1></div>
+    <div><h1>{{ edicion ? "Actualizar Centro de Reciclaje" : 'Registro de Centro de Reciclaje'}}s</h1></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -8,38 +8,55 @@
         </mat-form-field>
         <br />
 
-        <mat-form-field>
+        <mat-form-field class="example-full-width">
           <mat-label>Direccion</mat-label>
           <input matInput formControlName="hdireccion" />
         </mat-form-field>
         <br />
 
-        <mat-form-field>
+        <mat-form-field class="example-full-width">
         <mat-label>Latitud</mat-label>
         <input matInput formControlName="hlatitud" />
         </mat-form-field>
         <br />
 
-        <mat-form-field>
+        <mat-form-field class="example-full-width">
             <mat-label>Longitud</mat-label>
             <input matInput formControlName="hlongitud" />
             </mat-form-field>
         <br />
 
-        <mat-form-field appearance="fill">
-            <mat-label>Horario</mat-label>
-            <input matInput [ngxTimepicker]="picker" formControlName="hhorario" placeholder="HH:MM" readonly>
-            <ngx-material-timepicker #picker></ngx-material-timepicker>
+        <mat-form-field>
+          <mat-label>Seleccionar hora</mat-label>
+          <input 
+            matInput 
+            [ngxTimepicker]="timepicker" 
+            formControlName="hhorario" 
+            placeholder="HH:mm:ss" 
+            [format]="24" 
+          />
+          <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+          <mat-hint>Formato: HH:mm:ss</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Favorito</mat-label>
+            <mat-label>Favoritos</mat-label>
             <mat-select formControlName="hfavoritos" >
               @for (m of listaFavoritos; track m) {
               <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
               }
             </mat-select>
         </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>ID del Usuario</mat-label>
+          <mat-select formControlName="husuarios" >
+            @for (m of listaUsuarios; track m) {
+            <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
+            }
+          </mat-select>
+      </mat-form-field>
+
         <div>
             <button mat-flat-button class="custom-button">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
           </div>

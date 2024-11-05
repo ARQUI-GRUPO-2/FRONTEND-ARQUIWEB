@@ -22,6 +22,10 @@ export class ListarcentroreciclajeComponent implements OnInit {
     this.cS.list().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
     });
+
+    this.cS.getList().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
   }
 
   eliminar(id: number) {

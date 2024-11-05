@@ -4,19 +4,20 @@ import { Noticias } from '../../../models/Noticias';
 import { NoticiasService } from '../../../services/noticias.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-
 
 @Component({
   selector: 'app-listarnoticias',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, MatPaginatorModule],
+  imports: [MatTableModule, MatIconModule, RouterLink, MatCardModule, MatPaginatorModule],
   templateUrl: './listarnoticias.component.html',
   styleUrl: './listarnoticias.component.css'
 })
 
 export class ListarnoticiasComponent implements OnInit {
   dataSource: MatTableDataSource<Noticias>= new MatTableDataSource();
+  selectedNoticia: Noticias | null = null;
 
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
 
@@ -45,5 +46,15 @@ export class ListarnoticiasComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  verMas(id: number): void {
+    this.nS.listId(id).subscribe(noticia => {
+      this.selectedNoticia = noticia;  // Carga la noticia completa seleccionada
+    });
+  }
+
+  cerrarDetalles(): void {
+    this.selectedNoticia = null;  // Cierra el detalle cuando ya no se quiera ver
   }
 }
