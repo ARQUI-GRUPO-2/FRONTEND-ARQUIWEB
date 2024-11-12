@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 80vh; /* Asegura que ocupe toda la altura de la ventana */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+mat-form-field {
+    width: 50%;
+
+}
+.custom-button {
+    background-color: rgb(90, 181, 76) !important;     
+    color: rgb(255, 255, 255) !important;
+    font-family: 'Gabarito', sans-serif !important; /* Fuente Gabarito */
+    width: 55%; /* Ajustamos el botón a 100% en pantallas pequeñas */
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 3px; /* Ajusta el espacio entre letras ligeramente */
+
+    
+}
+
+.logo {
+    width: 350px; /* Ajusta el tamaño del logo */
+    height: 180px;
+    background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
+    background-size: contain; /* Mantiene la proporción del logo */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 3px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 55%; /* Ajusta el ancho del formulario */
+    margin-left: 9px;
+}
+
+.right-image {
+    width: 38%;
+    height: 125%;
+    background-image: url('https://i.ibb.co/s5z2sQG/iniciosesion.png'); /* Sustituye por tu URL de imagen */
+    background-size: cover; /* Cubre todo el espacio disponible sin distorsionar la imagen */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 90px;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .register-link a {
+    color: red;
+    text-decoration: none;
+    text-decoration: underline;
+  }

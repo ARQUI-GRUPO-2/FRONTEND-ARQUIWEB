@@ -26,18 +26,11 @@
             </mat-form-field>
         <br />
 
-        <mat-form-field>
-          <mat-label>Seleccionar hora</mat-label>
-          <input 
-            matInput 
-            [ngxTimepicker]="timepicker" 
-            formControlName="hhorario" 
-            placeholder="HH:mm:ss" 
-            [format]="24" 
-          />
-          <ngx-material-timepicker #timepicker></ngx-material-timepicker>
-          <mat-hint>Formato: HH:mm:ss</mat-hint>
+        <mat-form-field appearance="fill">
+          <mat-label>Horario</mat-label>
+          <input matInput formControlName="hhorario" placeholder="HH:mm:ss"/>
         </mat-form-field>
+        
 
         <mat-form-field>
             <mat-label>Favoritos</mat-label>
@@ -50,7 +43,7 @@
 
         <mat-form-field>
           <mat-label>ID del Usuario</mat-label>
-          <mat-select formControlName="husuarios" >
+          <mat-select formControlName="husuario" >
             @for (m of listaUsuarios; track m) {
             <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
             }
@@ -58,7 +51,7 @@
       </mat-form-field>
 
         <div>
-            <button mat-flat-button class="custom-button">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+            <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
           </div>
         </form>
       </div>

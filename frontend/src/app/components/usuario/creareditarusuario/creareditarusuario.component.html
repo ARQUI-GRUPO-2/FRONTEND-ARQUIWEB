@@ -81,7 +81,7 @@
       <br />
       <mat-form-field>
         <mat-label>Roles</mat-label>
-        <mat-select formControlName="hvehiculo">
+        <mat-select formControlName="hroles">
           @for (r of listaRoles; track r) {
           <mat-option [value]="r.idRol">{{ r.nombreRol }}</mat-option>
           }
@@ -90,7 +90,7 @@
 
       <div>
         <button mat-flat-button class="custom-button">
-          {{ edicion ? "Actualizar" : "Registrar" }}
+          {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
         </button>
       </div>
     </form>
