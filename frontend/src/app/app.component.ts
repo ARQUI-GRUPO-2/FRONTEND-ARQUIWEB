@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { LoginService } from './services/login.service';
+import { Component} from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 import { RecompensaComponent } from './components/recompensa/recompensa.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -15,7 +16,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CommonModule } from '@angular/common';
+
 import { RolComponent } from './components/rol/rol.component';
+import { LoginComponent } from "./components/login/login.component";
+import { WelcomeComponent } from "./components/welcome/welcome.component";
 
 @Component({
   selector: 'app-root',
@@ -23,6 +27,15 @@ import { RolComponent } from './components/rol/rol.component';
 
   imports: [
     RouterOutlet,
+    RouterLink,
+    RouterModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    NgxMaterialTimepickerModule,
+    CommonModule,
+
     CentroReciclajeComponent,
     NoticiasComponent,
     TipoactividadComponent,
@@ -31,30 +44,47 @@ import { RolComponent } from './components/rol/rol.component';
     RecompensaComponent,
     ActividadComponent,
     RolComponent,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule,
-    RouterModule,
-    NgxMaterialTimepickerModule,
-    CommonModule,
-  ],
+    LoginComponent,
+    WelcomeComponent
+],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
+
   title = 'frontend';
+  role: string = '';
+  isWelcomePage: boolean = false;
 
-  constructor(private router: Router) {}
-
-  ngOnInit() { }
   
-  navigateToHome() {
-    this.router.navigate(['/']); // Redirige a la ruta principal
+  constructor(private loginService: LoginService, private router: Router) {
+      // Verifica la ruta actual para mostrar u ocultar elementos
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.isWelcomePage = event.url === '/' || event.url === '/welcome' || event.url==='/login';
+        }
+      });
+    }
+  
+  cerrar() {
+    sessionStorage.clear();
   }
-  
-  isHomeRoute(): boolean {return this.router.url === '/'}
+
+  verificar(): boolean {
+    this.role = this.loginService.showRole();
+    return this.loginService.verificar();  // Devuelve true si está autenticado
+  }
+
+  isAdmin() {
+    return this.role === 'ADMI';
+  }
+
+  isUsuario() {
+    return this.role === 'USUARIO';
+  }
 }
+  
+
 

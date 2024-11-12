@@ -21,7 +21,18 @@ import { CreaeditatipoactividadComponent } from './components/tipoactividad/crea
 import { RolComponent } from './components/rol/rol.component';
 import { CreareditarrolesComponent } from './components/rol/creareditarroles/creareditarroles.component';
 
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { seguridadGuard } from './guard/seguridad.guard';
+
 export const routes: Routes = [
+    {
+        path: '', component:WelcomeComponent,
+    },
+    {
+        path: 'login', component: LoginComponent,
+    },
     {
        path: 'usuarios', component: UsuarioComponent,
        children: [
@@ -31,7 +42,8 @@ export const routes: Routes = [
            {
                path: 'ediciones/:id', component: creareditarusuarioComponent
            }
-       ]
+       ],
+       canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
        path: 'notificaciones', component: NotificacionComponent,
@@ -42,7 +54,8 @@ export const routes: Routes = [
            {
                path: 'ediciones/:id', component: CreareditarnotificacionComponent
            }
-       ]
+       ],
+       canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
   },
   {
         path: 'noticias',component:NoticiasComponent,
@@ -54,7 +67,8 @@ export const routes: Routes = [
                 path: 'ediciones/:id',component:CreareditarnoticiasComponent
     
             }
-        ]
+        ],
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path: 'centroreciclaje',component:CentroReciclajeComponent,
@@ -66,7 +80,8 @@ export const routes: Routes = [
                 path: 'ediciones/:id',component:CreareditarcentroreciclajeComponent
 
             }
-        ]
+        ],
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'recompensas',component:RecompensaComponent,
@@ -77,7 +92,8 @@ export const routes: Routes = [
             {
               path:'ediciones/:id',component:CreareditarrecompensaComponent
             }
-        ]
+        ],
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'actividades',component:ActividadComponent,
@@ -88,7 +104,8 @@ export const routes: Routes = [
             {
             path:'ediciones/:id',component:CreaeditaactividadComponent
             }
-        ]
+        ],
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'tipodeactividades',component:TipoactividadComponent,
@@ -99,7 +116,8 @@ export const routes: Routes = [
             {
             path:'ediciones/:id',component:CreaeditatipoactividadComponent
             }
-        ]
+        ],
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'roles',component:RolComponent,
@@ -110,6 +128,11 @@ export const routes: Routes = [
             {
             path:'ediciones/:id',component:CreareditarrolesComponent
             }
-        ]
-    }
+        ],
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+    },
+    {
+        path: 'homes', component: HomeComponent, 
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+    },
 ];

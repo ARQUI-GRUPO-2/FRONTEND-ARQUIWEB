@@ -1,3 +1,15 @@
+.logo {
+    width: 230px; /* Ajusta el ancho según sea necesario */
+    height: 50px; /* Ajusta la altura según sea necesario */
+    background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
+    background-size: contain; /* Mantiene la proporción de la imagen y evita recortes */
+    background-position: center; /* Centra la imagen en el div */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: transparent;
+    
+}
+
+/* */
 .custom-toolbar {
     display: flex;
     align-items: center;
@@ -5,7 +17,8 @@
     top: 0; /* Asegura que esté en la parte superior */
     left: 0; /* Asegura que esté alineada a la izquierda */
     width: 100%; /* Ocupa todo el ancho de la pantalla */
-    z-index: 999; /* Asegura que esté por encima de otros elementos */
+    z-index: 1; /* Asegura que esté por encima de otros elementos */
+    position: fixed; /* Fija la barra de herramientas en la parte superior */
 }
 
 .menu-button {
@@ -37,16 +50,8 @@
     transform: scale(1.5);
 }
 
-.logo {
-    width: 5000px; /* Ajusta el ancho según sea necesario */
-    height: 80px; /* Ajusta la altura según sea necesario */
-    background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
-    background-size: contain; /* Mantiene la proporción de la imagen y evita recortes */
-    background-position: center; /* Centra la imagen en el div */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-color: transparent;
-    cursor: pointer; /* Cambia el cursor al pasar sobre el logo */
-}
+
+
 
  /* Estilos para el contenedor principal */
  .main-container {
@@ -62,8 +67,9 @@
     padding: 20px;
     text-align: center;
     position: fixed;
+    top: 54px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
-    z-index: 1000; /* Asegura que la barra lateral esté por encima de otros elementos */
+    z-index: 0; /* Asegura que la barra lateral esté por encima de otros elementos */
 
 }
 
@@ -109,4 +115,14 @@
 .recycling-icon {
     width: 80%; /* Hace que la imagen ocupe todo el ancho de la barra lateral */
     height: auto; /* Mantiene la proporción de la imagen */
+}
+.menu-toolbar {
+    display: flex; /* Permite alinear los botones horizontalmente */
+    font-family: Gabarito, sans-serif; /* Fuente personalizada */
+}
+
+.mat-menu-item {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos del menú a la derecha */
+    padding-right: 40px; /* Ajusta el espaciado a la derecha si es necesario */
 }

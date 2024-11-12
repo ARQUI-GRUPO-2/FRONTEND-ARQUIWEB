@@ -28,8 +28,6 @@ export class ListarusuarioComponent implements OnInit {
     'c9',
     'c10',
     'c11',
-    'c12',
-    'c13',
     'accion01',
     'accion02',
   ];

@@ -72,8 +72,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       this.centroReciclaje.direccion = this.form.value.hdireccion;
       this.centroReciclaje.latitud = this.form.value.hlatitud;
       this.centroReciclaje.longitud = this.form.value.hlongitud;
-      //const time = this.form.value.hhorario;
-      //this.centroReciclaje.horario = this.formatTimeToString(time);
       this.centroReciclaje.horario = this.form.value.hhorario;
       this.centroReciclaje.favoritos = this.form.value.hfavoritos;
       this.centroReciclaje.us.idUser = this.form.value.husuario;
@@ -95,10 +93,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
     this.router.navigate(['centroreciclaje']);
   }
 
-  /*private formatTimeToString(time: string): string {
-    // Asegúrate de que time esté en el formato HH:mm:ss
-    return time; // Aquí simplemente retorna el string
-  }*/
 
   init() {
     if (this.edicion) {
