@@ -25,6 +25,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 export class CreareditarcentroreciclajeComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaUsuarios: Usuario[] = [];
+  
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
 
   id: number = 0;
