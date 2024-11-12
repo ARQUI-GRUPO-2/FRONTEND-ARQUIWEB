@@ -28,18 +28,26 @@
       </mat-form-field>
       <br />
 
-      <mat-form-field class="example-full-width">
-        <mat-label>ID de la noticia</mat-label>
-        <input matInput placeholder="" formControlName="hcodenoticia" />
+      <mat-form-field>
+          <mat-label>ID de Noticia</mat-label>
+            <mat-select formControlName="hcodenoticia" >
+                @for (m of listaNoticias; track m) {
+                <mat-option [value]="m.idNoticias">{{ m.idNoticias }}</mat-option> }
+              </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>ID de la usuario</mat-label>
-        <input matInput placeholder="" formControlName="hcodeuser" />
-      </mat-form-field>
+      <mat-form-field>
+        <mat-label>ID del Usuario</mat-label>
+        <mat-select formControlName="hcodeuser" >
+          @for (m of listaUsuarios; track m) {
+          <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
+          }
+        </mat-select>
+    </mat-form-field>
+
 
       <div>
-        <button mat-flat-button class="custom-button">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
       </div>
     </form>
   </div>

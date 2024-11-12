@@ -1,3 +1,10 @@
+
+html, body { height: 10%; }
+body { 
+    margin: 0; 
+    font-family: 'Gabarito', sans-serif;
+}
+
 /* General */
 * {
     margin: 0;
@@ -17,7 +24,7 @@
     z-index: 2;
 }
 
-.logo {
+.logo-inicio {
     width: 250px; /* Ajusta el ancho según sea necesario */
     height: 90px; /* Ajusta la altura según sea necesario */
     background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
@@ -100,3 +107,4 @@ h2 {
     font-family: 'Gabarito', sans-serif;
     font-weight: bold; 
 }
+

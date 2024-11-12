@@ -1,12 +1,16 @@
+import { CentroReciclaje } from "./CentroReciclaje"
+import { TipoActividad } from "./TipoActividad"
+import { Usuario } from "./Usuario"
+
 export class Actividad{
     idActividad:number=0
     fecha_recepcion:string=""
     descripcion:string=""
     nombre:string=""
-    puntos:string=""
+    puntos: number = 0
     cantidad:string=""
     ubicacion:string=""
-    id_tipo_de_actividad:number=0
-    idCentroReciclaje:number=0
-    idUser:number=0
+    ta:TipoActividad=new TipoActividad()
+    cr:CentroReciclaje=new CentroReciclaje()
+    u:Usuario=new Usuario()
 }

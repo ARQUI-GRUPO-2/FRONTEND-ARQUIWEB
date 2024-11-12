@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { Notificaciones } from '../../../models/Notificaciones';
 import { NotificacionService } from '../../../services/notificacion.service';
@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrl: './listarnotificacion.component.css'
 })
 
-export class ListarnotificacionComponent {
+export class ListarnotificacionComponent implements OnInit {
   dataSource:MatTableDataSource<Notificaciones> =new MatTableDataSource();
 
   displayedColumns: string[]=['c1','c2','c3','c4','c5','c6','accion01','accion02']
