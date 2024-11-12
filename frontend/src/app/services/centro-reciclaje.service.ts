@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { CentroReciclaje } from '../models/CentroReciclaje';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { CenterFavoriteDTO } from '../models/CenterFavoriteDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -40,4 +41,9 @@ export class CentroReciclajeService {
     update(centro: CentroReciclaje) {
       return this.http.put(this.url, centro);
     }
+
+    
+  getFavoritos(): Observable<CenterFavoriteDTO[]> {
+    return this.http.get<CenterFavoriteDTO[]>(`${this.url}/mas_popular`);
+  }
 }
