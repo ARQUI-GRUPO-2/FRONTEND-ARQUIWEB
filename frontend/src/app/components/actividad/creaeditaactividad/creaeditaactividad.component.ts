@@ -9,6 +9,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { Actividad } from '../../../models/Actividad';
 import { ActividadService } from '../../../services/actividad.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Usuario } from '../../../models/Usuario';
+import { CentroReciclaje } from '../../../models/CentroReciclaje';
+import { TipoActividad } from '../../../models/TipoActividad';
+import { UsuarioService } from '../../../services/usuario.service';
+import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
+import { TipoactividadService } from '../../../services/tipoactividad.service';
 
 @Component({
   selector: 'app-creaeditaactividad',
@@ -20,6 +26,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class CreaeditaactividadComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   actividad:Actividad=new Actividad()
+  listaUsuarios: Usuario[]=[];
+  listaCentros: CentroReciclaje[]=[];
+  listaTipoActividad: TipoActividad[]=[];
 
   id:number =0;
   edicion:boolean = false;
@@ -35,7 +44,10 @@ export class CreaeditaactividadComponent implements OnInit {
     private aS:ActividadService, 
     private formBuilder:FormBuilder, 
     private router:Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private uS: UsuarioService,
+    private cS: CentroReciclajeService,
+    private taS: TipoactividadService
   ) {}
 
   ngOnInit(): void {
@@ -53,8 +65,19 @@ export class CreaeditaactividadComponent implements OnInit {
       puntos: ['', Validators.required],
       cantidad: ['', Validators.required],
       ubicacion: ['', Validators.required],
-
-      })
+      usuarios: ['', Validators.required],
+      centros: ['', Validators.required],
+      tipoactividad: ['', Validators.required]
+      });
+      this.uS.list().subscribe((data) => {
+        this.listaUsuarios = data;
+      });
+      this.cS.list().subscribe((data) => {
+        this.listaCentros = data;
+      });
+      this.taS.list().subscribe((data) => {
+        this.listaTipoActividad = data;
+      });
   }
 
   insertar(): void {
@@ -66,6 +89,9 @@ export class CreaeditaactividadComponent implements OnInit {
       this.actividad.puntos=this.form.value.puntos;
       this.actividad.cantidad=this.form.value.cantidad;
       this.actividad.ubicacion=this.form.value.ubicacion;
+      this.actividad.u.idUser = this.form.value.usuarios;
+      this.actividad.cr.idCentroReciclaje = this.form.value.centros;
+      this.actividad.ta.id_tipo_actividad = this.form.value.tipoactividad;
       if(this.edicion){
         this.aS.update(this.actividad).subscribe((data)=>{
           this.aS.list().subscribe((data)=>{
@@ -95,6 +121,10 @@ export class CreaeditaactividadComponent implements OnInit {
           puntos: new FormControl(data.puntos),
           cantidad: new FormControl(data.cantidad),
           ubicacion: new FormControl(data.ubicacion),
+          usuarios: new FormControl(data.u.idUser),
+          centros: new FormControl(data.cr.idCentroReciclaje),
+          tipoactividad: new FormControl(data.ta.id_tipo_actividad)
+
         });
       });
     }
