@@ -9,7 +9,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class NotificacionService {
-  private url = `${base_url}/Notificaciones`;
+  private url = `${base_url}/notificaciones`;
   private listaCambio = new Subject<Notificaciones[]>();
   constructor(private http: HttpClient) {}
   list() {
