@@ -10,7 +10,7 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class CentroReciclajeService {
-  private url = `${base_url}/centroreciclaje`; 
+  private url = `${base_url}/centros-de-reciclaje`; 
   private listaCambio = new Subject<CentroReciclaje[]>();
 
   constructor(private http: HttpClient) { }

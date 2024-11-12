@@ -20,6 +20,8 @@ import { CreaeditatipoactividadComponent } from './components/tipoactividad/crea
 
 import { RolComponent } from './components/rol/rol.component';
 import { CreareditarrolesComponent } from './components/rol/creareditarroles/creareditarroles.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ActividadesporcentroComponent } from './components/reportes/actividadesporcentro/actividadesporcentro.component';
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -103,6 +105,14 @@ export const routes: Routes = [
             },
             {
             path:'ediciones/:id',component:CreaeditaactividadComponent
+            },
+            {
+                path:'reportes',component:ReportesComponent,
+                children:[
+                    {
+                        path:'actividadesporcentro',component:ActividadesporcentroComponent
+                    },
+                ]
             }
         ],
         canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno

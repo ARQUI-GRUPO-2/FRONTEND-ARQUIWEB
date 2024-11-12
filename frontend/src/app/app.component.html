@@ -62,12 +62,20 @@
                 <mat-icon>assignment</mat-icon>
                 <span class="menu-text">Actividad</span>
             </button>
+            <button mat-button [matMenuTriggerFor]="menuActividadporCentro" style="color: #000;">
+                <mat-icon>search</mat-icon> 
+                <span class="menu-text">Reportes</span>
+            </button>
         </div>
         <mat-menu #menuActividad="matMenu">
             <button mat-menu-item routerLink="/actividades">Listar</button>
             <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
         </mat-menu>
-        <!-- Menú Recompensas -->
+        <mat-menu #menuActividadporCentro="matMenu">
+            <button mat-menu-item routerLink="/actividades/reportes/actividadesporcentro">Actividades por Centro</button>
+        </mat-menu>
+
+        <!-- Menu Recompensas -->
         <div class="menu-item">
             <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: #000;" *ngIf="isAdmin()">
                 <mat-icon>star</mat-icon>
