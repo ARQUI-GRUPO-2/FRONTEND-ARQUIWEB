@@ -57,10 +57,9 @@ export class CreareditarrecompensaComponent implements OnInit {
     this.form = this.formBuilder.group({
       hcodigo: [''],
       hnombre: ['', Validators.required],
-      hcodigoqr: ['', Validators.required],
-      hcolor: ['', Validators.required],
       hdescripcion: ['', Validators.required],
-      hfechavencimiento: ['', Validators.required],
+      hcodigoqr: ['', Validators.required],
+      hfecha: ['', Validators.required],
       hactividad: ['', Validators.required]
     });
 
@@ -72,10 +71,10 @@ export class CreareditarrecompensaComponent implements OnInit {
     if (this.form.valid) {
       this.recompensas.idRecompensas = this.form.value.hcodigo;
       this.recompensas.nombreRecompensa = this.form.value.hnombre;
+      this.recompensas.descripcionRecompensa= this.form.value.hdescripcion;
       this.recompensas.codigoQR = this.form.value.hcodigoqr;
       this.recompensas.fechaVencimiento = this.form.value.hfecha;
-      this.recompensas.descripcionRecompensa= this.form.value.hdescripcion;
-      this.recompensas.ac.puntos = this.form.value.hactividad
+      this.recompensas.ac.puntos = this.form.value.hactividad;
       if (this.edicion) {
         this.rS.update(this.recompensas).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -99,9 +98,9 @@ export class CreareditarrecompensaComponent implements OnInit {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idRecompensas),
           hnombre: new FormControl(data.nombreRecompensa),
+          hdescripcion: new FormControl(data.descripcionRecompensa),
           hcodigoqr: new FormControl(data.codigoQR),
           hfecha: new FormControl(data.fechaVencimiento),
-          hdescripcion: new FormControl(data.descripcionRecompensa),
           hactividad: new FormControl(data.ac.puntos)
         });
       });

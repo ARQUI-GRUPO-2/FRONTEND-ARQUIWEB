@@ -10,10 +10,12 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class NoticiasService {
-  private url = `${base_url}/Noticias`;
+  private url = `${base_url}/noticias`;
   private listaCambio = new Subject<Noticias[]>();
 
   constructor(private http: HttpClient) {  }
+
+  
     list() {
       return this.http.get<Noticias[]>(this.url); 
     }
