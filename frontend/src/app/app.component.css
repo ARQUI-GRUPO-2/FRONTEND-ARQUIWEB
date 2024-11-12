@@ -12,7 +12,7 @@
     display: flex; 
     align-items: center; 
     justify-content: center; /* Centra el contenido del botón */
-    width: 150px; /* Ajusta el ancho del botón según sea necesario */
+    width: 250px; /* Ajusta el ancho del botón según sea necesario */
     height: 80px; /* Ajusta la altura del botón según sea necesario */
     background-color: transparent; /* Evita que el botón tenga un fondo */
     border: none; /* Elimina el borde si no es necesario */
@@ -24,18 +24,21 @@
 }
 
 .button-noti {
-    padding: 0.5rem 1rem;
     background-color: transparent;
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold; 
-    z-index: 1;
+    transform: scale(1.5);
+}
+
+.button-noticias {
+    background-color: transparent;
+    transform: scale(1.5);
 }
 
 .logo {
-    width: 150px; /* Ajusta el ancho según sea necesario */
+    width: 5000px; /* Ajusta el ancho según sea necesario */
     height: 80px; /* Ajusta la altura según sea necesario */
     background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
     background-size: contain; /* Mantiene la proporción de la imagen y evita recortes */
@@ -95,19 +98,12 @@
     overflow-y: auto; /* Permite desplazamiento vertical si es necesario */
 }
 
-.content-noticias {
-    font-family: 'Gabarito', sans-serif; /* Usar 'font-family' para definir la fuente */
-    font-size: 2.5rem; /* Tamaño de la fuente */
-    font-weight: 300; /* Peso de la fuente */
-    color: rgb(0, 0, 0); /* Color del texto */
-    font-weight:bolder;
-    margin: 25px 5px; /* Espacio arriba y abajo, 0 a los lados */
-}
-
 /*Logo persona*/
 .sidebar-icon {
     text-align: center; /* Centra la imagen dentro de la barra lateral */
     margin-top: auto; /* Empuja la imagen hacia la parte inferior de la barra lateral */
+    margin-top: 80px;
+    width: 200px;
 }
 
 .recycling-icon {
