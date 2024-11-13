@@ -40,10 +40,17 @@
                 <mat-icon>person</mat-icon>
                 <span class="menu-text">Usuario</span>
             </button>
+            <button mat-button [matMenuTriggerFor]="menuCantidadUsuario" style="color: #000;">
+                <mat-icon>search</mat-icon> 
+                <span class="menu-text">Reportes</span>
+            </button>
         </div>
         <mat-menu #menuUsuario="matMenu">
             <button mat-menu-item routerLink="/usuarios">Listar</button>
             <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+        </mat-menu>
+        <mat-menu #menuCantidadUsuario="matMenu">
+            <button mat-menu-item routerLink="/usuarios/reportes/cantidad">Cantidad de Usuarios</button>
         </mat-menu>
         <!-- Menú Centros de Reciclaje -->
         <div class="menu-item">
@@ -95,6 +102,7 @@
             <button mat-menu-item routerLink="/recompensas">Listar</button>
             <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
         </mat-menu>
+        
         <!-- Icono de reciclaje -->
         <div class="sidebar-icon">
             <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">
