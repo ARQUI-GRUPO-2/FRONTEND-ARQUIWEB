@@ -51,11 +51,20 @@
                 <mat-icon>location_on</mat-icon>
                 <span class="menu-text">Centros de Reciclaje</span>
             </button>
+            <button mat-button [matMenuTriggerFor]="menuCentroConsulta" style="color: #000;">
+                <mat-icon>search</mat-icon> 
+                <span class="menu-text">Reportes</span>
+            </button>
         </div>
         <mat-menu #menuCentroReciclaje="matMenu">
             <button mat-menu-item routerLink="/centroreciclaje">Listar</button>
             <button mat-menu-item routerLink="/centroreciclaje/nuevo">Registrar</button>
         </mat-menu>
+        <mat-menu #menuCentroConsulta="matMenu">
+            <button mat-menu-item routerLink="/centroreciclaje/reportes/mas_popular">Centro Favorito</button>
+            <button mat-menu-item routerLink="/centroreciclaje/reportes/mas-usuarios">Centro Popular</button>
+        </mat-menu>
+
         <!-- Menú Actividad -->
         <div class="menu-item">
             <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #000;" *ngIf="isAdmin()">
@@ -89,6 +98,22 @@
         <!-- Icono de reciclaje -->
         <div class="sidebar-icon">
             <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">
+        </div>
+        
+        <!-- Menu Salida-->
+        <div class="close">
+            <button mat-icon-button [matMenuTriggerFor]="menuSalir">
+                <mat-icon>logout</mat-icon>
+            </button>
+            <mat-menu #menuSalir="matMenu">
+                <button mat-menu-item routerLink="/login" (click)="cerrar()">
+                    <span>Cerrar sesión</span>
+                </button>
+                <button mat-menu-item>
+                    Rol:
+                    <span>{{ role }}</span>
+                </button>
+            </mat-menu>
         </div>
     </div>
 </div>
