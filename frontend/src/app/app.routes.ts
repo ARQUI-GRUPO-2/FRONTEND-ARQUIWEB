@@ -27,6 +27,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { seguridadGuard } from './guard/seguridad.guard';
+import { CentrosfavoritosComponent } from './components/reportes/centrosfavoritos/centrosfavoritos.component';
+import { CentrosusuariosComponent } from './components/reportes/centrosusuarios/centrosusuarios.component';
 
 export const routes: Routes = [
     {
@@ -81,6 +83,17 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',component:CreareditarcentroreciclajeComponent
 
+            },
+            {
+                path:'reportes',component:ReportesComponent,
+                children:[
+                    {
+                        path:'mas_popular',component:CentrosfavoritosComponent
+                    },
+                    {
+                        path:'mas-usuarios',component:CentrosusuariosComponent
+                    }
+                ]
             }
         ],
         canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
