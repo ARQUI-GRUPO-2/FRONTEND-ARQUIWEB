@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../models/Usuario';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { CantidadNotiUsuarioDTO } from '../models/CantidadNotiUsuarioDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -41,4 +42,8 @@ export class UsuarioService {
   update(usu: Usuario){
     return this.http.put(this.url, usu);
   }
+
+  getCantidad(): Observable<CantidadNotiUsuarioDTO[]> {
+    return this.http.get<CantidadNotiUsuarioDTO[]>(`${this.url}/cantidad`);
+    }
 }

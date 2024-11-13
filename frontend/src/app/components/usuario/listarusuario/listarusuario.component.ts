@@ -5,16 +5,34 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { CommonModule } from '@angular/common';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-listarusuario',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, MatPaginatorModule],
+  imports: [MatTableModule,
+    CommonModule,
+    RouterLink,
+    MatIconModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatPaginatorModule],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css',
 })
 export class ListarusuarioComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
+  //se agrega:
+  //form: FormGroup; 
+  //noResults: boolean = false; 
+  //nombrebusqueda:string=""
 
   displayedColumns: string[] = [
     'c1',
