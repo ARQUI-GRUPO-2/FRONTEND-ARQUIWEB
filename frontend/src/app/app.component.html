@@ -4,7 +4,7 @@
         <!-- Logo y botón de inicio -->
         <div class="logo"></div>
         <div class="menu-toolbar">
-            <button mat-button [routerLink]="['/homes']" style="color: black">
+            <button mat-button [routerLink]="['/noticias']" style="color: black">
                 <mat-icon>home</mat-icon> 
                 <span class="menu-text">Home</span>
             </button>
@@ -13,7 +13,8 @@
         <!-- Botón de notificación -->
         <div class="button-noti" >
             <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: black" *ngIf="isAdmin()">
-                <mat-icon>notification_important</mat-icon>
+                <mat-icon>notification_important</mat-icon> 
+                <span class="noti-text">Notificaciones</span>
             </button>
         </div>
         <mat-menu #menuNotificacion="matMenu">
@@ -23,11 +24,11 @@
         <!-- Botón de Noticias -->
         <div class="button-noticias">
             <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: black" *ngIf="isAdmin()">
-                <mat-icon>article</mat-icon>
+                <mat-icon>article</mat-icon> 
+                <span class="noti-text">Noticias</span>
             </button>
         </div>
         <mat-menu #menuNoticias="matMenu">
-            <button mat-menu-item routerLink="/noticias">Listar</button>
             <button mat-menu-item routerLink="/noticias/nuevo">Registrar</button>
         </mat-menu>
     </mat-toolbar>

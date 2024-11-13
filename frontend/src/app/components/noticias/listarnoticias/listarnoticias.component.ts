@@ -28,17 +28,16 @@ export class ListarnoticiasComponent implements OnInit {
 
   ngOnInit(): void {
     this.nS.list().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.nS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.data = data;
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
-  }
+}
 
   eliminar(id: number) {
     this.nS.delete(id).subscribe((data) => {
