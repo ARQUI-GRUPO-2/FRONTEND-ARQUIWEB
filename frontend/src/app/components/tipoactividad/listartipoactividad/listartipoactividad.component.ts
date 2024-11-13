@@ -17,7 +17,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 export class ListartipoactividadComponent implements OnInit{
   dataSource:MatTableDataSource<TipoActividad>=new MatTableDataSource()
 
-  displayedColumns:string[]=['c1','c2','c3','accion01','accion02']
+  displayedColumns:string[]=['c1','c2','accion01','accion02']
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
