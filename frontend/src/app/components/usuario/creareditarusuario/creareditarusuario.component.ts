@@ -94,7 +94,7 @@ export class creareditarusuarioComponent implements OnInit {
       this.usuario.correo = this.form.value.hcorreo;
       this.usuario.password = this.form.value.hpassword;
       this.usuario.enabled = this.form.value.henabled;
-      this.usuario.roles.nombreRol = this.form.value.hroles;
+      this.usuario.rol.idRol = this.form.value.hroles;
 
       if (this.edicion) {
         this.uS.update(this.usuario).subscribe((data) => {
@@ -128,7 +128,7 @@ export class creareditarusuarioComponent implements OnInit {
           hcorreo: new FormControl(data.correo),
           hpassword: new FormControl(data.password),
           henabled: new FormControl(data.enabled),
-          hroles: new FormControl(data.roles.nombreRol)
+          hroles: new FormControl(data.rol.idRol)
         });
       });
     }
