@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { CentroReciclaje } from '../models/CentroReciclaje';
 import { Observable, Subject } from 'rxjs';
 import { CenterFavoriteDTO } from '../models/CenterFavoriteDTO';
+import { CenterUsersDTO } from '../models/CenterUsersDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -41,9 +42,12 @@ export class CentroReciclajeService {
     update(centro: CentroReciclaje) {
       return this.http.put(this.url, centro);
     }
-
     
-  getFavoritos(): Observable<CenterFavoriteDTO[]> {
+    getFavoritos(): Observable<CenterFavoriteDTO[]> {
     return this.http.get<CenterFavoriteDTO[]>(`${this.url}/mas_popular`);
-  }
+    }
+
+    getUsuarios(): Observable<CenterUsersDTO[]> {
+      return this.http.get<CenterUsersDTO[]>(`${this.url}/mas-usuarios`);
+    }
 }

@@ -61,7 +61,7 @@
 
 /* Barra lateral */
 .sidebar {
-    width: 300px;
+    width: 350px;
     height: 100vh;
     background-color: rgb(249, 247, 235);
     padding: 20px;
@@ -77,17 +77,17 @@
 .menu-item {
     display: flex; /* Usar Flexbox para alinear ícono y texto */
     align-items: center; /* Alinea verticalmente íconos y texto */
-    margin-bottom: 10px; /* Espaciado entre los botones */
+    margin-bottom: 7px; /* Espaciado entre los botones */
     background-color: rgb(197, 198, 197);
-    border-radius: 10px; /* Bordes redondeados opcionales */
+    justify-content: space-between; /* Alinea íconos y texto de forma equitativa */
+    border-radius: 7px; /* Bordes redondeados opcionales */
     width: 100%; /* Asegura que los botones ocupen el ancho completo */
-    padding: 10px; /* Espacio interno del botón */
+    padding: 6px; /* Espacio interno del botón */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional para un efecto elevado */
 }
 
 /* Texto del menú */
 .menu-text {
-    margin-left: 2px; /* Espaciado entre el ícono y el texto */
     font-weight: bold;
     font-family: 'Gabarito', sans-serif;
     font-size: 0.8rem;
@@ -98,7 +98,7 @@
 /* Contenido principal */
 .content {
     margin-left: 250px; /* Ajusta el margen izquierdo para dejar espacio a la barra lateral */
-    padding: 20px; /* Espaciado interno para el contenido */
+    padding: 90px; /* Espaciado interno para el contenido */
     flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
     height: 100vh; /* Altura completa de la ventana */
     overflow-y: auto; /* Permite desplazamiento vertical si es necesario */
@@ -125,4 +125,17 @@
     display: flex;
     justify-content: flex-end; /* Alinea los elementos del menú a la derecha */
     padding-right: 40px; /* Ajusta el espaciado a la derecha si es necesario */
+}
+
+.close {
+    align-self: flex-start; /* Alinea a la izquierda */
+    margin-top: 110px; /* Empuja el botón hacia abajo */
+    margin-right: 300px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: bold;
 }
