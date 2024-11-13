@@ -23,11 +23,10 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
   
   ngOnInit(): void {
     this.aS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.aS.getList().subscribe((data)=>{
-      this.dataSource=new MatTableDataSource(data)
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.data = data;
     });
   }
   ngAfterViewInit(): void {
