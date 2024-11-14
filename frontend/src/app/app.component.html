@@ -102,7 +102,7 @@
                 <mat-icon>star</mat-icon>
                 <span class="menu-text">Recompensas</span>
             </button>
-            <button mat-button [matMenuTriggerFor]="menuRecRepo" style="color: #000;">
+            <button mat-button [matMenuTriggerFor]="menuRecRepo" style="color: #000;" *ngIf="isAdmin()">
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
