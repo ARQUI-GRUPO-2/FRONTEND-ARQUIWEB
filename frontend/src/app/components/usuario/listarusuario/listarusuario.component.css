@@ -1,80 +1,69 @@
 .container {
-    width: 85%;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-left: 250px;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 20px;
 }
 
-h1 {
-    color: #2c3e50;
-    font-family: 'Gabarito', sans-serif;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.title1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #eaf3e4;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-th, td {
-    padding: 12px 15px;
-    text-align: center;
-    border: 1px solid #bdc3c7;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-th {
-    background-color: #27ae60;  
-    color: black;
-    font-weight: bold;
-    font-size: 1.2rem;
+.user-info {
+  flex-grow: 1;
 }
 
-td {
-    background-color: #ecf0f1;
-    color: #34495e;
-    font-size: 1rem;
+.user-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
 }
 
-tr:nth-child(even) td {
-    background-color: #dfe6e9; 
+.action-buttons {
+  display: flex;
+  gap: 10px;
 }
 
-tr:hover td {
-  background-color: #9bd3c3;  
-  color: black;
-  transition: background-color 0.3s ease-in-out;
+.mat-icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-th:nth-child(4), td:nth-child(4) {
-    width: 30%; 
+.mat-icon {
+  font-size: 20px;
+  color: #333;
 }
 
-.mat-elevation-z8 {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .mat-header-row, .mat-row {
-    border-bottom: 1px solid #bdc3c7;
-  }
-  
-  .mat-header-row {
-    font-size: 1.1rem;
-  }
-  
-  .mat-row {
-    cursor: pointer;
-  }
-  
-  .mat-row:hover {
-    background-color: #27ae60 !important;
-    transition: background-color 0.3s ease;
-  }
+.mat-icon.accion:hover {
+  color: #27ae60;
+}
 
+/* Estilos para el icono al costado izquierdo */
+.user-icon {
+  font-size: 20px;
+  color: #333;
+  margin-right: 30px;
+  margin-left: 25px;
+  transform: scale(3.5);
+
+}

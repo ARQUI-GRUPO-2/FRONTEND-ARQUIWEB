@@ -37,6 +37,7 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
     this.aS.delete(id).subscribe((data)=>{
       this.aS.list().subscribe((data)=>{
         this.aS.setList(data);
+        this.dataSource.paginator = this.paginator;
       });
     });
   }
