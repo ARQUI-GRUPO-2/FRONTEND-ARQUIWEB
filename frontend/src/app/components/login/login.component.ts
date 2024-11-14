@@ -33,7 +33,7 @@ export class LoginComponent  {
     this.loginService.login(request).subscribe(
       (data: any) => {
         sessionStorage.setItem('token', data.jwttoken);
-        this.router.navigate(['homes']);
+        this.router.navigate(['noticias']);
       },
       (error) => {
         this.mensaje = 'Credenciales incorrectas!!!';

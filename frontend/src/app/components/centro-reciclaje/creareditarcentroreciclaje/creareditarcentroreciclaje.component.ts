@@ -14,22 +14,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule], 
+  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule,GoogleMap,MapMarker,GoogleMapsModule], 
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
 export class CreareditarcentroreciclajeComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaUsuarios: Usuario[] = [];
-  
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
-
   id: number = 0;
+  edicion: boolean = true;
+//API
+  lat=0
+  lng=0
   edicion: boolean = false;
+  center: google.maps.LatLngLiteral = { lat: -12.1040489, lng: -76.9654806 }; 
+  zoom: number = 15; // Nivel de zoom
+  markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
 
   listaFavoritos: { value: string; viewValue: string }[] = [
     { value: 'False', viewValue: 'False' },
@@ -61,10 +67,19 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       hfavoritos: ['', Validators.required],
       husuario: ['', Validators.required]
     });
-
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
+
+    // Escucha los cambios en latitud y longitud para actualizar el mapa
+    this.form.get('hlatitud')?.valueChanges.subscribe((lat) => {
+      this.updateMapPosition(lat, this.form.get('hlongitud')?.value);
+    });
+    this.form.get('hlongitud')?.valueChanges.subscribe((lng) => {
+      this.updateMapPosition(this.form.get('hlatitud')?.value, lng);
+    });
+
+    
   }
 
   insertar(): void {
@@ -81,19 +96,32 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
         this.cS.update(this.centroReciclaje).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
+            this.updateMapPosition(this.centroReciclaje.latitud, this.centroReciclaje.longitud);
           });
         });
       } else {
         this.cS.insert(this.centroReciclaje).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
+            this.updateMapPosition(this.centroReciclaje.latitud, this.centroReciclaje.longitud);
           });
         });
       }
     }
     this.router.navigate(['centroreciclaje']);
   }
-
+  // Actualiza la posición del centro y el marcador del mapa
+  updateMapPosition(lat: string | number, lng: string | number): void {
+    const latitude = parseFloat(lat as string);
+    const longitude = parseFloat(lng as string);
+    if (!isNaN(latitude) && !isNaN(longitude)) {
+      this.center = { lat: latitude, lng: longitude };
+      this.markerPosition = { lat: latitude, lng: longitude };
+    }
+  }
+  
+    
+  
 
   init() {
     if (this.edicion) {

@@ -28,16 +28,13 @@ export class CreaeditaactividadComponent implements OnInit {
   actividad:Actividad=new Actividad()
   listaUsuarios: Usuario[]=[];
   listaCentros: CentroReciclaje[]=[];
+
   listaTipoActividad: TipoActividad[]=[];
+
+ 
 
   id:number =0;
   edicion:boolean = false;
-
-  listaUbicaciones:{value:string, viewValue:string}[]=[
-    {value:'centro1', viewValue:'centro1'},
-    {value:'centro2', viewValue:'centro2'},
-    {value:'centro3', viewValue:'centro3'}
-  ]
 
   constructor(
 
@@ -64,7 +61,6 @@ export class CreaeditaactividadComponent implements OnInit {
       nombre: ['', Validators.required],
       puntos: ['', Validators.required],
       cantidad: ['', Validators.required],
-      ubicacion: ['', Validators.required],
       usuarios: ['', Validators.required],
       centros: ['', Validators.required],
       tipoactividad: ['', Validators.required]
@@ -88,7 +84,6 @@ export class CreaeditaactividadComponent implements OnInit {
       this.actividad.nombre=this.form.value.nombre;
       this.actividad.puntos=this.form.value.puntos;
       this.actividad.cantidad=this.form.value.cantidad;
-      this.actividad.ubicacion=this.form.value.ubicacion;
       this.actividad.u.idUser = this.form.value.usuarios;
       this.actividad.cr.idCentroReciclaje = this.form.value.centros;
       this.actividad.ta.id_tipo_actividad = this.form.value.tipoactividad;
@@ -120,7 +115,6 @@ export class CreaeditaactividadComponent implements OnInit {
           nombre: new FormControl(data.nombre),
           puntos: new FormControl(data.puntos),
           cantidad: new FormControl(data.cantidad),
-          ubicacion: new FormControl(data.ubicacion),
           usuarios: new FormControl(data.u.idUser),
           centros: new FormControl(data.cr.idCentroReciclaje),
           tipoactividad: new FormControl(data.ta.id_tipo_actividad)

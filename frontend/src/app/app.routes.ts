@@ -29,6 +29,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { CentrosfavoritosComponent } from './components/reportes/centrosfavoritos/centrosfavoritos.component';
 import { CentrosusuariosComponent } from './components/reportes/centrosusuarios/centrosusuarios.component';
+import { ActividadesporusuarioComponent } from './components/reportes/actividadesporusuario/actividadesporusuario.component';
+import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
 
 export const routes: Routes = [
     {
@@ -45,7 +47,15 @@ export const routes: Routes = [
            },
            {
                path: 'ediciones/:id', component: creareditarusuarioComponent
-           }
+           },
+           {
+            path:'reportes',component:ReportesComponent,
+            children:[
+                {
+                    path:'conteo_notificaciones_rangoHoras',component:CantidadnotiusuarioComponent //FFF
+                },
+            ]
+        }
        ],
        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
@@ -125,6 +135,9 @@ export const routes: Routes = [
                     {
                         path:'actividadesporcentro',component:ActividadesporcentroComponent
                     },
+                    {
+                        path:'actividadesporusuario',component:ActividadesporusuarioComponent
+                    }
                 ]
             }
         ],

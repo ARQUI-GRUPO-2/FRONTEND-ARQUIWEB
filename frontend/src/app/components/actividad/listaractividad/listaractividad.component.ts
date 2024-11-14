@@ -14,7 +14,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   styleUrl: './listaractividad.component.css'
 })
 export class ListaractividadComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','accion01','accion02']
+  displayedColumns: string[] = ['c1','c2','c3','c4','c5','c6','c8','c9','c10','accion01','accion02']
   dataSource:MatTableDataSource<Actividad>= new MatTableDataSource()
 
 
@@ -23,11 +23,10 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
   
   ngOnInit(): void {
     this.aS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.aS.getList().subscribe((data)=>{
-      this.dataSource=new MatTableDataSource(data)
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.data = data;
     });
   }
   ngAfterViewInit(): void {
@@ -38,6 +37,7 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
     this.aS.delete(id).subscribe((data)=>{
       this.aS.list().subscribe((data)=>{
         this.aS.setList(data);
+        this.dataSource.paginator = this.paginator;
       });
     });
   }
