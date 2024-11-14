@@ -28,7 +28,10 @@ export class CreaeditaactividadComponent implements OnInit {
   actividad:Actividad=new Actividad()
   listaUsuarios: Usuario[]=[];
   listaCentros: CentroReciclaje[]=[];
+
   listaTipoActividad: TipoActividad[]=[];
+
+ 
 
   id:number =0;
   edicion:boolean = false;

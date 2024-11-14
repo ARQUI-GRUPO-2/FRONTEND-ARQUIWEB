@@ -20,13 +20,13 @@ export class CantidadnotiusuarioComponent implements OnInit, AfterViewInit {
   
   constructor(private uS: UsuarioService){}
   ngOnInit(): void {
-    this.fetchCentroFavorito();
+    this.fetchNotiUsuario();
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-  fetchCentroFavorito():void{
-    this.uS.getCantidad().subscribe(
+  fetchNotiUsuario():void{
+    this.uS.getUsuarioNoti().subscribe(
       (data: CantidadNotiUsuarioDTO[]) => {
         this.dataSource.data = data;
       },

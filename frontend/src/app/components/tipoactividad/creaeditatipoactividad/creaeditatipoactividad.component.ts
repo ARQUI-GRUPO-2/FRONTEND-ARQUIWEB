@@ -7,7 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TipoActividad } from '../../../models/TipoActividad';
 import { TipoactividadService } from '../../../services/tipoactividad.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { tmplAstVisitAll } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-creaeditatipoactividad',
@@ -22,6 +22,8 @@ export class CreaeditatipoactividadComponent implements OnInit{
 
   id:number=0;
   edicion:boolean = false;
+
+  
 
   constructor(
     private taS:TipoactividadService, 
@@ -39,16 +41,14 @@ export class CreaeditatipoactividadComponent implements OnInit{
       });
       this.form=this.formBuilder.group({
         codigo:  [''],
-        invitar: ['', Validators.required],
-        reciclar:['', Validators.required],
+        descripcion: ['', Validators.required]
       })
   }
 
   insertar():void{
     if(this.form.valid){
       this.tipoactividad.id_tipo_actividad=this.form.value.codigo;
-      this.tipoactividad.invitacion=this.form.value.invitar;
-      this.tipoactividad.reciclar=this.form.value.reciclar;
+      this.tipoactividad.descripcion=this.form.value.descripcion;
       if(this.edicion){
         this.taS.update(this.tipoactividad).subscribe((data)=>{
           this.taS.list().subscribe((data)=>{
@@ -71,8 +71,7 @@ export class CreaeditatipoactividadComponent implements OnInit{
       this.taS.listId(this.id).subscribe((data)=>{
         this.form= new FormGroup({
           codigo: new FormControl(data.id_tipo_actividad),
-          invitar: new FormControl(data.invitacion),
-          reciclar: new FormControl(data.reciclar),
+          descripcion: new FormControl(data.descripcion),
         });
       });
     }

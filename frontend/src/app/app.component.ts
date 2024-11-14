@@ -81,8 +81,8 @@ export class AppComponent {
     return this.role === 'ADMI';
   }
 
-  isUsuario() {
-    return this.role === 'USUARIO';
+  isCliente() {
+    return this.role === 'CLIENTE';
   }
 }
   
