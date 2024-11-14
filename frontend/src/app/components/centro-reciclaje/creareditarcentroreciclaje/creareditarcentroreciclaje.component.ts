@@ -9,17 +9,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule,GoogleMap,MapMarker,GoogleMapsModule], 
+  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule, GoogleMap, MapMarker, GoogleMapsModule,  
+    MatCheckboxModule,
+    MatFormFieldModule], 
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
@@ -28,19 +34,14 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   listaUsuarios: Usuario[] = [];
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
-  edicion: boolean = true;
+  edicion: boolean = false;
 //API
   lat=0
   lng=0
-  edicion: boolean = false;
   center: google.maps.LatLngLiteral = { lat: -12.1040489, lng: -76.9654806 }; 
   zoom: number = 15; // Nivel de zoom
   markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
 
-  listaFavoritos: { value: string; viewValue: string }[] = [
-    { value: 'False', viewValue: 'False' },
-    { value: 'True', viewValue: 'True' }
-  ];
 
   constructor(
     private cS: CentroReciclajeService,
@@ -64,7 +65,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       hlatitud: ['', Validators.required],
       hlongitud: ['', Validators.required],
       hhorario: ['', Validators.required],
-      hfavoritos: ['', Validators.required],
+      hfavoritos: [false, Validators.required],
       husuario: ['', Validators.required]
     });
     this.uS.list().subscribe((data) => {

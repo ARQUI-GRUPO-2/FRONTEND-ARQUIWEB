@@ -4,6 +4,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import {
   FormBuilder,
   FormControl,
@@ -18,6 +20,7 @@ import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Rol } from '../../../models/Rol';
 import { RolService } from '../../../services/rol.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-creareditarusuario',
@@ -29,8 +32,9 @@ import { RolService } from '../../../services/rol.service';
     MatNativeDateModule,
     MatButtonModule,
     ReactiveFormsModule,
-    CommonModule,
-  ],
+    CommonModule, 
+    MatCheckboxModule,
+    MatFormFieldModule],
   templateUrl: './creareditarusuario.component.html',
   styleUrl: './creareditarusuario.component.css',
 })
@@ -72,7 +76,7 @@ export class creareditarusuarioComponent implements OnInit {
       htelefono: ['', Validators.required],
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
-      henabled: ['', Validators.required],
+      henabled: [false, Validators.required],
       hroles: ['', Validators.required]
     });
 

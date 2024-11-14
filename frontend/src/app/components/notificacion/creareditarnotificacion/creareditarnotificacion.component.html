@@ -1,19 +1,24 @@
 <div class="container" style="text-align: center; margin: 2%">
-  <div><h1>{{ edicion ? 'Actualizar Notificacion' : 'Registro de Notificacion'}}</h1></div>
+  <div><h1>{{ edicion ? 'Actualizar notificacion' : 'Registrar notificacion'}}</h1></div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Codigo</mat-label>
         <input matInput formControlName="hcodigo" />
-      </mat-form-field>
+        <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
+          El codigo es obligatorio
+      </mat-error>
+    </mat-form-field>
+    <br/>
+
       <mat-form-field class="example-full-width">
         <mat-label>Mensaje</mat-label>
         <input matInput placeholder="XXX" formControlName="hmensaje" />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Estado</mat-label>
-        <input matInput placeholder="" formControlName="hestado" />
-      </mat-form-field>
+        <mat-error *ngIf="form.get('hmensaje')?.hasError('required')">
+          El mensaje es obligatorio
+      </mat-error>
+    </mat-form-field>
+    <br/>
 
       <br />
       <mat-form-field>
@@ -25,8 +30,11 @@
           [for]="picker"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('hfecha')?.hasError('required')">
+          La fecha es obligatoria
+        </mat-error>
       </mat-form-field>
-      <br />
+      <br/>
 
       <mat-form-field>
           <mat-label>ID de Noticia</mat-label>
@@ -34,7 +42,11 @@
                 @for (m of listaNoticias; track m) {
                 <mat-option [value]="m.idNoticias">{{ m.idNoticias }}</mat-option> }
               </mat-select>
-      </mat-form-field>
+              <mat-error *ngIf="form.get('hcodenoticia')?.hasError('required')">
+                Asignar una noticia es obligatorio
+              </mat-error>
+            </mat-form-field>
+            <br/>
 
       <mat-form-field>
         <mat-label>ID del Usuario</mat-label>
@@ -43,7 +55,18 @@
           <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
           }
         </mat-select>
-    </mat-form-field>
+        <mat-error *ngIf="form.get('hcodeuser')?.hasError('required')">
+          Asignar un usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br/>
+    
+      <mat-checkbox class="example-margin" formControlName="hestado" matInput
+      >Estado</mat-checkbox>
+      <mat-error *ngIf="form.get('hestado')?.hasError('required')">
+        Marcar es obligatorio
+    </mat-error>
+  <br/>
 
 
       <div>
