@@ -11,6 +11,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarusuario',
@@ -42,6 +43,9 @@ export class ListarusuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
+      this.dataSource.data = data;
+      //this.cargarUsuarios();
+      
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
@@ -54,6 +58,13 @@ export class ListarusuarioComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.cdr.detectChanges();
   }
+
+  /* Cargar la lista de usuarios dependiendo del rol
+  cargarUsuarios(): void {
+    this.uS.getUsers().subscribe((data) => {
+      this.dataSource.data = data;
+    });
+  }*/
 
   eliminar(id: number) {
     this.uS.delete(id).subscribe((data) => {
