@@ -28,7 +28,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   listaUsuarios: Usuario[] = [];
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
-  edicion: boolean = true;
 //API
   lat=0
   lng=0

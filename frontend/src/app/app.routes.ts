@@ -31,144 +31,204 @@ import { CentrosfavoritosComponent } from './components/reportes/centrosfavorito
 import { CentrosusuariosComponent } from './components/reportes/centrosusuarios/centrosusuarios.component';
 import { ActividadesporusuarioComponent } from './components/reportes/actividadesporusuario/actividadesporusuario.component';
 import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
+import { RecompensasmasreclamadasComponent } from './components/reportes/recompensasmasreclamadas/recompensasmasreclamadas.component';
+import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
 
 export const routes: Routes = [
-    {
-        path: '', component:WelcomeComponent,
-    },
-    {
-        path: 'login', component: LoginComponent,
-    },
-    {
-       path: 'usuarios', component: UsuarioComponent,
-       children: [
-           {
-               path: 'nuevo', component: creareditarusuarioComponent
-           },
-           {
-               path: 'ediciones/:id', component: creareditarusuarioComponent
-           },
-           {
-            path:'reportes',component:ReportesComponent,
-            children:[
-                {
-                    path:'conteo_notificaciones_rangoHoras',component:CantidadnotiusuarioComponent //FFF
-                },
-            ]
-        }
-       ],
-       canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-       path: 'notificaciones', component: NotificacionComponent,
-       children: [
-           {
-               path: 'nuevo', component: CreareditarnotificacionComponent
-           },
-           {
-               path: 'ediciones/:id', component: CreareditarnotificacionComponent
-           }
-       ],
-       canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  {
+    path: '',
+    component: WelcomeComponent,
   },
   {
-        path: 'noticias',component:NoticiasComponent,
-        children: [
-            {
-                path: 'nuevo',component:CreareditarnoticiasComponent
-            },
-            {
-                path: 'ediciones/:id',component:CreareditarnoticiasComponent
-    
-            }
-        ],
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-        path: 'centroreciclaje',component:CentroReciclajeComponent,
-        children: [
-            {
-                path: 'nuevo',component:CreareditarcentroreciclajeComponent
-            },
-            {
-                path: 'ediciones/:id',component:CreareditarcentroreciclajeComponent
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: creareditarusuarioComponent,
+      },
+    ]
+  },
 
-            },
-            {
-                path:'reportes',component:ReportesComponent,
-                children:[
-                    {
-                        path:'mas_popular',component:CentrosfavoritosComponent
-                    },
-                    {
-                        path:'mas-usuarios',component:CentrosusuariosComponent
-                    }
-                ]
-            }
+  {
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: creareditarusuarioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: creareditarusuarioComponent,
+      },
+      {
+        path: 'reportes',
+        component: ReportesComponent,
+        children: [
+          {
+            path: 'conteo_notificaciones_rangoHoras',
+            component: CantidadnotiusuarioComponent, //FFF
+          },
         ],
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-        path:'recompensas',component:RecompensaComponent,
-        children:[
-            {
-                path:'nuevo',component:CreareditarrecompensaComponent
-            },
-            {
-              path:'ediciones/:id',component:CreareditarrecompensaComponent
-            }
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'notificaciones',
+    component: NotificacionComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditarnotificacionComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditarnotificacionComponent,
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'noticias',
+    component: NoticiasComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditarnoticiasComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditarnoticiasComponent,
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'centroreciclaje',
+    component: CentroReciclajeComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditarcentroreciclajeComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditarcentroreciclajeComponent,
+      },
+      {
+        path: 'reportes',
+        component: ReportesComponent,
+        children: [
+          {
+            path: 'mas_popular',
+            component: CentrosfavoritosComponent,
+          },
+          {
+            path: 'mas-usuarios',
+            component: CentrosusuariosComponent,
+          },
         ],
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-        path:'actividades',component:ActividadComponent,
-        children:[
-            {
-            path:'nuevo',component:CreaeditaactividadComponent
-            },
-            {
-            path:'ediciones/:id',component:CreaeditaactividadComponent
-            },
-            {
-                path:'reportes',component:ReportesComponent,
-                children:[
-                    {
-                        path:'actividadesporcentro',component:ActividadesporcentroComponent
-                    },
-                    {
-                        path:'actividadesporusuario',component:ActividadesporusuarioComponent
-                    }
-                ]
-            }
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'recompensas',
+    component: RecompensaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditarrecompensaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditarrecompensaComponent,
+      },
+      {
+        path: 'reportes',
+        component: ReportesComponent,
+        children: [
+          {
+            path: 'cantidadrecompensas',
+            component: RecompensasmasreclamadasComponent,
+          },
+          {
+            path: 'proxvencer',
+            component: RecompensasproxvencerComponent,
+          },
         ],
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-        path:'tipodeactividades',component:TipoactividadComponent,
-        children:[
-            {
-            path:'nuevo',component:CreaeditatipoactividadComponent
-            },
-            {
-            path:'ediciones/:id',component:CreaeditatipoactividadComponent
-            }
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'actividades',
+    component: ActividadComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreaeditaactividadComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditaactividadComponent,
+      },
+      {
+        path: 'reportes',
+        component: ReportesComponent,
+        children: [
+          {
+            path: 'actividadesporcentro',
+            component: ActividadesporcentroComponent,
+          },
+          {
+            path: 'actividadesporusuario',
+            component: ActividadesporusuarioComponent,
+          },
         ],
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-        path:'roles',component:RolComponent,
-        children:[
-            {
-            path:'nuevo',component:CreareditarrolesComponent
-            },
-            {
-            path:'ediciones/:id',component:CreareditarrolesComponent
-            }
-        ],
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
-    {
-        path: 'homes', component: HomeComponent, 
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-    },
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'tipodeactividades',
+    component: TipoactividadComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreaeditatipoactividadComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditatipoactividadComponent,
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'roles',
+    component: RolComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditarrolesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditarrolesComponent,
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'homes',
+    component: HomeComponent,
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
 ];
