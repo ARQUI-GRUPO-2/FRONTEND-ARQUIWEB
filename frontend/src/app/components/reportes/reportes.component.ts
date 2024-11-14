@@ -5,6 +5,7 @@ import { CentrosfavoritosComponent } from './centrosfavoritos/centrosfavoritos.c
 import { CentrosusuariosComponent } from './centrosusuarios/centrosusuarios.component';
 import { CantidadnotiusuarioComponent } from './cantidadnotiusuario/cantidadnotiusuario.component';
 
+
 @Component({
   selector: 'app-reportes',
   standalone: true,

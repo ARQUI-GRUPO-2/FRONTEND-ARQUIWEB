@@ -1,6 +1,11 @@
 <div class="container" style="text-align: center;margin:2%">
     <div><h1>{{ edicion ? "Actualizar centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
     <div>
+      <div class="map-container">
+        <google-map [center]="center" [zoom]="zoom">
+          <map-marker [position]="markerPosition"></map-marker>
+        </google-map>
+      </div>
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>Código</mat-label>

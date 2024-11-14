@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Actividad } from '../models/Actividad';
 import { Observable, Subject } from 'rxjs';
 import { ActividadesPorCentroDTO } from '../models/ActividadesPorCentroDTO';
+import { ActividadesPorUsuarioDTO } from '../models/ActividadesPorUsuarioDTO';
 const base_url=environment.base
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class ActividadService {
 
   getActividadesporCentro(): Observable<ActividadesPorCentroDTO[]>{
     return this.http.get<ActividadesPorCentroDTO[]>(`${this.url}/ActividadesPorCentro`);
+  }
+
+  getActividadesporUsuario(): Observable<ActividadesPorUsuarioDTO[]>{
+    return this.http.get<ActividadesPorUsuarioDTO[]>(`${this.url}/ActividadesPorUsuario`);
   }
 }

@@ -29,6 +29,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { CentrosfavoritosComponent } from './components/reportes/centrosfavoritos/centrosfavoritos.component';
 import { CentrosusuariosComponent } from './components/reportes/centrosusuarios/centrosusuarios.component';
+import { ActividadesporusuarioComponent } from './components/reportes/actividadesporusuario/actividadesporusuario.component';
 import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
 
 export const routes: Routes = [
@@ -134,6 +135,9 @@ export const routes: Routes = [
                     {
                         path:'actividadesporcentro',component:ActividadesporcentroComponent
                     },
+                    {
+                        path:'actividadesporusuario',component:ActividadesporusuarioComponent
+                    }
                 ]
             }
         ],

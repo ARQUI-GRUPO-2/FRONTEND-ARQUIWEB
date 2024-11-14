@@ -25,3 +25,11 @@ mat-form-field{
     margin-left: 160px;
 
 }
+/* Estilo del contenedor principal para centrar el mapa */
+.map-container {
+    display: flex;
+    justify-content: center; 
+    
+}
+
+
