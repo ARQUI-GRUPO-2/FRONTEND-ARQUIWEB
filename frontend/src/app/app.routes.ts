@@ -29,6 +29,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { CentrosfavoritosComponent } from './components/reportes/centrosfavoritos/centrosfavoritos.component';
 import { CentrosusuariosComponent } from './components/reportes/centrosusuarios/centrosusuarios.component';
+import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
 
 export const routes: Routes = [
     {
@@ -45,7 +46,15 @@ export const routes: Routes = [
            },
            {
                path: 'ediciones/:id', component: creareditarusuarioComponent
-           }
+           },
+           {
+            path:'reportes',component:ReportesComponent,
+            children:[
+                {
+                    path:'cantidad',component:CantidadnotiusuarioComponent //FFF
+                },
+            ]
+        }
        ],
        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
     },
