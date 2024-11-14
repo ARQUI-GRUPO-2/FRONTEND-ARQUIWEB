@@ -4,6 +4,7 @@ import { ActividadesporcentroComponent } from './actividadesporcentro/actividade
 import { CentrosfavoritosComponent } from './centrosfavoritos/centrosfavoritos.component';
 import { CentrosusuariosComponent } from './centrosusuarios/centrosusuarios.component';
 
+
 @Component({
   selector: 'app-reportes',
   standalone: true,

@@ -11,16 +11,16 @@
         <input matInput formControlName="codigo" />
       </mat-form-field>
       <br />
+      
+
       <mat-form-field class="example-full-width">
-        <mat-label>Invitar</mat-label>
-        <input matInput formControlName="invitar" />
+        <mat-label>Descripción</mat-label>
+        <input matInput formControlName="descripcion"/>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+            >La descripción es obligatoria.</mat-error>
       </mat-form-field>
-      <br />
-      <mat-form-field class="example-full-width">
-        <mat-label>Reciclar</mat-label>
-        <input matInput formControlName="reciclar" />
-      </mat-form-field>
-      <br />
+
+
       <div>
         <button mat-flat-button class="custom-button">
           {{ edicion ? "ACTUALIZAR" : "Registrar" }}
