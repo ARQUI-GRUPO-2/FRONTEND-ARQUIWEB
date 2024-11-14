@@ -71,8 +71,10 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       hlatitud: ['', Validators.required],
       hlongitud: ['', Validators.required],
       hhorario: ['', Validators.required],
-      hfavoritos: [false, Validators.required],
-      husuario: ['', Validators.required]
+      //hfavoritos: [false, Validators.required],
+      //husuario: ['', Validators.required]
+      hfavoritos: [null],
+      husuario: [null]
     });
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
@@ -96,8 +98,15 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       this.centroReciclaje.latitud = this.form.value.hlatitud;
       this.centroReciclaje.longitud = this.form.value.hlongitud;
       this.centroReciclaje.horario = this.form.value.hhorario;
-      this.centroReciclaje.favoritos = this.form.value.hfavoritos;
-      this.centroReciclaje.us.idUser = this.form.value.husuario;
+      //this.centroReciclaje.favoritos = this.form.value.hfavoritos;
+      //this.centroReciclaje.us.idUser = this.form.value.husuario;
+
+      //nulos
+      this.centroReciclaje.favoritos = this.form.value.hfavoritos ? true : false;
+      this.centroReciclaje.us = this.form.value.husuario 
+        ? ({ idUser: this.form.value.husuario } as Usuario)
+        : null;
+
 
       if (this.edicion) {
         this.cS.update(this.centroReciclaje).subscribe((data) => {
@@ -139,8 +148,10 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
           hlatitud: new FormControl(data.latitud),
           hlongitud: new FormControl(data.longitud),
           hhorario: new FormControl(data.horario),
-          hfavoritos: new FormControl(data.favoritos),
-          husuario: new FormControl(data.us.idUser)
+          //hfavoritos: new FormControl(data.favoritos),
+          //husuario: new FormControl(data.us.idUser)
+          hfavoritos: new FormControl(data.favoritos !== undefined ? data.favoritos : null),
+          husuario: new FormControl(data.us ? data.us.idUser : null)
         });  
 
         // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
