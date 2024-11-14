@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Recompensas } from '../models/Recompensas';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { MostClaimedRewardDTO } from '../models/MostClaimedRewardDTO';
+import { CloseToExpireDTO } from '../models/CloseToExpireDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -39,4 +41,13 @@ export class RecompensaService {
   update(rec: Recompensas) {
     return this.http.put(this.url, rec);
   }
+
+  cantidadRecompensas():Observable<MostClaimedRewardDTO[]>{
+    return this.http.get<MostClaimedRewardDTO[]>(`${this.url}/mas_reclamada`)
+  }
+
+  proximoVencimiento():Observable<CloseToExpireDTO[]>{
+    return this.http.get<CloseToExpireDTO[]>(`${this.url}/proxvencer`)
+  }
+
 }

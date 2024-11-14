@@ -6,5 +6,5 @@ export class Recompensas{
     descripcionRecompensa:string=""
     codigoQR:string=""
     fechaVencimiento:Date=new Date(Date.now())
-    ac: Actividad = new Actividad()
+    ac: Actividad | null = null;
 }

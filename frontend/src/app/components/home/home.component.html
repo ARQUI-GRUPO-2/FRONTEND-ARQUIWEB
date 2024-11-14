@@ -1,0 +1,99 @@
+<div class="container" style="text-align: center; margin: 2%">
+    <div>
+      <h1>{{ edicion ? "Actualiza Usuario" : "Registro de Usuario" }}</h1>
+    </div>
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Codigo</mat-label>
+          <input matInput formControlName="hcodigo" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="hnombres" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="hapellidos" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>UserName</mat-label>
+          <input
+            matInput
+            placeholder="User - Admin"
+            formControlName="husername"
+          />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>DNI</mat-label>
+          <input matInput placeholder="7266XXXX" formControlName="hdni" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Edad</mat-label>
+          <input matInput placeholder="" formControlName="hedad" />
+        </mat-form-field>
+  
+        <br />
+        <mat-form-field>
+          <mat-label>Genero</mat-label>
+          <mat-select formControlName="hgenero">
+            @for (m of listaGenero; track m) {
+            <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Distrito</mat-label>
+          <input matInput placeholder="" formControlName="hdistrito" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="987654321" formControlName="htelefono" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Correo</mat-label>
+          <input
+            matInput
+            placeholder="example@example.com"
+            formControlName="hcorreo"
+          />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="*******" formControlName="hpassword" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Enabled</mat-label>
+          <input matInput placeholder="true/false" formControlName="henabled" />
+        </mat-form-field>
+  
+        <br />
+        <mat-form-field>
+          <mat-label>Roles</mat-label>
+          <mat-select formControlName="hroles">
+            @for (r of listaRoles; track r) {
+            <mat-option [value]="r.idRol">{{ r.nombreRol }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+  
+        <div>
+          <button mat-flat-button class="custom-button">
+            {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
