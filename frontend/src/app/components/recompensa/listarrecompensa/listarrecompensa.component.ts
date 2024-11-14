@@ -26,11 +26,10 @@ export class ListarrecompensaComponent implements OnInit{
 
   ngOnInit(): void {
     this.rS.list().subscribe(data=>{
-      this.dataSource=new MatTableDataSource(data)
+      this.dataSource.data = data;
     })
     this.rS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.data = data;
     });
   }
 

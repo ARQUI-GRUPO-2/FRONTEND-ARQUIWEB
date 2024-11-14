@@ -124,8 +124,6 @@ tr:hover td {
   transition: background-color 0.3s ease;
 }
 
-
-
 mat-paginator {
   background-color: rgb(242 242 242); /* Fondo verde claro */
   border-radius: 8px; /* Bordes redondeados */

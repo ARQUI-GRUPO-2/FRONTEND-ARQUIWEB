@@ -5,7 +5,6 @@ import { NotificacionService } from '../../../services/notificacion.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 

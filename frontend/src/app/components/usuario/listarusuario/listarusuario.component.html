@@ -1,96 +1,38 @@
 <div class="container">
-  <div style="text-align: center; margin: 10%"><h1>Lista de Usuarios</h1></div>
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="c1">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let element">{{ element.idUser }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>Nombres</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombres }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef>Apellidos</th>
-        <td mat-cell *matCellDef="let element">{{ element.apellidos }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>Username</th>
-        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c5">
-        <th mat-header-cell *matHeaderCellDef>DNI</th>
-        <td mat-cell *matCellDef="let element">{{ element.dni }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c6">
-        <th mat-header-cell *matHeaderCellDef>Edad</th>
-        <td mat-cell *matCellDef="let element">{{ element.edad }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c7">
-        <th mat-header-cell *matHeaderCellDef>Genero</th>
-        <td mat-cell *matCellDef="let element">{{ element.genero }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c8">
-        <th mat-header-cell *matHeaderCellDef>Distrito</th>
-        <td mat-cell *matCellDef="let element">{{ element.distrito }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c9">
-        <th mat-header-cell *matHeaderCellDef>Telefono</th>
-        <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c10">
-        <th mat-header-cell *matHeaderCellDef>Correo</th>
-        <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c11">
-        <th mat-header-cell *matHeaderCellDef>Password</th>
-        <td mat-cell *matCellDef="let element">
-          <!--{{element.password }}-->
-          <mat-icon>security</mat-icon>
-        </td>
-      </ng-container>
-      <!-- <mat-icon>security</mat-icon> -->
-
-
-      <ng-container matColumnDef="accion01">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-        <td
-          mat-cell
-          *matCellDef="let element"
-          (click)="eliminar(element.idUser)"
-        >
-          <mat-icon style="color: #27ae60">delete</mat-icon>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="accion02">
-        <th mat-header-cell *matHeaderCellDef>Editar</th>
-        <td
-          mat-cell
-          *matCellDef="let element"
-          [routerLink]="['ediciones', element.idUser]"
-        >
-          <mat-icon style="color: #27ae60"> border_color</mat-icon>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-    ></mat-paginator>
+  <div class="title1">
+    <h1>Usuarios</h1>
   </div>
+  <div *ngFor="let element of dataSource.data" class="card-container">
+
+    <mat-icon class="user-icon">account_circle</mat-icon>
+
+    <div class="user-info">
+      <p>Username: {{ element.username }}</p>
+      <p>Nombre: {{ element.nombres }}</p>
+      <p>Apellidos: {{ element.apellidos }}</p>
+      <p>Correo: {{ element.correo }}</p>
+      <p>Edad: {{ element.edad }}</p>
+      <p>Rol: {{ element.rol.nombreRol }}</p>
+    </div>
+    <div class="action-buttons">
+      <button
+        class="mat-icon-button"
+        (click)="eliminar(element.idUser)"
+        aria-label="Eliminar usuario"
+      >
+        <mat-icon class="accion">delete</mat-icon>
+      </button>
+      <button
+        class="mat-icon-button"
+        [routerLink]="['ediciones', element.idUser]"
+        aria-label="Editar usuario"
+      >
+        <mat-icon class="accion">edit</mat-icon>
+      </button>
+    </div>
+
+  </div>
+
+  <mat-paginator [pageSize]="2" [pageSizeOptions]="[2, 10, 20]" showFirstLastButtons></mat-paginator>
+
 </div>

@@ -60,7 +60,7 @@
           <mat-label>Centro de Reciclaje</mat-label>
           <mat-select formControlName="centros" >
             @for (m of listaCentros; track m) {
-            <mat-option [value]="m.idCentroReciclaje">{{ m.idCentroReciclaje }}</mat-option>
+            <mat-option [value]="m.idCentroReciclaje">{{ m.direccion }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('centros')?.hasError('required')"
@@ -70,7 +70,7 @@
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="usuarios" >
             @for (m of listaUsuarios; track m) {
-            <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
+            <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('usuarios')?.hasError('required')"

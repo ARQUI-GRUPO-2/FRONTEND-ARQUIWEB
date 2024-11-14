@@ -20,7 +20,7 @@ export class ListarnoticiasComponent implements OnInit {
   dataSource: MatTableDataSource<Noticias>= new MatTableDataSource();
   selectedNoticia: Noticias | null = null;
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
+  // displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
