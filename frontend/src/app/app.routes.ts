@@ -51,7 +51,7 @@ export const routes: Routes = [
             path:'reportes',component:ReportesComponent,
             children:[
                 {
-                    path:'cantidad',component:CantidadnotiusuarioComponent //FFF
+                    path:'conteo_notificaciones_rangoHoras',component:CantidadnotiusuarioComponent //FFF
                 },
             ]
         }

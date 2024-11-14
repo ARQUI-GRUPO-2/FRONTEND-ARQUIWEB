@@ -29,7 +29,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
 
   id: number = 0;
-  edicion: boolean = false;
+  edicion: boolean = true;
 
   listaFavoritos: { value: string; viewValue: string }[] = [
     { value: 'False', viewValue: 'False' },
