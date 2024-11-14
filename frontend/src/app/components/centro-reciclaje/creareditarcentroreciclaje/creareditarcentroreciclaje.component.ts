@@ -19,6 +19,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
@@ -42,16 +43,20 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   zoom: number = 15; // Nivel de zoom
   markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
 
+  role: string = '';
 
   constructor(
     private cS: CentroReciclajeService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private uS: UsuarioService
+    private uS: UsuarioService,
+    private lS: LoginService
   ) {}
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
@@ -136,7 +141,20 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
           hfavoritos: new FormControl(data.favoritos),
           husuario: new FormControl(data.us.idUser)
         });  
+
+        // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
+        if (this.role === 'CLIENTE') {
+          this.form.get('hcodigo')?.disable();
+          this.form.get('hdireccion')?.disable();
+          this.form.get('hlatitud')?.disable();
+          this.form.get('hlongitud')?.disable();
+          this.form.get('hhorario')?.disable();
+        }
       });
     }
   }
+  isCliente(): boolean {
+    return this.role === 'CLIENTE';
+  }
+
 }

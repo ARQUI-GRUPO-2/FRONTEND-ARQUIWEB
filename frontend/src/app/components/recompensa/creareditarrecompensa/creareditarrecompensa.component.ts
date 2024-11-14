@@ -17,6 +17,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ActividadService } from '../../../services/actividad.service';
 import { Actividad } from '../../../models/Actividad';
+import { LoginService } from '../../../services/login.service';
+
 
 @Component({
   selector: 'app-creareditarrecompensa',
@@ -38,20 +40,25 @@ export class CreareditarrecompensaComponent implements OnInit {
 
   id: number = 0;
   edicion: boolean = false;
+  role: string = '';
 
   constructor(
     private rS: RecompensaService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private aS: ActividadService
+    private aS: ActividadService,
+    private lS: LoginService
   ) {}
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       //trae los datos
       this.init();
+      
     });
 
     this.form = this.formBuilder.group({
@@ -67,6 +74,7 @@ export class CreareditarrecompensaComponent implements OnInit {
       this.listaActividad = data;
     });
   }
+
   insertar(): void {
     if (this.form.valid) {
       this.recompensas.idRecompensas = this.form.value.hcodigo;
@@ -103,7 +111,26 @@ export class CreareditarrecompensaComponent implements OnInit {
           hfecha: new FormControl(data.fechaVencimiento),
           hactividad: new FormControl(data.ac.idActividad)
         });
+
+        // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
+        if (this.role === 'CLIENTE') {
+          this.form.get('hcodigo')?.disable();
+          this.form.get('hnombre')?.disable();
+          this.form.get('hdescripcion')?.disable();
+          this.form.get('hcodigoqr')?.disable();
+          this.form.get('hfecha')?.disable();
+        }
       });
     }
   }
+
+    // Función para verificar si el rol es cliente
+    isCliente(): boolean {
+      return this.role === 'CLIENTE';
+    }
+  
+    /* Función para verificar si el rol es admin
+    isAdmin(): boolean {
+      return this.role === 'ADMI';
+    } */
 }
