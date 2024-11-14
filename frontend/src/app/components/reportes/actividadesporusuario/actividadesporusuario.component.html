@@ -1,26 +1,13 @@
 <div class="container">
-    <div><h1>Lista de Actividades por Usuario</h1></div>
     <div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <ng-container matColumnDef="id">           
-             <th mat-header-cell *matHeaderCellDef>ID</th>     
-             <td mat-cell *matCellDef="let element"> {{element.id_user}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="cantidad">          
-             <th mat-header-cell *matHeaderCellDef>Cantidad de Actividades por Usuario</th>          
-             <td mat-cell *matCellDef="let element"> {{element.numeroactividades}} </td>          
-            </ng-container>
-
-            <ng-container matColumnDef="puntos">          
-                <th mat-header-cell *matHeaderCellDef>Cantidad de puntos por Usuario</th>          
-                <td mat-cell *matCellDef="let element"> {{element.total_puntos}} </td>          
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-           <mat-paginator [pageSizeOptions]="[4,7,10]" showFirstLastButtons></mat-paginator>
+        <h1>Gráfico de Actividades y Puntos por Usuario</h1>
     </div>
-</div>
+    <div>
+      <canvas baseChart 
+        [data]="barChartData"
+        [options]="barChartOptions"
+        chartType="bar">
+      </canvas>
+    </div>
+  </div>
+  
