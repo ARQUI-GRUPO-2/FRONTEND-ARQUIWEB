@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{ edicion ? "Actualizar Centro de Reciclaje" : 'Registro de Centro de Reciclaje'}}s</h1></div>
+    <div><h1>{{ edicion ? "Actualizar centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
     <div>
       <div class="map-container">
         <google-map [center]="center" [zoom]="zoom">
@@ -16,26 +16,35 @@
         <mat-form-field class="example-full-width">
           <mat-label>Direccion</mat-label>
           <input matInput formControlName="hdireccion" />
+          <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
+            La direccion es obligatoria.
+          </mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
         <mat-label>Latitud</mat-label>
         <input matInput formControlName="hlatitud" />
-        </mat-form-field>
-        <br />
+        <mat-error *ngIf="form.get('hlatitud')?.hasError('required')">
+          La latitud es obligatoria.
+        </mat-error>
+      </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <mat-label>Longitud</mat-label>
             <input matInput formControlName="hlongitud" />
-            </mat-form-field>
-        <br />
+            <mat-error *ngIf="form.get('hlongitud')?.hasError('required')">
+              La longitud es obligatoria
+            </mat-error>
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Horario</mat-label>
           <input matInput formControlName="hhorario" placeholder="HH:mm:ss"/>
+          <mat-error *ngIf="form.get('hhorario')?.hasError('required')">
+            El horario es obligatorio.
+          </mat-error>
         </mat-form-field>
-        
 
         <mat-form-field>
             <mat-label>Favoritos</mat-label>
@@ -44,7 +53,10 @@
               <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
               }
             </mat-select>
-        </mat-form-field>
+            <mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
+              Asignar favorito es obligatorio.
+            </mat-error>
+          </mat-form-field>
 
         <mat-form-field>
           <mat-label>ID del Usuario</mat-label>
@@ -53,11 +65,15 @@
             <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
             }
           </mat-select>
-      </mat-form-field>
+          <mat-error *ngIf="form.get('husuario')?.hasError('required')">
+            Asignar un usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
 
         <div>
             <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
-          </div>
+        </div>
+        
         </form>
       </div>
     </div>    
