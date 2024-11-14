@@ -60,7 +60,7 @@ export class CreareditarrecompensaComponent implements OnInit {
       hdescripcion: ['', Validators.required],
       hcodigoqr: ['', Validators.required],
       hfecha: ['', Validators.required],
-      hactividad: ['']
+      hactividad: ['',Validators.required] 
     });
 
     this.aS.list().subscribe((data) => {

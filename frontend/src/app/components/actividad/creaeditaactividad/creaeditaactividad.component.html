@@ -1,12 +1,16 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>Registro de Actividades</h1></div>
+    <div><h1>{{ edicion ? 'Actualizar actividad' : 'Registrar actividad'}}</h1></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
             <mat-label>Código</mat-label>
             <input matInput formControlName="codigo" />
+          <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+              El codigo es obligatorio
+          </mat-error>
         </mat-form-field>
-        <br />
+        <br/>
+        
         <mat-form-field>
               <mat-label>Choose a date</mat-label>
               <input matInput [matDatepicker]="picker" formControlName="fecha"/>
@@ -16,37 +20,48 @@
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="form.get('fecha')?.hasError('required')"> 
+                La fecha es obligatoria.
+              </mat-error>
         </mat-form-field>
-        <br>
+        <br/>
+
         <mat-form-field class="example-full-width">
             <mat-label>Descripción</mat-label>
             <input matInput formControlName="descripcion" />
-        </mat-form-field>
-        <br>
+            <mat-error *ngIf="form.get('descripcion')?.hasError('required')"> 
+              La descripcion es obligatoria.
+            </mat-error>        
+        </mat-form-field>  
+        <br/>
+
         <mat-form-field class="example-full-width">
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="nombre" />
-        </mat-form-field>
-        <br>
+            <mat-error *ngIf="form.get('nombre')?.hasError('required')"> 
+              El nombre es obligatorio.
+            </mat-error>        
+        </mat-form-field>  
+        <br/>
+
         <mat-form-field class="example-full-width">
             <mat-label>Puntos</mat-label>
             <input matInput placeholder="123..." formControlName="puntos" />
-        </mat-form-field>
-        <br>
+            <mat-error *ngIf="form.get('puntos')?.hasError('required')"> 
+              Los puntos son obligatorios.
+            </mat-error>        
+        </mat-form-field>          
+        <br/>
+
         <mat-form-field class="example-full-width">
             <mat-label>Cantidad</mat-label>
             <input matInput placeholder="1" formControlName="cantidad" />
-        </mat-form-field>
-        <br>
-       
-        <!-- mat-form-field>
-            <mat-label>Ubicacion</mat-label>
-            <mat-select formControlName="ubicacion">
-              @for (c of listaCentros; track c) {
-              <mat-option [value]="c.idCentroReciclaje">{{ c.direccion }}</mat-option>
-              }
-            </mat-select>
-        </!-->
+            <mat-error *ngIf="form.get('cantidad')?.hasError('required')"> 
+              La descripcion es obligatoria.
+            </mat-error>        
+        </mat-form-field>          
+        <br/>
+
         <mat-form-field>
           <mat-label>Tipo de Actividad</mat-label>
           <mat-select  formControlName="tipoactividad" >
@@ -55,8 +70,9 @@
             }
           </mat-select>
           <mat-error *ngIf="form.get('tipoactividad')?.hasError('required')"
-              >El tipo de actividad es obligatorio.</mat-error>
+              >Asignar un tipo de actividad es obligatorio.</mat-error>
         </mat-form-field>
+        <br/>
 
         <mat-form-field>
           <mat-label>Centro de Reciclaje</mat-label>
@@ -66,9 +82,10 @@
             }
           </mat-select>
           <mat-error *ngIf="form.get('centros')?.hasError('required')"
-              >El centro de reciclaje es obligatorio.</mat-error>
+              >Asignar un centro de reciclaje es obligatorio.</mat-error>
         </mat-form-field>
-        
+        <br/>
+
         <mat-form-field>
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="usuarios" >
@@ -77,12 +94,11 @@
             }
           </mat-select>
           <mat-error *ngIf="form.get('usuarios')?.hasError('required')"
-              >El usuario es obligatorio.</mat-error>
+              >Asignar un usuario es obligatorio.</mat-error>
         </mat-form-field>
-
-        <div>
-            <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
-        </div>
+        <br/>
+        
+        <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
       </form>
     </div>
   </div>
