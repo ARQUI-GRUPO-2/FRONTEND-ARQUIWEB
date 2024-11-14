@@ -5,7 +5,6 @@ import { Usuario } from "./Usuario"
 export class Actividad{
     idActividad:number=0
     fecha_recepcion:Date=new Date(Date.now())
-    descripcion:string=""
     nombre:string=""
     puntos: number = 0
     cantidad:string=""

@@ -12,24 +12,24 @@
         <span class="spacer"></span>
         <!-- Botón de notificación -->
         <div class="button-noti" >
-            <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: black" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: black" >
                 <mat-icon>notification_important</mat-icon> 
                 <span class="noti-text">Notificaciones</span>
             </button>
         </div>
         <mat-menu #menuNotificacion="matMenu">
-            <button mat-menu-item routerLink="/notificaciones">Listar</button>
-            <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/notificaciones" *ngIf="isAdmin() || isCliente()">Listar</button>
+            <button mat-menu-item routerLink="/notificaciones/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
         <!-- Botón de Noticias -->
         <div class="button-noticias">
-            <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: black" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: black">
                 <mat-icon>article</mat-icon> 
                 <span class="noti-text">Noticias</span>
             </button>
         </div>
         <mat-menu #menuNoticias="matMenu">
-            <button mat-menu-item routerLink="/noticias/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/noticias/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
     </mat-toolbar>
 
@@ -41,32 +41,35 @@
                 <mat-icon>person</mat-icon>
                 <span class="menu-text">Usuario</span>
             </button>
-            <button mat-button [matMenuTriggerFor]="menuCantidadUsuario" style="color: #000;">
+            <button mat-button [matMenuTriggerFor]="menuCantidadUsuario" style="color: #000;" *ngIf="isAdmin()">
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
+            
         </div>
         <mat-menu #menuUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios">Listar</button>
-            <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/usuarios" *ngIf="isAdmin() || isCliente()">Listar</button>
+            <button mat-menu-item routerLink="/usuarios/nuevo" *ngIf="isAdmin() || isCliente()" >Registrar</button>
         </mat-menu>
         <mat-menu #menuCantidadUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangoHoras">Cantidad de notificaciones por usuario</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangodias">Cantidad de notificaciones por usuario en rango de dias</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/cantidaddeUsuariosPorRol">Cantidad de usuarios por rol</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/promedioNotificacionesPorDiaUsuario">Promedio de notificaciones por dia y usuario</button>
         </mat-menu>
         <!-- Menú Centros de Reciclaje -->
         <div class="menu-item">
-            <button mat-button [matMenuTriggerFor]="menuCentroReciclaje" style="color: #000;" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuCentroReciclaje" style="color: #000;">
                 <mat-icon>location_on</mat-icon>
                 <span class="menu-text">Centros de Reciclaje</span>
             </button>
-            <button mat-button [matMenuTriggerFor]="menuCentroConsulta" style="color: #000;">
+            <button mat-button [matMenuTriggerFor]="menuCentroConsulta" style="color: #000;" *ngIf="isAdmin()">
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
         </div>
         <mat-menu #menuCentroReciclaje="matMenu">
-            <button mat-menu-item routerLink="/centroreciclaje">Listar</button>
-            <button mat-menu-item routerLink="/centroreciclaje/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/centroreciclaje" *ngIf="isAdmin() || isCliente()">Listar</button>
+            <button mat-menu-item routerLink="/centroreciclaje/nuevo"*ngIf="isAdmin()">Registrar</button>
         </mat-menu>
         <mat-menu #menuCentroConsulta="matMenu">
             <button mat-menu-item routerLink="/centroreciclaje/reportes/mas_popular">Centro Favorito</button>
@@ -75,18 +78,18 @@
 
         <!-- Menú Actividad -->
         <div class="menu-item">
-            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #000;" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #000;" >
                 <mat-icon>assignment</mat-icon>
                 <span class="menu-text">Actividad</span>
             </button>
-            <button mat-button [matMenuTriggerFor]="menuActividadporCentro" style="color: #000;">
+            <button mat-button [matMenuTriggerFor]="menuActividadporCentro" style="color: #000;" *ngIf="isAdmin()">
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
         </div>
         <mat-menu #menuActividad="matMenu">
-            <button mat-menu-item routerLink="/actividades">Listar</button>
-            <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/actividades" *ngIf="isAdmin() || isCliente()">Listar</button>
+            <button mat-menu-item routerLink="/actividades/nuevo" *ngIf="isAdmin() || isCliente()">Registrar</button>
         </mat-menu>
         <mat-menu #menuActividadporCentro="matMenu">
             <button mat-menu-item routerLink="/actividades/reportes/actividadesporcentro">Actividades por Centro</button>
@@ -95,15 +98,24 @@
 
         <!-- Menu Recompensas -->
         <div class="menu-item">
-            <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: #000;" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuRecompensas" style="color: #000;" >
                 <mat-icon>star</mat-icon>
                 <span class="menu-text">Recompensas</span>
             </button>
+            <button mat-button [matMenuTriggerFor]="menuRecRepo" style="color: #000;" *ngIf="isAdmin()">
+                <mat-icon>search</mat-icon> 
+                <span class="menu-text">Reportes</span>
+            </button>
         </div>
         <mat-menu #menuRecompensas="matMenu">
-            <button mat-menu-item routerLink="/recompensas">Listar</button>
-            <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/recompensas" *ngIf="isAdmin() || isCliente() ">Listar</button>
+            <button mat-menu-item routerLink="/recompensas/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
+        <mat-menu #menuRecRepo="matMenu">
+            <button mat-menu-item routerLink="/recompensas/reportes/cantidadrecompensas">Cantidad de recompensas reclamadas</button>
+            <button mat-menu-item routerLink="/recompensas/reportes/proxvencer">Recompensas Próximas a Vencer</button>
+        </mat-menu>
+
         
         <!-- Icono de reciclaje -->
         <div class="sidebar-icon">

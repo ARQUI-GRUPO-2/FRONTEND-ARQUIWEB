@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Notificaciones } from '../models/Notificaciones';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { PromedioNotificacionesPorDiaUsuarioDTO } from '../models/PromedioNotificacionesPorDiaUsuarioDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -38,5 +39,9 @@ export class NotificacionService {
   
   update(noti: Notificaciones){
     return this.http.put(this.url, noti);
+  }
+
+  getUsuarioNoti(): Observable<PromedioNotificacionesPorDiaUsuarioDTO[]> {
+    return this.http.get<PromedioNotificacionesPorDiaUsuarioDTO[]>(`${this.url}/promedioNotificacionesPorDiaUsuario`);
   }
 }

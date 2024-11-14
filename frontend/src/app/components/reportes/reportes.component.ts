@@ -4,12 +4,15 @@ import { ActividadesporcentroComponent } from './actividadesporcentro/actividade
 import { CentrosfavoritosComponent } from './centrosfavoritos/centrosfavoritos.component';
 import { CentrosusuariosComponent } from './centrosusuarios/centrosusuarios.component';
 import { CantidadnotiusuarioComponent } from './cantidadnotiusuario/cantidadnotiusuario.component';
+import { RecompensasproxvencerComponent } from './recompensasproxvencer/recompensasproxvencer.component';
+import { RecompensasmasreclamadasComponent } from './recompensasmasreclamadas/recompensasmasreclamadas.component';
+import { CantidaddeusuariosporrolComponent } from './cantidaddeusuariosporrol/cantidaddeusuariosporrol.component';
 
 
 @Component({
   selector: 'app-reportes',
   standalone: true,
-  imports: [RouterOutlet, ActividadesporcentroComponent, CentrosfavoritosComponent, CentrosusuariosComponent, CantidadnotiusuarioComponent ],
+  imports: [RouterOutlet, ActividadesporcentroComponent, CentrosfavoritosComponent, CentrosusuariosComponent, CantidadnotiusuarioComponent, RecompensasproxvencerComponent, RecompensasmasreclamadasComponent, CantidaddeusuariosporrolComponent ],
   templateUrl: './reportes.component.html',
   styleUrl: './reportes.component.css'
 })
@@ -18,4 +21,5 @@ export class ReportesComponent implements OnInit{
   ngOnInit(): void {
       
   }
+  
 }

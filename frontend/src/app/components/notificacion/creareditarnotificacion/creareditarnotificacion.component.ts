@@ -4,6 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import {
   FormBuilder,
   FormControl,
@@ -30,6 +31,7 @@ import { NoticiasService } from '../../../services/noticias.service';
     MatNativeDateModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     CommonModule,
   ],
   templateUrl: './creareditarnotificacion.component.html',
@@ -63,7 +65,7 @@ export class CreareditarnotificacionComponent implements OnInit {
     this.form = this.formBuilder.group({
       hcodigo: [''],
       hmensaje: ['', Validators.required],
-      hestado: ['', Validators.required],
+      hestado: [false, Validators.required],
       hfecha: ['', Validators.required],
       hcodenoticia: ['', Validators.required],
       hcodeuser: ['',Validators.required ],

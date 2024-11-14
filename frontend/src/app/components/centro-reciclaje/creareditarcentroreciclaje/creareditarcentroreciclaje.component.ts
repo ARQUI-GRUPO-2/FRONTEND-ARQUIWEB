@@ -15,11 +15,13 @@ import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
+import { LoginService } from '../../../services/login.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule,GoogleMap,MapMarker,GoogleMapsModule], 
+  imports: [MatInputModule, MatIconModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule,GoogleMap,MapMarker,GoogleMapsModule], 
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
@@ -28,7 +30,8 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   listaUsuarios: Usuario[] = [];
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
-  edicion: boolean = true;
+  edicion: boolean = false;
+
 //API
   lat=0
   lng=0
@@ -41,15 +44,20 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
     { value: 'True', viewValue: 'True' }
   ];
 
+  role:string='';
+
   constructor(
     private cS: CentroReciclajeService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private uS: UsuarioService
+    private uS: UsuarioService,
+    private lS: LoginService
   ) {}
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
@@ -63,13 +71,17 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       hlatitud: ['', Validators.required],
       hlongitud: ['', Validators.required],
       hhorario: ['', Validators.required],
-      hfavoritos: ['', Validators.required],
-      husuario: ['', Validators.required]
+      hfavoritos: [null],
+      husuario: [null]
+      //hfavoritos: ['', Validators.required],
+      //husuario: ['', Validators.required]
     });
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
 
+
+    
     // Escucha los cambios en latitud y longitud para actualizar el mapa
     this.form.get('hlatitud')?.valueChanges.subscribe((lat) => {
       this.updateMapPosition(lat, this.form.get('hlongitud')?.value);
@@ -88,8 +100,13 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       this.centroReciclaje.latitud = this.form.value.hlatitud;
       this.centroReciclaje.longitud = this.form.value.hlongitud;
       this.centroReciclaje.horario = this.form.value.hhorario;
-      this.centroReciclaje.favoritos = this.form.value.hfavoritos;
-      this.centroReciclaje.us.idUser = this.form.value.husuario;
+      //this.centroReciclaje.favoritos = this.form.value.hfavoritos;
+      //this.centroReciclaje.us.idUser = this.form.value.husuario;
+
+      // Permitir  nulo al registrar, requerirlo al editar
+      this.centroReciclaje.favoritos = this.form.value.hfavoritos !== "" ? this.form.value.hfavoritos : null;
+      this.centroReciclaje.us = this.form.value.husuario ? { idUser: this.form.value.husuario } as Usuario : null;
+      
 
       if (this.edicion) {
         this.cS.update(this.centroReciclaje).subscribe((data) => {
@@ -125,16 +142,31 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
+        this.form = this.formBuilder.group({
           hcodigo: new FormControl(data.idCentroReciclaje),
-          hdireccion: new FormControl(data.direccion),
-          hlatitud: new FormControl(data.latitud),
-          hlongitud: new FormControl(data.longitud),
-          hhorario: new FormControl(data.horario),
-          hfavoritos: new FormControl(data.favoritos),
-          husuario: new FormControl(data.us.idUser)
+          hdireccion: new FormControl(data.direccion, Validators.required),
+          hlatitud: new FormControl(data.latitud, Validators.required),
+          hlongitud: new FormControl(data.longitud, Validators.required),
+          hhorario: new FormControl(data.horario, Validators.required),
+          //hfavoritos: new FormControl(data.favoritos),
+          //husuario: new FormControl(data.us.idUser)
+          hfavoritos: new FormControl(data.favoritos !== null ? data.favoritos : false), // Usa `false` en vez de `null`
+          husuario: new FormControl(data.us ? data.us.idUser : null, Validators.required) // Usa cadena vacía en vez de `null`
         });  
+
+        // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
+        if (this.role === 'CLIENTE') {
+          this.form.get('hcodigo')?.disable();
+          this.form.get('hdireccion')?.disable();
+          this.form.get('hlatitud')?.disable();
+          this.form.get('hlongitud')?.disable();
+          this.form.get('hhorario')?.disable();
+        }
       });
     }
   }
+
+  isCliente(): boolean {
+    return this.role === 'CLIENTE';
+  }
 }

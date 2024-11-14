@@ -1,0 +1,44 @@
+/* Estilos generales para el componente */
+.chart-container {
+    width: 100%;
+    max-width: 800px; /* Limita el tamaño máximo del gráfico */
+    margin: 0 auto;   /* Centra el gráfico en la pantalla */
+    padding: 20px;    /* Añade espacio alrededor del gráfico */
+    background-color: #f9f9f9; /* Fondo claro para el área del gráfico */
+    border-radius: 8px; /* Bordes redondeados para suavizar la apariencia */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  /* Estilo del encabezado */
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Color oscuro para buen contraste */
+    text-align: center;
+    margin-bottom: 20px; /* Espacio debajo del encabezado */
+    text-transform: uppercase; /* Hacer que el título esté en mayúsculas */
+  }
+  
+  /* Estilo de las etiquetas del gráfico */
+  .chart-container canvas {
+    width: 100% !important; /* Asegura que el gráfico ocupe el 100% de su contenedor */
+    height: auto !important; /* Mantiene la proporción del gráfico */
+  }
+  
+  /* Estilos del gráfico para hacer el fondo más atractivo */
+  .chart-container {
+    background-color: #ffffff; /* Fondo blanco para el área del gráfico */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+  }
+  
+  /* Mejoras de accesibilidad */
+  .chart-container h1 {
+    font-family: 'Roboto', sans-serif; /* Fuente moderna y clara */
+  }
+  
+  .chart-container canvas {
+    border-radius: 8px; /* Bordes redondeados para las barras */
+  }
+  
