@@ -20,7 +20,7 @@ export class ListarnoticiasComponent implements OnInit {
   dataSource: MatTableDataSource<Noticias>= new MatTableDataSource();
   selectedNoticia: Noticias | null = null;
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
+  // displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -28,17 +28,16 @@ export class ListarnoticiasComponent implements OnInit {
 
   ngOnInit(): void {
     this.nS.list().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.nS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.data = data;
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
-  }
+}
 
   eliminar(id: number) {
     this.nS.delete(id).subscribe((data) => {

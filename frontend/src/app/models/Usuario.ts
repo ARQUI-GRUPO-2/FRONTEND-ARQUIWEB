@@ -13,5 +13,5 @@ export class Usuario{
     correo:string=""
     password:string=""
     enabled:boolean=true
-    roles: Rol = new Rol()
+    rol: Rol = new Rol()
 }

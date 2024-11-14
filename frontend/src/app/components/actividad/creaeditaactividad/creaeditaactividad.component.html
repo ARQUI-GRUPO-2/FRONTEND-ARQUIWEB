@@ -38,14 +38,15 @@
             <input matInput placeholder="1" formControlName="cantidad" />
         </mat-form-field>
         <br>
-        <mat-form-field>
+       
+        <!-- mat-form-field>
             <mat-label>Ubicacion</mat-label>
             <mat-select formControlName="ubicacion">
-              @for (c of listaUbicaciones; track c) {
-              <mat-option [value]="c.value">{{ c.viewValue }}</mat-option>
+              @for (c of listaCentros; track c) {
+              <mat-option [value]="c.idCentroReciclaje">{{ c.direccion }}</mat-option>
               }
             </mat-select>
-        </mat-form-field>
+        </!-->
         <mat-form-field>
           <mat-label>Tipo de Actividad</mat-label>
           <mat-select  formControlName="tipoactividad" >
@@ -56,21 +57,23 @@
           <mat-error *ngIf="form.get('tipoactividad')?.hasError('required')"
               >El tipo de actividad es obligatorio.</mat-error>
         </mat-form-field>
+
         <mat-form-field>
           <mat-label>Centro de Reciclaje</mat-label>
           <mat-select formControlName="centros" >
             @for (m of listaCentros; track m) {
-            <mat-option [value]="m.idCentroReciclaje">{{ m.idCentroReciclaje }}</mat-option>
+            <mat-option [value]="m.idCentroReciclaje">{{ m.direccion }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('centros')?.hasError('required')"
               >El centro de reciclaje es obligatorio.</mat-error>
         </mat-form-field>
+        
         <mat-form-field>
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="usuarios" >
             @for (m of listaUsuarios; track m) {
-            <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
+            <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('usuarios')?.hasError('required')"

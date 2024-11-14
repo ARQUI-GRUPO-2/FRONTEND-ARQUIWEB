@@ -9,7 +9,6 @@ export class Actividad{
     nombre:string=""
     puntos: number = 0
     cantidad:string=""
-    ubicacion:string=""
     ta:TipoActividad=new TipoActividad()
     cr:CentroReciclaje=new CentroReciclaje()
     u:Usuario=new Usuario()

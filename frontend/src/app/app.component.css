@@ -37,20 +37,28 @@
 }
 
 .button-noti {
+    font-family: Gabarito, sans-serif; /* Fuente personalizada */
     background-color: transparent;
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transform: scale(1.5);
+    margin-right: 50px;
+    font-size: 10px;
+}
+
+.noti-text {
+    font-weight: bold;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 9px;
+    text-align: left; /* Alinea el texto a la izquierda */
 }
 
 .button-noticias {
     background-color: transparent;
     transform: scale(1.5);
 }
-
-
 
 
  /* Estilos para el contenedor principal */
@@ -90,9 +98,8 @@
 .menu-text {
     font-weight: bold;
     font-family: 'Gabarito', sans-serif;
-    font-size: 0.8rem;
+    font-size: 13px;
     text-align: left; /* Alinea el texto a la izquierda */
-
 }
 
 /* Contenido principal */
@@ -115,10 +122,13 @@
 .recycling-icon {
     width: 80%; /* Hace que la imagen ocupe todo el ancho de la barra lateral */
     height: auto; /* Mantiene la proporción de la imagen */
+    margin-left: 65px;
 }
 .menu-toolbar {
+    margin-left: 30px;
     display: flex; /* Permite alinear los botones horizontalmente */
     font-family: Gabarito, sans-serif; /* Fuente personalizada */
+    transform: scale(1.5);
 }
 
 .mat-menu-item {
@@ -129,8 +139,8 @@
 
 .close {
     align-self: flex-start; /* Alinea a la izquierda */
-    margin-top: 110px; /* Empuja el botón hacia abajo */
-    margin-right: 300px;
+    margin-top: 50px; /* Empuja el botón hacia abajo */
+    margin-right: 235px;
     background-color: transparent;
     color: black;
     border: none;
@@ -138,4 +148,15 @@
     cursor: pointer;
     font-family: 'Gabarito', sans-serif;
     font-weight: bold;
+    transform: scale(1.5);
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+    .main-container {
+        flex-direction: column;
+    }
 }
