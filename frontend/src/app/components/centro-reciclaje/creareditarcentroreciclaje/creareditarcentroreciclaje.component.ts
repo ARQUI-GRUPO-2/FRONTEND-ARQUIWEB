@@ -32,7 +32,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
 //API
   lat=0
   lng=0
-  edicion: boolean = false;
   center: google.maps.LatLngLiteral = { lat: -12.1040489, lng: -76.9654806 }; 
   zoom: number = 15; // Nivel de zoom
   markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
