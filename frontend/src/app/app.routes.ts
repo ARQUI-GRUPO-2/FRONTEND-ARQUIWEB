@@ -33,6 +33,8 @@ import { ActividadesporusuarioComponent } from './components/reportes/actividade
 import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
 import { RecompensasmasreclamadasComponent } from './components/reportes/recompensasmasreclamadas/recompensasmasreclamadas.component';
 import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
+import { CantidaddeusuariosporrolComponent } from './components/reportes/cantidaddeusuariosporrol/cantidaddeusuariosporrol.component';
+import { PromedionotificacionespordiausuarioComponent } from './components/reportes/promedionotificacionespordiausuario/promedionotificacionespordiausuario.component';
 
 export const routes: Routes = [
   {
@@ -71,8 +73,16 @@ export const routes: Routes = [
         component: ReportesComponent,
         children: [
           {
-            path: 'conteo_notificaciones_rangoHoras',
+            path: 'conteo_notificaciones_rangodias',
             component: CantidadnotiusuarioComponent, //FFF
+          },
+          {
+            path: 'cantidaddeUsuariosPorRol',
+            component: CantidaddeusuariosporrolComponent, //FFF
+          },
+          {
+            path: 'promedioNotificacionesPorDiaUsuario',
+            component: PromedionotificacionespordiausuarioComponent, //FFF
           },
         ],
       },
