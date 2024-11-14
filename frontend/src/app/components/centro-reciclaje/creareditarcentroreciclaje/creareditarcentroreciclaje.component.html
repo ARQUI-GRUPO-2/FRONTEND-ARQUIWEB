@@ -9,7 +9,7 @@
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>Código</mat-label>
-          <input matInput formControlName="hcodigo" />
+          <input matInput formControlName="hcodigo" [disabled]="isCliente()" />
           <mat-error *ngIf="form.get('codigo')?.hasError('required')">
             El codigo es obligatorio
           </mat-error>
@@ -18,7 +18,7 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Direccion</mat-label>
-          <input matInput formControlName="hdireccion" />
+          <input matInput formControlName="hdireccion" [disabled]="isCliente()" />
           <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
             La direccion es obligatoria.
           </mat-error>
@@ -27,7 +27,7 @@
 
         <mat-form-field class="example-full-width">
         <mat-label>Latitud</mat-label>
-        <input matInput formControlName="hlatitud" />
+        <input matInput formControlName="hlatitud" [disabled]="isCliente()" />
         <mat-error *ngIf="form.get('hlatitud')?.hasError('required')">
           La latitud es obligatoria.
         </mat-error>
@@ -35,7 +35,7 @@
 
         <mat-form-field class="example-full-width">
             <mat-label>Longitud</mat-label>
-            <input matInput formControlName="hlongitud" />
+            <input matInput formControlName="hlongitud" [disabled]="isCliente()" />
             <mat-error *ngIf="form.get('hlongitud')?.hasError('required')">
               La longitud es obligatoria
             </mat-error>
@@ -43,7 +43,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Horario</mat-label>
-          <input matInput formControlName="hhorario" placeholder="HH:mm:ss"/>
+          <input matInput formControlName="hhorario" [disabled]="isCliente()" placeholder="HH:mm:ss"/>
           <mat-error *ngIf="form.get('hhorario')?.hasError('required')">
             El horario es obligatorio.
           </mat-error>
@@ -51,7 +51,7 @@
 <br/>
         <mat-form-field>
           <mat-label>ID del Usuario</mat-label>
-          <mat-select formControlName="husuario" >
+          <mat-select formControlName="husuario" [disabled]="isCliente()" >
             @for (m of listaUsuarios; track m) {
             <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
             }
@@ -62,7 +62,7 @@
         </mat-form-field>
 <br/>
 
-        <mat-checkbox class="example-margin" formControlName="hfavoritos" matInput
+        <mat-checkbox class="example-margin" formControlName="hfavoritos" [disabled]="isCliente()" matInput
         >Favorito</mat-checkbox>
         <mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
           Marcar es obligatorio

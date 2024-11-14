@@ -4,7 +4,7 @@
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>Código</mat-label>
-          <input matInput formControlName="hcodigo"/>
+          <input matInput formControlName="hcodigo" [disabled]="isCliente()" />
           <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
             El codigo es obligatorio
         </mat-error>
@@ -13,7 +13,7 @@
 
         <mat-form-field class="example-full-width" >
           <mat-label>Nombre</mat-label>
-          <input matInput formControlName="hnombre" />
+          <input matInput formControlName="hnombre" [disabled]="isCliente()" />
          <mat-error *ngIf="form.get('hnombre')?.hasError('required')">
           El nombre es obligatorio
       </mat-error>
@@ -22,7 +22,7 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Descripción de la Recompensa</mat-label>
-          <input matInput formControlName="hdescripcion" />
+          <input matInput formControlName="hdescripcion" [disabled]="isCliente()" />
           <mat-error *ngIf="form.get('hdescripcion')?.hasError('required')">
             El descripcion es obligatorio
         </mat-error>
@@ -30,7 +30,7 @@
       <br/>
         <mat-form-field class="example-full-width">
           <mat-label>Código Qr</mat-label>
-          <input matInput formControlName="hcodigoqr" />
+          <input matInput formControlName="hcodigoqr" [disabled]="isCliente()" />
           <mat-error *ngIf="form.get('hcodigoqr')?.hasError('required')">
             El codigo es obligatorio
         </mat-error>
@@ -39,7 +39,7 @@
 
         <mat-form-field>
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="hfecha"/>
+          <input matInput [matDatepicker]="picker" formControlName="hfecha" [disabled]="isCliente()"/>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
@@ -54,7 +54,7 @@
 
         <mat-form-field>
           <mat-label>Usuario</mat-label>
-          <mat-select formControlName="hactividad">
+          <mat-select formControlName="hactividad" [disabled]="isCliente()" >
             @for (a of listaActividad; track a) {
             <mat-option [value]="a.idActividad">{{ a.u.username }}</mat-option>
             }
