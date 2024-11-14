@@ -99,11 +99,20 @@
                 <mat-icon>star</mat-icon>
                 <span class="menu-text">Recompensas</span>
             </button>
+            <button mat-button [matMenuTriggerFor]="menuRecRepo" style="color: #000;">
+                <mat-icon>search</mat-icon> 
+                <span class="menu-text">Reportes</span>
+            </button>
         </div>
         <mat-menu #menuRecompensas="matMenu">
             <button mat-menu-item routerLink="/recompensas" *ngIf="isAdmin() || isCliente() ">Listar</button>
             <button mat-menu-item routerLink="/recompensas/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
+        <mat-menu #menuRecRepo="matMenu">
+            <button mat-menu-item routerLink="/recompensas/reportes/cantidadrecompensas">Cantidad de recompensas reclamadas</button>
+            <button mat-menu-item routerLink="/recompensas/reportes/proxvencer">Recompensas Próximas a Vencer</button>
+        </mat-menu>
+
         
         <!-- Icono de reciclaje -->
         <div class="sidebar-icon">
