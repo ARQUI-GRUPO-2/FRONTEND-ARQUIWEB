@@ -1,16 +1,13 @@
 .container {
-    /*width: 85%;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;*/
-    display: flex;
+  width: 85%;
+  margin-left: 380px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
   flex-direction: column;
-  align-items: left;
-  padding: 16px;
-  margin-left: 260px;
+  align-items: 15px; /* Alinea el contenido hacia la derecha */
 
 }
 
@@ -24,15 +21,19 @@ h1 {
 }
 
 table {
-    width: 100%;
+    /*width: 20%;
     border-collapse: collapse;
-    margin: 0 auto;
+    margin: 0 auto;  /* Ocupa el ancho máximo posible */
+    width: 20%;
+    max-width: 500px; /* Limita el ancho máximo */
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 4px 7px;
     text-align: center;
     border: 1px solid #bdc3c7;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+
 }
 
 th {

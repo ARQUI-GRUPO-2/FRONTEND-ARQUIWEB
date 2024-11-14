@@ -1,6 +1,12 @@
 import { LoginService } from './services/login.service';
-import { Component} from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterModule,
+  RouterOutlet,
+} from '@angular/router';
 
 import { RecompensaComponent } from './components/recompensa/recompensa.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -18,8 +24,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CommonModule } from '@angular/common';
 
 import { RolComponent } from './components/rol/rol.component';
-import { LoginComponent } from "./components/login/login.component";
-import { WelcomeComponent } from "./components/welcome/welcome.component";
+import { LoginComponent } from './components/login/login.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +41,6 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
     MatButtonModule,
     NgxMaterialTimepickerModule,
     CommonModule,
-
     CentroReciclajeComponent,
     NoticiasComponent,
     TipoactividadComponent,
@@ -45,36 +50,37 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
     ActividadComponent,
     RolComponent,
     LoginComponent,
-    WelcomeComponent
-],
+    WelcomeComponent,
+  ],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-
 export class AppComponent {
-
   title = 'frontend';
   role: string = '';
   isWelcomePage: boolean = false;
 
-  
   constructor(private loginService: LoginService, private router: Router) {
-      // Verifica la ruta actual para mostrar u ocultar elementos
-      this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          this.isWelcomePage = event.url === '/' || event.url === '/welcome' || event.url==='/login';
-        }
-      });
-    }
-  
+    // Verifica la ruta actual para mostrar u ocultar elementos
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isWelcomePage =
+          event.url === '/' ||
+          event.url === '/welcome' ||
+          event.url === '/login' ||
+          event.url === '/home';
+      }
+    });
+  }
+
   cerrar() {
     sessionStorage.clear();
   }
 
   verificar(): boolean {
     this.role = this.loginService.showRole();
-    return this.loginService.verificar();  // Devuelve true si está autenticado
+    return this.loginService.verificar(); // Devuelve true si está autenticado
   }
 
   isAdmin() {
@@ -85,6 +91,3 @@ export class AppComponent {
     return this.role === 'CLIENTE';
   }
 }
-  
-
-
