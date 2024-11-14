@@ -62,6 +62,7 @@ export class CreareditarrecompensaComponent implements OnInit {
       hcodigoqr: ['', Validators.required],
       hfecha: ['', Validators.required],
       hactividad: [null], // Permitir nulo por defecto
+      //hactividad: ['',Validators.required] 
     });
 
     this.aS.list().subscribe((data) => {
