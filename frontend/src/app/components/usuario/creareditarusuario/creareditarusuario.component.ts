@@ -5,7 +5,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { LoginService } from '../../../services/login.service';
 
 import {
   FormBuilder,
@@ -43,6 +42,7 @@ export class creareditarusuarioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaRoles: Rol[]=[];
   usuario: Usuario = new Usuario();
+
   id: number = 0;
   edicion: boolean = false;
 
@@ -50,24 +50,15 @@ export class creareditarusuarioComponent implements OnInit {
     { value: 'Masculino', viewValue: 'Masculino' },
     { value: 'Femenino', viewValue: 'Femenino' },
   ];
-  listaEnabled: { value: string; viewValue: string }[] = [
-    { value: 'true', viewValue: 'true' },
-    { value: 'false', viewValue: 'false' }, //VERIFICARLUEGO
-  ];
-
-  role:string='';
 
   constructor(
     private uS: UsuarioService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route:ActivatedRoute,
-    private rS: RolService,
-    private lS: LoginService
+    private rS: RolService
   ) {}
   ngOnInit(): void {
-    this.role = this.lS.showRole();
-
     this.route.params.subscribe((data: Params) => {
       this.id = data['id']
       this.edicion = data['id'] != null
@@ -85,8 +76,7 @@ export class creareditarusuarioComponent implements OnInit {
       htelefono: ['', Validators.required],
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
-      henabled: ['', Validators.required],
-      //henabled: [false, Validators.required],
+      henabled: [false, Validators.required],
       hroles: ['', Validators.required]
     });
 
@@ -108,8 +98,7 @@ export class creareditarusuarioComponent implements OnInit {
       this.usuario.correo = this.form.value.hcorreo;
       this.usuario.password = this.form.value.hpassword;
       this.usuario.enabled = this.form.value.henabled;
-      this.usuario.rol = this.form.value.hroles;
-      //this.usuario.rol.idRol = this.form.value.hroles;
+      this.usuario.rol.idRol = this.form.value.hroles;
 
       if (this.edicion) {
         this.uS.update(this.usuario).subscribe((data) => {
@@ -130,8 +119,7 @@ export class creareditarusuarioComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.uS.listId(this.id).subscribe((data) => {
-        //this.form = new FormGroup({
-        this.form = this.formBuilder.group({
+        this.form = new FormGroup({
           hcodigo: new FormControl(data.idUser),
           hnombres: new FormControl(data.nombres),
           hapellidos: new FormControl(data.apellidos),

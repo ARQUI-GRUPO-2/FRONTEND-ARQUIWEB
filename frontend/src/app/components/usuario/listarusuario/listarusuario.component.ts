@@ -1,23 +1,37 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Usuario } from '../../../models/Usuario';
+import { UsuarioService } from '../../../services/usuario.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { Usuario } from '../../../models/Usuario';
-import { UsuarioService } from '../../../services/usuario.service';
+import { MatCardModule } from '@angular/material/card';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarusuario',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, MatCardModule, MatPaginatorModule,CommonModule],
+
+  imports: [MatTableModule,
+    CommonModule,
+    RouterLink,
+    MatIconModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatPaginatorModule, MatCardModule],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css',
 })
 export class ListarusuarioComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7', 'c8', 'c9', 'c10', 'c11', 'c12', 'c13', 'accion01','accion02'];
   //se agrega:
   //form: FormGroup; 
   //noResults: boolean = false; 
@@ -25,20 +39,24 @@ export class ListarusuarioComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private uS: UsuarioService) {}
+  constructor(private uS: UsuarioService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
       this.dataSource.data = data;
       //this.cargarUsuarios();
+      
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
     this.uS.getList().subscribe((data) => {
       this.dataSource.data = data;
     });
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.cdr.detectChanges();
   }
 
   /* Cargar la lista de usuarios dependiendo del rol
@@ -52,6 +70,8 @@ export class ListarusuarioComponent implements OnInit {
     this.uS.delete(id).subscribe((data) => {
       this.uS.list().subscribe((data) => {
         this.uS.setList(data);
+        this.dataSource.data = data;
+        this.dataSource.paginator = this.paginator;
       });
     });
   }

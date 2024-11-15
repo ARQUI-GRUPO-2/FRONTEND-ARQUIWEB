@@ -10,5 +10,5 @@ import { ListarusuarioComponent } from './listarusuario/listarusuario.component'
   styleUrl: './usuario.component.css',
 })
 export class UsuarioComponent {
-  constructor(public route:ActivatedRoute) { }
+  constructor(public route:ActivatedRoute) {}
 }
