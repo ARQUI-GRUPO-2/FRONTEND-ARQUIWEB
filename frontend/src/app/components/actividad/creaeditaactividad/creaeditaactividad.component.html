@@ -27,6 +27,15 @@
         <br/>
 
         <mat-form-field class="example-full-width">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="descripcion" />
+            <mat-error *ngIf="form.get('descripcion')?.hasError('required')"> 
+              La descripcion es obligatoria.
+            </mat-error>        
+        </mat-form-field>  
+        <br/>
+
+        <mat-form-field class="example-full-width">
             <mat-label>Puntos</mat-label>
             <input matInput placeholder="123..." formControlName="puntos" />
             <mat-error *ngIf="form.get('puntos')?.hasError('required')"> 

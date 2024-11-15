@@ -1,13 +1,24 @@
 <div class="container">
+    <div><h1>Lista de Actividades por Centro</h1></div>
     <div>
-      <h1>Gráfico de Actividades por Centro</h1>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">           
+             <th mat-header-cell *matHeaderCellDef>ID</th>     
+             <td mat-cell *matCellDef="let element"> {{element.id_centro_reciclaje}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="cantidad">          
+             <th mat-header-cell *matHeaderCellDef>Cantidad de Actividades por Centro</th>          
+             <td mat-cell *matCellDef="let element"> {{element.numero_actividades}} </td>          
+            </ng-container>
+           
+           
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+           </table>
+           <mat-paginator [pageSizeOptions]="[4,7,10]" showFirstLastButtons></mat-paginator>
     </div>
-    <div>
-      <canvas baseChart 
-        [data]="barChartData"
-        [options]="barChartOptions"
-        chartType="bar">
-      </canvas>
-    </div>
-  </div>
-  
+</div>
+
+

@@ -1,12 +1,12 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{ edicion ? "Agregue a favoritos su centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
-      <div>
+    <div><h1>{{ edicion ? "Agregue a favortios su centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
+    <div>
       <div class="map-container">
         <google-map [center]="center" [zoom]="zoom">
           <map-marker [position]="markerPosition"></map-marker>
         </google-map>
       </div>
-    <form [formGroup]="form" (submit)=" insertar()">
+      <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>Código</mat-label>
           <input matInput formControlName="hcodigo" [disabled]="isCliente()" />
@@ -15,23 +15,23 @@
           </mat-error>
         </mat-form-field>
         <br />
+
         <mat-form-field class="example-full-width">
-        <mat-label>Direccion</mat-label>
-        <input matInput formControlName="hdireccion" [disabled]="isCliente()" />
-        <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
-          La direccion es obligatoria.
-        </mat-error>
+          <mat-label>Direccion</mat-label>
+          <input matInput formControlName="hdireccion" [disabled]="isCliente()" />
+          <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
+            La direccion es obligatoria.
+          </mat-error>
         </mat-form-field>
         <br />
 
-      <mat-form-field class="example-full-width">
-      <mat-label>Latitud</mat-label>
-      <input matInput formControlName="hlatitud" [disabled]="isCliente()" />
-      <mat-error *ngIf="form.get('hlatitud')?.hasError('required')">
-        La latitud es obligatoria.
-      </mat-error>
+        <mat-form-field class="example-full-width">
+        <mat-label>Latitud</mat-label>
+        <input matInput formControlName="hlatitud" [disabled]="isCliente()" />
+        <mat-error *ngIf="form.get('hlatitud')?.hasError('required')">
+          La latitud es obligatoria.
+        </mat-error>
       </mat-form-field>
-      <br />
 
         <mat-form-field class="example-full-width">
             <mat-label>Longitud</mat-label>
@@ -48,32 +48,30 @@
             El horario es obligatorio.
           </mat-error>
         </mat-form-field>
-        <br/>
-
+<br/>
         <mat-form-field>
           <mat-label>Username</mat-label>
           <mat-select formControlName="husuario" [disabled]="isCliente()" >
             @for (m of listaUsuarios; track m) {
-            <mat-option [value]="m.idUser">{{ m.username }}</mat-option> }
-            </mat-select>
-            <mat-error *ngIf="form.get('husuario')?.hasError('required')">
-              Asignar usuario es obligatorio.
-            </mat-error>
+            <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('husuario')?.hasError('required')">
+            Asignar un usuario es obligatorio
+          </mat-error>
         </mat-form-field>
-      
+<br/>
+
         <mat-checkbox class="example-margin" formControlName="hfavoritos" [disabled]="isCliente()" matInput
         >Favorito</mat-checkbox>
         <mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
           Marcar es obligatorio
-        </mat-error>
+      </mat-error>
 
-          <mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
-            Asignar favorito es obligatorio.
-          </mat-error>
-
-      <div>
-          <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
+        <div>
+            <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
+        </div>
+        
+        </form>
       </div>
-    </form>
-  </div>
-</div>
+    </div>    

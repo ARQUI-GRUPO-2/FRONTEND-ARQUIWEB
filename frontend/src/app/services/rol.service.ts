@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Rol } from '../models/Rol';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { CantidaddeUsuariosPorRolDTO } from '../models/CantidaddeUsuariosPorRolDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -42,9 +41,5 @@ export class RolService {
 
   update(rol: Rol) {
     return this.http.put(this.url, rol);
-  }
-
-  getUsuarioNoti(): Observable<CantidaddeUsuariosPorRolDTO[]> {
-    return this.http.get<CantidaddeUsuariosPorRolDTO[]>(`${this.url}/conteo_notificaciones_rangodias`);
   }
 }

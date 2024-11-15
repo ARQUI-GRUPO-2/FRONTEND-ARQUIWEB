@@ -9,22 +9,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginService } from '../../../services/login.service';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule, GoogleMap, MapMarker, 
-    GoogleMapsModule,     MatCheckboxModule, MatFormFieldModule, MatIconModule],   
+  imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule, GoogleMap, MapMarker, GoogleMapsModule,  
+    MatCheckboxModule,
+    MatFormFieldModule, MatIconModule], 
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
@@ -42,12 +45,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   center: google.maps.LatLngLiteral = { lat: -12.1040489, lng: -76.9654806 }; 
   zoom: number = 15; // Nivel de zoom
   markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
-
-
-  listaFavoritos: { value: string; viewValue: string }[] = [
-    { value: 'False', viewValue: 'False' },
-    { value: 'True', viewValue: 'True' }
-  ];
 
 
   constructor(
@@ -74,17 +71,15 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       hlatitud: ['', Validators.required],
       hlongitud: ['', Validators.required],
       hhorario: ['', Validators.required],
+      //hfavoritos: [false, Validators.required],
+      //husuario: ['', Validators.required]
       hfavoritos: [null],
       husuario: [null]
-      //hfavoritos: ['', Validators.required],
-      //husuario: ['', Validators.required]
     });
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
 
-
-    
     // Escucha los cambios en latitud y longitud para actualizar el mapa
     this.form.get('hlatitud')?.valueChanges.subscribe((lat) => {
       this.updateMapPosition(lat, this.form.get('hlongitud')?.value);
@@ -109,12 +104,15 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       this.centroReciclaje.latitud = this.form.value.hlatitud;
       this.centroReciclaje.longitud = this.form.value.hlongitud;
       this.centroReciclaje.horario = this.form.value.hhorario;
-
+      //this.centroReciclaje.favoritos = this.form.value.hfavoritos;
+      //this.centroReciclaje.us.idUser = this.form.value.husuario;
 
       //nulos
       this.centroReciclaje.favoritos = this.form.value.hfavoritos;
       this.centroReciclaje.us = this.form.value.husuario 
       ? { idUser: this.form.value.husuario } as Usuario : null;
+
+
 
       if (this.edicion) {
         this.cS.update(this.centroReciclaje).subscribe((data) => {
@@ -150,14 +148,17 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
-        this.form = this.formBuilder.group({
+        this.form = new FormGroup({
           hcodigo: new FormControl(data.idCentroReciclaje),
-          hdireccion: new FormControl(data.direccion, Validators.required),
-          hlatitud: new FormControl(data.latitud, Validators.required),
-          hlongitud: new FormControl(data.longitud, Validators.required),
-          hhorario: new FormControl(data.horario, Validators.required),
-          hfavoritos: new FormControl(data.favoritos !== null ? data.favoritos : false), // Usa `false` en vez de `null`
-          husuario: new FormControl(data.us ? data.us.idUser : null, Validators.required) // Usa cadena vacía en vez de `null`
+          hdireccion: new FormControl(data.direccion),
+          hlatitud: new FormControl(data.latitud),
+          hlongitud: new FormControl(data.longitud),
+          hhorario: new FormControl(data.horario),
+          //hfavoritos: new FormControl(data.favoritos),
+          //husuario: new FormControl(data.us.idUser)
+          hfavoritos: new FormControl(data.favoritos), // Permitir nulo en favoritos
+          husuario: new FormControl(data.us?.idUser || null) // Permitir nulo en usuario
+        
         });  
 
         // Si es cliente, deshabilitamos todos 
@@ -171,8 +172,8 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       });
     }
   }
-
   isCliente(): boolean {
     return this.role === 'CLIENTE';
-  }
+  }
+
 }
