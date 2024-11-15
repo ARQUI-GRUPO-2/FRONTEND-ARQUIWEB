@@ -76,13 +76,16 @@
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
+            
         </div>
         <mat-menu #menuUsuario="matMenu">
             <button mat-menu-item routerLink="/usuarios" *ngIf="isAdmin() || isCliente()">Listar</button>
             <button mat-menu-item routerLink="/usuarios/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
         <mat-menu #menuCantidadUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangoHoras">Cantidad de notificaciones por usuario</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangodias">Cantidad de notificaciones por usuario en rango de dias</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/cantidaddeUsuariosPorRol">Cantidad de usuarios por rol</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/promedioNotificacionesPorDiaUsuario">Promedio de notificaciones por dia y usuario</button>
         </mat-menu>
         
         <!-- Menú Centros de Reciclaje -->

@@ -4,7 +4,7 @@ import { Usuario } from "./Usuario"
 
 export class Actividad{
     idActividad:number=0
-    fecha_recepcion:string=""
+    fecha_recepcion:Date=new Date(Date.now())
     puntos: number = 0
     cantidad:string=""
     ta:TipoActividad=new TipoActividad()
