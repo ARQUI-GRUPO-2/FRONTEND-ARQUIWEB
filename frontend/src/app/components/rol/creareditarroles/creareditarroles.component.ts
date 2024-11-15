@@ -52,11 +52,6 @@ export class CreareditarrolesComponent implements OnInit{
   }
 
   insertar(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
-      return; // Detiene la ejecución si el formulario no es válido
-    }
-    
     if (this.form.valid) {
       this.roles.idRol = this.form.value.hcodigo;
       this.roles.nombreRol = this.form.value.hnombre;

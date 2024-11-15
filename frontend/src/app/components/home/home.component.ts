@@ -94,6 +94,6 @@ export class HomeComponent implements OnInit {
       this.usuario.enabled = this.form.value.henabled;
       this.usuario.rol.idRol = this.form.value.hroles;
     }
-    this.router.navigate(['noticias']);
+    this.router.navigate(['usuarios']);
   }
 }

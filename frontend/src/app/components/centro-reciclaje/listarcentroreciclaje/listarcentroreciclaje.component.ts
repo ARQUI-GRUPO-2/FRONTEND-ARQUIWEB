@@ -8,7 +8,6 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-listarcentroreciclaje',
   standalone: true,

@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{ edicion ? "Agregue a favortios su centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
+    <div><h1>{{ edicion ? "Actualizar centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
     <div>
       <div class="map-container">
         <google-map [center]="center" [zoom]="zoom">
@@ -50,10 +50,10 @@
         </mat-form-field>
 <br/>
         <mat-form-field>
-          <mat-label>Username</mat-label>
+          <mat-label>ID del Usuario</mat-label>
           <mat-select formControlName="husuario" [disabled]="isCliente()" >
             @for (m of listaUsuarios; track m) {
-            <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
+            <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('husuario')?.hasError('required')">

@@ -77,7 +77,7 @@ export const routes: Routes = [
         ],
       },
     ],
-    //canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
   },
   {
     path: 'notificaciones',

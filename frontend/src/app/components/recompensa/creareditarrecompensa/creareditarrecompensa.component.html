@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{  edicion ? '¡Reclame su recompensa!' : 'Registrar recompensa' }}</h1></div>
+    <div><h1>{{  edicion ? 'Actualizar recompensa' : 'Registrar recompensa' }}</h1></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -21,15 +21,13 @@
     <br/>
 
         <mat-form-field class="example-full-width">
-          <mat-label>Descripción</mat-label>
-          <textarea matInput formControlName="hdescripcion" [disabled]="isCliente()" ></textarea>
+          <mat-label>Descripción de la Recompensa</mat-label>
+          <input matInput formControlName="hdescripcion" [disabled]="isCliente()" />
           <mat-error *ngIf="form.get('hdescripcion')?.hasError('required')">
             El descripcion es obligatorio
         </mat-error>
       </mat-form-field>
       <br/>
-
-
         <mat-form-field class="example-full-width">
           <mat-label>Código Qr</mat-label>
           <input matInput formControlName="hcodigoqr" [disabled]="isCliente()" />
@@ -40,7 +38,7 @@
       <br/>
 
         <mat-form-field>
-          <mat-label>Selecciona una fecha</mat-label>
+          <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="hfecha" [disabled]="isCliente()"/>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -55,7 +53,7 @@
       <br/>
 
         <mat-form-field>
-          <mat-label>Username</mat-label>
+          <mat-label>Usuario</mat-label>
           <mat-select formControlName="hactividad" [disabled]="isCliente()" >
             @for (a of listaActividad; track a) {
             <mat-option [value]="a.idActividad">{{ a.u.username }}</mat-option>

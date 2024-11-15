@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center; margin: 2%">
-  <div><h1>{{ edicion ? 'Actualizar notificación' : 'Registrar notificación'}}</h1></div>
+  <div><h1>{{ edicion ? 'Actualizar notificacion' : 'Registrar notificacion'}}</h1></div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -22,7 +22,7 @@
 
       <br />
       <mat-form-field>
-        <mat-label>Seleccione una fecha</mat-label>
+        <mat-label>Fecha de Notificacion</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="hfecha" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
@@ -37,22 +37,22 @@
       <br/>
 
       <mat-form-field>
-          <mat-label>Titular</mat-label>
+          <mat-label>ID de Noticia</mat-label>
             <mat-select formControlName="hcodenoticia" >
                 @for (m of listaNoticias; track m) {
-                <mat-option [value]="m.idNoticias">{{ m.titulo }}</mat-option> }
+                <mat-option [value]="m.idNoticias">{{ m.idNoticias }}</mat-option> }
               </mat-select>
               <mat-error *ngIf="form.get('hcodenoticia')?.hasError('required')">
                 Asignar una noticia es obligatorio
               </mat-error>
-          </mat-form-field>
-      <br/>
+            </mat-form-field>
+            <br/>
 
       <mat-form-field>
-        <mat-label>Username</mat-label>
+        <mat-label>ID del Usuario</mat-label>
         <mat-select formControlName="hcodeuser" >
           @for (m of listaUsuarios; track m) {
-          <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
+          <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
           }
         </mat-select>
         <mat-error *ngIf="form.get('hcodeuser')?.hasError('required')">
@@ -60,6 +60,14 @@
         </mat-error>
       </mat-form-field>
       <br/>
+    
+      <mat-checkbox class="example-margin" formControlName="hestado" matInput
+      >Estado</mat-checkbox>
+      <mat-error *ngIf="form.get('hestado')?.hasError('required')">
+        Marcar es obligatorio
+    </mat-error>
+  <br/>
+
 
       <div>
         <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>

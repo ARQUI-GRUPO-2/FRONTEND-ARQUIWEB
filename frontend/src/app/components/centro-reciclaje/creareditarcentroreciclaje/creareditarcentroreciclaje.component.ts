@@ -20,14 +20,13 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginService } from '../../../services/login.service';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
   imports: [MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule, NgxMaterialTimepickerModule, GoogleMap, MapMarker, GoogleMapsModule,  
     MatCheckboxModule,
-    MatFormFieldModule, MatIconModule], 
+    MatFormFieldModule], 
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
@@ -36,9 +35,8 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   listaUsuarios: Usuario[] = [];
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
-  edicion: boolean = false;
-  role: string = '';
 
+  edicion: boolean = false;
 //API
   lat=0
   lng=0
@@ -46,6 +44,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   zoom: number = 15; // Nivel de zoom
   markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
 
+  role: string = '';
 
   constructor(
     private cS: CentroReciclajeService,
@@ -62,6 +61,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
+      //trae los datos
       this.init();
     });
 
@@ -92,12 +92,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   }
 
   insertar(): void {
-
-    if (this.form.invalid) {
-      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
-      return; // Detiene la ejecución si el formulario no es válido
-    }
-    
     if (this.form.valid) {
       this.centroReciclaje.idCentroReciclaje = this.form.value.hcodigo;
       this.centroReciclaje.direccion = this.form.value.hdireccion;
@@ -108,10 +102,10 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
       //this.centroReciclaje.us.idUser = this.form.value.husuario;
 
       //nulos
-      this.centroReciclaje.favoritos = this.form.value.hfavoritos;
+      this.centroReciclaje.favoritos = this.form.value.hfavoritos ? true : false;
       this.centroReciclaje.us = this.form.value.husuario 
-      ? { idUser: this.form.value.husuario } as Usuario : null;
-
+        ? ({ idUser: this.form.value.husuario } as Usuario)
+        : null;
 
 
       if (this.edicion) {
@@ -156,12 +150,11 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
           hhorario: new FormControl(data.horario),
           //hfavoritos: new FormControl(data.favoritos),
           //husuario: new FormControl(data.us.idUser)
-          hfavoritos: new FormControl(data.favoritos), // Permitir nulo en favoritos
-          husuario: new FormControl(data.us?.idUser || null) // Permitir nulo en usuario
-        
+          hfavoritos: new FormControl(data.favoritos !== undefined ? data.favoritos : null),
+          husuario: new FormControl(data.us ? data.us.idUser : null)
         });  
 
-        // Si es cliente, deshabilitamos todos 
+        // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
         if (this.role === 'CLIENTE') {
           this.form.get('hcodigo')?.disable();
           this.form.get('hdireccion')?.disable();
