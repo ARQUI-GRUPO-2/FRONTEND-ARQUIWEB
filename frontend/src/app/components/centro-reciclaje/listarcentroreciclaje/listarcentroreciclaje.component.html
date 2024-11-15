@@ -1,5 +1,5 @@
 <div class="container">
-    <div><h1>Lista de Centros de Reciclaje</h1></div>
+    <div><h1>Centros de Reciclaje</h1></div>
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="c1">
@@ -33,9 +33,12 @@
         </ng-container> 
         
         <ng-container matColumnDef="c7">
-          <th mat-header-cell *matHeaderCellDef>  ID del Usuario</th>
-          <td mat-cell *matCellDef="let element">{{element.us.idUser}}</td>
-        </ng-container> 
+          <th mat-header-cell *matHeaderCellDef>Username</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.us ? element.us.idUser : 'Sin usuario asignado' }}
+          </td>
+        </ng-container>
+        
 
         <ng-container matColumnDef="accion01">
           <th mat-header-cell *matHeaderCellDef>Eliminar</th>

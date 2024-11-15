@@ -59,12 +59,6 @@ export class ListarusuarioComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  /* Cargar la lista de usuarios dependiendo del rol
-  cargarUsuarios(): void {
-    this.uS.getUsers().subscribe((data) => {
-      this.dataSource.data = data;
-    });
-  }*/
 
   eliminar(id: number) {
     this.uS.delete(id).subscribe((data) => {

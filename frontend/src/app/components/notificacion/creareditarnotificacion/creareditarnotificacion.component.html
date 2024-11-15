@@ -22,7 +22,7 @@
 
       <br />
       <mat-form-field>
-        <mat-label>Fecha de Notificacion</mat-label>
+        <mat-label>Seleccione una fecha</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="hfecha" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
@@ -37,7 +37,7 @@
       <br/>
 
       <mat-form-field>
-          <mat-label>ID de Noticia</mat-label>
+          <mat-label>Titular</mat-label>
             <mat-select formControlName="hcodenoticia" >
                 @for (m of listaNoticias; track m) {
                 <mat-option [value]="m.idNoticias">{{ m.idNoticias }}</mat-option> }
@@ -47,22 +47,9 @@
               </mat-error>
             </mat-form-field>
             <br/>
-
-      <mat-form-field>
-        <mat-label>ID del Usuario</mat-label>
-        <mat-select formControlName="hcodeuser" >
-          @for (m of listaUsuarios; track m) {
-          <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
-          }
-        </mat-select>
-        <mat-error *ngIf="form.get('hcodeuser')?.hasError('required')">
-          Asignar un usuario es obligatorio
-        </mat-error>
-      </mat-form-field>
-      <br/>
     
       <mat-checkbox class="example-margin" formControlName="hestado" matInput
-      >Estado</mat-checkbox>
+      >Leido</mat-checkbox>
       <mat-error *ngIf="form.get('hestado')?.hasError('required')">
         Marcar es obligatorio
     </mat-error>

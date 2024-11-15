@@ -6,13 +6,12 @@ import { CentrosusuariosComponent } from './centrosusuarios/centrosusuarios.comp
 import { CantidadnotiusuarioComponent } from './cantidadnotiusuario/cantidadnotiusuario.component';
 import { RecompensasproxvencerComponent } from './recompensasproxvencer/recompensasproxvencer.component';
 import { RecompensasmasreclamadasComponent } from './recompensasmasreclamadas/recompensasmasreclamadas.component';
-import { CantidaddeusuariosporrolComponent } from './cantidaddeusuariosporrol/cantidaddeusuariosporrol.component';
 
 
 @Component({
   selector: 'app-reportes',
   standalone: true,
-  imports: [RouterOutlet, ActividadesporcentroComponent, CentrosfavoritosComponent, CentrosusuariosComponent, CantidadnotiusuarioComponent, RecompensasproxvencerComponent, RecompensasmasreclamadasComponent, CantidaddeusuariosporrolComponent ],
+  imports: [RouterOutlet, ActividadesporcentroComponent, CentrosfavoritosComponent, CentrosusuariosComponent, CantidadnotiusuarioComponent, RecompensasproxvencerComponent, RecompensasmasreclamadasComponent ],
   templateUrl: './reportes.component.html',
   styleUrl: './reportes.component.css'
 })
