@@ -46,6 +46,11 @@ export class CreaeditatipoactividadComponent implements OnInit{
   }
 
   insertar():void{
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
+      return; // Detiene la ejecución si el formulario no es válido
+    }
+    
     if(this.form.valid){
       this.tipoactividad.id_tipo_actividad=this.form.value.codigo;
       this.tipoactividad.descripcion=this.form.value.descripcion;
@@ -63,7 +68,7 @@ export class CreaeditatipoactividadComponent implements OnInit{
         });
       }
     }
-    this.router.navigate(['tipodeactividades'])
+    this.router.navigate(['actividades/nuevo'])
   }
 
   init(){

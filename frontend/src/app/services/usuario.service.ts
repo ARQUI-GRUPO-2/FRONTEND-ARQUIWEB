@@ -57,6 +57,6 @@ export class UsuarioService {
   }*/
 
   getUsuarioNoti(): Observable<CantidadNotiUsuarioDTO[]> {
-    return this.http.get<CantidadNotiUsuarioDTO[]>(`${this.url}/conteo_notificaciones_rangodias`);
+    return this.http.get<CantidadNotiUsuarioDTO[]>(`${this.url}/conteo_notificaciones_rangoHoras`);
   }
 }

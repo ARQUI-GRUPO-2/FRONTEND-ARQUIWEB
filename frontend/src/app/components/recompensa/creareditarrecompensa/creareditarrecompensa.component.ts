@@ -66,10 +66,8 @@ export class CreareditarrecompensaComponent implements OnInit {
       hcodigo: [''],
       hnombre: ['', Validators.required],
       hdescripcion: ['', Validators.required],
-      hcodigoqr: ['', Validators.required],
       hfecha: ['', Validators.required],
       hactividad: [null], // Permitir nulo por defecto
-      //hactividad: ['',Validators.required] 
     });
 
     this.aS.list().subscribe((data) => {
@@ -82,7 +80,6 @@ export class CreareditarrecompensaComponent implements OnInit {
       this.recompensas.idRecompensas = this.form.value.hcodigo;
       this.recompensas.nombreRecompensa = this.form.value.hnombre;
       this.recompensas.descripcionRecompensa = this.form.value.hdescripcion;
-      this.recompensas.codigoQR = this.form.value.hcodigoqr;
       this.recompensas.fechaVencimiento = this.form.value.hfecha;
 
       // Permitir idActividad nulo al registrar, requerirlo al editar
@@ -118,7 +115,6 @@ export class CreareditarrecompensaComponent implements OnInit {
             data.descripcionRecompensa,
             Validators.required
           ),
-          hcodigoqr: new FormControl(data.codigoQR, Validators.required),
           hfecha: new FormControl(data.fechaVencimiento, Validators.required),
           hactividad: new FormControl(
             data.ac ? data.ac.idActividad : null,
