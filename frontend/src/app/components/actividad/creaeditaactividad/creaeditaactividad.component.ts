@@ -57,8 +57,6 @@ export class CreaeditaactividadComponent implements OnInit {
       this.form=this.formBuilder.group({
       codigo: [''],
       fecha: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      nombre: ['', Validators.required],
       puntos: ['', Validators.required],
       cantidad: ['', Validators.required],
       usuarios: ['', Validators.required],
@@ -74,14 +72,19 @@ export class CreaeditaactividadComponent implements OnInit {
       this.taS.list().subscribe((data) => {
         this.listaTipoActividad = data;
       });
+      
   }
 
   insertar(): void {
+
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
+      return; // Detiene la ejecución si el formulario no es válido
+    }
+
     if (this.form.valid) {
       this.actividad.idActividad=this.form.value.codigo;
       this.actividad.fecha_recepcion=this.form.value.fecha;
-      this.actividad.descripcion=this.form.value.descripcion;
-      this.actividad.nombre=this.form.value.nombre;
       this.actividad.puntos=this.form.value.puntos;
       this.actividad.cantidad=this.form.value.cantidad;
       this.actividad.u.idUser = this.form.value.usuarios;
@@ -111,8 +114,6 @@ export class CreaeditaactividadComponent implements OnInit {
         this.form = new FormGroup({
           codigo: new FormControl(data.idActividad),
           fecha: new FormControl(data.fecha_recepcion),
-          descripcion: new FormControl(data.descripcion),
-          nombre: new FormControl(data.nombre),
           puntos: new FormControl(data.puntos),
           cantidad: new FormControl(data.cantidad),
           usuarios: new FormControl(data.u.idUser),

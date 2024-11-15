@@ -65,10 +65,11 @@ export class CreareditarnotificacionComponent implements OnInit {
     this.form = this.formBuilder.group({
       hcodigo: [''],
       hmensaje: ['', Validators.required],
-      hestado: [false, Validators.required],
       hfecha: ['', Validators.required],
-      hcodenoticia: ['', Validators.required],
-      hcodeuser: ['',Validators.required ],
+      //hcodenoticia: ['', Validators.required],
+      //hcodeuser: ['',Validators.required ],
+      hcodenoticia: [null],
+      hcodeuser: [null]
     });
 
     this.ntS.list().subscribe((data) => {
@@ -81,13 +82,25 @@ export class CreareditarnotificacionComponent implements OnInit {
   }
 
   insertar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
+      return; // Detiene la ejecución si el formulario no es válido
+    }
+
     if (this.form.valid) {
       this.notificacion.idNotificaciones = this.form.value.hcodigo;
       this.notificacion.mensaje = this.form.value.hmensaje;
-      this.notificacion.estado = this.form.value.hestado;
       this.notificacion.fecha = this.form.value.hfecha;
-      this.notificacion.noti.idNoticias = this.form.value.hcodenoticia;
-      this.notificacion.us.idUser = this.form.value.hcodeuser;
+      //this.notificacion.noti.idNoticias = this.form.value.hcodenoticia;
+      //this.notificacion.us.idUser = this.form.value.hcodeuser;
+
+      //nulos
+      this.notificacion.noti = this.form.value.hcodenoticia
+        ? { idNoticias: this.form.value.hcodenoticia } as Noticias : null;      
+      this.notificacion.us = this.form.value.hcodeuser
+        ? { idUser: this.form.value.hcodeuser } as Usuario : null;
+      
+        
 
       if (this.edicion) {
         this.nS.update(this.notificacion).subscribe((data) => {
@@ -111,10 +124,11 @@ export class CreareditarnotificacionComponent implements OnInit {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idNotificaciones),
           hmensaje: new FormControl(data.mensaje),
-          hestado: new FormControl(data.estado),
           hfecha: new FormControl(data.fecha),
-          hcodenoticia: new FormControl(data.noti.idNoticias),
-          hcodeuser: new FormControl(data.us.idUser),
+          //hcodenoticia: new FormControl(data.noti.idNoticias),
+          //hcodeuser: new FormControl(data.us.idUser),
+          hcodenoticia: new FormControl(data.noti ? data.noti.idNoticias : null),
+          hcodeuser: new FormControl(data.us ? data.us.idUser : null),
         });
       });
     }

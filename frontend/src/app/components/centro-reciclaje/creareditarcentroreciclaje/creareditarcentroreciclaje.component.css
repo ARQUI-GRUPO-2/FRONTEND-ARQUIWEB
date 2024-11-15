@@ -32,4 +32,54 @@ mat-form-field{
     
 }
 
+/* boton fav */
+/* Ocultamos el checkbox pero lo mantenemos en el formulario */
+.hidden-checkbox {
+    display: none;
+  }
+  
+  /* Estilos para el ícono del corazón */
+  .favorite-icon-container {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 80px;
+    margin-bottom: 15px;
+  }
+  
+  .favorite-icon {
+    font-size: 25px;
+    color: #9b0335; /* Color del corazón */
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+  }
+  
+  /* Estilo para el texto */
+  .favorite-icon-container span {
+    font-size: 16px;
+    font-family: Gabarito, sans-serif;
+  }
+  
+  /* Opcional: Estilos para el hover del ícono */
+  .favorite-icon:hover {
+    color: #d81b60;
+  }
+  
 
+
+/*.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas 
+    grid-template-rows: repeat(2, 1fr); /* Dos filas 
+    gap: 20px; /* Espacio entre las tarjetas 
+    width: 100%; }
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px;
+} */

@@ -9,28 +9,28 @@
         <input matInput formControlName="hcodigo" />
         <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
           El codigo es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Nombres</mat-label>
         <input matInput formControlName="hnombres" />
         <mat-error *ngIf="form.get('hnombres')?.hasError('required')">
           Los nombres son obligatorios
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Apellidos</mat-label>
         <input matInput formControlName="hapellidos" />
-         <mat-error *ngIf="form.get('hapellidos')?.hasError('required')">
-              Los apellidos son obligatorios
-          </mat-error>
-        </mat-form-field>
-        <br/>
-      
+        <mat-error *ngIf="form.get('hapellidos')?.hasError('required')">
+          Los apellidos son obligatorios
+        </mat-error>
+      </mat-form-field>
+      <br />
+
       <mat-form-field class="example-full-width">
         <mat-label>UserName</mat-label>
         <input
@@ -40,27 +40,27 @@
         />
         <mat-error *ngIf="form.get('husername')?.hasError('required')">
           El username obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>DNI</mat-label>
         <input matInput placeholder="7266XXXX" formControlName="hdni" />
         <mat-error *ngIf="form.get('hdni')?.hasError('required')">
           El DNI es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Edad</mat-label>
         <input matInput placeholder="" formControlName="hedad" />
         <mat-error *ngIf="form.get('hedad')?.hasError('required')">
           La edad es obligatoria
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field>
         <mat-label>Genero</mat-label>
@@ -71,27 +71,27 @@
         </mat-select>
         <mat-error *ngIf="form.get('hgenero')?.hasError('required')">
           El genero es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Distrito</mat-label>
         <input matInput placeholder="" formControlName="hdistrito" />
         <mat-error *ngIf="form.get('hdistrito')?.hasError('required')">
           El distrito es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Telefono</mat-label>
         <input matInput placeholder="987654321" formControlName="htelefono" />
         <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
           El telefono es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Correo</mat-label>
@@ -100,20 +100,20 @@
           placeholder="example@example.com"
           formControlName="hcorreo"
         />
-          <mat-error *ngIf="form.get('hcorreo')?.hasError('required')">
-              El correo es obligatorio
-          </mat-error>
-        </mat-form-field>
-        <br/>
+        <mat-error *ngIf="form.get('hcorreo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
         <input matInput placeholder="*******" formControlName="hpassword" />
         <mat-error *ngIf="form.get('hpassword')?.hasError('required')">
           El codigo es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field>
         <mat-label>Roles</mat-label>
@@ -126,14 +126,15 @@
           Asignar rol es obligatorio
         </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
 
       <mat-checkbox class="example-margin" formControlName="henabled" matInput
-      >Estado</mat-checkbox>
+        >Estado</mat-checkbox
+      >
       <mat-error *ngIf="form.get('henabled')?.hasError('required')">
         Marcar es obligatorio
-    </mat-error>
-    <br/>
+      </mat-error>
+      <br />
 
       <div>
         <button mat-flat-button class="custom-button">

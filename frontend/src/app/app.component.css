@@ -19,6 +19,7 @@
     width: 100%; /* Ocupa todo el ancho de la pantalla */
     z-index: 1; /* Asegura que esté por encima de otros elementos */
     position: fixed; /* Fija la barra de herramientas en la parte superior */
+    padding: 20px; /* Espaciado interno de la barra de herramientas */
 }
 
 .menu-button {
@@ -60,6 +61,13 @@
     transform: scale(1.5);
 }
 
+.button-rol {
+    background-color: transparent;
+    transform: scale(1.5);
+    margin: 15px;
+    font-size: 10px;
+
+}
 
  /* Estilos para el contenedor principal */
  .main-container {
@@ -98,7 +106,7 @@
 .menu-text {
     font-weight: bold;
     font-family: 'Gabarito', sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     text-align: left; /* Alinea el texto a la izquierda */
 }
 
@@ -138,17 +146,15 @@
 }
 
 .close {
-    align-self: flex-start; /* Alinea a la izquierda */
-    margin-top: 50px; /* Empuja el botón hacia abajo */
-    margin-right: 235px;
     background-color: transparent;
-    color: black;
+    color: rgb(0, 0, 0);
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-family: 'Gabarito', sans-serif;
     font-weight: bold;
-    transform: scale(1.5);
+    font-size: 20px;
+    transform: scale(1.15);
+    margin-left: 20px;
 }
 
 @media (max-width: 400px) {

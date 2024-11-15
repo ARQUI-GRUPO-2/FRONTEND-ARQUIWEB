@@ -4,8 +4,9 @@ import { Usuario } from "./Usuario"
 export class Notificaciones {
     idNotificaciones:number=0
     mensaje:string=""
-    estado:boolean=true
     fecha:Date=new Date(Date.now())
-    noti:Noticias=new Noticias()
-    us:Usuario=new Usuario()
+    //noti:Noticias=new Noticias()
+    //us:Usuario=new Usuario()
+    noti: Noticias | null = null
+    us: Usuario | null = null
 }

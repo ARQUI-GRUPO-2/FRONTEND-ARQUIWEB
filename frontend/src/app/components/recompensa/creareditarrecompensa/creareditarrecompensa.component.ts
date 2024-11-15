@@ -78,6 +78,11 @@ export class CreareditarrecompensaComponent implements OnInit {
   }
 
   insertar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
+      return; // Detiene la ejecución si el formulario no es válido
+    }
+    
     if (this.form.valid) {
       this.recompensas.idRecompensas = this.form.value.hcodigo;
       this.recompensas.nombreRecompensa = this.form.value.hnombre;
