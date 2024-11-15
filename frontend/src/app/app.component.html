@@ -21,7 +21,7 @@
             <button mat-menu-item routerLink="/roles" >Listar</button>
             <button mat-menu-item routerLink="/roles/nuevo" >Registrar</button>
         </mat-menu>
-        
+
         <span class="spacer"></span>
         <!-- Botón de notificación -->
         <div class="button-noti" >
@@ -127,7 +127,7 @@
                 <mat-icon>star</mat-icon>
                 <span class="menu-text">Recompensas</span>
             </button>
-            <button mat-button [matMenuTriggerFor]="menuRecRepo" style="color: #000;">
+            <button mat-button [matMenuTriggerFor]="menuRecRepo" style="color: #000;" *ngIf="isAdmin()">
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
