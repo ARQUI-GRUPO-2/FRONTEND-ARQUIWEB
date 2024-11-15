@@ -12,7 +12,7 @@
         <br/>
         
         <mat-form-field>
-              <mat-label>Choose a date</mat-label>
+              <mat-label>Seleccione una fecha</mat-label>
               <input matInput [matDatepicker]="picker" formControlName="fecha"/>
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle
@@ -27,24 +27,6 @@
         <br/>
 
         <mat-form-field class="example-full-width">
-            <mat-label>Descripción</mat-label>
-            <input matInput formControlName="descripcion" />
-            <mat-error *ngIf="form.get('descripcion')?.hasError('required')"> 
-              La descripcion es obligatoria.
-            </mat-error>        
-        </mat-form-field>  
-        <br/>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre" />
-            <mat-error *ngIf="form.get('nombre')?.hasError('required')"> 
-              El nombre es obligatorio.
-            </mat-error>        
-        </mat-form-field>  
-        <br/>
-
-        <mat-form-field class="example-full-width">
             <mat-label>Puntos</mat-label>
             <input matInput placeholder="123..." formControlName="puntos" />
             <mat-error *ngIf="form.get('puntos')?.hasError('required')"> 
@@ -54,7 +36,7 @@
         <br/>
 
         <mat-form-field class="example-full-width">
-            <mat-label>Cantidad</mat-label>
+            <mat-label>Cantidad de botellas</mat-label>
             <input matInput placeholder="1" formControlName="cantidad" />
             <mat-error *ngIf="form.get('cantidad')?.hasError('required')"> 
               La descripcion es obligatoria.
@@ -87,7 +69,7 @@
         <br/>
 
         <mat-form-field>
-          <mat-label>Usuario</mat-label>
+          <mat-label>Username</mat-label>
           <mat-select formControlName="usuarios" >
             @for (m of listaUsuarios; track m) {
             <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
