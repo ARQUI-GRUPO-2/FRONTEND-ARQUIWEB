@@ -1,69 +1,74 @@
 .container {
-  max-width: 600px;
-  margin: 0 auto;
-  margin-top: 60px;
-  padding: 20px;
-}
-
-.title1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.card-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-  margin: 10px 0;
-  background-color: #eaf3e4;
+  width: 85%;
+  margin-left: 380px;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.card-content {
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: 15px; /* Alinea el contenido hacia la derecha */
+
 }
 
-.user-info {
-  flex-grow: 1;
+h1 {
+    color: #2c3e50;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    margin-left: 280px;
 }
 
-.user-info p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
+table {
+    /*width: 20%;
+    border-collapse: collapse;
+    margin: 0 auto;  /* Ocupa el ancho máximo posible */
+    width: 20%;
+    max-width: 500px; /* Limita el ancho máximo */
 }
 
-.action-buttons {
-  display: flex;
-  gap: 10px;
+th, td {
+    padding: 4px 7px;
+    text-align: center;
+    border: 1px solid #bdc3c7;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+
 }
 
-.mat-icon-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+th {
+    background-color: #27ae60;  
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
-.mat-icon {
-  font-size: 20px;
-  color: #333;
+td {
+    background-color: #ecf0f1;
+    color: #34495e;
+    font-size: 1rem;
 }
 
-.mat-icon.accion:hover {
-  color: #27ae60;
+tr:nth-child(even) td {
+    background-color: #dfe6e9; 
 }
 
-/* Estilos para el icono al costado izquierdo */
-.user-icon {
-  font-size: 20px;
-  color: #333;
-  margin-right: 30px;
-  margin-left: 25px;
-  transform: scale(3.5);
+tr:hover td {
+    background-color: #9bd3c3;  
+    color: black;
+    transition: background-color 0.3s ease-in-out;
+}
 
+.mat-elevation-z8 {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.mat-header-row, .mat-row {
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.mat-row:hover {
+    background-color: #27ae60 !important;  
+    transition: background-color 0.3s ease;
 }
