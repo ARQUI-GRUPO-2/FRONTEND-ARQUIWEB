@@ -1,11 +1,13 @@
 <div class="container" style="text-align: center;margin:2%">
     <div><h1>{{ edicion ? "Actualizar centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
     <div>
+
       <div class="map-container">
         <google-map [center]="center" [zoom]="zoom">
           <map-marker [position]="markerPosition"></map-marker>
         </google-map>
       </div>
+
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>Código</mat-label>
@@ -50,10 +52,10 @@
         </mat-form-field>
 <br/>
         <mat-form-field>
-          <mat-label>ID del Usuario</mat-label>
+          <mat-label>Username</mat-label>
           <mat-select formControlName="husuario" [disabled]="isCliente()" >
             @for (m of listaUsuarios; track m) {
-            <mat-option [value]="m.idUser">{{ m.idUser }}</mat-option>
+            <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('husuario')?.hasError('required')">
@@ -62,11 +64,18 @@
         </mat-form-field>
 <br/>
 
-        <mat-checkbox class="example-margin" formControlName="hfavoritos" [disabled]="isCliente()" matInput
-        >Favorito</mat-checkbox>
-        <mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
-          Marcar es obligatorio
-      </mat-error>
+ <!-- Contenedor del ícono de corazón -->
+ <div class="favorite-icon-container">
+  <mat-checkbox formControlName="hfavoritos" class="hidden-checkbox"></mat-checkbox>
+  <mat-icon class="favorite-icon" (click)="form.controls['hfavoritos'].setValue(!form.controls['hfavoritos'].value)">
+    {{ form.get('hfavoritos')?.value ? 'favorite' : 'favorite_border' }}
+  </mat-icon>
+  <span>Favorito</span>
+</div>
+
+<mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
+  Marcar es obligatorio
+</mat-error>
 
         <div>
             <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>

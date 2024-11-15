@@ -9,6 +9,19 @@
                 <span class="menu-text">Home</span>
             </button>
         </div>
+
+         <!-- Botón de Rol -->
+         <div class="button-rol" *ngIf="isAdmin()" >
+            <button mat-button [matMenuTriggerFor]="menuRol" style="color: black" >
+                <mat-icon>supervised_user_circle</mat-icon> 
+                <span class="noti-text">Rol</span>
+            </button>
+        </div>
+        <mat-menu #menuRol="matMenu">
+            <button mat-menu-item routerLink="/roles" >Listar</button>
+            <button mat-menu-item routerLink="/roles/nuevo" >Registrar</button>
+        </mat-menu>
+        
         <span class="spacer"></span>
         <!-- Botón de notificación -->
         <div class="button-noti" >
@@ -31,6 +44,21 @@
         <mat-menu #menuNoticias="matMenu">
             <button mat-menu-item routerLink="/noticias/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
+
+         <!-- Botón de Cerrar Sesión al costado de Noticias -->
+         <div class="close">
+            <button mat-icon-button [matMenuTriggerFor]="menuSalir" style="color: black">
+                <mat-icon>logout</mat-icon>
+            </button>
+            <mat-menu #menuSalir="matMenu">
+                <button mat-menu-item routerLink="/login" (click)="cerrar()">
+                    <span>Cerrar sesión</span>
+                </button>
+                <button mat-menu-item>
+                    Rol: <span>{{ role }}</span>
+                </button>
+            </mat-menu>
+        </div>
     </mat-toolbar>
 
     <!-- Barra lateral -->
@@ -119,21 +147,6 @@
             <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">
         </div>
         
-        <!-- Menu Salida-->
-        <div class="close">
-            <button mat-icon-button [matMenuTriggerFor]="menuSalir">
-                <mat-icon>logout</mat-icon>
-            </button>
-            <mat-menu #menuSalir="matMenu">
-                <button mat-menu-item routerLink="/login" (click)="cerrar()">
-                    <span>Cerrar sesión</span>
-                </button>
-                <button mat-menu-item>
-                    Rol:
-                    <span>{{ role }}</span>
-                </button>
-            </mat-menu>
-        </div>
     </div>
 </div>
 <!-- Contenido principal -->
