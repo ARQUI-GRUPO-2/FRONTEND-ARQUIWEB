@@ -55,6 +55,15 @@
           <mat-error *ngIf="form.get('hedad')?.hasError('required')">
             La edad es obligatoria
           </mat-error>
+          <mat-error *ngIf="form.get('hedad')?.hasError('minlength')">
+            La edad debe tener 2 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('hedad')?.hasError('maxlength')">
+            La edad debe tener 2 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('hedad')?.hasError('pattern')">
+            ㅤㅤㅤ(solo numeros)
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -62,6 +71,15 @@
           <input matInput placeholder="7266XXXX" formControlName="hdni" />
           <mat-error *ngIf="form.get('hdni')?.hasError('required')">
             El DNI es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.get('hdni')?.hasError('minlength')">
+            DNI debe tener 8 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('hdni')?.hasError('maxlength')">
+            DNI debe tener 8 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('hdni')?.hasError('pattern')">
+            ㅤㅤㅤ(solo numeros)
           </mat-error>
         </mat-form-field>
 
@@ -82,6 +100,15 @@
           <input matInput placeholder="987654321" formControlName="htelefono" />
           <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
             El telefono es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('minlength')">
+            El telefono debe tener 9 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('maxlength')">
+            ㅤㅤㅤㅤSolo 9 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('pattern')">
+            ㅤㅤㅤㅤ(solo numeros)
           </mat-error>
         </mat-form-field>
 

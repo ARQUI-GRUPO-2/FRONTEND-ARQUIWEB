@@ -91,7 +91,8 @@
             <button mat-menu-item routerLink="/usuarios/nuevo" *ngIf="isAdmin() || isCliente()" >Registrar</button>
         </mat-menu>
         <mat-menu #menuCantidadUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios/reportes/buscaruserpordistrito">Cantidad de usuarios por distrito</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/busquedas">Usuarios por distrito</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/obtenercantidadUsuariosporDistrito">Grafica de cantidad de usuarios por distrito</button>
         </mat-menu>
         <!-- Menú Centros de Reciclaje -->
         <div class="menu-item">
