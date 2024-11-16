@@ -28,7 +28,7 @@ export class ListarrecompensaComponent implements OnInit{
   constructor(private rS: RecompensaService, private lS: LoginService) { }
 
   ngOnInit(): void {
-    this.role = this.lS.showRole();
+    //this.role = this.lS.showRole();
 
     this.rS.list().subscribe(data=>{
       this.dataSource.data = data;
@@ -51,7 +51,7 @@ export class ListarrecompensaComponent implements OnInit{
     });
   }
 
-  isAdmi(){
+  /*isAdmi(){
     return this.role === 'ADMI';
-  }
+  }*/
 }
