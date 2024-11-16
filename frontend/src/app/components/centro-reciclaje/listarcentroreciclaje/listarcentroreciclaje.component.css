@@ -1,74 +1,128 @@
-.container {
-    /*width: 85%;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+.page-container {
+    margin: 20px;
     padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;*/
-    display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding: 16px;
-  margin-left: 260px;
-
+    font-family: 'Arial', sans-serif; /* Puedes cambiar la fuente según tu preferencia */
+    margin-left: 450px; /* Espacio para el sidebar */
+    width: calc(100% - 450px); /* Ajuste según el espacio disponible */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
+/* Título */
 h1 {
-    color: #2c3e50;
-    font-family: 'Gabarito', sans-serif;
-    font-weight: bold;
-    font-size: 2.2rem;
+    text-align: left;
+    font-size: 2rem;
+    color: #2d3436;
+    margin-top: 25px;
     margin-bottom: 20px;
-    margin-top: 60px;
-    margin-left: 280px;
+}
+.map-container {
+    position: relative; /* Posición relativa para acomodar el mapa */
+    z-index: 0; /* Asegura que otros elementos no se solapen */
+    margin-bottom: 20px;
+    padding: 0; /* Sin padding para evitar espacios extra */
+    background-color: #f1f1f1;
+    border-radius: 8px; /* Bordes redondeados */
+    height: 250px; /* Altura del mapa */
+    width: 600px; /* Ancho total del contenedor */
+    overflow: hidden;
+    border: #2d3436 solid 1px; /* Borde con color primordial */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
+/* Mapa de Leaflet */
+#map {
+    height: 250px; /* Ocupa todo el alto del contenedor */
+    width: 600px; /* Ocupa todo el ancho del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    position: center; /* Centrar el mapa */
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas adaptativas */
+    gap: 15px;
+    justify-items: center;
+    padding: 15px 0;
 }
 
-th, td {
-    padding: 12px 15px;
-    text-align: center;
-    border: 1px solid #bdc3c7;
-}
-
-th {
-    background-color: #27ae60;  
-    color: black;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-td {
-    background-color: #ecf0f1;
-    color: #34495e;
-    font-size: 1rem;
-}
-
-tr:nth-child(even) td {
-    background-color: #dfe6e9; 
-}
-
-tr:hover td {
-    background-color: #9bd3c3;  
-    color: black;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.mat-elevation-z8 {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #dfe6e9;
     border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    height: 180px;
+    width: 100%;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
 }
 
-.mat-header-row, .mat-row {
-    border-bottom: 1px solid #bdc3c7;
+.card:hover {
+    transform: translateY(-5px); /* Efecto al pasar el ratón */
 }
 
-.mat-row:hover {
-    background-color: #27ae60 !important;  
+/* Información */
+.info {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2d3436;
+    margin-bottom: 8px;
+}
+
+.info p {
+    margin: 0;
+}
+
+/* Ícono de corazón */
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #bdc3c7;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.heart-icon:hover {
+    color: #e74c3c; /* Color rojo brillante en hover */
+    transform: scale(1.1);
+}
+
+/* Dirección */
+.direccion {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #27ae60;
+    color: white;
+    padding: 8px;
+    border-radius: 0 0 8px 8px;
+    margin-top: auto;
+}
+
+/* Ubicación */
+.location {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.location button {
+    margin-top: 5px;
+    background-color: #86d7a8;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.location button:hover {
+    background-color: #2980b9;
 }

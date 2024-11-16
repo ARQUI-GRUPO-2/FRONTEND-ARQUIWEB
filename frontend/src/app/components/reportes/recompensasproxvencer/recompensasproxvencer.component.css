@@ -1,33 +1,32 @@
-/* Contenedor general */
-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-/* Título */
+/* Estilos para el título */
 h1 {
-  color: #2c3e50;
-  font-family: 'Arial', sans-serif;
-  font-size: 2rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  font-size: 2rem; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  color: #000000; /* Color primario */
+  text-align: center; /* Centrado */
+  margin: 100px 0; /* Espacio alrededor del título */
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 1.5px; /* Espaciado entre letras */
+  font-family: Gabarito, sans-serif; /* Fuente */
+  border-bottom: 3px solid #047c00; /* Línea debajo del título */
+  padding-bottom: 10px; /* Espacio entre el texto y la línea */
 }
 
-/* Contenedor del gráfico */
-.chart-container {
-  width: 90%;
+/* Efecto hover opcional */
+h1:hover {
+  color: #0c7a15; /* Cambia el color al pasar el ratón */
+  cursor: pointer; /* Cambia el cursor a mano */
+}
+
+
+.container {
   max-width: 800px;
-  padding: 16px;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  
 }
 
-/* Canvas del gráfico */
 canvas {
-  width: 100%;
-  height: auto;
+  display: block;
+  width: 100% !important;
+  height: 400px !important;
 }

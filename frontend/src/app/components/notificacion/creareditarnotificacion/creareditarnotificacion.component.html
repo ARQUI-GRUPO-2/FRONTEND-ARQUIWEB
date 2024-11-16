@@ -1,5 +1,9 @@
 <div class="container" style="text-align: center; margin: 2%">
-  <div><h1>{{ edicion ? 'Actualizar notificacion' : 'Registrar notificacion'}}</h1></div>
+  <div>
+    <h1>
+      {{ edicion ? "Actualizar notificacion" : "Registrar notificacion" }}
+    </h1>
+  </div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -7,18 +11,18 @@
         <input matInput formControlName="hcodigo" />
         <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
           El codigo es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Mensaje</mat-label>
         <input matInput placeholder="XXX" formControlName="hmensaje" />
         <mat-error *ngIf="form.get('hmensaje')?.hasError('required')">
           El mensaje es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <br/>
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <br />
       <mat-form-field>
@@ -34,30 +38,11 @@
           La fecha es obligatoria
         </mat-error>
       </mat-form-field>
-      <br/>
-
-      <mat-form-field>
-          <mat-label>Titular</mat-label>
-            <mat-select formControlName="hcodenoticia" >
-                @for (m of listaNoticias; track m) {
-                <mat-option [value]="m.idNoticias">{{ m.idNoticias }}</mat-option> }
-              </mat-select>
-              <mat-error *ngIf="form.get('hcodenoticia')?.hasError('required')">
-                Asignar una noticia es obligatorio
-              </mat-error>
-            </mat-form-field>
-            <br/>
-    
-      <mat-checkbox class="example-margin" formControlName="hestado" matInput
-      >Leido</mat-checkbox>
-      <mat-error *ngIf="form.get('hestado')?.hasError('required')">
-        Marcar es obligatorio
-    </mat-error>
-  <br/>
-
-
+      <br />
       <div>
-        <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
+        <button mat-flat-button class="custom-button">
+          {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
+        </button>
       </div>
     </form>
   </div>
