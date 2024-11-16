@@ -46,17 +46,6 @@ export class UsuarioService {
     return this.http.put(this.url, usu);
   }
 
-  /*Método para obtener los usuarios
-  getUsers(): Observable<Usuario[]> {
-    const role = this.login.showRole();
-    if (role === 'ADMI') {
-      return this.http.get<Usuario[]>(`${this.url}/users`); // Devuelve todos los usuarios
-    } else {
-      const username = sessionStorage.getItem('username');
-      return this.http.get<Usuario[]>(`${this.url}/users?username=${username}`); // Solo el propio usuario
-    }
-  }*/
-
   getUsuarioNoti(): Observable<CantidadNotiUsuarioDTO[]> {
     return this.http.get<CantidadNotiUsuarioDTO[]>(`${this.url}/conteo_notificaciones_rangoHoras`);
   }
