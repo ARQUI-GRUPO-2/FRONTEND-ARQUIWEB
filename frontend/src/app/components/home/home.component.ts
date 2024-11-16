@@ -17,6 +17,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RolService } from '../../services/rol.service';
 import { Usuario } from '../../models/Usuario';
 import { Rol } from '../../models/Rol';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +31,8 @@ import { Rol } from '../../models/Rol';
     MatButtonModule,
     ReactiveFormsModule,
     CommonModule,
+    MatIconModule,
+    MatCheckbox
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -40,11 +44,16 @@ export class HomeComponent implements OnInit {
 
   id: number = 0;
   edicion: boolean = false;
+  hidePassword: boolean = true; 
+
+  showErrors: boolean = false; 
+
 
   listaGenero: { value: string; viewValue: string }[] = [
     { value: 'Masculino', viewValue: 'Masculino' },
     { value: 'Femenino', viewValue: 'Femenino' },
   ];
+
 
   constructor(
     private uS: UsuarioService,
@@ -53,6 +62,7 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private rS: RolService
   ) {}
+
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
@@ -70,7 +80,7 @@ export class HomeComponent implements OnInit {
       htelefono: ['', Validators.required],
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
-      henabled: ['', Validators.required],
+      henabled: [false, Validators.required],
       hroles: ['', Validators.required],
     });
 
@@ -78,7 +88,20 @@ export class HomeComponent implements OnInit {
       this.listaRoles = data;
     });
   }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword; // Cambia el estado de `hidePassword`.
+  }
+
+
   insertar(): void {
+    this.showErrors = true;
+
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); 
+      return; 
+    }
+    
     if (this.form.valid) {
       this.usuario.idUser = this.form.value.hcodigo;
       this.usuario.nombres = this.form.value.hnombres;
@@ -93,7 +116,19 @@ export class HomeComponent implements OnInit {
       this.usuario.password = this.form.value.hpassword;
       this.usuario.enabled = this.form.value.henabled;
       this.usuario.rol.idRol = this.form.value.hroles;
+    
+      this.uS.insert(this.usuario).subscribe((data) => {
+        this.uS.list().subscribe((data) => {
+          this.uS.setList(data);
+        });
+      });
     }
-    this.router.navigate(['usuarios']);
+    this.router.navigate(['login']);
   }
+
+  NavigateOnCancel() {
+    this.showErrors = false; 
+    this.router.navigate(['/'])
+  }
+
 }
