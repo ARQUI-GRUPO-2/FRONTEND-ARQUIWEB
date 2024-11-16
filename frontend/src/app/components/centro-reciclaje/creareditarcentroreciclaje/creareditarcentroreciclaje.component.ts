@@ -21,6 +21,9 @@ import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginService } from '../../../services/login.service';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxMaskModule} from 'ngx-mask';
+
+
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
@@ -30,7 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule, ReactiveFormsModule, 
     CommonModule, NgxMaterialTimepickerModule, 
     GoogleMap, MapMarker, GoogleMapsModule,  
-    MatCheckboxModule, MatFormFieldModule, MatIconModule], 
+    MatCheckboxModule, MatFormFieldModule, 
+    MatIconModule, NgxMaskModule],  
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })

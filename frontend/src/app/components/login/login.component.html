@@ -10,15 +10,30 @@
     <mat-form-field class="example-full-width">
       <mat-label>Password</mat-label>
       <input
-        type="password"
         matInput
+        [type]="hidePassword ? 'password' : 'text'"
         placeholder="Password"
         [(ngModel)]="password"
       />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility()"
+        type="button"
+      >
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      
     </mat-form-field>
     <br />
     <button mat-raised-button class="custom-button " (click)="login()">INICIAR SESION</button>
-    <div class="register-link">¿No tienes cuenta? <a routerLink="/register">Crea una cuenta gratis</a></div>
-</div>
+    <div class="register-link">
+      ¿No tienes cuenta? 
+      <button  class="recycle-button" (click)="navigateToRegister()">
+        Crea una cuenta gratis
+      </button>
+    </div>
+       
+    </div>
     <div class="right-image"></div>
 </div>

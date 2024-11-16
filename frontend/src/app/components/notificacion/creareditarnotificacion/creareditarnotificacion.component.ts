@@ -80,8 +80,8 @@ export class CreareditarnotificacionComponent implements OnInit {
 
   insertar(): void {
     if (this.form.invalid) {
-      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
-      return; // Detiene la ejecución si el formulario no es válido
+      this.form.markAllAsTouched(); 
+      return; 
     }
 
     if (this.form.valid) {

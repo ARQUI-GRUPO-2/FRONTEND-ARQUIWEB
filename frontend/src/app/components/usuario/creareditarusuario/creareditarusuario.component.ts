@@ -21,6 +21,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Rol } from '../../../models/Rol';
 import { RolService } from '../../../services/rol.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-creareditarusuario',
@@ -34,7 +35,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     CommonModule, 
     MatCheckboxModule,
-    MatFormFieldModule],
+    MatFormFieldModule,
+  MatIconModule],
   templateUrl: './creareditarusuario.component.html',
   styleUrl: './creareditarusuario.component.css',
 })
@@ -42,6 +44,9 @@ export class creareditarusuarioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaRoles: Rol[]=[];
   usuario: Usuario = new Usuario();
+
+  hidePassword: boolean = true; 
+
 
   id: number = 0;
   edicion: boolean = false;
@@ -84,10 +89,16 @@ export class creareditarusuarioComponent implements OnInit {
       this.listaRoles = data;
     });
   }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword; // Cambia el estado de `hidePassword`.
+  }
+
   insertar(): void {
+    
     if (this.form.invalid) {
-      this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
-      return; // Detiene la ejecución si el formulario no es válido
+      this.form.markAllAsTouched(); 
+      return; 
     }
     
     if (this.form.valid) {

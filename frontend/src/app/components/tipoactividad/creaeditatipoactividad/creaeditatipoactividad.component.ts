@@ -68,7 +68,7 @@ export class CreaeditatipoactividadComponent implements OnInit{
         });
       }
     }
-    this.router.navigate(['actividades/nuevo'])
+    this.router.navigate(['tipodeactividades'])
   }
 
   init(){
