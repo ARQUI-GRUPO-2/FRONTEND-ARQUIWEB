@@ -1,27 +1,96 @@
-h1 {
-    color: #2c3e50;
-    font-family: 'Gabarito', sans-serif;
-    font-size: 2.5rem;
-    margin-top: 30px;
-    
-}
-
-mat-form-field{
-    width: 60%;
-}
-
-.custom-button {
-    background-color: rgb(93, 166, 59);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-family: 'Gabarito', sans-serif;
-}
 
 .container {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
+    justify-content: center;
     padding: 16px;
-    margin-left: 160px;
+    margin: 450px; /* Centrará horizontalmente el contenedor */
+    margin-top: 10px;
+    border-radius: 12px;
+    width: 70%;
+    max-width: 800px; /* Limita el ancho máximo del contenedor */
+    overflow: hidden; /* Asegura que no haya desbordamientos visuales */
+    transform: translate(0);
+}
 
+h1 {
+    color: #2c3e50;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+mat-form-field {
+    width: 90%;
+    border-radius: 8px;
+}
+
+mat-form-field.rol {
+    width: 95%;
+    border-radius: 8px;
+}
+
+mat-form-field input {
+    font-family: 'Gabarito', sans-serif;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2rmax;
+    width: 100%; /* Asegura que ocupe todo el ancho permitido */
+    justify-content: center;
+}
+
+.mat-checkbox {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+.custom-button {
+    background-color: rgb(84, 164, 47);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: 'Gabarito', sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+    background-color: rgb(72, 129, 46);
+}
+.custom-cancel {
+    background-color: rgb(207, 63, 52);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: 'Gabarito', sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.custom-cancel:hover {
+    background-color: rgb(126, 7, 7);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espaciado entre los botones */
+    margin-top: 16px; /* Espaciado superior */
+}
+
+.left-image {
+    width: 45%; /* Ocupa el 40% del ancho */
+    height: 30%; /* Ocupa toda la altura del contenedor */
+    background-image: url('https://i.ibb.co/8Bbz1w5/registro.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 5px; /* Espacio entre la imagen y el formulario */
+    margin-top: 50px;
+    margin-left: 40px;
 }

@@ -75,6 +75,7 @@
 
     <!-- Barra lateral -->
     <div class="sidebar" *ngIf="verificar()">
+        <!-- app.component.html -->
         <!-- Menú Usuario -->
         <div class="menu-item" >
             <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: #000;" >
@@ -91,7 +92,8 @@
             <button mat-menu-item routerLink="/usuarios/nuevo" *ngIf="isAdmin() || isCliente()" >Registrar</button>
         </mat-menu>
         <mat-menu #menuCantidadUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangoHoras">Cantidad de notificaciones por usuario</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/busquedas">Usuarios por distrito</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/obtenercantidadUsuariosporDistrito">Grafica de cantidad de usuarios por distrito</button>
         </mat-menu>
         <!-- Menú Centros de Reciclaje -->
         <div class="menu-item">
@@ -153,7 +155,6 @@
             <button mat-menu-item routerLink="/recompensas/reportes/proxvencer">Recompensas Próximas a Vencer</button>
         </mat-menu>
 
-        
         <!-- Icono de reciclaje -->
         <div class="sidebar-icon">
             <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">
