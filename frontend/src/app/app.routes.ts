@@ -33,6 +33,7 @@ import { ActividadesporusuarioComponent } from './components/reportes/actividade
 import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
 import { RecompensasmasreclamadasComponent } from './components/reportes/recompensasmasreclamadas/recompensasmasreclamadas.component';
 import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
+import { BuscaruserpordistritoComponent } from './components/reportes/buscaruserpordistrito/buscaruserpordistrito.component';
 
 export const routes: Routes = [
   {
@@ -71,8 +72,8 @@ export const routes: Routes = [
         component: ReportesComponent,
         children: [
           {
-            path: 'conteo_notificaciones_rangoHoras',
-            component: CantidadnotiusuarioComponent, //FFF
+            path: 'buscaruserpordistrito',
+            component: BuscaruserpordistritoComponent, //FFF
           },
         ],
       },
