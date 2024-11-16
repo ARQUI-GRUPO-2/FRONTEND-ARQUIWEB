@@ -1,15 +1,13 @@
 <div class="container">
     <div class="title">
-      <h1>Reporte de centro más votado como favortio</h1>
+      <h1>Gráfico de centro más votado como favorito</h1>
     </div>
     <div class="chart-container">
       <canvas baseChart
-              [datasets]="doughnutChartData"
-              [options]="doughnutChartOptions"
-              [type]="doughnutChartType"
-              [labels]="doughnutChartLabels"
-              [legend]="doughnutChartLegend">
-      </canvas>
+      [data]="barChartData"
+      [options]="barChartOptions"
+      chartType="bar">
+</canvas>
     </div>
 </div>
   
