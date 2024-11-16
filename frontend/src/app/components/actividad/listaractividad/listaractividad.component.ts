@@ -25,7 +25,7 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
   constructor(private aS: ActividadService, private lS: LoginService) { }
   
   ngOnInit(): void {
-    this.role = this.lS.showRole();
+    //this.role = this.lS.showRole();
 
     this.aS.list().subscribe((data) => {
       this.dataSource.data = data;
@@ -47,7 +47,7 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
     });
   }
 
-  isAdmi(){
+  /*isAdmi(){
     return this.role === 'ADMI';
-  }
+  }*/
 }
