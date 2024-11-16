@@ -26,6 +26,8 @@ import { CommonModule } from '@angular/common';
 import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +53,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     RolComponent,
     LoginComponent,
     WelcomeComponent,
+    GoogleMapsModule
   ],
 
   templateUrl: './app.component.html',
