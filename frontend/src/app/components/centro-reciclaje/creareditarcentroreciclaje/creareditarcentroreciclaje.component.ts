@@ -1,7 +1,7 @@
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { CentroReciclaje } from './../../../models/CentroReciclaje';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
@@ -23,7 +23,7 @@ import { LoginService } from '../../../services/login.service';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxMaskModule} from 'ngx-mask';
 
-
+declare var google: any;  
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
@@ -38,11 +38,15 @@ import { NgxMaskModule} from 'ngx-mask';
   templateUrl: './creareditarcentroreciclaje.component.html',
   styleUrl: './creareditarcentroreciclaje.component.css'
 })
-export class CreareditarcentroreciclajeComponent implements OnInit {
+export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewInit{
   form: FormGroup = new FormGroup({});
   listaUsuarios: Usuario[] = [];
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
+  filteredAddresses: string[] = [];
+  placesService: any;
+  autocomplete: any;
+  geocoder: any;
 
   edicion: boolean = false;
 //API
@@ -53,6 +57,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
   markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
 
   role: string = '';
+  @ViewChild('direccionInput') direccionInput!: ElementRef;
 
   constructor(
     private cS: CentroReciclajeService,
@@ -95,6 +100,58 @@ export class CreareditarcentroreciclajeComponent implements OnInit {
     });
 
     
+  }
+  ngAfterViewInit() {
+    // Inicialización del mapa y autocompletado
+    const input = this.direccionInput.nativeElement;
+    this.autocomplete = new google.maps.places.Autocomplete(input, {
+      //types: ['address'],
+      fields: ['place_id', 'geometry', 'name'],
+      componentRestrictions: { country: 'PE' } // Restringe las búsquedas a Perú
+    });
+
+    // Inicializar el servicio de geocodificación para obtener la latitud y longitud
+    this.geocoder = new google.maps.Geocoder();
+
+    // Llamar al evento cuando el usuario selecciona una dirección
+    this.autocomplete.addListener('place_changed', () => {
+      const place = this.autocomplete.getPlace();
+
+      if (place.geometry) {
+        // Actualizar el mapa con la nueva ubicación
+        const lat = place.geometry.location.lat();
+        const lng = place.geometry.location.lng();
+
+        // Verifica que la latitud y longitud sean válidas
+        if (lat && lng) {
+          // Actualiza la ubicación en el mapa
+          this.center = { lat, lng };
+          this.markerPosition = { lat, lng };
+
+          // Establece la latitud y longitud en el formulario
+          this.form.controls['hlatitud'].setValue(lat); // Actualiza la latitud
+          this.form.controls['hlongitud'].setValue(lng);  // Actualiza la longitud
+          
+        } else {
+          console.error('Error: No se pudo obtener una ubicación válida.');
+        }
+      } else {
+        console.error('Error: No se encontró el lugar.');
+      }
+    });
+  }
+
+  onDireccionInput(inputElement: HTMLInputElement) {
+    // Filtra las direcciones mientras el usuario escribe
+    const query = inputElement.value;
+    if (query.length > 3) {
+      this.placesService = new google.maps.places.AutocompleteService();
+      this.placesService.getPlacePredictions({ input: query }, (predictions:google.maps.places.AutocompletePrediction[], status:google.maps.places.AutocompletePrediction[]) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          this.filteredAddresses = predictions.map((p:google.maps.places.AutocompletePrediction) => p.description);
+        }
+      });
+    }
   }
 
   insertar(): void {

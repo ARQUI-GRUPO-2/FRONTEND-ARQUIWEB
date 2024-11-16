@@ -75,6 +75,7 @@
 
     <!-- Barra lateral -->
     <div class="sidebar" *ngIf="verificar()">
+        <!-- app.component.html -->
         <!-- Menú Usuario -->
         <div class="menu-item" >
             <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: #000;" >
@@ -153,7 +154,6 @@
             <button mat-menu-item routerLink="/recompensas/reportes/proxvencer">Recompensas Próximas a Vencer</button>
         </mat-menu>
 
-        
         <!-- Icono de reciclaje -->
         <div class="sidebar-icon">
             <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">

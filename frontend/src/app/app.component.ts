@@ -1,5 +1,5 @@
 import { LoginService } from './services/login.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NavigationEnd,
   Router,
@@ -26,6 +26,9 @@ import { CommonModule } from '@angular/common';
 import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-root',
@@ -51,15 +54,17 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     RolComponent,
     LoginComponent,
     WelcomeComponent,
+    GoogleMapsModule,
+    MatPaginatorModule
   ],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'frontend';
   role: string = '';
   isWelcomePage: boolean = false;
+  userId: string | null = null;
 
   constructor(private loginService: LoginService, private router: Router) {
     // Verifica la ruta actual para mostrar u ocultar elementos
@@ -73,6 +78,7 @@ export class AppComponent {
       }
     });
   }
+
 
   cerrar() {
     sessionStorage.clear();
@@ -89,5 +95,10 @@ export class AppComponent {
 
   isCliente() {
     return this.role === 'CLIENTE';
+  }
+
+  prueba(){
+    this.userId = this.loginService.getID();
+    console.log("ID del usuario:", this.userId);
   }
 }

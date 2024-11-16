@@ -1,8 +1,19 @@
 .container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 80vh; 
+    padding: 20px;
+    flex-wrap: nowrap; 
+}
+
+.form {
     display: flex;
-    justify-content: space-between;
-    height: 80vh; /* Asegura que ocupe toda la altura de la ventana */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 55%; 
+    margin-left: 20px;
 }
 
 mat-form-field {
@@ -12,61 +23,91 @@ mat-form-field {
 .custom-button {
     background-color: rgb(90, 181, 76) !important;     
     color: rgb(255, 255, 255) !important;
-    font-family: 'Gabarito', sans-serif !important; /* Fuente Gabarito */
-    width: 55%; /* Ajustamos el botón a 100% en pantallas pequeñas */
+    font-family: 'Gabarito', sans-serif !important; 
+    width: 55%; 
     margin-top: 10px;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
-    letter-spacing: 3px; /* Ajusta el espacio entre letras ligeramente */
+    letter-spacing: 3px; 
 
     
 }
 
 .logo {
-    width: 350px; /* Ajusta el tamaño del logo */
+    width: 350px; 
     height: 180px;
     background-image: url('https://i.ibb.co/X8Z8g18/logo.png');
-    background-size: contain; /* Mantiene la proporción del logo */
+    background-size: contain; 
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 3px;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 55%; /* Ajusta el ancho del formulario */
-    margin-left: 9px;
-}
 
 .right-image {
     width: 38%;
-    height: 125%;
-    background-image: url('https://i.ibb.co/s5z2sQG/iniciosesion.png'); /* Sustituye por tu URL de imagen */
-    background-size: cover; /* Cubre todo el espacio disponible sin distorsionar la imagen */
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 161%; 
+    background-image: url('https://i.ibb.co/s5z2sQG/iniciosesion.png'); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    margin-left: 20px;
     margin-right: 90px;
 }
 
-/* Estilo básico del botón */
 .recycle-button {
     margin-top: 10px;
-    background-color: transparent; /* Fondo rojo */
-    color: red; /* Texto blanco */
-    border: none; /* Sin bordes */
-    padding: 10px 15px; /* Espaciado interno */
-    border-radius: 25px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de texto */
-    cursor: pointer; /* Cambia el cursor a un puntero */
+    background-color: transparent; 
+    color: red; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 25px; 
+    font-size: 16px; 
+    cursor: pointer;
     text-decoration: underline;
-    transition: background-color 0.3s; /* Efecto suave al pasar el mouse */
+    transition: background-color 0.3s; 
   }
   .recycle-button:hover {
-    background-color: rgb(251, 249, 249); /* Fondo rojo */
-    
-
+    background-color: rgb(251, 249, 249); 
   }
+  .return {
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .form {
+        width: 100%; 
+    }
+    .right-image {
+        width: 100%; 
+        height: 300px; 
+    }
+    @media (max-width: 768px) {
+        .return {
+            top: 10px; 
+            left: 10px; 
+            font-size: 14px; 
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .return {
+            top: 5px; 
+            left: 5px; 
+            font-size: 12px;
+            transform: scale(1); 
+        }
+    }
+}
