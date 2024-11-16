@@ -1,13 +1,52 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    margin: 450px; /* Centrará horizontalmente el contenedor */
+    margin-top: 10px;
+    border-radius: 12px;
+    width: 70%;
+    max-width: 800px; /* Limita el ancho máximo del contenedor */
+    overflow: hidden; /* Asegura que no haya desbordamientos visuales */
+    transform: translate(0);
+}
+
 h1 {
     color: #2c3e50;
     font-family: 'Gabarito', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin-top: 30px;
-    
+    font-weight: bold;
 }
 
-mat-form-field{
-    width: 60%;
+mat-form-field {
+    width: 90%;
+    border-radius: 8px;
+}
+
+mat-form-field.rol {
+    width: 95%;
+    border-radius: 8px;
+}
+
+mat-form-field input {
+    font-family: 'Gabarito', sans-serif;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2rmax;
+    width: 100%; /* Asegura que ocupe todo el ancho permitido */
+    justify-content: center;
+}
+
+.mat-checkbox {
+    grid-column: span 2;
+    justify-self: center;
 }
 
 .custom-button {
@@ -15,6 +54,10 @@ mat-form-field{
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-family: 'Gabarito', sans-serif;
+    border-radius: 8px;
+    margin-left: 180px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
 }
 
 .container {
@@ -23,5 +66,4 @@ mat-form-field{
     align-items: left;
     padding: 16px;
     margin-left: 160px;
-
 }

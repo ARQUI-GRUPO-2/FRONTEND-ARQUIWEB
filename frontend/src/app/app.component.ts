@@ -1,5 +1,5 @@
 import { LoginService } from './services/login.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NavigationEnd,
   Router,
@@ -57,9 +57,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'frontend';
   role: string = '';
   isWelcomePage: boolean = false;
+  userId: string | null = null;
 
   constructor(private loginService: LoginService, private router: Router) {
     // Verifica la ruta actual para mostrar u ocultar elementos
@@ -73,6 +73,7 @@ export class AppComponent {
       }
     });
   }
+
 
   cerrar() {
     sessionStorage.clear();
@@ -89,5 +90,10 @@ export class AppComponent {
 
   isCliente() {
     return this.role === 'CLIENTE';
+  }
+
+  prueba(){
+    this.userId = this.loginService.getID();
+    console.log("ID del usuario:", this.userId);
   }
 }
