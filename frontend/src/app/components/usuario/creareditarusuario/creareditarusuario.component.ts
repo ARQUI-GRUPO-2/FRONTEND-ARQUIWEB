@@ -74,11 +74,29 @@ export class creareditarusuarioComponent implements OnInit {
       hnombres: ['', Validators.required],
       hapellidos: ['', Validators.required],
       husername: ['', Validators.required],
-      hdni: ['', Validators.required],
-      hedad: ['', Validators.required],
+      hdni: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(8),
+          Validators.pattern(/^\d+$/), // Validación adicional: solo números
+        ],
+      ],
+      hedad: ['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(2),
+        Validators.pattern(/^\d+$/), // Validación adicional: solo números
+      ],],
       hgenero: ['', Validators.required],
       hdistrito: ['', Validators.required],
-      htelefono: ['', Validators.required],
+      htelefono: ['', [
+        Validators.required,
+        Validators.minLength(9),
+        Validators.maxLength(9),
+        Validators.pattern(/^\d+$/), // Validación adicional: solo números
+      ],],
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
       henabled: [false, Validators.required],
