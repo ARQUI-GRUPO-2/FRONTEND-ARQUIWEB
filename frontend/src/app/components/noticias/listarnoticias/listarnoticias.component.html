@@ -12,14 +12,14 @@
         <p>Fecha de Publicación: {{ element.fechaPublicacion }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button
+        <button  *ngIf="isAdmin()"
           mat-icon-button
           color="warn"
           (click)="eliminar(element.idNoticias)"
         >
           <mat-icon>delete</mat-icon>
         </button>
-        <button
+        <button  *ngIf="isAdmin()"
           mat-icon-button
           color="primary"
           [routerLink]="['ediciones', element.idNoticias]"

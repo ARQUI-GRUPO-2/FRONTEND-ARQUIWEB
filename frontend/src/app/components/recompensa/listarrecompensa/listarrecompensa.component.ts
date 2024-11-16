@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarrecompensa',
@@ -21,10 +22,14 @@ export class ListarrecompensaComponent implements OnInit{
   displayedColumns: string[]=['c1','c2','c3','c4','c5','c6','accion01','accion02']
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  role: string = '';
 
-  constructor(private rS: RecompensaService) {}
+  constructor(private rS: RecompensaService, private lS: LoginService) { }
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.rS.list().subscribe(data=>{
       this.dataSource.data = data;
     })
@@ -44,5 +49,9 @@ export class ListarrecompensaComponent implements OnInit{
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  isAdmi(){
+    return this.role === 'ADMI';
   }
 }

@@ -44,9 +44,11 @@ export class LoginComponent  {
       }
     );
   }
+  
   navigateToRegister() {
     this.router.navigate(['/home/nuevo']);
   }
+
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword; 
   }

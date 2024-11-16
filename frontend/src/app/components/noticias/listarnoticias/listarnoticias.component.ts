@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarnoticias',
@@ -18,15 +19,18 @@ import { CommonModule } from '@angular/common';
 
 export class ListarnoticiasComponent implements OnInit {
   dataSource: MatTableDataSource<Noticias>= new MatTableDataSource();
-  selectedNoticia: Noticias | null = null;
 
   // displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private nS: NoticiasService) { }
+  role: string = ''; 
+
+  constructor(private nS: NoticiasService, private lS: LoginService) { }
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.nS.list().subscribe(data => {
       this.dataSource.data = data;
     });
@@ -48,13 +52,8 @@ export class ListarnoticiasComponent implements OnInit {
     });
   }
 
-  verMas(id: number): void {
-    this.nS.listId(id).subscribe(noticia => {
-      this.selectedNoticia = noticia;  // Carga la noticia completa seleccionada
-    });
-  }
 
-  cerrarDetalles(): void {
-    this.selectedNoticia = null;  // Cierra el detalle cuando ya no se quiera ver
+  isAdmin(){
+    return this.role === 'ADMI';
   }
 }
