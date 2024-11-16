@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/Usuario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, Subject } from 'rxjs';
 import { CantidadNotiUsuarioDTO } from '../models/CantidadNotiUsuarioDTO';
@@ -58,5 +58,10 @@ export class UsuarioService {
 
   getUsuarioNoti(): Observable<CantidadNotiUsuarioDTO[]> {
     return this.http.get<CantidadNotiUsuarioDTO[]>(`${this.url}/conteo_notificaciones_rangoHoras`);
+  }
+
+  buscarPorDistrito(distrito: string): Observable<Usuario[]> {
+    const params = new HttpParams().set('distrito', distrito);
+    return this.http.get<Usuario[]>(`${this.url}/busquedas`, { params });
   }
 }
