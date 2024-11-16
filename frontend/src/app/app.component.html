@@ -9,6 +9,31 @@
                 <span class="menu-text">Home</span>
             </button>
         </div>
+
+         <!-- Botón de Rol -->
+         <div class="button-rol" *ngIf="isAdmin()" >
+            <button mat-button [matMenuTriggerFor]="menuRol" style="color: black" >
+                <mat-icon>supervised_user_circle</mat-icon> 
+                <span class="noti-text">Roles</span>
+            </button>
+        </div>
+        <mat-menu #menuRol="matMenu">
+            <button mat-menu-item routerLink="/roles" >Listar</button>
+            <button mat-menu-item routerLink="/roles/nuevo" >Registrar</button>
+        </mat-menu>
+
+        <!-- Botón de Tipo de Actividad -->
+        <div class="button-tipo" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: black" >
+                <mat-icon>wb_auto</mat-icon>
+                <span class="noti-text">Tipo de Actividad</span>
+            </button>
+        </div>
+        <mat-menu #menuTipoActividad="matMenu">
+            <button mat-menu-item routerLink="/tipodeactividades" >Listar</button>
+            <button mat-menu-item routerLink="/tipodeactividades/nuevo" >Registrar</button>
+        </mat-menu>
+
         <span class="spacer"></span>
         <!-- Botón de notificación -->
         <div class="button-noti" >
@@ -22,15 +47,30 @@
             <button mat-menu-item routerLink="/notificaciones/nuevo" *ngIf="isAdmin()">Registrar</button>
         </mat-menu>
         <!-- Botón de Noticias -->
-        <div class="button-noticias">
+        <div class="button-noticias" *ngIf="isAdmin()">
             <button mat-button [matMenuTriggerFor]="menuNoticias" style="color: black">
                 <mat-icon>article</mat-icon> 
                 <span class="noti-text">Noticias</span>
             </button>
         </div>
         <mat-menu #menuNoticias="matMenu">
-            <button mat-menu-item routerLink="/noticias/nuevo" *ngIf="isAdmin()">Registrar</button>
+            <button mat-menu-item routerLink="/noticias/nuevo" >Registrar</button>
         </mat-menu>
+
+         <!-- Botón de Cerrar Sesión al costado de Noticias -->
+         <div class="close">
+            <button mat-icon-button [matMenuTriggerFor]="menuSalir" style="color: black">
+                <mat-icon>logout</mat-icon>
+            </button>
+            <mat-menu #menuSalir="matMenu">
+                <button mat-menu-item routerLink="/login" (click)="cerrar()">
+                    <span>Cerrar sesión</span>
+                </button>
+                <button mat-menu-item>
+                    Rol: <span>{{ role }}</span>
+                </button>
+            </mat-menu>
+        </div>
     </mat-toolbar>
 
     <!-- Barra lateral -->
@@ -45,16 +85,13 @@
                 <mat-icon>search</mat-icon> 
                 <span class="menu-text">Reportes</span>
             </button>
-            
         </div>
         <mat-menu #menuUsuario="matMenu">
             <button mat-menu-item routerLink="/usuarios" *ngIf="isAdmin() || isCliente()">Listar</button>
             <button mat-menu-item routerLink="/usuarios/nuevo" *ngIf="isAdmin() || isCliente()" >Registrar</button>
         </mat-menu>
         <mat-menu #menuCantidadUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangodias">Cantidad de notificaciones por usuario en rango de dias</button>
-            <button mat-menu-item routerLink="/usuarios/reportes/cantidaddeUsuariosPorRol">Cantidad de usuarios por rol</button>
-            <button mat-menu-item routerLink="/usuarios/reportes/promedioNotificacionesPorDiaUsuario">Promedio de notificaciones por dia y usuario</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/conteo_notificaciones_rangoHoras">Cantidad de notificaciones por usuario</button>
         </mat-menu>
         <!-- Menú Centros de Reciclaje -->
         <div class="menu-item">
@@ -122,21 +159,6 @@
             <img src="https://i.ibb.co/7p63Hkt/icon.png" alt="Recycling Bin Icon" class="recycling-icon">
         </div>
         
-        <!-- Menu Salida-->
-        <div class="close">
-            <button mat-icon-button [matMenuTriggerFor]="menuSalir">
-                <mat-icon>logout</mat-icon>
-            </button>
-            <mat-menu #menuSalir="matMenu">
-                <button mat-menu-item routerLink="/login" (click)="cerrar()">
-                    <span>Cerrar sesión</span>
-                </button>
-                <button mat-menu-item>
-                    Rol:
-                    <span>{{ role }}</span>
-                </button>
-            </mat-menu>
-        </div>
     </div>
 </div>
 <!-- Contenido principal -->

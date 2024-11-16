@@ -1,32 +1,31 @@
 /* Estilos para el título */
 h1 {
-    font-size: 2rem; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
-    color: #000000; /* Color primario */
-    text-align: center; /* Centrado */
-    margin: 100px 0; /* Espacio alrededor del título */
-    text-transform: uppercase; /* Mayúsculas */
-    letter-spacing: 1.5px; /* Espaciado entre letras */
-    font-family: 'Arial', sans-serif; /* Fuente */
-    border-bottom: 3px solid #047c00; /* Línea debajo del título */
-    padding-bottom: 10px; /* Espacio entre el texto y la línea */
-  }
-  
-  /* Efecto hover opcional */
-  h1:hover {
-    color: #0c7a15; /* Cambia el color al pasar el ratón */
-    cursor: pointer; /* Cambia el cursor a mano */
-  }
-  
+  font-size: 2rem; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  color: #000000; /* Color primario */
+  text-align: center; /* Centrado */
+  margin: 100px 0; /* Espacio alrededor del título */
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 1.5px; /* Espaciado entre letras */
+  font-family: 'Arial', sans-serif; /* Fuente */
+  border-bottom: 3px solid #047c00; /* Línea debajo del título */
+  padding-bottom: 10px; /* Espacio entre el texto y la línea */
+}
+
+/* Efecto hover opcional */
+h1:hover {
+  color: #0c7a15; /* Cambia el color al pasar el ratón */
+  cursor: pointer; /* Cambia el cursor a mano */
+}
+
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  canvas {
-    display: block;
-    width: 100% !important;
-    height: 400px !important;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+canvas {
+  display: block;
+  width: 100% !important;
+  height: 400px !important;
+}

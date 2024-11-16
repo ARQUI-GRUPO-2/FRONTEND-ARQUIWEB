@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarnotificacion',
@@ -22,10 +23,13 @@ export class ListarnotificacionComponent implements OnInit {
   displayedColumns: string[]=['c1','c2','c3','c4','c5','c6','accion01','accion02']
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  role: string = '';
 
-
-  constructor(private nS: NotificacionService) {}
+  constructor(private nS: NotificacionService, private lS:LoginService) {}
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.nS.list().subscribe((data) => {
       this.dataSource.data = data;
     });
@@ -45,6 +49,10 @@ export class ListarnotificacionComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  isAdmi(): boolean {
+    return this.role === 'ADMI';
   }
 
 }

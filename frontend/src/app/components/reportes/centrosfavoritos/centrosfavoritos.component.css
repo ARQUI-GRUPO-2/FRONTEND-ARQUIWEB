@@ -1,38 +1,31 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 80%;
-    padding: 20px;
+/* Estilos para el título */
+h1 {
+  font-size: 2rem; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  color: #000000; /* Color primario */
+  text-align: center; /* Centrado */
+  margin: 100px 0; /* Espacio alrededor del título */
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 1.5px; /* Espaciado entre letras */
+  font-family: 'Arial', sans-serif; /* Fuente */
+  border-bottom: 3px solid #047c00; /* Línea debajo del título */
+  padding-bottom: 10px; /* Espacio entre el texto y la línea */
 }
-  
-  .title {
-    margin-top: 10px;
-    text-align: right;
-    width: 100%;
-    font-family: 'Gabarito', sans-serif;
-    font-size: 1.5rem;
-}
-  
-  .chart-container {
-    display: flex;
-    justify-content: flex-end; /* Alinea el gráfico a la derecha dentro del contenedor */
-    width: 55%;
-    height: 300px;
-}
-  
-  h1 {
-    color: #2c3e50;
-    font-family: 'Gabarito', sans-serif;
-    font-size: 2.5rem;
-    margin-bottom: 2px;
-    margin-top: 60px;
 
+/* Efecto hover opcional */
+h1:hover {
+  color: #0c7a15; /* Cambia el color al pasar el ratón */
+  cursor: pointer; /* Cambia el cursor a mano */
 }
-  
-  canvas {
-    max-width: 600px; /* Controla el ancho máximo del gráfico */
-    width: 80%; /* Hace que el gráfico ocupe el ancho disponible */
-    height: auto ;
-  }
-  
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+canvas {
+  display: block;
+  width: 100% !important;
+  height: 400px !important;
+}

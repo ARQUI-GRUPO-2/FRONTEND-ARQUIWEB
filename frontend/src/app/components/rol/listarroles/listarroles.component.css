@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Cambiado a flex-start para alinearlo a la izquierda, luego ajustaremos el margen */
+    padding: 16px;
+    margin-left: 260px; /* Ajuste el margen para que se desplace hacia la derecha */
+}
+
+h1 {
+    color: #2c3e50;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-top: 60px;
+    margin-left: 200px; /* Ajuste el margen para que esté más centrado si es necesario */
+}
+
+table {
+    width: 30%; /* Tamaño pequeño de la tabla */
+    max-width: 40px;  /* Limita el tamaño máximo de la tabla */
+    border-collapse: collapse;
+    margin-left: 200px; /* Esto mueve la tabla hacia la derecha */
+    margin-right: 0; /* Asegura que no haya espacio adicional a la derecha */
+}
+
+th, td {
+    padding: 6px 8px; /* Reduce el padding para hacer la tabla más compacta */
+    text-align: center;
+    border: 1px solid #bdc3c7;
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+}
+
+th {
+    background-color: #27ae60;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem; /* Reduce el tamaño de la fuente en el encabezado */
+}
+
+td {
+    background-color: #ecf0f1;
+    color: #34495e;
+    font-size: 1rem; /* Ajuste en el tamaño de la fuente de las celdas */
+}
+
+tr:nth-child(even) td {
+    background-color: #dfe6e9;
+}
+
+tr:hover td {
+    background-color: #9bd3c3;
+    color: black;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.mat-header-row, .mat-row {
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.mat-row:hover {
+    background-color: #27ae60 !important;
+    transition: background-color 0.3s ease;
+}

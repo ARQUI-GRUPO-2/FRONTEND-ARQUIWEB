@@ -5,6 +5,7 @@ import { ActividadService } from '../../../services/actividad.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listaractividad',
@@ -14,14 +15,18 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   styleUrl: './listaractividad.component.css'
 })
 export class ListaractividadComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['c1','c2','c3','c4','c5','c6','c7','c8','accion01','accion02']
+  displayedColumns: string[] = ['c1','c2','c4','c5','c6','c7','c8','accion01','accion02']
   dataSource:MatTableDataSource<Actividad>= new MatTableDataSource()
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private aS: ActividadService) { }
+
+  role: string = '';
+  constructor(private aS: ActividadService, private lS: LoginService) { }
   
   ngOnInit(): void {
+    //this.role = this.lS.showRole();
+
     this.aS.list().subscribe((data) => {
       this.dataSource.data = data;
     });
@@ -42,4 +47,7 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /*isAdmi(){
+    return this.role === 'ADMI';
+  }*/
 }
