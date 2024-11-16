@@ -26,6 +26,9 @@ import { CommonModule } from '@angular/common';
 import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +54,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     RolComponent,
     LoginComponent,
     WelcomeComponent,
+    GoogleMapsModule,
+    MatPaginatorModule
   ],
 
   templateUrl: './app.component.html',
