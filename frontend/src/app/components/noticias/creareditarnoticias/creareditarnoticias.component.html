@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;margin:2%">
-  <div><h1>{{ edicion ? 'Actualizar Noticias' : 'Registro de Noticias'}}</h1></div>
+  <div><h1>{{ edicion ? 'Actualizar noticias' : 'Registro de noticias'}}</h1></div>
   <div>
     <form [formGroup]="form" (submit)=" insertar()" >
       <mat-form-field class="example-full-width" *ngIf="edicion" >
@@ -20,16 +20,16 @@
     <br/>
 
     <mat-form-field class="example-full-width" >
-      <mat-label>Información</mat-label>
-      <input matInput formControlName="hinformacion" />
+      <mat-label>Contenido</mat-label>
+      <textarea matInput formControlName="hinformacion" rows="3"></textarea>
           <mat-error *ngIf="form.get('hinformacion')?.hasError('required')">
-              La informacion es obligatoria
+              El contenido de la noticia es obligatorio
           </mat-error>
         </mat-form-field>
         <br/>
 
     <mat-form-field>
-      <mat-label>Choose a date</mat-label>
+      <mat-label>Seleccione una fecha</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="hfechaPublicacion"/>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle

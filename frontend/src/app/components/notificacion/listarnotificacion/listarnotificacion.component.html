@@ -9,14 +9,14 @@
         <p>Fecha de Notificacion: {{ element.fecha }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button
+        <button *ngIf="isAdmi()"
           mat-icon-button
           color="warn"
           (click)="eliminar(element.idNotificaciones)"
         >
           <mat-icon>delete</mat-icon>
         </button>
-        <button
+        <button *ngIf="isAdmi()"
           mat-icon-button
           color="primary"
           [routerLink]="['ediciones', element.idNotificaciones]"

@@ -67,27 +67,27 @@ export class CreareditarnotificacionComponent implements OnInit {
       hmensaje: ['', Validators.required],
       hestado: [false, Validators.required],
       hfecha: ['', Validators.required],
-      hcodenoticia: ['', Validators.required],
-      hcodeuser: ['',Validators.required ],
     });
 
     this.ntS.list().subscribe((data) => {
       this.listaNoticias = data;
     });
-    
+
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
   }
 
   insertar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched(); 
+      return; 
+    }
+
     if (this.form.valid) {
       this.notificacion.idNotificaciones = this.form.value.hcodigo;
       this.notificacion.mensaje = this.form.value.hmensaje;
-      this.notificacion.estado = this.form.value.hestado;
       this.notificacion.fecha = this.form.value.hfecha;
-      this.notificacion.noti.idNoticias = this.form.value.hcodenoticia;
-      this.notificacion.us.idUser = this.form.value.hcodeuser;
 
       if (this.edicion) {
         this.nS.update(this.notificacion).subscribe((data) => {
@@ -111,10 +111,7 @@ export class CreareditarnotificacionComponent implements OnInit {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idNotificaciones),
           hmensaje: new FormControl(data.mensaje),
-          hestado: new FormControl(data.estado),
           hfecha: new FormControl(data.fecha),
-          hcodenoticia: new FormControl(data.noti.idNoticias),
-          hcodeuser: new FormControl(data.us.idUser),
         });
       });
     }
