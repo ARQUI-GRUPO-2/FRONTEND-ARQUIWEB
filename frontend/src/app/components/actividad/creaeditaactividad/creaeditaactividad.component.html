@@ -16,7 +16,7 @@
       <div *ngIf="isAdmi()">
         <mat-form-field>
           <mat-label>Seleccione una fecha</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha" />
+          <input matInput [matDatepicker]="picker" formControlName="fecha" [max]="maxFecha"/>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
@@ -76,7 +76,7 @@
       <br />
       <mat-form-field class="example-full-width">
         <mat-label>Puntos</mat-label>
-        <input matInput placeholder="123..." formControlName="puntos" />
+        <input matInput placeholder="123..." formControlName="puntos" readonly/>
         <mat-error *ngIf="form.get('puntos')?.hasError('required')">
           Los puntos son obligatorios.
         </mat-error>
