@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,12 +17,14 @@ import { CentroReciclajeService } from '../../../services/centro-reciclaje.servi
 import { TipoactividadService } from '../../../services/tipoactividad.service';
 import moment from 'moment';
 
+
+
 @Component({
   selector: 'app-creaeditaactividad',
   standalone: true,
   imports: [MatInputModule, MatFormField, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule],
   templateUrl: './creaeditaactividad.component.html',
-  styleUrl: './creaeditaactividad.component.css'
+  styleUrl: './creaeditaactividad.component.css',
 })
 export class CreaeditaactividadComponent implements OnInit {
   form:FormGroup=new FormGroup({});
@@ -46,7 +48,8 @@ export class CreaeditaactividadComponent implements OnInit {
     private route: ActivatedRoute,
     private uS: UsuarioService,
     private cS: CentroReciclajeService,
-    private taS: TipoactividadService
+    private taS: TipoactividadService,
+    
   ) {}
 
   ngOnInit(): void {
@@ -59,8 +62,8 @@ export class CreaeditaactividadComponent implements OnInit {
       this.form=this.formBuilder.group({
       codigo: [''],
       fecha: ['', Validators.required],
-      puntos: ['', Validators.required],
       cantidad: ['',[Validators.required, Validators.min(5), Validators.max(100)]],
+      puntos: ['', Validators.required],
       usuarios: ['', Validators.required],
       centros: ['', Validators.required],
       tipoactividad: ['', Validators.required]
@@ -77,16 +80,15 @@ export class CreaeditaactividadComponent implements OnInit {
       this.form.get('cantidad')?.valueChanges.subscribe((cantidad: number) => {
         if (cantidad) {
           const puntos = cantidad * 2; // Lógica para calcular los puntos
-          this.form.get('puntos')?.patchValue(puntos); // Actualiza el valor sin problemas
-          this.form.get('puntos')?.updateValueAndValidity(); // Marca el control como actualizado
+          this.form.get('puntos')?.setValue(puntos); // Actualiza sin emitir otro evento
         } else {
-          this.form.get('puntos')?.patchValue(1); // Valor predeterminado
-          this.form.get('puntos')?.updateValueAndValidity(); // Valida el cambio
+          this.form.get('puntos')?.setValue(1); // Valor predeterminado
         }
       });
       
     
   }
+  
 
   insertar(): void {
     if (this.form.invalid) {
@@ -97,8 +99,8 @@ export class CreaeditaactividadComponent implements OnInit {
     if (this.form.valid) {
       this.actividad.idActividad=this.form.value.codigo;
       this.actividad.fecha_recepcion=this.form.value.fecha;
-      this.actividad.puntos=this.form.value.puntos;
       this.actividad.cantidad=this.form.value.cantidad;
+      this.actividad.puntos=this.form.value.puntos;
       this.actividad.u.idUser = this.form.value.usuarios;
       this.actividad.cr.idCentroReciclaje = this.form.value.centros;
       this.actividad.ta.id_tipo_actividad = this.form.value.tipoactividad;
@@ -106,12 +108,14 @@ export class CreaeditaactividadComponent implements OnInit {
         this.aS.update(this.actividad).subscribe((data)=>{
           this.aS.list().subscribe((data)=>{
             this.aS.setList(data);
+            this.refreshComponent();
           });
         });
       } else {
         this.aS.insert(this.actividad).subscribe(data=>{
           this.aS.list().subscribe(data=>{
             this.aS.setList(data)
+            this.refreshComponent();
           });
         });
       }
@@ -119,6 +123,13 @@ export class CreaeditaactividadComponent implements OnInit {
   }
   this.router.navigate(['actividades'])
 }
+private refreshComponent(): void {
+  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['actividades'])
+  });
+}
+
+
 
 
   init(){
@@ -133,6 +144,14 @@ export class CreaeditaactividadComponent implements OnInit {
           centros: new FormControl(data.cr.idCentroReciclaje),
           tipoactividad: new FormControl(data.ta.id_tipo_actividad)
 
+        });
+        this.form.get('cantidad')?.valueChanges.subscribe((cantidad: number) => {
+          if (cantidad) {
+            const puntos = cantidad * 2; // Lógica para calcular los puntos
+            this.form.get('puntos')?.setValue(puntos, { emitEvent: true }); // Actualiza sin emitir otro evento
+          } else {
+            this.form.get('puntos')?.setValue(1, { emitEvent: true }); // Valor predeterminado
+          }
         });
       });
     }
