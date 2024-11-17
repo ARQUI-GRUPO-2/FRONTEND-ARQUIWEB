@@ -4,7 +4,7 @@
 
   <!-- Mapa interactivo con Leaflet -->
   <div class="map-container" id="map"></div> <!-- Mapa de Leaflet -->
-
+<div class="cards-containermax">
   <!-- Contenedor de tarjetas -->
   <div class="cards-container">
     <mat-card *ngFor="let centro of dataSource.data" class="card">
@@ -45,4 +45,5 @@
     [pageSizeOptions]="[3, 6, 9]"
     aria-label="Select page"
   ></mat-paginator>
+</div>
 </div>

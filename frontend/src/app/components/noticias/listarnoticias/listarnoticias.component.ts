@@ -21,12 +21,12 @@ import { LoginService } from '../../../services/login.service';
     CommonModule,
   ],
   templateUrl: './listarnoticias.component.html',
-  styleUrl: './listarnoticias.component.css',
+  styleUrls: ['./listarnoticias.component.css']
 })
 export class ListarnoticiasComponent implements OnInit {
-  dataSource: MatTableDataSource<Noticias> = new MatTableDataSource();
-
-  // displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01','accion02'];
+ 
+  noticias: Noticias[] = [];
+  pagedData: Noticias[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -38,22 +38,28 @@ export class ListarnoticiasComponent implements OnInit {
     this.role = this.lS.showRole();
 
     this.nS.list().subscribe((data) => {
-      this.dataSource.data = data;
-    });
-    this.nS.getList().subscribe((data) => {
-      this.dataSource.data = data;
+      this.noticias = data;
+      this.updatePagedData();
     });
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+  ngAfterViewInit() {
+    this.paginator.page.subscribe(() => {
+      this.updatePagedData();
+    });
   }
 
+  updatePagedData(): void {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.pagedData = this.noticias.slice(startIndex, endIndex);
+  }
+ 
   eliminar(id: number) {
     this.nS.delete(id).subscribe((data) => {
       this.nS.list().subscribe((data) => {
-        this.nS.setList(data);
-        this.dataSource.paginator = this.paginator;
+        this.noticias = data;
+        this.updatePagedData();
       });
     });
   }
