@@ -35,7 +35,6 @@ export class CreaeditaactividadComponent implements OnInit {
   listaTipoActividad: TipoActividad[]=[];
   role:String='';
   
- 
 
   id:number =0;
   edicion:boolean = false;
@@ -88,10 +87,10 @@ export class CreaeditaactividadComponent implements OnInit {
           this.form.get('puntos')?.patchValue(1); // Valor predeterminado
           this.form.get('puntos')?.updateValueAndValidity(); // Valida el cambio
         }
-      });
-      
-    
+      });    
   }
+  
+  
 
   
   

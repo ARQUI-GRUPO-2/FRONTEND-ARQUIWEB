@@ -1,41 +1,21 @@
 <div class="container">
   <div><h1>Roles</h1></div>
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="c1">
-        <th mat-header-cell *matHeaderCellDef>Código</th>
-        <td mat-cell *matCellDef="let element">{{ element.idRol }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>Rol</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombreRol }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="accion01">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-        <td
-          mat-cell
-          *matCellDef="let element"
-          (click)="eliminar(element.idRol)"
+  <div class="cards-container">
+    <div class="card" *ngFor="let rol of pagedData">
+      <div class="info">
+        <p><strong>Código:</strong> {{ rol.idRol }}</p>
+        <p><strong>Rol:</strong> {{ rol.nombreRol }}</p>
+      </div>
+      <div class="action-icons">
+        <mat-icon
+          class="delete-icon"
+          (click)="eliminar(rol.idRol)"
+          >delete</mat-icon
         >
-          <mat-icon style="color: #27ae60">delete</mat-icon>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="accion02">
-        <th mat-header-cell *matHeaderCellDef>Editar</th>
-        <td
-          mat-cell
-          *matCellDef="let element"
-          [routerLink]="['ediciones', element.idRol]"
-        >
-          <mat-icon style="color: #27ae60">edit</mat-icon>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+        <a [routerLink]="['ediciones', rol.idRol]">
+          <mat-icon>edit</mat-icon> Editar
+        </a>
+      </div>
+    </div>
   </div>
 </div>

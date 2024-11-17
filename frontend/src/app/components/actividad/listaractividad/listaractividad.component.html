@@ -19,6 +19,13 @@
         <p><strong>Tipo de Actividad:</strong> {{element.ta.descripcion}}</p>
       </div>
 
+       <!-- Username -->
+        
+       <div class="username">
+        <mat-icon class="user-icon">account_circle</mat-icon>
+        <p><strong>Username:</strong> {{element.u.username}}</p>
+      </div>
+
       <!-- Ícono para eliminar -->
      
       <div *ngIf="isAdmi()">
@@ -40,15 +47,12 @@
         {{ element.cr.direccion }}
       </div>
 
-      <!-- Username -->
-      <div class="location">
-        <p><strong>Username:</strong> {{element.u.username}}</p>
-      </div>
+     
 
       <!-- Botón de editar -->
       <div class="location" *ngIf="isAdmi()">
         <a [routerLink]="['ediciones',element.idActividad]" mat-button>
-          <mat-icon style="color: #000000;">edit</mat-icon> Editar
+          <mat-icon class ="editar">edit</mat-icon> Editar
         </a>
       </div>
     </mat-card>
