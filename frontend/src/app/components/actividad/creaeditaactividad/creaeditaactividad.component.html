@@ -1,33 +1,35 @@
-<div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{ edicion ? 'Actualizar actividad' : 'Registrar actividad'}}</h1></div>
-    <div>
-      <form [formGroup]="form" (submit)=" insertar()">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
-            <mat-label>Código</mat-label>
-            <input matInput formControlName="codigo" />
-          <mat-error *ngIf="form.get('codigo')?.hasError('required')">
-              El codigo es obligatorio
+<div class="container" style="text-align: center; margin: 2%">
+  <div>
+    <h1>{{ edicion ? "Actualizar actividad" : "Registrar actividad" }}</h1>
+  </div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El codigo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+  <div *ngIf="isAdmi()">
+        <mat-form-field>
+          <mat-label>Seleccione una fecha</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+            La fecha es obligatoria.
           </mat-error>
         </mat-form-field>
-        <br/>
+      </div>
+      <br />
         
-        <mat-form-field>
-              <mat-label>Seleccione una fecha</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="fecha" [max]="maxFecha" [min]="maxFecha" [value]="form.get('fecha')?.value | date: 'dd-MM-yyyy'"/>
-              <mat-hint>DD/MM/YYYY</mat-hint>
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="form.get('fecha')?.hasError('required')"> 
-                La fecha es obligatoria.
-              </mat-error>
-        </mat-form-field>
-        <br/>
-
-        
-
         <mat-form-field class="example-full-width">
             <mat-label>Cantidad de botellas o amigos</mat-label>
             <input matInput placeholder="5,6,7 ..." formControlName="cantidad" />
@@ -44,47 +46,56 @@
         </mat-form-field>          
         <br/>
 
-        <mat-form-field>
-          <mat-label>Tipo de Actividad</mat-label>
-          <mat-select  formControlName="tipoactividad" >
-            @for (m of listaTipoActividad; track m) {
-            <mat-option [value]="m.id_tipo_actividad">{{ m.descripcion }}</mat-option>
-            }
-          </mat-select>
-          <mat-error *ngIf="form.get('tipoactividad')?.hasError('required')"
-              >Asignar un tipo de actividad es obligatorio.</mat-error>
-        </mat-form-field>
-        <br/>
+      <mat-form-field>
+        <mat-label>Tipo de Actividad</mat-label>
+        <mat-select formControlName="tipoactividad">
+          @for (m of listaTipoActividad; track m) {
+          <mat-option [value]="m.id_tipo_actividad">{{
+            m.descripcion
+          }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('tipoactividad')?.hasError('required')"
+          >Asignar un tipo de actividad es obligatorio.</mat-error
+        >
+      </mat-form-field>
+      <br />
 
-        <mat-form-field>
-          <mat-label>Centro de Reciclaje</mat-label>
-          <mat-select formControlName="centros" >
-            @for (m of listaCentros; track m) {
-            <mat-option [value]="m.idCentroReciclaje">{{ m.direccion }}</mat-option>
-            }
-          </mat-select>
-          <mat-error *ngIf="form.get('centros')?.hasError('required')"
-              >Asignar un centro de reciclaje es obligatorio.</mat-error>
-        </mat-form-field>
-        <br/>
+      <mat-form-field>
+        <mat-label>Centro de Reciclaje</mat-label>
+        <mat-select formControlName="centros">
+          @for (m of listaCentros; track m) {
+          <mat-option [value]="m.idCentroReciclaje">{{
+            m.direccion
+          }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('centros')?.hasError('required')"
+          >Asignar un centro de reciclaje es obligatorio.</mat-error
+        >
+      </mat-form-field>
+      <br />
 
+      <div *ngIf="isAdmi()">
         <mat-form-field>
           <mat-label>Username</mat-label>
-          <mat-select formControlName="usuarios" >
+          <mat-select formControlName="usuarios">
             @for (m of listaUsuarios; track m) {
             <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
             }
           </mat-select>
           <mat-error *ngIf="form.get('usuarios')?.hasError('required')"
-              >Asignar un usuario es obligatorio.</mat-error>
+            >Asignar un usuario es obligatorio.</mat-error
+          >
         </mat-form-field>
         <br/>
-        <mat-form-field class="example-full-width">
+        
+          <mat-form-field class="example-full-width">
           <mat-label>Puntos</mat-label>
-          <input matInput placeholder="123..." formControlName="puntos" readonly/>
+          <input matInput placeholder="123..." formControlName="puntos"/>
           <mat-error *ngIf="form.get('puntos')?.hasError('required')"> 
             Los puntos son obligatorios.
-          </mat-error>          
+          </mat-error>        
       </mat-form-field>          
       <br/>
         
@@ -92,4 +103,3 @@
       </form>
     </div>
   </div>
-  

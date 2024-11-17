@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngIf="isAdmi()">
+    <div>
+      <h1>Reclamos de Recompensas</h1>
+    </div>
+    <div *ngFor="let element of pagedData" class="card-container">
+      <mat-card class="mat-elevation-z8">
+        <mat-card-content>
+          <p>
+            Nombre de la recompensa: {{ element.recompensa.nombreRecompensa }}
+          </p>
+          <p>Username: {{ element.usuario.username }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="eliminar(element.idReclamacion)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            color="primary"
+            [routerLink]="['ediciones', element.idReclamacion]"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <mat-paginator
+    [length]="reclamaciones.length"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12]"
+    aria-label="Select page">
+  </mat-paginator>
+</div>

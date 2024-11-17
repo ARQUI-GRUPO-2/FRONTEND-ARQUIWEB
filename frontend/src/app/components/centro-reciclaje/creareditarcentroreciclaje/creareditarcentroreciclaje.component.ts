@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginService } from '../../../services/login.service';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxMaskModule} from 'ngx-mask';
+import { FavoritosService } from '../../../services/favoritos.service';
 
 declare var google: any;  
 
@@ -40,7 +41,6 @@ declare var google: any;
 })
 export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewInit{
   form: FormGroup = new FormGroup({});
-  listaUsuarios: Usuario[] = [];
   centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
   filteredAddresses: string[] = [];
@@ -64,8 +64,8 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private uS: UsuarioService,
-    private lS: LoginService
+    private lS: LoginService,
+    private fS: FavoritosService
   ) {}
 
   ngOnInit(): void {
@@ -83,13 +83,8 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
       hdireccion: ['', Validators.required],
       hlatitud: ['', Validators.required],
       hlongitud: ['', Validators.required],
-      hhorario: ['', Validators.required],
-      hfavoritos: [null],
-      husuario: [null]
     });
-    this.uS.list().subscribe((data) => {
-      this.listaUsuarios = data;
-    });
+
 
     // Escucha los cambios en latitud y longitud para actualizar el mapa
     this.form.get('hlatitud')?.valueChanges.subscribe((lat) => {
@@ -166,14 +161,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
       this.centroReciclaje.direccion = this.form.value.hdireccion;
       this.centroReciclaje.latitud = this.form.value.hlatitud;
       this.centroReciclaje.longitud = this.form.value.hlongitud;
-      this.centroReciclaje.horario = this.form.value.hhorario;
      
-      //nulos
-      this.centroReciclaje.favoritos = this.form.value.hfavoritos ? true : false;
-      this.centroReciclaje.us = this.form.value.husuario 
-        ? { idUser: this.form.value.husuario } as Usuario : null;
-
-
       if (this.edicion) {
         this.cS.update(this.centroReciclaje).subscribe((data) => {
           this.cS.list().subscribe((data) => {
@@ -202,9 +190,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
     }
   }
   
-    
-  
-
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
@@ -213,9 +198,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
           hdireccion: new FormControl(data.direccion),
           hlatitud: new FormControl(data.latitud),
           hlongitud: new FormControl(data.longitud),
-          hhorario: new FormControl(data.horario),
-          hfavoritos: new FormControl(data.favoritos), // Permitir nulo en favoritos
-          husuario: new FormControl(data.us?.idUser || null) 
         });  
 
         // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
@@ -224,7 +206,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
           this.form.get('hdireccion')?.disable();
           this.form.get('hlatitud')?.disable();
           this.form.get('hlongitud')?.disable();
-          this.form.get('hhorario')?.disable();
         }
       });
     }
@@ -232,5 +213,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
   isCliente(): boolean {
     return this.role === 'CLIENTE';
   }
+
 
 }

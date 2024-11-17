@@ -160,6 +160,14 @@
 .button-tipo {
     background-color: transparent;
     transform: scale(1.5);
+    margin: 25px;
+    font-size: 10px;
+
+}
+
+.button-favoritos {
+    background-color: transparent;
+    transform: scale(1.5);
     margin: 15px;
     font-size: 10px;
 

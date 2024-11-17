@@ -2,37 +2,50 @@
   <div>
     <h1>Recompensas</h1>
   </div>
-  <div *ngFor="let element of dataSource.data" class="card-container">
+  <div *ngFor="let element of pagedData" class="card-container">
     <mat-card class="mat-elevation-z8">
       <mat-card-header>
-        <mat-card-title>{{element.nombreRecompensa}}</mat-card-title>
+        <mat-card-title>{{ element.nombreRecompensa }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <p>{{ element.descripcionRecompensa }}</p>
         <p>Fecha de Vencimiento: {{ element.fechaVencimiento }}</p>
       </mat-card-content>
- 
+
       <mat-card-actions>
-        <button 
+        <button
           mat-icon-button
           color="warn"
-          (click)="eliminar(element.idRecompensas)">
+          *ngIf="isAdmi()"
+          (click)="eliminar(element.idRecompensas)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
 
         <button
+          *ngIf="isAdmi()"
           mat-icon-button
           color="primary"
           [routerLink]="['ediciones', element.idRecompensas]"
         >
           <mat-icon>edit</mat-icon>
         </button>
+
+        <!-- Botón Reclamar -->
+        <!-- <button
+          mat-icon-button
+          color="accent"
+          (click)="reclamarRecompensa(element.idRecompensas)"
+        >
+          <mat-icon>check_circle</mat-icon> Reclamar
+        </button> -->
       </mat-card-actions>
     </mat-card>
   </div>
   <mat-paginator
-    [pageSize]="1"
-    [pageSizeOptions]="[1, 10, 20]"
-    showFirstLastButtons
+    [length]="recompensas.length"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12]"
+    aria-label="Select page">
   ></mat-paginator>
 </div>

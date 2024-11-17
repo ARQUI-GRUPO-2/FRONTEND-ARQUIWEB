@@ -42,10 +42,6 @@ export class RecompensaService {
     return this.http.put(this.url, rec);
   }
 
-  cantidadRecompensas():Observable<MostClaimedRewardDTO[]>{
-    return this.http.get<MostClaimedRewardDTO[]>(`${this.url}/mas_reclamada`)
-  }
-
   proximoVencimiento():Observable<CloseToExpireDTO[]>{
     return this.http.get<CloseToExpireDTO[]>(`${this.url}/proxvencer`)
   }

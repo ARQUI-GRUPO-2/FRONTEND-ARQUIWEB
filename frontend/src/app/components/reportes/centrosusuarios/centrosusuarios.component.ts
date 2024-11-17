@@ -34,7 +34,7 @@ export class CentrosusuariosComponent implements OnInit {
       this.barChartLabels = data.map(item => item.direccion);
       this.barChartData = [
         {
-          data: data.map(item => item.cantidadUsuarios),
+          data: data.map(item => item.username),
           label: 'Usuarios',
           backgroundColor: [
             '#4CAF50', // Verde
