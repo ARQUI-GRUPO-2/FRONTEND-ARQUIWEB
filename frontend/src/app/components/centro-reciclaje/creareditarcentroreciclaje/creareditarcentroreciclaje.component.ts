@@ -49,6 +49,7 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
   geocoder: any;
 
   edicion: boolean = false;
+
 //API
   lat=0
   lng=0
@@ -65,7 +66,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
     private router: Router,
     private route: ActivatedRoute,
     private lS: LoginService,
-    private fS: FavoritosService
   ) {}
 
   ngOnInit(): void {
@@ -193,26 +193,17 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
+        console.log('Datos recibidos del servicio:', data); // Verificar aquí
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idCentroReciclaje),
           hdireccion: new FormControl(data.direccion),
           hlatitud: new FormControl(data.latitud),
           hlongitud: new FormControl(data.longitud),
         });  
-
-        // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
-        if (this.role === 'CLIENTE') {
-          this.form.get('hcodigo')?.disable();
-          this.form.get('hdireccion')?.disable();
-          this.form.get('hlatitud')?.disable();
-          this.form.get('hlongitud')?.disable();
-        }
       });
     }
   }
-  isCliente(): boolean {
-    return this.role === 'CLIENTE';
+  isAdmi(): boolean {
+    return this.role === 'ADMI';
   }
-
-
 }

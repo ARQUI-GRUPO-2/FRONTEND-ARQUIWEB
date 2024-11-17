@@ -39,6 +39,7 @@ h1 {
     gap: 15px;
     justify-items: center;
     padding: 15px 0;
+    margin-bottom: 40px;
 }
 
 .card {
@@ -91,7 +92,7 @@ h1 {
 
 /* Dirección */
 .direccion {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     text-align: center;
     background-color: #27ae60;
@@ -123,4 +124,25 @@ h1 {
 }
 .cards-containermax {
     margin-right: 70px;
+}
+/* Ícono de eliminar */
+.delete-icon {
+    position: absolute;
+    top: 10px; /* Mantén la altura uniforme */
+    right: 15px; /* Ajusta esta posición para separarlo del borde derecho */
+    cursor: pointer;
+    font-size: 22px;
+    color: #000000;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Ícono de editar */
+.edit-icon {
+    position: absolute;
+    top: 10px; /* Misma altura que el ícono de eliminar */
+    right: 50px; /* Asegúrate de que haya suficiente separación del ícono de eliminar */
+    cursor: pointer;
+    font-size: 22px;
+    color: #000000;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
