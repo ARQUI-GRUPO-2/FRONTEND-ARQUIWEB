@@ -15,6 +15,7 @@ import { TipoactividadComponent } from './components/tipoactividad/tipoactividad
 import { CentroReciclajeComponent } from './components/centro-reciclaje/centro-reciclaje.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ActividadComponent } from './components/actividad/actividad.component';
+import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,9 +27,11 @@ import { CommonModule } from '@angular/common';
 import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+
 import { GoogleMapsModule } from '@angular/google-maps';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
 
 @Component({
   selector: 'app-root',
@@ -54,8 +57,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RolComponent,
     LoginComponent,
     WelcomeComponent,
+    ReclamacionesComponent,
     GoogleMapsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FavoritosComponent
   ],
 
   templateUrl: './app.component.html',

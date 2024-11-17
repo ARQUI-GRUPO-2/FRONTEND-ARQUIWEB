@@ -1,0 +1,35 @@
+<div class="container">
+  <div *ngIf="isAdmi()">
+  <div>
+    <h1>Centros Favoritos</h1>
+  </div>
+  <!-- Iterar sobre los elementos de favoritos con *ngFor -->
+  <div *ngFor="let element of pagedData" class="card-container">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-content>
+        <!-- Mostrar detalles del centro de reciclaje -->
+        <p>Centro de reciclaje: {{ element.centroReciclaje.direccion }} </p>
+        <p>Favoritos: {{ element.user.username }}</p>
+      </mat-card-content>
+    
+      <mat-card-actions>
+        <!-- Botón para eliminar un favorito -->
+        <button mat-icon-button color="warn" (click)="eliminar(element.idFavorito)">
+          <mat-icon>delete</mat-icon>
+        </button>
+  
+        <!-- Botón para editar un favorito -->
+        <button mat-icon-button color="primary" [routerLink]="['ediciones', element.idFavorito]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<mat-paginator
+[length]="favoritos.length"
+[pageSize]="4"
+[pageSizeOptions]="[4, 8, 12]"
+aria-label="Select page">
+</mat-paginator>
+</div>

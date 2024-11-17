@@ -7,7 +7,6 @@
     <mat-card *ngFor="let element of pagedData" class="card">
       <!-- Parte superior: Información -->
       <div class="info">
-        <p><strong>Código:</strong> {{element.idActividad}}</p>
         <p><strong>Fecha de Recepción:</strong> {{element.fecha_recepcion}}</p>
         <p><strong>Puntos:</strong> {{element.puntos}}</p>
         <p><strong>Cantidad:</strong> {{element.cantidad}}</p>
@@ -15,13 +14,16 @@
       </div>
 
       <!-- Ícono para eliminar -->
-      <mat-icon
+     
+      <div *ngIf="isAdmi()">
+        <mat-icon
         (click)="eliminar(element.idActividad)"
         class="delete-icon"
         style="color:#27ae60"
       >
         delete
       </mat-icon>
+    </div>
 
       <!-- Dirección -->
       <div class="ubi">
@@ -38,7 +40,7 @@
       </div>
 
       <!-- Botón de editar -->
-      <div class="location">
+      <div class="location" *ngIf="isAdmi()">
         <a [routerLink]="['ediciones',element.idActividad]" mat-button>
           <mat-icon style="color: #27ae60;">edit</mat-icon> Editar
         </a>

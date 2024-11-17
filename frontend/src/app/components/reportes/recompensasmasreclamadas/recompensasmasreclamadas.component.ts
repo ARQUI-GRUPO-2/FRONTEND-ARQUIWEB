@@ -4,6 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { Chart, registerables } from 'chart.js';
 import { RecompensaService } from '../../../services/recompensa.service';
 import { MostClaimedRewardDTO } from '../../../models/MostClaimedRewardDTO';
+import { ReclamacionesService } from '../../../services/reclamaciones.service';
 
 Chart.register(...registerables);
 
@@ -23,7 +24,7 @@ export class RecompensasmasreclamadasComponent implements OnInit {
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
 
-  constructor(private rS: RecompensaService) {}
+  constructor(private rS: ReclamacionesService) {}
 
   ngOnInit(): void {
     this.rS.cantidadRecompensas().subscribe(

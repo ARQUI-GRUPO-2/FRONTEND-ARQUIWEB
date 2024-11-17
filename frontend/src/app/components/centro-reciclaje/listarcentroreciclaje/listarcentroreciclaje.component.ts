@@ -7,6 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { FavoritosService } from '../../../services/favoritos.service';
 
 // Google Maps typings
 declare var google: any;
@@ -26,6 +27,7 @@ export class ListarcentroreciclajeComponent implements OnInit {
 
   private map: any;
   private marker: any;
+
 
   constructor(private cS: CentroReciclajeService, private router: Router) { }
 
@@ -79,14 +81,7 @@ export class ListarcentroreciclajeComponent implements OnInit {
     return `(${element.latitud}, ${element.longitud})`;
   }
 
-  // Método para manejar favoritos (corazón)
-  toggleFavorite(element: CentroReciclaje): void {
-    element.favoritos = !element.favoritos;
-    // Aquí puedes hacer una llamada al servicio para guardar este cambio si es necesario
-    this.router.navigate(['/centroreciclaje/ediciones', element.idCentroReciclaje]);
-  }
-
-  eliminar(id: number) {
+    eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
         this.cS.setList(data);

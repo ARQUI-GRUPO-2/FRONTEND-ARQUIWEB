@@ -30,7 +30,7 @@ export class LoginService {
     const decodedToken = helper.decodeToken(token);
     return decodedToken?.role;
   }
-  
+
   getID(){
     if (typeof window !== 'undefined') {  // Verifica si está en el navegador
       let token = sessionStorage.getItem('token');

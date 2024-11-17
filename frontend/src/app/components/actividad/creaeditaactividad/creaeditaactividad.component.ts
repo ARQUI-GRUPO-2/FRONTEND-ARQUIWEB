@@ -15,6 +15,8 @@ import { TipoActividad } from '../../../models/TipoActividad';
 import { UsuarioService } from '../../../services/usuario.service';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { TipoactividadService } from '../../../services/tipoactividad.service';
+import moment from 'moment';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-creaeditaactividad',
@@ -28,8 +30,10 @@ export class CreaeditaactividadComponent implements OnInit {
   actividad:Actividad=new Actividad()
   listaUsuarios: Usuario[]=[];
   listaCentros: CentroReciclaje[]=[];
+  maxFecha: Date = moment().add(0, 'days').toDate();
 
   listaTipoActividad: TipoActividad[]=[];
+  role:String='';
 
  
 
@@ -44,10 +48,12 @@ export class CreaeditaactividadComponent implements OnInit {
     private route: ActivatedRoute,
     private uS: UsuarioService,
     private cS: CentroReciclajeService,
-    private taS: TipoactividadService
+    private taS: TipoactividadService,
+    private lS: LoginService
   ) {}
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
     this.route.params.subscribe((data:Params)=>{
       this.id = data ['id'];
       this.edicion = data['id']!=null;
@@ -56,10 +62,10 @@ export class CreaeditaactividadComponent implements OnInit {
     });
       this.form=this.formBuilder.group({
       codigo: [''],
-      fecha: ['', Validators.required],
+      fecha: [this.getFechaActual(), Validators.required],
       puntos: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      usuarios: ['', Validators.required],
+      cantidad: ['',[Validators.required, Validators.min(5), Validators.max(100)]],
+      usuarios: [this.lS.getID(), Validators.required],
       centros: ['', Validators.required],
       tipoactividad: ['', Validators.required]
       });
@@ -72,8 +78,25 @@ export class CreaeditaactividadComponent implements OnInit {
       this.taS.list().subscribe((data) => {
         this.listaTipoActividad = data;
       });
+      this.form.get('cantidad')?.valueChanges.subscribe((cantidad: number) => {
+        if (cantidad) {
+          const puntos = cantidad * 2; // Lógica para calcular los puntos
+          this.form.get('puntos')?.patchValue(puntos); // Actualiza el valor sin problemas
+          this.form.get('puntos')?.updateValueAndValidity(); // Marca el control como actualizado
+        } else {
+          this.form.get('puntos')?.patchValue(1); // Valor predeterminado
+          this.form.get('puntos')?.updateValueAndValidity(); // Valida el cambio
+        }
+      });
+      
+    
   }
 
+  getFechaActual(): string {
+    const fecha = new Date();
+    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+  }
+  
   insertar(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched(); 
@@ -106,6 +129,7 @@ export class CreaeditaactividadComponent implements OnInit {
   this.router.navigate(['actividades'])
 }
 
+
   init(){
     if(this.edicion){
       this.aS.listId(this.id).subscribe((data)=>{
@@ -121,5 +145,9 @@ export class CreaeditaactividadComponent implements OnInit {
         });
       });
     }
+  }
+
+  isAdmi(){
+    return this.role === 'ADMI';
   }
 }
