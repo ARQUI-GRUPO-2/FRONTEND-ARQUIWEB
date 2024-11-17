@@ -138,17 +138,24 @@ export class creareditarusuarioComponent implements OnInit {
         this.uS.update(this.usuario).subscribe((data) => {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);
+            this.refreshComponent();
           });
         });
       } else {
         this.uS.insert(this.usuario).subscribe((data) => {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);
+            this.refreshComponent();
           });
         });
       }
     }
     this.router.navigate(['usuarios']);
+  }
+  private refreshComponent(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['usuarios'])
+    });
   }
   init() {
     if (this.edicion) {

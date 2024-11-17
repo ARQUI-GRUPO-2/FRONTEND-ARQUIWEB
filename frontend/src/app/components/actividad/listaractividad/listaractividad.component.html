@@ -7,9 +7,15 @@
     <mat-card *ngFor="let element of pagedData" class="card">
       <!-- Parte superior: Información -->
       <div class="info">
-        <p><strong>Fecha de Recepción:</strong> {{element.fecha_recepcion}}</p>
+        <p><strong>Fecha de Recepción:</strong> {{element.fecha_recepcion | date:'dd-MM-yyyy' }}</p>
         <p><strong>Puntos:</strong> {{element.puntos}}</p>
-        <p><strong>Cantidad:</strong> {{element.cantidad}}</p>
+        <p>
+          <strong>
+            {{element.ta.descripcion === 'Invitar' ? 'Cantidad Amigos:' : 
+              (element.ta.descripcion === 'Reciclar' ? 'Cantidad Botellas:' : 'Cantidad:')}}
+          </strong> 
+          {{element.cantidad}}
+        </p>
         <p><strong>Tipo de Actividad:</strong> {{element.ta.descripcion}}</p>
       </div>
 
@@ -19,7 +25,7 @@
         <mat-icon
         (click)="eliminar(element.idActividad)"
         class="delete-icon"
-        style="color:#000000"
+        style="color:#d40000"
       >
         delete
       </mat-icon>
@@ -42,7 +48,7 @@
       <!-- Botón de editar -->
       <div class="location" *ngIf="isAdmi()">
         <a [routerLink]="['ediciones',element.idActividad]" mat-button>
-          <mat-icon style="color: #000000;">edit</mat-icon>
+          <mat-icon style="color: #000000;">edit</mat-icon> Editar
         </a>
       </div>
     </mat-card>
@@ -51,8 +57,8 @@
   <!-- Paginador -->
   <mat-paginator
     [length]="actividades.length"
-    [pageSize]="4"
-    [pageSizeOptions]="[4, 8, 12]"
+    [pageSize]="6"
+    [pageSizeOptions]="[3, 6, 9]"
     aria-label="Select page">
   </mat-paginator>
 </div>
