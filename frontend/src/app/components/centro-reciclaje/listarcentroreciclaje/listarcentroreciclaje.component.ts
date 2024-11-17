@@ -15,24 +15,40 @@ declare var google: any;
 @Component({
   selector: 'app-listarcentroreciclaje',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, MatCardModule, MatPaginatorModule, CommonModule],
+  imports: [
+    MatTableModule,
+    MatIconModule,
+    RouterLink,
+    MatCardModule,
+    MatPaginatorModule,
+    CommonModule,
+  ],
   templateUrl: './listarcentroreciclaje.component.html',
-  styleUrls: ['./listarcentroreciclaje.component.css']
+  styleUrls: ['./listarcentroreciclaje.component.css'],
 })
 export class ListarcentroreciclajeComponent implements OnInit {
   dataSource: MatTableDataSource<CentroReciclaje> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'accion01', 'accion02'];
+  displayedColumns: string[] = [
+    'c1',
+    'c2',
+    'c3',
+    'c4',
+    'c5',
+    'c6',
+    'c7',
+    'accion01',
+    'accion02',
+  ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   private map: any;
   private marker: any;
 
-
-  constructor(private cS: CentroReciclajeService, private router: Router) { }
+  constructor(private cS: CentroReciclajeService, private router: Router) {}
 
   ngOnInit(): void {
-    this.cS.list().subscribe(data => {
+    this.cS.list().subscribe((data) => {
       this.dataSource.data = data;
     });
 
@@ -46,11 +62,14 @@ export class ListarcentroreciclajeComponent implements OnInit {
   // Inicialización del mapa con Google Maps
   initMap(): void {
     // Crea un nuevo mapa con Google Maps
-    this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-      center: { lat: -12.103852982642929, lng: -76.96305349525248 }, // Coordenadas iniciales
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+    this.map = new google.maps.Map(
+      document.getElementById('map') as HTMLElement,
+      {
+        center: { lat: -12.103852982642929, lng: -76.96305349525248 }, // Coordenadas iniciales
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+      }
+    );
   }
 
   // Mostrar marcador en el mapa
@@ -65,7 +84,7 @@ export class ListarcentroreciclajeComponent implements OnInit {
       this.marker = new google.maps.Marker({
         position: position,
         map: this.map,
-        title: 'Centro de reciclaje'
+        title: 'Centro de reciclaje',
       });
     }
 
@@ -81,7 +100,7 @@ export class ListarcentroreciclajeComponent implements OnInit {
     return `(${element.latitud}, ${element.longitud})`;
   }
 
-    eliminar(id: number) {
+  eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
         this.cS.setList(data);
