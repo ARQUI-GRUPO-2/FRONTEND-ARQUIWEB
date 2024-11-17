@@ -28,11 +28,12 @@ export class ListarfavoritosComponent implements OnInit {
 
   ngOnInit(): void {
     this.fS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
-    this.fS.getList().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+    this.fS.getList().subscribe(data=>{
+      this.dataSource.data=data;
     });
+
   }
 
   eliminar(id: number) {
