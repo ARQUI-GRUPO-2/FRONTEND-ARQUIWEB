@@ -8,11 +8,11 @@
       </google-map>
     </div>
 
-    <form [formGroup]="form" (submit)="insertar()">
+    <form [formGroup]="form" (submit)="insertar()" >
       <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Código</mat-label>
-        <input matInput formControlName="hcodigo" [disabled]="isCliente()" />
-        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+        <input matInput formControlName="hcodigo" />
+        <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
           El codigo es obligatorio
         </mat-error>
       </mat-form-field>
@@ -21,13 +21,15 @@
       <!-- Campo de Dirección con Autocompletado -->
     <mat-form-field class="example-full-width">
       <mat-label>Dirección</mat-label>
-      <input matInput formControlName="hdireccion" [disabled]="isCliente()" #direccionInput (input)="onDireccionInput(direccionInput)" placeholder="Buscar dirección..." />
+      <input matInput formControlName="hdireccion" 
+      #direccionInput (input)="onDireccionInput(direccionInput)" 
+      placeholder="Buscar dirección..." />
     </mat-form-field>
     <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Latitud</mat-label>
-        <input matInput formControlName="hlatitud" [disabled]="isCliente()" />
+        <input matInput formControlName="hlatitud" />
         <mat-error *ngIf="form.get('hlatitud')?.hasError('required')">
           La latitud es obligatoria.
         </mat-error>
@@ -35,7 +37,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Longitud</mat-label>
-        <input matInput formControlName="hlongitud" [disabled]="isCliente()" />
+        <input matInput formControlName="hlongitud" />
         <mat-error *ngIf="form.get('hlongitud')?.hasError('required')">
           La longitud es obligatoria
         </mat-error>
