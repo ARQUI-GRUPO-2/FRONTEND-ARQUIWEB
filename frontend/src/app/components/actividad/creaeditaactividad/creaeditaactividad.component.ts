@@ -15,6 +15,7 @@ import { TipoActividad } from '../../../models/TipoActividad';
 import { UsuarioService } from '../../../services/usuario.service';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { TipoactividadService } from '../../../services/tipoactividad.service';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-creaeditaactividad',
@@ -44,7 +45,8 @@ export class CreaeditaactividadComponent implements OnInit {
     private route: ActivatedRoute,
     private uS: UsuarioService,
     private cS: CentroReciclajeService,
-    private taS: TipoactividadService
+    private taS: TipoactividadService,
+    private lS: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +61,7 @@ export class CreaeditaactividadComponent implements OnInit {
       fecha: ['', Validators.required],
       puntos: ['', Validators.required],
       cantidad: ['', Validators.required],
-      usuarios: ['', Validators.required],
+      usuarios: [this.lS.getID(), Validators.required],
       centros: ['', Validators.required],
       tipoactividad: ['', Validators.required]
       });

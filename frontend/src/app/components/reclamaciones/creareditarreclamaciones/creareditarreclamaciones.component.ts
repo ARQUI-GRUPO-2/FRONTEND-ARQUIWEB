@@ -64,7 +64,7 @@ export class CreareditarreclamacionesComponent {
     this.form = this.formBuilder.group({
       hcodigo: [''],
       hrecompensa: ['', Validators.required],
-      husuario: ['', Validators.required],
+      husuario: [this.lS.getID(), Validators.required],
     });
 
     this.uS.list().subscribe((data) => {

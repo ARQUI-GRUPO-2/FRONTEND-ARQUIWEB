@@ -68,7 +68,7 @@
         </mat-form-field>
         <br/>
 
-        <mat-form-field>
+        <!-- <mat-form-field>
           <mat-label>Username</mat-label>
           <mat-select formControlName="usuarios" >
             @for (m of listaUsuarios; track m) {
@@ -78,7 +78,7 @@
           <mat-error *ngIf="form.get('usuarios')?.hasError('required')"
               >Asignar un usuario es obligatorio.</mat-error>
         </mat-form-field>
-        <br/>
+        <br/> -->
         
         <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
       </form>
