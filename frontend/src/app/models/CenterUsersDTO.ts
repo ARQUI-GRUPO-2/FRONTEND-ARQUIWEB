@@ -1,4 +1,4 @@
 export class CenterUsersDTO {
     direccion:string="";
-    cantidadUsuarios:number=0;
+    username:number=0;
 }
