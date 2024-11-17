@@ -66,7 +66,7 @@ export class CreareditarnotificacionComponent implements OnInit {
       hcodigo: [''],
       hmensaje: ['', Validators.required],
       hestado: [false, Validators.required],
-      hfecha: ['', Validators.required],
+      hfecha: [this.getFechaActual(), Validators.required],
     });
 
     this.ntS.list().subscribe((data) => {
@@ -76,6 +76,11 @@ export class CreareditarnotificacionComponent implements OnInit {
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
+  }
+
+  getFechaActual(): string {
+    const fecha = new Date();
+    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
   }
 
   insertar(): void {
