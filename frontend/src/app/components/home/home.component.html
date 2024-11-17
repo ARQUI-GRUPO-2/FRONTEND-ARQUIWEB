@@ -1,4 +1,6 @@
-<div class="left-image"></div>
+<div class="left-image">
+  <img src="https://i.ibb.co/8Bbz1w5/registro.png" alt="Registro" />
+</div>
 <div class="container">
   <div>
     <h1>{{ "¡Registrate!" }}</h1>
@@ -16,19 +18,18 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Username</mat-label>
-          <input
-            matInput
-            formControlName="husername"
-          />
+          <input matInput formControlName="husername" />
           <mat-error *ngIf="form.get('husername')?.hasError('required')">
             El username obligatorio
-        </mat-error>
-      </mat-form-field>
-      
+          </mat-error>
+        </mat-form-field>
+
         <mat-form-field>
           <mat-label>Apellidos</mat-label>
           <input matInput formControlName="hapellidos" />
-          <mat-error *ngIf="showErrors && form.get('hapellidos')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hapellidos')?.hasError('required')"
+          >
             Los apellidos son obligatorios
           </mat-error>
         </mat-form-field>
@@ -36,7 +37,9 @@
         <mat-form-field>
           <mat-label>Distrito</mat-label>
           <input matInput formControlName="hdistrito" />
-          <mat-error *ngIf="showErrors && form.get('hdistrito')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hdistrito')?.hasError('required')"
+          >
             El distrito es obligatorio
           </mat-error>
         </mat-form-field>
@@ -44,7 +47,9 @@
         <mat-form-field>
           <mat-label>Nombres</mat-label>
           <input matInput formControlName="hnombres" />
-          <mat-error *ngIf="showErrors && form.get('hnombres')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hnombres')?.hasError('required')"
+          >
             Los nombres son obligatorios
           </mat-error>
         </mat-form-field>
@@ -52,7 +57,9 @@
         <mat-form-field>
           <mat-label>Edad</mat-label>
           <input matInput formControlName="hedad" />
-          <mat-error *ngIf="showErrors && form.get('hedad')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hedad')?.hasError('required')"
+          >
             La edad es obligatoria
           </mat-error>
         </mat-form-field>
@@ -60,7 +67,9 @@
         <mat-form-field>
           <mat-label>DNI</mat-label>
           <input matInput placeholder="7266XXXX" formControlName="hdni" />
-          <mat-error *ngIf="showErrors && form.get('hdni')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hdni')?.hasError('required')"
+          >
             El DNI es obligatorio
           </mat-error>
         </mat-form-field>
@@ -72,7 +81,9 @@
             <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
             }
           </mat-select>
-          <mat-error *ngIf="showErrors && form.get('hgenero')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hgenero')?.hasError('required')"
+          >
             El genero es obligatorio
           </mat-error>
         </mat-form-field>
@@ -80,26 +91,47 @@
         <mat-form-field>
           <mat-label>Telefono</mat-label>
           <input matInput placeholder="987654321" formControlName="htelefono" />
-          <mat-error *ngIf="showErrors && form.get('htelefono')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('htelefono')?.hasError('required')"
+          >
             El telefono es obligatorio
           </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Correo</mat-label>
-          <input matInput placeholder="example@example.com" formControlName="hcorreo" />
-          <mat-error *ngIf="showErrors && form.get('hcorreo')?.hasError('required')">
+          <input
+            matInput
+            placeholder="example@example.com"
+            formControlName="hcorreo"
+          />
+          <mat-error
+            *ngIf="showErrors && form.get('hcorreo')?.hasError('required')"
+          >
             El correo es obligatorio
           </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Password</mat-label>
-          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="hpassword" />
-          <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="hpassword"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="togglePasswordVisibility()"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
           </button>
-          <mat-error *ngIf="showErrors && form.get('hpassword')?.hasError('required')">
+          <mat-error
+            *ngIf="showErrors && form.get('hpassword')?.hasError('required')"
+          >
             El password es obligatorio
           </mat-error>
         </mat-form-field>
@@ -116,20 +148,22 @@
   </mat-select>
 </mat-form-field>
 
-      
-      
-      <br/>
 
       <mat-checkbox class="example-margin" formControlName="henabled" matInput>
         Activado
       </mat-checkbox>
 
       <div class="button-container">
-        <button mat-flat-button class="custom-cancel" type="button" (click)="NavigateOnCancel()">
+        <button
+          mat-flat-button
+          class="custom-cancel"
+          type="button"
+          (click)="NavigateOnCancel()"
+        >
           {{ "CANCELAR" }}
         </button>
         <button mat-flat-button class="custom-button" type="submit">
-          {{ "REGISTRAR"}}
+          {{ "REGISTRAR" }}
         </button>
       </div>
     </form>
