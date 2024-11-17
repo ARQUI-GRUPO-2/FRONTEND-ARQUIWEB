@@ -84,7 +84,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
       hlatitud: ['', Validators.required],
       hlongitud: ['', Validators.required],
       hhorario: ['', Validators.required],
-      hfavoritos: [null],
       husuario: [null]
     });
     this.uS.list().subscribe((data) => {
@@ -168,8 +167,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
       this.centroReciclaje.longitud = this.form.value.hlongitud;
       this.centroReciclaje.horario = this.form.value.hhorario;
      
-      //nulos
-      this.centroReciclaje.favoritos = this.form.value.hfavoritos ? true : false;
       this.centroReciclaje.us = this.form.value.husuario 
         ? { idUser: this.form.value.husuario } as Usuario : null;
 
@@ -214,7 +211,6 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
           hlatitud: new FormControl(data.latitud),
           hlongitud: new FormControl(data.longitud),
           hhorario: new FormControl(data.horario),
-          hfavoritos: new FormControl(data.favoritos), // Permitir nulo en favoritos
           husuario: new FormControl(data.us?.idUser || null) 
         });  
 

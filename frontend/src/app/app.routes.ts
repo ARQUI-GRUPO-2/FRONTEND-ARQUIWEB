@@ -35,6 +35,9 @@ import { RecompensasmasreclamadasComponent } from './components/reportes/recompe
 import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
 import { BuscaruserpordistritoComponent } from './components/reportes/buscaruserpordistrito/buscaruserpordistrito.component';
 import { ObtenercantidadusuariospordistritoComponent } from './components/reportes/obtenercantidadusuariospordistrito/obtenercantidadusuariospordistrito.component';
+import { CreareditarfavoritosComponent } from './components/favoritos/creareditarfavoritos/creareditarfavoritos.component';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
+
 
 export const routes: Routes = [
   {
@@ -237,4 +240,16 @@ export const routes: Routes = [
     component: HomeComponent,
     canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
   },
+  {
+    path: 'favoritos', component: FavoritosComponent,
+    children: [
+      {
+        path: 'nuevo', component: CreareditarfavoritosComponent,
+      },
+      {
+        path: 'ediciones/:id', component: CreareditarfavoritosComponent, 
+      }
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  }
 ];

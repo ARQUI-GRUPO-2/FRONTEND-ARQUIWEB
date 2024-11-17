@@ -29,6 +29,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +56,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     WelcomeComponent,
     GoogleMapsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FavoritosComponent
   ],
 
   templateUrl: './app.component.html',
