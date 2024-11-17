@@ -19,7 +19,15 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-creareditarnoticias',
   standalone: true,
-  imports: [MatInputModule,MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, ReactiveFormsModule, CommonModule],
+  imports: [
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   templateUrl: './creareditarnoticias.component.html',
   styleUrl: './creareditarnoticias.component.css',
 })
@@ -49,8 +57,13 @@ export class CreareditarnoticiasComponent implements OnInit {
       hcodigo: [''],
       htitulo: ['', Validators.required],
       hinformacion: ['', Validators.required],
-      hfechaPublicacion: ['', Validators.required],
+      hfechaPublicacion: [this.getFechaActual(), Validators.required],
     });
+  }
+
+  getFechaActual(): string {
+    const fecha = new Date();
+    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
   }
 
   insertar(): void {
@@ -58,7 +71,7 @@ export class CreareditarnoticiasComponent implements OnInit {
       this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
       return; // Detiene la ejecución si el formulario no es válido
     }
-    
+
     if (this.form.valid) {
       this.noticias.idNoticias = this.form.value.hcodigo;
       this.noticias.titulo = this.form.value.htitulo;
@@ -81,7 +94,6 @@ export class CreareditarnoticiasComponent implements OnInit {
     }
     this.router.navigate(['noticias']);
   }
-    
 
   init() {
     if (this.edicion) {
@@ -91,7 +103,7 @@ export class CreareditarnoticiasComponent implements OnInit {
           htitulo: new FormControl(data.titulo),
           hinformacion: new FormControl(data.informacion),
           hfechaPublicacion: new FormControl(data.fechaPublicacion),
-        });  
+        });
       });
     }
   }

@@ -29,12 +29,10 @@
         <br/>
 
     <mat-form-field>
-      <mat-label>Seleccione una fecha</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="hfechaPublicacion"/>
-        <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-label>Fecha Actual</mat-label>
+        <input matInput formControlName="hfechaPublicacion" readonly/>
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="picker"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="form.get('hfechaPublicacion')?.hasError('required')">
