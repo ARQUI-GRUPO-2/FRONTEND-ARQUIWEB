@@ -41,8 +41,11 @@ export class CreareditarreclamacionesComponent {
   reclamaciones: Reclamaciones = new Reclamaciones();
   listaUsuarios: Usuario[] = [];
   listaRecompensas: Recompensas[] = [];
+  role:String='';
+
   id: number = 0;
   edicion: boolean = false;
+
 
   constructor(
     private rS: ReclamacionesService,
@@ -55,6 +58,7 @@ export class CreareditarreclamacionesComponent {
   ) {}
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = this.id != null;
@@ -123,5 +127,9 @@ export class CreareditarreclamacionesComponent {
         });
       });
     }
+  }
+
+  isAdmi(){
+    return this.role === 'ADMI';
   }
 }
