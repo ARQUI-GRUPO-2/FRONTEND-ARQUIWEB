@@ -13,7 +13,7 @@
       </mat-form-field>
       <br />
 
-  <div *ngIf="isAdmi()">
+      <div *ngIf="isAdmi()">
         <mat-form-field>
           <mat-label>Seleccione una fecha</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="fecha" />
@@ -29,22 +29,21 @@
         </mat-form-field>
       </div>
       <br />
-        
-        <mat-form-field class="example-full-width">
-            <mat-label>Cantidad de botellas o amigos</mat-label>
-            <input matInput placeholder="5,6,7 ..." formControlName="cantidad" />
-            <mat-error *ngIf="form.get('cantidad')?.hasError('required')"> 
-              La cantidad es obligatoria.
-            </mat-error>
-            <mat-error *ngIf="form.get('cantidad')?.hasError('max')">
-              Solo se pueden registrar 100 botellas/amigos.
-            </mat-error>   
-            <mat-error *ngIf="form.get('cantidad')?.hasError('min')">
-              Se deben registrar 5 o más botellas/amigos.
-            </mat-error>     
-  
-        </mat-form-field>          
-        <br/>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Cantidad de botellas o amigos</mat-label>
+        <input matInput placeholder="5,6,7 ..." formControlName="cantidad" />
+        <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
+          La cantidad es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="form.get('cantidad')?.hasError('max')">
+          Solo se pueden registrar 100 botellas/amigos.
+        </mat-error>
+        <mat-error *ngIf="form.get('cantidad')?.hasError('min')">
+          Se deben registrar 5 o más botellas/amigos.
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <mat-form-field>
         <mat-label>Tipo de Actividad</mat-label>
@@ -75,6 +74,14 @@
         >
       </mat-form-field>
       <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Puntos</mat-label>
+        <input matInput placeholder="123..." formControlName="puntos" />
+        <mat-error *ngIf="form.get('puntos')?.hasError('required')">
+          Los puntos son obligatorios.
+        </mat-error>
+      </mat-form-field>
+      <br />
 
       <div *ngIf="isAdmi()">
         <mat-form-field>
@@ -88,18 +95,12 @@
             >Asignar un usuario es obligatorio.</mat-error
           >
         </mat-form-field>
-        <br/>
-        
-          <mat-form-field class="example-full-width">
-          <mat-label>Puntos</mat-label>
-          <input matInput placeholder="123..." formControlName="puntos"/>
-          <mat-error *ngIf="form.get('puntos')?.hasError('required')"> 
-            Los puntos son obligatorios.
-          </mat-error>        
-      </mat-form-field>          
-      <br/>
-        
-        <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
-      </form>
-    </div>
+        <br />
+
+      </div>
+      <button mat-flat-button class="custom-button">
+        {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
+      </button>
+    </form>
   </div>
+</div>

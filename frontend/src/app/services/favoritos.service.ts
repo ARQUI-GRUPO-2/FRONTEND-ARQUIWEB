@@ -9,6 +9,9 @@ const base_url=environment.base;
   providedIn: 'root'
 })
 export class FavoritosService {
+  updatePagedData() {
+    throw new Error('Method not implemented.');
+  }
   private url = `${base_url}/favoritos`; 
   private listaCambio= new Subject<Favoritos[]>()
 
