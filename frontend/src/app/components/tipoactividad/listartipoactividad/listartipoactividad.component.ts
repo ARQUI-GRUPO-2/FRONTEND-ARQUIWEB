@@ -26,12 +26,16 @@ export class ListartipoactividadComponent implements OnInit{
     this.taS.list().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
     });
+    this.taS.getList().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+    });
   }
 
 
   eliminar(id: number): void {
     this.taS.delete(id).subscribe(() => {
       this.taS.list().subscribe(data => {
+        this.taS.setList(data);
         this.dataSource.data = data; // Actualiza los datos
       });
     });

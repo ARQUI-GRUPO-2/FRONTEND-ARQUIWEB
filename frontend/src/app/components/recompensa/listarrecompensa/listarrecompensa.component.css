@@ -32,7 +32,7 @@ mat-card-header {
 }
 
 mat-card-content {
-  background-color: rgb(209, 219, 201); /* Fondo verde claro */
+  background-color: #dfe6e9; /* Fondo verde claro */
   padding: 16px;
   display: flex;
   align-items: left;
@@ -46,13 +46,13 @@ mat-card-content p {
 }
 
 mat-card-actions {
-  background-color: rgb(209, 219, 201);
+  background-color: #dfe6e9;
   display: flex;
   justify-content: flex-end;
 }
 
 mat-card-actions button {
-  background-color: rgb(209, 219, 201);
+  background-color: #dfe6e9;
   border-radius: 4px;
   padding: 4px 12px;
   font-size: 12px;
@@ -75,11 +75,9 @@ h1 {
   color: #2c3e50;
   font-family: Gabarito, sans-serif;
   font-size: 2.2rem;
-  margin-top: 60px;
-  margin-bottom: 20px;
-  margin-left: 225px;
+  padding-top: 50px;
+  padding-left: 285px;
   font-weight: bold;
-
 }
 
 th,
@@ -128,7 +126,7 @@ tr:hover td {
 }
 
 mat-paginator {
-  background-color: rgb(242 242 242); /* Fondo verde claro */
+  background-color: #dfe6e9; /* Fondo verde claro */
   border-radius: 8px; /* Bordes redondeados */
   padding: 8px;
   display: flex;

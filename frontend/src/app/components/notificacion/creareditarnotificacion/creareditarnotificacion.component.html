@@ -6,14 +6,14 @@
   </div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
-      <mat-form-field class="example-full-width" *ngIf="edicion">
+      <!-- <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Codigo</mat-label>
         <textarea matInput formControlName="hcodigo"></textarea>
         <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
           El codigo es obligatorio
         </mat-error>
       </mat-form-field>
-      <br />
+      <br /> -->
 
       <mat-form-field class="example-full-width">
         <mat-label>Mensaje</mat-label>

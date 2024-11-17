@@ -43,8 +43,8 @@
   
   /* Encabezado de la tarjeta */
   .card-header {
-    background: rgb(90, 181, 76); /* Color del encabezado */
-    color: white;
+    background: #97db86; /* Color del encabezado */
+    color: black;
     padding: 10px;
     text-align: center;
     font-size: 20px;
@@ -94,7 +94,7 @@
   }
   
   .delete-btn:hover {
-    background-color: rgba(205, 56, 39, 0.627); /* Fondo translúcido */
+    background-color: #97db86; /* Fondo translúcido */
   }
   
   /* Botón editar */
@@ -103,6 +103,6 @@
   }
   
   .edit-btn:hover {
-    background-color: rgba(41, 127, 185, 0.774); /* Fondo translúcido */
+    background-color: #97db86; /* Fondo translúcido */
   }
   

@@ -4,14 +4,14 @@
   </div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
-      <mat-form-field class="example-full-width" *ngIf="edicion">
+      <!-- <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Código</mat-label>
         <input matInput formControlName="hcodigo" />
         <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
           El codigo es obligatorio
         </mat-error>
       </mat-form-field>
-      <br />
+      <br /> -->
 
       <div *ngIf="isAdmi()">
         <mat-form-field>

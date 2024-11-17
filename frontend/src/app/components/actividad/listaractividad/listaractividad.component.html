@@ -25,7 +25,7 @@
         <mat-icon
         (click)="eliminar(element.idActividad)"
         class="delete-icon"
-        style="color:#d40000"
+        style="color:#000000"
       >
         delete
       </mat-icon>
@@ -57,7 +57,7 @@
   <!-- Paginador -->
   <mat-paginator
     [length]="actividades.length"
-    [pageSize]="6"
+    [pageSize]="3"
     [pageSizeOptions]="[3, 6, 9]"
     aria-label="Select page">
   </mat-paginator>

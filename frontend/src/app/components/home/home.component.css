@@ -73,7 +73,7 @@ mat-form-field input {
   background-color: rgb(72, 129, 46);
 }
 .custom-cancel {
-  background-color: rgb(207, 63, 52);
+  background-color: rgb(84, 164, 47);
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-family: "Gabarito", sans-serif;
@@ -83,14 +83,15 @@ mat-form-field input {
 }
 
 .custom-cancel:hover {
-  background-color: rgb(126, 7, 7);
+  background-color: rgb(72, 129, 46);
 }
 
 .button-container {
   display: flex;
-  justify-content: center; /* Centra los botones horizontalmente */
+  justify-content: left; /* Centra los botones horizontalmente */
   gap: 10px; /* Espaciado entre los botones */
   margin-top: 16px; /* Espaciado superior */
+  margin-left: 240px;
 }
 
 .left-image {
