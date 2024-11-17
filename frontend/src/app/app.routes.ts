@@ -33,6 +33,8 @@ import { ActividadesporusuarioComponent } from './components/reportes/actividade
 import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
 import { RecompensasmasreclamadasComponent } from './components/reportes/recompensasmasreclamadas/recompensasmasreclamadas.component';
 import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
+import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
+import { CreareditarreclamacionesComponent } from './components/reclamaciones/creareditarreclamaciones/creareditarreclamaciones.component';
 
 export const routes: Routes = [
   {
@@ -163,6 +165,21 @@ export const routes: Routes = [
             component: RecompensasproxvencerComponent,
           },
         ],
+      },
+    ],
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'reclamaciones',
+    component: ReclamacionesComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditarreclamacionesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditarreclamacionesComponent,
       },
     ],
     canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno

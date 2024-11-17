@@ -29,4 +29,13 @@ export class LoginService {
     const decodedToken = helper.decodeToken(token);
     return decodedToken?.role;
   }
+  getUserID() {
+    let token = sessionStorage.getItem('token');
+    if (!token) {
+      return null; // Manejar el caso cuando el token es nulo
+    }
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(token);
+    return decodedToken?.idUser; // Ajusta la propiedad según tu token JWT
+  }
 }

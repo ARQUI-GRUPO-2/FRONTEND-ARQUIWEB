@@ -26,6 +26,7 @@ import { CommonModule } from '@angular/common';
 import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +52,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     RolComponent,
     LoginComponent,
     WelcomeComponent,
+    ReclamacionesComponent
   ],
 
   templateUrl: './app.component.html',
