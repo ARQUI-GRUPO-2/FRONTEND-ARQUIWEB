@@ -66,26 +66,6 @@ export class ListarrecompensaComponent implements OnInit {
     });
   }
 
-  reclamarRecompensa(recompensaId: number) {
-    // Asignar el ID de la recompensa que se está reclamando
-    this.reclamaciones.recompensa.idRecompensas = recompensaId;
-  
-    // Asignar el ID del usuario desde el servicio de login
-    const userId = this.lS.getUserID();
-    if (userId !== null && userId !== undefined) {
-      this.reclamaciones.usuario.idUser = userId;
-  
-      // Insertar la reclamación en la base de datos
-      this.recS.insert(this.reclamaciones).subscribe(() => {
-        // Después de la inserción, actualizar la lista de reclamaciones
-        this.recS.list().subscribe((data) => {
-          this.recS.setList(data);
-        });
-      });
-    } else {
-      console.error('Error: El usuario no está autenticado.');
-    }
-  }
   
   
   // reclamarRecompensa(recompensaId: number) {
