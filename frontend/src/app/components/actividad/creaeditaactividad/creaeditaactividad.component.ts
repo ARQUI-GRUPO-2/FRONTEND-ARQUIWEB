@@ -15,6 +15,8 @@ import { TipoActividad } from '../../../models/TipoActividad';
 import { UsuarioService } from '../../../services/usuario.service';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { TipoactividadService } from '../../../services/tipoactividad.service';
+import moment from 'moment';
+=======
 import { LoginService } from '../../../services/login.service';
 
 @Component({
@@ -29,6 +31,7 @@ export class CreaeditaactividadComponent implements OnInit {
   actividad:Actividad=new Actividad()
   listaUsuarios: Usuario[]=[];
   listaCentros: CentroReciclaje[]=[];
+  maxFecha: Date = moment().add(0, 'days').toDate();
 
   listaTipoActividad: TipoActividad[]=[];
   role:String='';
@@ -62,7 +65,7 @@ export class CreaeditaactividadComponent implements OnInit {
       codigo: [''],
       fecha: [this.getFechaActual(), Validators.required],
       puntos: ['', Validators.required],
-      cantidad: ['', Validators.required],
+      cantidad: ['',[Validators.required, Validators.min(5), Validators.max(100)]],
       usuarios: [this.lS.getID(), Validators.required],
       centros: ['', Validators.required],
       tipoactividad: ['', Validators.required]
@@ -76,6 +79,18 @@ export class CreaeditaactividadComponent implements OnInit {
       this.taS.list().subscribe((data) => {
         this.listaTipoActividad = data;
       });
+      this.form.get('cantidad')?.valueChanges.subscribe((cantidad: number) => {
+        if (cantidad) {
+          const puntos = cantidad * 2; // Lógica para calcular los puntos
+          this.form.get('puntos')?.patchValue(puntos); // Actualiza el valor sin problemas
+          this.form.get('puntos')?.updateValueAndValidity(); // Marca el control como actualizado
+        } else {
+          this.form.get('puntos')?.patchValue(1); // Valor predeterminado
+          this.form.get('puntos')?.updateValueAndValidity(); // Valida el cambio
+        }
+      });
+      
+    
   }
 
   getFechaActual(): string {
@@ -114,6 +129,7 @@ export class CreaeditaactividadComponent implements OnInit {
   }
   this.router.navigate(['actividades'])
 }
+
 
   init(){
     if(this.edicion){
