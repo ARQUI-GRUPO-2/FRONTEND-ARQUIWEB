@@ -47,6 +47,10 @@ export class ListarrecompensaComponent implements OnInit {
       this.recompensas = data;
       this.updatePagedData();
     });
+    this.rS.getList().subscribe((data) => {
+      this.recompensas = data;
+      this.updatePagedData();
+    });
   }
 
   ngAfterViewInit() {
@@ -64,6 +68,7 @@ export class ListarrecompensaComponent implements OnInit {
   eliminar(id: number) {
     this.rS.delete(id).subscribe(() => {
       this.rS.list().subscribe((data) => {
+        this.rS.setList(data);
         this.recompensas = data;
         this.updatePagedData();
       });

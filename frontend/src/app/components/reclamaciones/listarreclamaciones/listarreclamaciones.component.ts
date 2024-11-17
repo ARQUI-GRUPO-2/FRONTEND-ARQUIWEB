@@ -39,6 +39,10 @@ export class ListarreclamacionesComponent implements OnInit, AfterViewInit {
       this.reclamaciones = data;
       this.updatePagedData(); // Asegúrate de llamar a updatePagedData cuando los datos estén disponibles
     });
+    this.rS.getList().subscribe((data) => {
+      this.reclamaciones = data;
+      this.updatePagedData(); // Asegúrate de llamar a updatePagedData cuando los datos estén disponibles
+    });
   
     // this.rS.listId().subscribe((data) => {
     //   this.reclamaciones = [data];
@@ -61,6 +65,7 @@ export class ListarreclamacionesComponent implements OnInit, AfterViewInit {
   eliminar(id: number) : void{
     this.rS.delete(id).subscribe(() => {
       this.rS.list().subscribe((data) => {
+        this.rS.setList(data);
         this.reclamaciones = data;
         this.updatePagedData();
       });

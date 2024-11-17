@@ -37,6 +37,10 @@ export class ListarcentroreciclajeComponent implements OnInit {
       this.centros = data;
       this.updatePagedData();
     });
+    this.cS.getList().subscribe((data) => {
+      this.centros = data;
+      this.updatePagedData();
+    });
 
 
     this.initMap();
@@ -90,13 +94,14 @@ export class ListarcentroreciclajeComponent implements OnInit {
   getFormattedLocation(element: CentroReciclaje): string {
     return `(${element.latitud}, ${element.longitud})`;
   }
-
   
 
   eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
+        this.cS.setList(data);
         this.centros = data;
+        this.updatePagedData();
         });
     });
   }

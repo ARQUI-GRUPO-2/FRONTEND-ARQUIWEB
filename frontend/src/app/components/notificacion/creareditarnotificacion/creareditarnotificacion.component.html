@@ -8,7 +8,7 @@
     <form [formGroup]="form" (submit)="insertar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Codigo</mat-label>
-        <input matInput formControlName="hcodigo" />
+        <textarea matInput formControlName="hcodigo"></textarea>
         <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
           El codigo es obligatorio
         </mat-error>

@@ -32,6 +32,10 @@ export const appConfig: ApplicationConfig = {
           disallowedRoutes: [
             'https://grupo-2arqui-production-backend.up.railway.app/login/forget',
           ],
+          // allowedDomains: ['localhost:8080'],
+          // disallowedRoutes: [
+          //   'http://localhost:8080/login/forget',
+          // ],
         },
       })
     ),

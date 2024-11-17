@@ -21,9 +21,9 @@ mat-form-field{
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 16px;
-  margin-left: 160px;
-
+  padding-left: 160px;
+  padding-top: 30px;
+  
 }
 /* Estilo del contenedor principal para centrar el mapa */
 .map-container {
