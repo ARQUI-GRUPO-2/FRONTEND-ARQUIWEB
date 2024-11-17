@@ -16,7 +16,6 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { TipoactividadService } from '../../../services/tipoactividad.service';
 import moment from 'moment';
-=======
 import { LoginService } from '../../../services/login.service';
 
 @Component({

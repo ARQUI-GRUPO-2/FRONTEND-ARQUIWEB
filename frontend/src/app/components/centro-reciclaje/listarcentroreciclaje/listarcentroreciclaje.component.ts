@@ -81,11 +81,6 @@ export class ListarcentroreciclajeComponent implements OnInit {
     return `(${element.latitud}, ${element.longitud})`;
   }
 
-  toggleFavorite(idCentroReciclaje: number): void {
-      this.router.navigate(['/favoritos/nuevo'], { queryParams: { centroReciclajeId: idCentroReciclaje } });
-    }
-
-
     eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
