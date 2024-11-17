@@ -76,7 +76,7 @@
       <br />
       <mat-form-field class="example-full-width">
         <mat-label>Puntos</mat-label>
-        <input matInput placeholder="123..." formControlName="puntos" />
+        <input matInput placeholder="123..." formControlName="puntos" readonly/>
         <mat-error *ngIf="form.get('puntos')?.hasError('required')">
           Los puntos son obligatorios.
         </mat-error>
