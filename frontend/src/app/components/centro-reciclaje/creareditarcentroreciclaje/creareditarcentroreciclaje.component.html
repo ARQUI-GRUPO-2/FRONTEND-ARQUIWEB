@@ -41,26 +41,6 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Horario</mat-label>
-        <input matInput formControlName="hhorario" placeholder="HH:mm:ss" [disabled]="isCliente()" />
-        <mat-error *ngIf="form.get('hhorario')?.hasError('required')">
-          El horario es obligatorio.
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Username</mat-label>
-        <mat-select formControlName="husuario" [disabled]="isCliente()">
-          <mat-option *ngFor="let m of listaUsuarios" [value]="m.idUser">{{ m.username }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('husuario')?.hasError('required')">
-          Asignar un usuario es obligatorio
-        </mat-error>
-      </mat-form-field>
-      <br />
-
-
       <div>
         <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
       </div>

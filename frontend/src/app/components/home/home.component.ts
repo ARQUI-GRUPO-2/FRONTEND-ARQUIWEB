@@ -81,11 +81,17 @@ export class HomeComponent implements OnInit {
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
       henabled: [false, Validators.required],
-      hroles: ['', Validators.required],
+      hroles: [''],
     });
 
+      // Asignar automáticamente el rol "Cliente" al formulario
     this.rS.list().subscribe((data) => {
-      this.listaRoles = data;
+      const clienteRol = data.find(rol => rol.nombreRol === 'CLIENTE');
+      if (clienteRol) {
+        this.form.patchValue({
+          hroles: clienteRol.idRol
+        });
+      }
     });
   }
 

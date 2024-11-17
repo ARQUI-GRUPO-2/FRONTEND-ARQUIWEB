@@ -9,19 +9,17 @@
   <div class="cards-container">
     <mat-card *ngFor="let centro of dataSource.data" class="card">
       <!-- Parte superior: Información -->
-      <div class="info">
-        <!-- Mostrar ubicación y hora de cierre -->
-        <p>Hora de cierre: {{ centro.horario }}</p>
-      </div>
+  
 
-      <!-- Ícono de corazón 
+      <!-- Ícono de corazón -->
       <mat-icon
-      (click)="toggleFavorite(centro)"
+      (click)="toggleFavorite(centro.idCentroReciclaje)"
       class="heart-icon"
-      [style.color]="centro.favoritos ? 'red' : 'gray'"
+      [style.color]="(centro.idCentroReciclaje) ?  'gray':'red'" 
     >
       favorite
-    </mat-icon> -->
+    </mat-icon>
+    
 
       <!-- Parte inferior: Dirección -->
       <div class="direccion">

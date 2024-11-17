@@ -54,6 +54,7 @@ export class CreareditarfavoritosComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
+
       this.init();
     });
 
@@ -95,13 +96,13 @@ export class CreareditarfavoritosComponent implements OnInit {
         });
       }
     } 
-    this.router.navigate(['favoritos']);
+    this.router.navigate(['centroreciclaje']);
   }
 
   init() {
     if (this.edicion) {
       this.fS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
+        this.form = this.formBuilder.group({
         hcodigo: new FormControl(data.idFavorito),
         husuario: new FormControl(data.user.idUser),
         hcentro: new FormControl(data.centroReciclaje.idCentroReciclaje),
