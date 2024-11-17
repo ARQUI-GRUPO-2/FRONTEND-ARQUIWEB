@@ -6,6 +6,5 @@ export class CentroReciclaje {
     latitud:any
     longitud:any
     horario:string=""
-    favoritos: boolean | null = null
     us: Usuario | null = null
 }
