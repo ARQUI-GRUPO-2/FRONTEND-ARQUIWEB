@@ -37,7 +37,6 @@ import { RecompensasmasreclamadasComponent } from './components/reportes/recompe
 import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
 import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 import { CreareditarreclamacionesComponent } from './components/reclamaciones/creareditarreclamaciones/creareditarreclamaciones.component';
-=======
 import { BuscaruserpordistritoComponent } from './components/reportes/buscaruserpordistrito/buscaruserpordistrito.component';
 import { ObtenercantidadusuariospordistritoComponent } from './components/reportes/obtenercantidadusuariospordistrito/obtenercantidadusuariospordistrito.component';
 

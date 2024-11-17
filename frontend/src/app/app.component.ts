@@ -56,7 +56,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RolComponent,
     LoginComponent,
     WelcomeComponent,
-    ReclamacionesComponent
+    ReclamacionesComponent,
     GoogleMapsModule,
     MatPaginatorModule
   ],
