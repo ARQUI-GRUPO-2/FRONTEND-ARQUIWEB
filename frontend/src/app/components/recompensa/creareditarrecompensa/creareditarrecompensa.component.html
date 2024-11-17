@@ -37,12 +37,13 @@
       <br />
 
       <mat-form-field>
-        <mat-label>Seleccione una fecha</mat-label>
+        <mat-label>Seleccione una fecha de vencimiento</mat-label>
         <input
           matInput
           [matDatepicker]="picker"
           formControlName="hfecha"
           [disabled]="isCliente()"
+          [min]="minFecha"
         />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
@@ -51,7 +52,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="form.get('hfecha')?.hasError('required')">
-          La fecha es obligatoria
+          La fecha de vencimiento es obligatoria
         </mat-error>
       </mat-form-field>
       <br />

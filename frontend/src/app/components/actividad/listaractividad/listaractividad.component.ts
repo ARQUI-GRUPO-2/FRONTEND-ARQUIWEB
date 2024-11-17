@@ -20,11 +20,12 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
   actividades: Actividad[] = [];
   pagedData: Actividad[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  role:String='';
 
   constructor(private aS: ActividadService, private lS: LoginService) { }
 
   ngOnInit(): void {
-     //this.role = this.lS.showRole();
+     this.role = this.lS.showRole();
     // Obtener las actividades
     this.aS.list().subscribe((data) => {
       this.actividades = data;
@@ -55,8 +56,8 @@ export class ListaractividadComponent implements OnInit, AfterViewInit {
       });
     });
   }
-   /*isAdmi(){
+   isAdmi(){
     return this.role === 'ADMI';
-  }*/
+  }
 }
 

@@ -35,15 +35,19 @@
         </mat-menu>
 
         <!-- Botón de Reclamaciones -->
-        <div class="button-tipo" *ngIf="isAdmin()">
-            <button mat-button [matMenuTriggerFor]="menuReclamaciones" style="color: black" >
+        <div class="button-tipo" >
+            <button mat-button [routerLink]="['/reclamaciones/nuevo']" style="color: black" *ngIf="isCliente()">
+                <mat-icon>new_releases</mat-icon>
+                <span class="noti-text">Reclamaciones</span>
+            </button>
+            <button mat-button [matMenuTriggerFor]="menuReclamaciones" style="color: black"  *ngIf="isAdmin()">
                 <mat-icon>new_releases</mat-icon>
                 <span class="noti-text">Reclamaciones</span>
             </button>
         </div>
         <mat-menu #menuReclamaciones="matMenu">
             <button mat-menu-item routerLink="/reclamaciones" >Listar</button>
-            <button mat-menu-item routerLink="/reclamaciones/nuevo" >Registrar</button>
+            <button mat-menu-item routerLink="/reclamaciones/nuevo">Registrar</button>
         </mat-menu>
 
         <span class="spacer"></span>
@@ -153,11 +157,7 @@
 
         <!-- Menú Actividad -->
         <div class="menu-item">
-            <button mat-button [routerLink]="['/actividades']" style="color: #000;"*ngIf="isCliente()" >
-                <mat-icon>assignment</mat-icon>
-                <span class="menu-text">Actividad</span>
-            </button>
-            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #000;" *ngIf="isAdmin()">
+            <button mat-button [matMenuTriggerFor]="menuActividad" style="color: #000;" >
                 <mat-icon>assignment</mat-icon>
                 <span class="menu-text">Actividad</span>
             </button>
@@ -167,8 +167,8 @@
             </button>
         </div>
         <mat-menu #menuActividad="matMenu">
-            <button mat-menu-item routerLink="/actividades">Listar</button>
-            <button mat-menu-item routerLink="/actividades/nuevo">Registrar</button>
+            <button mat-menu-item routerLink="/actividades" *ngIf="isAdmin() || isCliente()">Listar</button>
+            <button mat-menu-item routerLink="/actividades/nuevo" *ngIf="isAdmin() || isCliente()">Registrar</button>
         </mat-menu>
         <mat-menu #menuActividadporCentro="matMenu">
             <button mat-menu-item routerLink="/actividades/reportes/actividadesporcentro">Actividades por Centro</button>

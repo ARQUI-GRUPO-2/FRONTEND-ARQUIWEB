@@ -64,7 +64,7 @@ export class CreareditarreclamacionesComponent {
     this.form = this.formBuilder.group({
       hcodigo: [''],
       hrecompensa: ['', Validators.required],
-      husuario: ['', Validators.required],
+      husuario: [this.lS.getID(), Validators.required],
     });
 
     this.uS.list().subscribe((data) => {
@@ -95,8 +95,21 @@ export class CreareditarreclamacionesComponent {
           });
         });
       }
+      this.navigateAfterAction();
 
-      this.router.navigate(['reclamaciones']);
+    }
+
+    
+  }
+
+  navigateAfterAction(): void {
+    const userRole = this.lS.showRole(); // Obtén el rol del usuario desde el servicio de login
+    if (userRole === 'ADMI') {
+      this.router.navigate(['reclamaciones']); // Navegar al componente de listar reclamaciones
+    } else if (userRole === 'CLIENTE') {
+      this.router.navigate(['noticias']); // Navegar al componente de noticias
+    } else {
+      console.error('Rol desconocido, no se pudo redirigir.');
     }
   }
 

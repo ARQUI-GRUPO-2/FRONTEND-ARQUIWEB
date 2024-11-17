@@ -41,7 +41,7 @@ export class ListarrecompensaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.role = this.lS.showRole();
+    this.role = this.lS.showRole();
 
     this.rS.list().subscribe((data) => {
       this.recompensas = data;
@@ -83,6 +83,6 @@ export class ListarrecompensaComponent implements OnInit {
   // }
 
   isAdmi(): boolean {
-    return this.role === 'ADMI';
+    return this.role == 'ADMI';
   }
 }
