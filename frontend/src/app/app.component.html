@@ -36,14 +36,18 @@
 
         <!-- Botón de Reclamaciones -->
         <div class="button-tipo" >
-            <button mat-button [matMenuTriggerFor]="menuReclamaciones" style="color: black" >
+            <button mat-button [routerLink]="['/reclamaciones/nuevo']" style="color: black" *ngIf="isCliente()">
+                <mat-icon>new_releases</mat-icon>
+                <span class="noti-text">Reclamaciones</span>
+            </button>
+            <button mat-button [matMenuTriggerFor]="menuReclamaciones" style="color: black"  *ngIf="isAdmin()">
                 <mat-icon>new_releases</mat-icon>
                 <span class="noti-text">Reclamaciones</span>
             </button>
         </div>
         <mat-menu #menuReclamaciones="matMenu">
             <button mat-menu-item routerLink="/reclamaciones" >Listar</button>
-            <button mat-menu-item routerLink="/reclamaciones/nuevo" >Registrar</button>
+            <button mat-menu-item routerLink="/reclamaciones/nuevo">Registrar</button>
         </mat-menu>
 
         <span class="spacer"></span>

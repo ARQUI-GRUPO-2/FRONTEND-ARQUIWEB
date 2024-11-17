@@ -31,6 +31,7 @@ export class CreaeditaactividadComponent implements OnInit {
   listaCentros: CentroReciclaje[]=[];
 
   listaTipoActividad: TipoActividad[]=[];
+  role:String='';
 
  
 
@@ -50,6 +51,7 @@ export class CreaeditaactividadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
     this.route.params.subscribe((data:Params)=>{
       this.id = data ['id'];
       this.edicion = data['id']!=null;
@@ -58,7 +60,7 @@ export class CreaeditaactividadComponent implements OnInit {
     });
       this.form=this.formBuilder.group({
       codigo: [''],
-      fecha: ['', Validators.required],
+      fecha: [this.getFechaActual(), Validators.required],
       puntos: ['', Validators.required],
       cantidad: ['', Validators.required],
       usuarios: [this.lS.getID(), Validators.required],
@@ -76,6 +78,11 @@ export class CreaeditaactividadComponent implements OnInit {
       });
   }
 
+  getFechaActual(): string {
+    const fecha = new Date();
+    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+  }
+  
   insertar(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched(); 
@@ -123,5 +130,9 @@ export class CreaeditaactividadComponent implements OnInit {
         });
       });
     }
+  }
+
+  isAdmi(){
+    return this.role === 'ADMI';
   }
 }

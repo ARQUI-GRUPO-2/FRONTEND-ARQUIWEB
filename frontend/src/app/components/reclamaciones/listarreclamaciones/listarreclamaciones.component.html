@@ -3,7 +3,7 @@
     <div>
       <h1>Reclamos de Recompensas</h1>
     </div>
-    <div *ngFor="let element of dataSource.data" class="card-container">
+    <div *ngFor="let element of pagedData" class="card-container">
       <mat-card class="mat-elevation-z8">
         <mat-card-content>
           <p>
@@ -32,20 +32,10 @@
       </mat-card>
     </div>
   </div>
-
-  <div *ngIf="!isAdmi()">
-    <div>
-      <h1>Reclamos de Recompensas</h1>
-    </div>
-    <div *ngFor="let element of dataSource.data" class="card-container">
-      <mat-card class="mat-elevation-z8">
-        <mat-card-content>
-          <p>
-            Nombre de la recompensa: {{ element.recompensa.nombreRecompensa }}
-          </p>
-          <p>Username: {{ element.usuario.username }}</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+  <mat-paginator
+    [length]="reclamaciones.length"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12]"
+    aria-label="Select page">
+  </mat-paginator>
 </div>

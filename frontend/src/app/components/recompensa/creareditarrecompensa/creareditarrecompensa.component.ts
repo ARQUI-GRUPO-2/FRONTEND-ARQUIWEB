@@ -17,6 +17,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../../services/login.service';
 import { ReclamacionesService } from '../../../services/reclamaciones.service';
+import  moment from 'moment';
 
 @Component({
   selector: 'app-creareditarrecompensa',
@@ -39,6 +40,7 @@ export class CreareditarrecompensaComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   role: string = '';
+  minFecha: Date = moment().toDate(); 
 
   constructor(
     private rS: RecompensaService,
@@ -66,6 +68,8 @@ export class CreareditarrecompensaComponent implements OnInit {
     });
 
   }
+
+  
 
   insertar(): void {
     if (this.form.valid) {

@@ -13,7 +13,7 @@
       </mat-form-field>
       <br />
 
-      <!-- <mat-form-field>
+      <mat-form-field>
         <mat-label>Username</mat-label>
         <mat-select formControlName="husuario" >
           @for (u of listaUsuarios; track u) {
@@ -24,24 +24,24 @@
           Asignar un usuario es obligatorio
         </mat-error>
       </mat-form-field>
-      <br /> -->
+      <br />
 
       <mat-form-field>
-        <mat-label>Nombre Recompensa</mat-label>
+        <mat-label>Seleccionar Recompensa</mat-label>
         <mat-select formControlName="hrecompensa" >
           @for (r of listaRecompensas; track r) {
           <mat-option [value]="r.idRecompensas">{{ r.nombreRecompensa }}</mat-option>
           }
         </mat-select>
         <mat-error *ngIf="form.get('hrecompensa')?.hasError('required')">
-          Asignar una recompensaes obligatorio
+          Seleccionar una recompensaes es obligatorio
         </mat-error>
       </mat-form-field>
       <br />
 
       <div>
         <button mat-flat-button class="custom-button">
-          {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
+          {{ edicion ? "ACTUALIZAR" : "RECLAMAR" }}
         </button>
       </div>
     </form>

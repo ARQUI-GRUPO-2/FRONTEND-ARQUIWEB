@@ -43,6 +43,7 @@
           [matDatepicker]="picker"
           formControlName="hfecha"
           [disabled]="isCliente()"
+          [min]="minFecha"
         />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
