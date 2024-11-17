@@ -49,6 +49,7 @@ export class ListarnoticiasComponent implements OnInit {
     });
   }
 
+
   updatePagedData(): void {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     const endIndex = startIndex + this.paginator.pageSize;

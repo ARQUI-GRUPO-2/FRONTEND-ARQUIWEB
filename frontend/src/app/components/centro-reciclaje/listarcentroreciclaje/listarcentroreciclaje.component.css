@@ -22,7 +22,7 @@ h1 {
     position: relative; /* Posición relativa para acomodar el mapa */
     z-index: 0; /* Asegura que otros elementos no se solapen */
     margin-bottom: 20px;
-    margin-left: 30px;
+    margin-left: 25px;
     padding: 0; /* Sin padding para evitar espacios extra */
     background-color: #f1f1f1;
     border-radius: 8px; /* Bordes redondeados */
