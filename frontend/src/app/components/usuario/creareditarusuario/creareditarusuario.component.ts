@@ -164,7 +164,7 @@ export class creareditarusuarioComponent implements OnInit {
           hdistrito: new FormControl(data.distrito),
           htelefono: new FormControl(data.telefono),
           hcorreo: new FormControl(data.correo),
-          hpassword: new FormControl(data.password),
+          hpassword: new FormControl(''),
           henabled: new FormControl(data.enabled),
           hroles: new FormControl(data.rol.idRol)
         });

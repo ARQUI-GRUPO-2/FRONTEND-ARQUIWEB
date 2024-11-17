@@ -3,12 +3,15 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Favoritos } from '../models/Favoritos';
-const base_url=environment.base
+const base_url=environment.base;
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritosService {
+  updatePagedData() {
+    throw new Error('Method not implemented.');
+  }
   private url = `${base_url}/favoritos`; 
   private listaCambio= new Subject<Favoritos[]>()
 
@@ -35,7 +38,7 @@ export class FavoritosService {
   }
 
   update(fa: Favoritos){
-    return this.http.put(this.url, fa)
+    return this.http.put(this.url, fa);
   }
 
 

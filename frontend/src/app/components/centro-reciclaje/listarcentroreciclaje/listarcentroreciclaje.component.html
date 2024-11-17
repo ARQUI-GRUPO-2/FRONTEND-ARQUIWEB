@@ -3,27 +3,14 @@
   <h1>Centros de Reciclaje</h1>
 
   <!-- Mapa interactivo con Leaflet -->
+
   <div class="map-container" id="map"></div>
   <!-- Mapa de Leaflet -->
   <div class="cards-containermax">
     <!-- Contenedor de tarjetas -->
     <div class="cards-container">
       <mat-card *ngFor="let centro of dataSource.data" class="card">
-        <!-- Parte superior: Información -->
-        <div class="info">
-          <!-- Mostrar ubicación y hora de cierre -->
-          <p>Hora de cierre: {{ centro.horario }}</p>
-        </div>
-
-      <!-- Ícono de corazón 
-      <mat-icon
-      (click)="toggleFavorite(centro)"
-      class="heart-icon"
-      [style.color]="centro.favoritos ? 'red' : 'gray'"
-    >
-      favorite
-    </mat-icon> -->
-
+       
         <!-- Parte inferior: Dirección -->
         <div class="direccion">
           {{ centro.direccion }}
@@ -42,12 +29,11 @@
       </mat-card>
     </div>
 
-    <!-- Paginador -->
-    <mat-paginator
-      [length]="dataSource.data.length"
-      [pageSize]="6"
-      [pageSizeOptions]="[3, 6, 9]"
-      aria-label="Select page"
-    ></mat-paginator>
-  </div>
+  <!-- Paginador -->
+  <mat-paginator
+    [length]="dataSource.data.length"
+    [pageSize]="6"
+    [pageSizeOptions]="[3, 6, 9]"
+    aria-label="Select page"
+  ></mat-paginator>
 </div>

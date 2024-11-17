@@ -17,6 +17,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Favoritos } from '../../../models/Favoritos';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-creareditarfavoritos',
@@ -34,12 +35,12 @@ import { Favoritos } from '../../../models/Favoritos';
 export class CreareditarfavoritosComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   favoritos: Favoritos = new Favoritos();
-  listaUsuario:Usuario[]=[];
+  listaUsuarios:Usuario[]=[];
   listaCentros:CentroReciclaje[]=[];
 
   id:number=0
   edicion:boolean=false;
-  
+  role:string='';
   constructor(
     private formBuilder:FormBuilder, 
     private fS:FavoritosService,
@@ -47,24 +48,27 @@ export class CreareditarfavoritosComponent implements OnInit {
     private router: Router,
     private uS: UsuarioService,
     private cS: CentroReciclajeService,
-    
+    private lS: LoginService
   ) { }
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
+
       this.init();
     });
 
     this.form = this.formBuilder.group({
       hcodigo: [''],
-      husuario: ['', Validators.required],
-      hcentro: ['', Validators.required],
+      husuario: [this.lS.getID(), Validators.required],
+      hcentro: ['',Validators.required],
     });
 
     this.uS.list().subscribe((data) => {
-      this.listaUsuario = data;
+      this.listaUsuarios = data;
     });
     this.cS.list().subscribe((data) => {
       this.listaCentros = data;
@@ -72,10 +76,7 @@ export class CreareditarfavoritosComponent implements OnInit {
 }
 
   insertar(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched(); 
-      return; 
-    }
+
     if (this.form.valid) {
       this.favoritos.idFavorito = this.form.value.hcodigo;
       this.favoritos.user.idUser = this.form.value.husuario;
@@ -95,18 +96,33 @@ export class CreareditarfavoritosComponent implements OnInit {
         });
       }
     } 
-    this.router.navigate(['favoritos']);
+    this.navigateAfterAction();
+  }
+  navigateAfterAction(): void {
+    const userRole = this.lS.showRole(); // Obtén el rol del usuario desde el servicio de login
+    if (userRole === 'ADMI') {
+      this.router.navigate(['favoritos']); // Navegar al componente de listar reclamaciones
+    } else if (userRole === 'CLIENTE') {
+      this.router.navigate(['noticias']); // Navegar al componente de noticias
+    } else {
+      console.error('Rol desconocido, no se pudo redirigir.');
+    }
   }
 
   init() {
     if (this.edicion) {
       this.fS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
+        this.form = this.formBuilder.group({
         hcodigo: new FormControl(data.idFavorito),
-        husuario: new FormControl(data.user.idUser),
-        hcentro: new FormControl(data.centroReciclaje.idCentroReciclaje),
+        husuario: new FormControl(data.user.idUser, Validators.required),
+        hcentro: new FormControl(data.centroReciclaje.idCentroReciclaje, Validators.required),
      });
     });
     }
   }
+
+  isAdmi(): boolean {
+    return this.role === 'ADMI';
+  }
+
 }

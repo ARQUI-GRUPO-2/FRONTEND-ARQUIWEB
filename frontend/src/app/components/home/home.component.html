@@ -137,20 +137,17 @@
         </mat-form-field>
       </div>
 
-      <mat-form-field class="rol">
-        <mat-label>Rol</mat-label>
-        <mat-select formControlName="hroles">
-          @for (r of listaRoles; track r) {
-          <mat-option [value]="r.idRol">{{ r.nombreRol }}</mat-option>
-          }
-        </mat-select>
-        <mat-error
-          *ngIf="showErrors && form.get('hroles')?.hasError('required')"
-        >
-          Asignar un rol es obligatorio
-        </mat-error>
-      </mat-form-field>
-      <br />
+<!-- Eliminar la sección de roles -->
+<!-- Este campo ya no será necesario -->
+<mat-form-field *ngIf="false"> <!-- No mostrar esta opción -->
+  <mat-label>Rol</mat-label>
+  <mat-select formControlName="hroles" required>
+    <mat-option *ngFor="let rol of listaRoles" [value]="rol.idRol">
+      {{ rol.nombreRol }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 
       <mat-checkbox class="example-margin" formControlName="henabled" matInput>
         Activado

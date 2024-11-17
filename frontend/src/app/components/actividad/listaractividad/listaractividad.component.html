@@ -19,7 +19,7 @@
         <mat-icon
         (click)="eliminar(element.idActividad)"
         class="delete-icon"
-        style="color:#27ae60"
+        style="color:#000000"
       >
         delete
       </mat-icon>
@@ -42,7 +42,7 @@
       <!-- Botón de editar -->
       <div class="location" *ngIf="isAdmi()">
         <a [routerLink]="['ediciones',element.idActividad]" mat-button>
-          <mat-icon style="color: #27ae60;">edit</mat-icon> Editar
+          <mat-icon style="color: #000000;">edit</mat-icon>
         </a>
       </div>
     </mat-card>
