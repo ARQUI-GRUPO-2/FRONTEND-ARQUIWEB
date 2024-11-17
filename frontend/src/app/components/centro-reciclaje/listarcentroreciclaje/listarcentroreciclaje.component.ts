@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { FavoritosService } from '../../../services/favoritos.service';
+import { LoginService } from '../../../services/login.service';
 
 // Google Maps typings
 declare var google: any;
@@ -15,46 +15,29 @@ declare var google: any;
 @Component({
   selector: 'app-listarcentroreciclaje',
   standalone: true,
-  imports: [
-    MatTableModule,
-    MatIconModule,
-    RouterLink,
-    MatCardModule,
-    MatPaginatorModule,
-    CommonModule,
-  ],
+  imports: [MatTableModule, MatIconModule, RouterLink, MatCardModule, MatPaginatorModule, CommonModule],
   templateUrl: './listarcentroreciclaje.component.html',
-  styleUrls: ['./listarcentroreciclaje.component.css'],
+  styleUrls: ['./listarcentroreciclaje.component.css']
 })
 export class ListarcentroreciclajeComponent implements OnInit {
-  dataSource: MatTableDataSource<CentroReciclaje> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'c1',
-    'c2',
-    'c3',
-    'c4',
-    'c5',
-    'c6',
-    'c7',
-    'accion01',
-    'accion02',
-  ];
-
+ 
+  centros: CentroReciclaje[] = [];
+  pagedData: CentroReciclaje[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   private map: any;
   private marker: any;
+  role:String='';
 
-  constructor(private cS: CentroReciclajeService, private router: Router) {}
+  constructor(private cS: CentroReciclajeService, private router: Router, private lS: LoginService) { }
 
   ngOnInit(): void {
-    this.cS.list().subscribe((data) => {
-      this.dataSource.data = data;
+    this.role = this.lS.showRole();
+    this.cS.list().subscribe(data => {
+      this.centros = data;
+      this.updatePagedData();
     });
 
-    this.cS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
 
     this.initMap();
   }
@@ -62,14 +45,11 @@ export class ListarcentroreciclajeComponent implements OnInit {
   // Inicialización del mapa con Google Maps
   initMap(): void {
     // Crea un nuevo mapa con Google Maps
-    this.map = new google.maps.Map(
-      document.getElementById('map') as HTMLElement,
-      {
-        center: { lat: -12.103852982642929, lng: -76.96305349525248 }, // Coordenadas iniciales
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-      }
-    );
+    this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+      center: { lat: -12.103852982642929, lng: -76.96305349525248 }, // Coordenadas iniciales
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
   }
 
   // Mostrar marcador en el mapa
@@ -84,7 +64,7 @@ export class ListarcentroreciclajeComponent implements OnInit {
       this.marker = new google.maps.Marker({
         position: position,
         map: this.map,
-        title: 'Centro de reciclaje',
+        title: 'Centro de reciclaje'
       });
     }
 
@@ -93,18 +73,35 @@ export class ListarcentroreciclajeComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // Actualizar los datos cuando se cambia de página
+    this.paginator.page.subscribe(() => {
+      this.updatePagedData();
+    });
+  }
+
+  
+  // Función para actualizar los datos según la página actual
+  updatePagedData(): void {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.pagedData = this.centros.slice(startIndex, endIndex);
   }
 
   getFormattedLocation(element: CentroReciclaje): string {
     return `(${element.latitud}, ${element.longitud})`;
   }
 
+  
+
   eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
-        this.cS.setList(data);
-      });
+        this.centros = data;
+        });
     });
+  }
+
+  isAdmi(){
+    return this.role === 'ADMI';
   }
 }

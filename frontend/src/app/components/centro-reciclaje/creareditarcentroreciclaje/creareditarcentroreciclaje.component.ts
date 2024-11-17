@@ -1,19 +1,7 @@
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CentroReciclajeService } from '../../../services/centro-reciclaje.service';
 import { CentroReciclaje } from './../../../models/CentroReciclaje';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -32,43 +21,27 @@ import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginService } from '../../../services/login.service';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxMaskModule } from 'ngx-mask';
+import { NgxMaskModule} from 'ngx-mask';
 import { FavoritosService } from '../../../services/favoritos.service';
-import { MatCardModule } from '@angular/material/card';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
-declare var google: any;
+declare var google: any;  
 
 @Component({
   selector: 'app-creareditarcentroreciclaje',
   standalone: true,
-  imports: [
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    CommonModule,
-    NgxMaterialTimepickerModule,
-    GoogleMap,
-    MapMarker,
-    GoogleMapsModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatIconModule,
-    NgxMaskModule,
-    MatCardModule,
-    MatPaginatorModule
-  ],
+  imports: [MatInputModule, MatSelectModule, 
+    MatDatepickerModule, MatNativeDateModule, 
+    MatButtonModule, ReactiveFormsModule, 
+    CommonModule, NgxMaterialTimepickerModule, 
+    GoogleMap, MapMarker, GoogleMapsModule,  
+    MatCheckboxModule, MatFormFieldModule, 
+    MatIconModule, NgxMaskModule],  
   templateUrl: './creareditarcentroreciclaje.component.html',
-  styleUrl: './creareditarcentroreciclaje.component.css',
+  styleUrl: './creareditarcentroreciclaje.component.css'
 })
-export class CreareditarcentroreciclajeComponent
-  implements OnInit, AfterViewInit
-{
+export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewInit{
   form: FormGroup = new FormGroup({});
-  centroReciclaje: CentroReciclaje = new CentroReciclaje();
+  centroReciclaje: CentroReciclaje = new CentroReciclaje(); 
   id: number = 0;
   filteredAddresses: string[] = [];
   placesService: any;
@@ -77,12 +50,12 @@ export class CreareditarcentroreciclajeComponent
 
   edicion: boolean = false;
 
-  //API
-  lat = 0;
-  lng = 0;
-  center: google.maps.LatLngLiteral = { lat: -12.1040489, lng: -76.9654806 };
+//API
+  lat=0
+  lng=0
+  center: google.maps.LatLngLiteral = { lat: -12.1040489, lng: -76.9654806 }; 
   zoom: number = 15; // Nivel de zoom
-  markerPosition: google.maps.LatLngLiteral = { lat: this.lat, lng: this.lng };
+  markerPosition: google.maps.LatLngLiteral = { lat:this.lat, lng:this.lng};
 
   role: string = '';
   @ViewChild('direccionInput') direccionInput!: ElementRef;
@@ -92,7 +65,7 @@ export class CreareditarcentroreciclajeComponent
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private lS: LoginService
+    private lS: LoginService,
   ) {}
 
   ngOnInit(): void {
@@ -112,6 +85,7 @@ export class CreareditarcentroreciclajeComponent
       hlongitud: ['', Validators.required],
     });
 
+
     // Escucha los cambios en latitud y longitud para actualizar el mapa
     this.form.get('hlatitud')?.valueChanges.subscribe((lat) => {
       this.updateMapPosition(lat, this.form.get('hlongitud')?.value);
@@ -119,6 +93,8 @@ export class CreareditarcentroreciclajeComponent
     this.form.get('hlongitud')?.valueChanges.subscribe((lng) => {
       this.updateMapPosition(this.form.get('hlatitud')?.value, lng);
     });
+
+    
   }
   ngAfterViewInit() {
     // Inicialización del mapa y autocompletado
@@ -126,7 +102,7 @@ export class CreareditarcentroreciclajeComponent
     this.autocomplete = new google.maps.places.Autocomplete(input, {
       //types: ['address'],
       fields: ['place_id', 'geometry', 'name'],
-      componentRestrictions: { country: 'PE' }, // Restringe las búsquedas a Perú
+      componentRestrictions: { country: 'PE' } // Restringe las búsquedas a Perú
     });
 
     // Inicializar el servicio de geocodificación para obtener la latitud y longitud
@@ -149,7 +125,8 @@ export class CreareditarcentroreciclajeComponent
 
           // Establece la latitud y longitud en el formulario
           this.form.controls['hlatitud'].setValue(lat); // Actualiza la latitud
-          this.form.controls['hlongitud'].setValue(lng); // Actualiza la longitud
+          this.form.controls['hlongitud'].setValue(lng);  // Actualiza la longitud
+          
         } else {
           console.error('Error: No se pudo obtener una ubicación válida.');
         }
@@ -164,19 +141,11 @@ export class CreareditarcentroreciclajeComponent
     const query = inputElement.value;
     if (query.length > 3) {
       this.placesService = new google.maps.places.AutocompleteService();
-      this.placesService.getPlacePredictions(
-        { input: query },
-        (
-          predictions: google.maps.places.AutocompletePrediction[],
-          status: google.maps.places.AutocompletePrediction[]
-        ) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            this.filteredAddresses = predictions.map(
-              (p: google.maps.places.AutocompletePrediction) => p.description
-            );
-          }
+      this.placesService.getPlacePredictions({ input: query }, (predictions:google.maps.places.AutocompletePrediction[], status:google.maps.places.AutocompletePrediction[]) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          this.filteredAddresses = predictions.map((p:google.maps.places.AutocompletePrediction) => p.description);
         }
-      );
+      });
     }
   }
 
@@ -185,31 +154,26 @@ export class CreareditarcentroreciclajeComponent
       this.form.markAllAsTouched(); // Marca todos los controles como tocados para disparar las validaciones
       return; // Detiene la ejecución si el formulario no es válido
     }
+    
 
     if (this.form.valid) {
       this.centroReciclaje.idCentroReciclaje = this.form.value.hcodigo;
       this.centroReciclaje.direccion = this.form.value.hdireccion;
       this.centroReciclaje.latitud = this.form.value.hlatitud;
       this.centroReciclaje.longitud = this.form.value.hlongitud;
-
+     
       if (this.edicion) {
         this.cS.update(this.centroReciclaje).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
-            this.updateMapPosition(
-              this.centroReciclaje.latitud,
-              this.centroReciclaje.longitud
-            );
+            this.updateMapPosition(this.centroReciclaje.latitud, this.centroReciclaje.longitud);
           });
         });
       } else {
         this.cS.insert(this.centroReciclaje).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
-            this.updateMapPosition(
-              this.centroReciclaje.latitud,
-              this.centroReciclaje.longitud
-            );
+            this.updateMapPosition(this.centroReciclaje.latitud, this.centroReciclaje.longitud);
           });
         });
       }
@@ -225,7 +189,7 @@ export class CreareditarcentroreciclajeComponent
       this.markerPosition = { lat: latitude, lng: longitude };
     }
   }
-
+  
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
@@ -235,7 +199,7 @@ export class CreareditarcentroreciclajeComponent
           hdireccion: new FormControl(data.direccion),
           hlatitud: new FormControl(data.latitud),
           hlongitud: new FormControl(data.longitud),
-        });
+        });  
       });
     }
   }
