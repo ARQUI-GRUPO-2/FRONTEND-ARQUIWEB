@@ -2,7 +2,7 @@
   <div class="title1">
     <h1>¡Enterate de las noticias actuales!</h1>
   </div>
-  <div *ngFor="let element of dataSource.data" class="card-container">
+  <div *ngFor="let element of pagedData" class="card-container">
     <mat-card class="mat-elevation-z8">
       <mat-card-header>
         <mat-card-title>{{ element.titulo }}</mat-card-title>
@@ -12,14 +12,16 @@
         <p>Fecha de Publicación: {{ element.fechaPublicacion }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button  *ngIf="isAdmin()"
+        <button
+          *ngIf="isAdmin()"
           mat-icon-button
           color="warn"
           (click)="eliminar(element.idNoticias)"
         >
           <mat-icon>delete</mat-icon>
         </button>
-        <button  *ngIf="isAdmin()"
+        <button
+          *ngIf="isAdmin()"
           mat-icon-button
           color="primary"
           [routerLink]="['ediciones', element.idNoticias]"
@@ -31,8 +33,9 @@
   </div>
 
   <mat-paginator
-    [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
+    [length]="noticias.length"
+    [pageSize]="6"
+    [pageSizeOptions]="[3, 6, 9]"
+    aria-label="Select page"
   ></mat-paginator>
 </div>

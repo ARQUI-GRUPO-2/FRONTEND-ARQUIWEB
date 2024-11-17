@@ -2,7 +2,7 @@
   <div>
     <h1>Recompensas</h1>
   </div>
-  <div *ngFor="let element of dataSource.data" class="card-container">
+  <div *ngFor="let element of pagedData" class="card-container">
     <mat-card class="mat-elevation-z8">
       <mat-card-header>
         <mat-card-title>{{ element.nombreRecompensa }}</mat-card-title>
@@ -43,8 +43,9 @@
     </mat-card>
   </div>
   <mat-paginator
-    [pageSize]="1"
-    [pageSizeOptions]="[1, 10, 20]"
-    showFirstLastButtons
+    [length]="recompensas.length"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12]"
+    aria-label="Select page">
   ></mat-paginator>
 </div>
