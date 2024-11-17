@@ -3,13 +3,15 @@
   <h1>Centros de Reciclaje</h1>
 
   <!-- Mapa interactivo con Leaflet -->
-  <div class="map-container" id="map"></div> <!-- Mapa de Leaflet -->
 
-  <!-- Contenedor de tarjetas -->
-  <div class="cards-container">
-    <mat-card *ngFor="let centro of dataSource.data" class="card">
-      <!-- Parte superior: Información -->
-  
+  <div class="map-container" id="map"></div>
+  <!-- Mapa de Leaflet -->
+  <div class="cards-containermax">
+    <!-- Contenedor de tarjetas -->
+    <div class="cards-container">
+      <mat-card *ngFor="let centro of dataSource.data" class="card">
+        <!-- Parte superior: Información -->
+       
 
       <!-- Ícono de corazón -->
       <mat-icon
@@ -21,20 +23,23 @@
     </mat-icon>
     
 
-      <!-- Parte inferior: Dirección -->
-      <div class="direccion">
-        {{ centro.direccion }}
-      </div>
+        <!-- Parte inferior: Dirección -->
+        <div class="direccion">
+          {{ centro.direccion }}
+        </div>
 
-      <!-- Mostrar coordenadas de latitud y longitud -->
-      <div class="location">
-        <p>{{ getFormattedLocation(centro) }}</p>
-        <button mat-button (click)="showOnMap(centro.latitud, centro.longitud)">
-          Ver en el mapa
-        </button>
-      </div>
-    </mat-card>
-  </div>
+        <!-- Mostrar coordenadas de latitud y longitud -->
+        <div class="location">
+          <p>{{ getFormattedLocation(centro) }}</p>
+          <button
+            mat-button
+            (click)="showOnMap(centro.latitud, centro.longitud)"
+          >
+            Ver en el mapa
+          </button>
+        </div>
+      </mat-card>
+    </div>
 
   <!-- Paginador -->
   <mat-paginator

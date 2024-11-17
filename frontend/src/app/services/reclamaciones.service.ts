@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Recompensas } from '../models/Recompensas';
 import { Observable, Subject } from 'rxjs';
+import { Reclamaciones } from '../models/Reclamaciones';
+import { HttpClient } from '@angular/common/http';
 import { MostClaimedRewardDTO } from '../models/MostClaimedRewardDTO';
-import { CloseToExpireDTO } from '../models/CloseToExpireDTO';
 const base_url = environment.base;
 
 @Injectable({
   providedIn: 'root'
 })
-export class RecompensaService {
-  private url = `${base_url}/recompensas`;
-  private listaCambio = new Subject<Recompensas[]>();
+export class ReclamacionesService {
+  private url = `${base_url}/reclamaciones`;
+  private listaCambio = new Subject<Reclamaciones[]>();
 
   constructor(private http: HttpClient) { }
   list() {
-    return this.http.get<Recompensas[]>(this.url);
+    return this.http.get<Reclamaciones[]>(this.url);
   }
-  insert(r: Recompensas) {
+  insert(r: Reclamaciones) {
     return this.http.post(this.url, r);
   }
 
@@ -26,7 +25,7 @@ export class RecompensaService {
     return this.listaCambio.asObservable();
   }
 
-  setList(listaNueva: Recompensas[]) {
+  setList(listaNueva: Reclamaciones[]) {
     this.listaCambio.next(listaNueva);
   }
 
@@ -35,15 +34,15 @@ export class RecompensaService {
   }
 
   listId(id: number) {
-    return this.http.get<Recompensas>(`${this.url}/${id}`);
+    return this.http.get<Reclamaciones>(`${this.url}/${id}`);
   }
 
-  update(rec: Recompensas) {
+  update(rec: Reclamaciones) {
     return this.http.put(this.url, rec);
   }
 
-  proximoVencimiento():Observable<CloseToExpireDTO[]>{
-    return this.http.get<CloseToExpireDTO[]>(`${this.url}/proxvencer`)
+  cantidadRecompensas():Observable<MostClaimedRewardDTO[]>{
+    return this.http.get<MostClaimedRewardDTO[]>(`${this.url}/mas_reclamada`)
   }
 
 }

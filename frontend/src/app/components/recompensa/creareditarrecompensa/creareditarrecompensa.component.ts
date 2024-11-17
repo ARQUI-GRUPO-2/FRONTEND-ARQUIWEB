@@ -15,10 +15,9 @@ import { Recompensas } from '../../../models/Recompensas';
 import { RecompensaService } from '../../../services/recompensa.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ActividadService } from '../../../services/actividad.service';
-import { Actividad } from '../../../models/Actividad';
 import { LoginService } from '../../../services/login.service';
-
+import { ReclamacionesService } from '../../../services/reclamaciones.service';
+import  moment from 'moment';
 
 @Component({
   selector: 'app-creareditarrecompensa',
@@ -38,18 +37,18 @@ import { LoginService } from '../../../services/login.service';
 export class CreareditarrecompensaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   recompensas: Recompensas = new Recompensas();
-  listaActividad: Actividad[] = [];
   id: number = 0;
   edicion: boolean = false;
   role: string = '';
+  minFecha: Date = moment().toDate(); 
 
   constructor(
     private rS: RecompensaService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private aS: ActividadService,
-    private lS: LoginService
+    private lS: LoginService,
+    private reclamacionesS: ReclamacionesService // Añadir el servicio de reclamaciones
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +58,6 @@ export class CreareditarrecompensaComponent implements OnInit {
       this.id = data['id'];
       this.edicion = this.id != null;
       this.init();
-      
     });
 
     this.form = this.formBuilder.group({
@@ -67,13 +65,11 @@ export class CreareditarrecompensaComponent implements OnInit {
       hnombre: ['', Validators.required],
       hdescripcion: ['', Validators.required],
       hfecha: ['', Validators.required],
-      hactividad: [null], // Permitir nulo por defecto
     });
 
-    this.aS.list().subscribe((data) => {
-      this.listaActividad = data;
-    });
   }
+
+  
 
   insertar(): void {
     if (this.form.valid) {
@@ -81,12 +77,6 @@ export class CreareditarrecompensaComponent implements OnInit {
       this.recompensas.nombreRecompensa = this.form.value.hnombre;
       this.recompensas.descripcionRecompensa = this.form.value.hdescripcion;
       this.recompensas.fechaVencimiento = this.form.value.hfecha;
-
-      // Permitir idActividad nulo al registrar, requerirlo al editar
-      this.recompensas.ac = this.form.value.hactividad
-        ? ({ idActividad: this.form.value.hactividad } as Actividad)
-        : null;
-
       if (this.edicion) {
         this.rS.update(this.recompensas).subscribe(() => {
           this.rS.list().subscribe((data) => {
@@ -116,10 +106,6 @@ export class CreareditarrecompensaComponent implements OnInit {
             Validators.required
           ),
           hfecha: new FormControl(data.fechaVencimiento, Validators.required),
-          hactividad: new FormControl(
-            data.ac ? data.ac.idActividad : null,
-            Validators.required
-          ), // Requerir idActividad en edición
         });
 
         // Si es cliente, deshabilitamos todos los campos excepto el campo de actividad
@@ -127,19 +113,18 @@ export class CreareditarrecompensaComponent implements OnInit {
           this.form.get('hcodigo')?.disable();
           this.form.get('hnombre')?.disable();
           this.form.get('hdescripcion')?.disable();
-          this.form.get('hcodigoqr')?.disable();
           this.form.get('hfecha')?.disable();
         }
       });
     }
   }
 
-    // Función para verificar si el rol es cliente
-    isCliente(): boolean {
-      return this.role === 'CLIENTE';
-    }
-  
-    /* Función para verificar si el rol es admin
+  // Función para verificar si el rol es cliente
+  isCliente(): boolean {
+    return this.role === 'CLIENTE';
+  }
+
+  /* Función para verificar si el rol es admin
     isAdmin(): boolean {
       return this.role === 'ADMI';
     } */

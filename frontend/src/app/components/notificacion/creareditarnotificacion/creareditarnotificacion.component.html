@@ -24,20 +24,18 @@
       </mat-form-field>
       <br />
 
-      <br />
+      <!-- <br />
       <mat-form-field>
-        <mat-label>Seleccione una fecha</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="hfecha" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-label>Fecha Actual</mat-label>
+        <input matInput formControlName="hfecha" readonly/>
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="picker"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="form.get('hfecha')?.hasError('required')">
           La fecha es obligatoria
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
       <br />
       <div>
         <button mat-flat-button class="custom-button">
