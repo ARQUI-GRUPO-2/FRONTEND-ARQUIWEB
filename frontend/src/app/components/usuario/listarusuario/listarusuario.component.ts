@@ -32,26 +32,30 @@ import { LoginService } from '../../../services/login.service';
 })
 export class ListarusuarioComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
-  //se agrega:
-  //form: FormGroup; 
-  //noResults: boolean = false; 
-  //nombrebusqueda:string=""
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  role:String='';
 
-  constructor(private uS: UsuarioService, private cdr: ChangeDetectorRef) {}
+  constructor(private uS: UsuarioService, private cdr: ChangeDetectorRef, private lS:LoginService) { }
 
   ngOnInit(): void {
-    this.uS.list().subscribe((data) => {
-      this.dataSource.data = data;
-      //this.cargarUsuarios();
-      
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
-    this.uS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
+    const userId = this.lS.getID(); 
+    this.role = this.lS.showRole(); 
+  
+    if (this.role === 'ADMI') {
+      this.uS.list().subscribe((usuarios) => {
+        this.dataSource.data = usuarios;
+        this.dataSource.paginator = this.paginator;
+      });
+    } else if (this.role === 'CLIENTE' && userId) {
+      this.uS.listId(userId).subscribe((usuario) => {
+        this.dataSource.data = [usuario]; 
+        this.dataSource.paginator = this.paginator;
+      });
+    } else {
+      console.error('No se pudo obtener el rol o ID del usuario');
+    }
   }
 
   ngAfterViewInit() {
@@ -68,5 +72,9 @@ export class ListarusuarioComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  isAdmi(): boolean {
+    return this.role === 'ADMI';
   }
 }

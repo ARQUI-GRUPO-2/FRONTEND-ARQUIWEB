@@ -25,21 +25,12 @@ h1 {
     background-color: #f1f1f1;
     border-radius: 8px; /* Bordes redondeados */
     height: 250px; /* Altura del mapa */
-    width: 600px; /* Ancho total del contenedor */
+    width: 1400px; /* Ancho total del contenedor */
     overflow: hidden;
     border: #2d3436 solid 1px; /* Borde con color primordial */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
 }
 
-/* Mapa de Leaflet */
-#map {
-    height: 250px; /* Ocupa todo el alto del contenedor */
-    width: 600px; /* Ocupa todo el ancho del contenedor */
-    border-radius: 8px; /* Bordes redondeados */
-    position: center; /* Centrar el mapa */
-    z-index: 1;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-}
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas adaptativas */
@@ -106,6 +97,7 @@ h1 {
     border-radius: 0 0 8px 8px;
     margin-top: auto;
 }
+
 
 /* Ubicación */
 .location {

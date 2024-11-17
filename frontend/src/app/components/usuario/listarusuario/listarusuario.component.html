@@ -1,7 +1,10 @@
 <div class="container">
-  <div class="title1">
-    <h1>Usuarios</h1>
-  </div>
+
+
+  <div *ngIf="isAdmi()">
+    <div class="title1">
+      <h1>Usuarios</h1>
+    </div>
   <div *ngFor="let element of dataSource.data" class="card-container">
 
     <mat-icon class="user-icon">account_circle</mat-icon>
@@ -30,9 +33,35 @@
         <mat-icon class="accion">edit</mat-icon>
       </button>
     </div>
-
   </div>
 
   <mat-paginator [pageSize]="2" [pageSizeOptions]="[2, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
 
+  <div *ngIf="!isAdmi()">
+    <div class="title2">
+      <h1>Perfil</h1>
+    </div>
+    <div *ngFor="let element of dataSource.data" class="card-container">
+      <mat-icon class="user-icon">account_circle</mat-icon>
+
+      <div class="user-info">
+        <p>Username: {{ element.username }}</p>
+        <p>Nombre: {{ element.nombres }}</p>
+        <p>Apellidos: {{ element.apellidos }}</p>
+        <p>Correo: {{ element.correo }}</p>
+        <p>Edad: {{ element.edad }}</p>
+        <p>Rol: {{ element.rol.nombreRol }}</p>
+
+      </div>
+      <div class="action-buttons">
+        <button
+          class="mat-icon-button"
+          [routerLink]="['ediciones', element.idUser]"
+          aria-label="Editar usuario">
+          <mat-icon class="accion">edit</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

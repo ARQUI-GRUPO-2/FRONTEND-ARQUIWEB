@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtRequest } from '../models/jwtRequest';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { tap } from 'rxjs';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   login(request: JwtRequest){
     return this.http.post('http://localhost:8080/login', request)
@@ -28,14 +29,27 @@ export class LoginService {
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(token);
     return decodedToken?.role;
-  }
-  getUserID() {
-    let token = sessionStorage.getItem('token');
-    if (!token) {
-      return null; // Manejar el caso cuando el token es nulo
+  }  
+  getID(){
+    if (typeof window !== 'undefined') {  // Verifica si está en el navegador
+      let token = sessionStorage.getItem('token');
+      if (!token) {
+        // Manejar el caso en el que el token es nulo
+        return null; // O cualquier otro valor predeterminado dependiendo del contexto
+      }
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      console.log(decodedToken);
+      
+      let id = decodedToken?.id;
+      if(id){
+        id = parseInt(id);
+        if (isNaN(id)){
+          return null;
+        }
+      }
+      return id;
     }
-    const helper = new JwtHelperService();
-    const decodedToken = helper.decodeToken(token);
-    return decodedToken?.idUser; // Ajusta la propiedad según tu token JWT
+    return null;
   }
 }

@@ -49,6 +49,10 @@ export class LoginComponent  {
     this.router.navigate(['/home/nuevo']);
   }
 
+  NavigateToReturn() {
+    this.router.navigate(['/'])
+  }
+
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword; 
   }

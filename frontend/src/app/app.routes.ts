@@ -27,14 +27,19 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { seguridadGuard } from './guard/seguridad.guard';
+
 import { CentrosfavoritosComponent } from './components/reportes/centrosfavoritos/centrosfavoritos.component';
 import { CentrosusuariosComponent } from './components/reportes/centrosusuarios/centrosusuarios.component';
 import { ActividadesporusuarioComponent } from './components/reportes/actividadesporusuario/actividadesporusuario.component';
 import { CantidadnotiusuarioComponent } from './components/reportes/cantidadnotiusuario/cantidadnotiusuario.component';
+
 import { RecompensasmasreclamadasComponent } from './components/reportes/recompensasmasreclamadas/recompensasmasreclamadas.component';
 import { RecompensasproxvencerComponent } from './components/reportes/recompensasproxvencer/recompensasproxvencer.component';
 import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 import { CreareditarreclamacionesComponent } from './components/reclamaciones/creareditarreclamaciones/creareditarreclamaciones.component';
+=======
+import { BuscaruserpordistritoComponent } from './components/reportes/buscaruserpordistrito/buscaruserpordistrito.component';
+import { ObtenercantidadusuariospordistritoComponent } from './components/reportes/obtenercantidadusuariospordistrito/obtenercantidadusuariospordistrito.component';
 
 export const routes: Routes = [
   {
@@ -73,8 +78,12 @@ export const routes: Routes = [
         component: ReportesComponent,
         children: [
           {
-            path: 'conteo_notificaciones_rangoHoras',
-            component: CantidadnotiusuarioComponent, //FFF
+            path: 'busquedas',
+            component: BuscaruserpordistritoComponent, //FFF
+          },
+          {
+            path: 'obtenercantidadUsuariosporDistrito',
+            component: ObtenercantidadusuariospordistritoComponent,
           },
         ],
       },

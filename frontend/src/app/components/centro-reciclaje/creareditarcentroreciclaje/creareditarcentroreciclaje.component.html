@@ -1,33 +1,31 @@
 <div class="container" style="text-align: center;margin:2%">
-    <div><h1>{{ edicion ? "Actualizar centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
-    <div>
+  <div><h1>{{ edicion ? "Actualizar centro de reciclaje" : 'Registrar centro de reciclaje'}}s</h1></div>
+  <div>
 
-      <div class="map-container">
-        <google-map [center]="center" [zoom]="zoom">
-          <map-marker [position]="markerPosition"></map-marker>
-        </google-map>
-      </div>
+    <div class="map-container">
+      <google-map [center]="center" [zoom]="zoom">
+        <map-marker [position]="markerPosition"></map-marker>
+      </google-map>
+    </div>
 
-      <form [formGroup]="form" (submit)=" insertar()">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
-          <mat-label>Código</mat-label>
-          <input matInput formControlName="hcodigo" [disabled]="isCliente()" />
-          <mat-error *ngIf="form.get('codigo')?.hasError('required')">
-            El codigo es obligatorio
-          </mat-error>
-        </mat-form-field>
-        <br />
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hcodigo" [disabled]="isCliente()" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El codigo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Direccion</mat-label>
-          <input matInput formControlName="hdireccion" [disabled]="isCliente()" />
-          <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
-            La direccion es obligatoria.
-          </mat-error>
-        </mat-form-field>
-        <br />
+      <!-- Campo de Dirección con Autocompletado -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="hdireccion" [disabled]="isCliente()" #direccionInput (input)="onDireccionInput(direccionInput)" placeholder="Buscar dirección..." />
+    </mat-form-field>
+    <br />
 
-        <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width">
         <mat-label>Latitud</mat-label>
         <input matInput formControlName="hlatitud" [disabled]="isCliente()" />
         <mat-error *ngIf="form.get('hlatitud')?.hasError('required')">
@@ -35,52 +33,50 @@
         </mat-error>
       </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <mat-label>Longitud</mat-label>
-            <input matInput formControlName="hlongitud" [disabled]="isCliente()" />
-            <mat-error *ngIf="form.get('hlongitud')?.hasError('required')">
-              La longitud es obligatoria
-            </mat-error>
-        </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Longitud</mat-label>
+        <input matInput formControlName="hlongitud" [disabled]="isCliente()" />
+        <mat-error *ngIf="form.get('hlongitud')?.hasError('required')">
+          La longitud es obligatoria
+        </mat-error>
+      </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Horario</mat-label>
-          <input matInput formControlName="hhorario" placeholder="HH:mm:ss" [disabled]="isCliente()"/>
-          <mat-error *ngIf="form.get('hhorario')?.hasError('required')">
-            El horario es obligatorio.
-          </mat-error>
-        </mat-form-field>
-        
-        <mat-form-field>
-          <mat-label>Username</mat-label>
-          <mat-select formControlName="husuario" [disabled]="isCliente()" >
-            @for (m of listaUsuarios; track m) {
-            <mat-option [value]="m.idUser">{{ m.username }}</mat-option>
-            }
-          </mat-select>
-          <mat-error *ngIf="form.get('husuario')?.hasError('required')">
-            Asignar un usuario es obligatorio
-          </mat-error>
-        </mat-form-field>
-<br/>
+      <mat-form-field appearance="fill">
+        <mat-label>Horario</mat-label>
+        <input matInput formControlName="hhorario" placeholder="HH:mm:ss" [disabled]="isCliente()" />
+        <mat-error *ngIf="form.get('hhorario')?.hasError('required')">
+          El horario es obligatorio.
+        </mat-error>
+      </mat-form-field>
 
- <!-- Contenedor del ícono de corazón -->
- <div class="favorite-icon-container">
-  <mat-checkbox formControlName="hfavoritos" class="hidden-checkbox"></mat-checkbox>
-  <mat-icon class="favorite-icon" (click)="form.controls['hfavoritos'].setValue(!form.controls['hfavoritos'].value)">
-    {{ form.get('hfavoritos')?.value ? 'favorite' : 'favorite_border' }}
-  </mat-icon>
-  <span>Favorito</span>
-</div>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <mat-select formControlName="husuario" [disabled]="isCliente()">
+          <mat-option *ngFor="let m of listaUsuarios" [value]="m.idUser">{{ m.username }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('husuario')?.hasError('required')">
+          Asignar un usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
 
-<mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
-  Marcar es obligatorio
-</mat-error>
-
-        <div>
-            <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
-        </div>
-        
-        </form>
+      <!-- Contenedor del ícono de corazón -->
+      <div class="favorite-icon-container">
+        <mat-checkbox formControlName="hfavoritos" class="hidden-checkbox"></mat-checkbox>
+        <mat-icon class="favorite-icon" (click)="form.controls['hfavoritos'].setValue(!form.controls['hfavoritos'].value)">
+          {{ form.get('hfavoritos')?.value ? 'favorite' : 'favorite_border' }}
+        </mat-icon>
+        <span>Favorito</span>
       </div>
-    </div>    
+
+      <mat-error *ngIf="form.get('hfavoritos')?.hasError('required')">
+        Marcar es obligatorio
+      </mat-error>
+
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'ACTUALIZAR' : 'REGISTRAR' }}</button>
+      </div>
+
+    </form>
+  </div>
+</div>
