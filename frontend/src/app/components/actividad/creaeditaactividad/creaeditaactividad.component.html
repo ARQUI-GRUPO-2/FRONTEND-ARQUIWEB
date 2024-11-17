@@ -16,7 +16,7 @@
       <div *ngIf="isAdmi()">
         <mat-form-field>
           <mat-label>Seleccione una fecha</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha" />
+          <input matInput [matDatepicker]="picker" formControlName="fecha" [max]="maxFecha"/>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
