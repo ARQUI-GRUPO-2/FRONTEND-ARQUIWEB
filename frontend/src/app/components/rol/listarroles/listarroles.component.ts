@@ -4,11 +4,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Rol } from '../../../models/Rol';
 import { RolService } from '../../../services/rol.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listarroles',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink],
+  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule],
   templateUrl: './listarroles.component.html',
   styleUrl: './listarroles.component.css',
 })
