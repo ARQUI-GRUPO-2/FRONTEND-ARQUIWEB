@@ -25,7 +25,7 @@
         <!-- Botón de Tipo de Actividad -->
         <div class="button-tipo" *ngIf="isAdmin()">
             <button mat-button [matMenuTriggerFor]="menuTipoActividad" style="color: black" >
-                <mat-icon>view_stream</mat-icon>
+                <mat-icon>wb_auto</mat-icon>
                 <span class="noti-text">Tipo de Actividad</span>
             </button>
         </div>
@@ -131,8 +131,8 @@
             <button mat-menu-item routerLink="/usuarios/nuevo" >Registrar</button>
         </mat-menu>
         <mat-menu #menuCantidadUsuario="matMenu">
-            <button mat-menu-item routerLink="/usuarios/reportes/busquedas">Usuarios por distrito <mat-icon>line_weight</mat-icon></button>
-            <button mat-menu-item routerLink="/usuarios/reportes/obtenercantidadUsuariosporDistrito">Grafica de cantidad de usuarios por distrito <mat-icon>equalizer</mat-icon></button>
+            <button mat-menu-item routerLink="/usuarios/reportes/busquedas">Usuarios por distrito</button>
+            <button mat-menu-item routerLink="/usuarios/reportes/obtenercantidadUsuariosporDistrito">Grafica de cantidad de usuarios por distrito</button>
         </mat-menu>
 
         <!-- Menú Centros de Reciclaje -->
@@ -155,8 +155,8 @@
             <button mat-menu-item routerLink="/centroreciclaje/nuevo">Registrar</button>
         </mat-menu>
         <mat-menu #menuCentroConsulta="matMenu">
-            <button mat-menu-item routerLink="/centroreciclaje/reportes/mas_popular">Centro Favorito <mat-icon>equalizer</mat-icon></button>
-            <button mat-menu-item routerLink="/centroreciclaje/reportes/mas-usuarios">Centro Popular <mat-icon>equalizer</mat-icon></button>
+            <button mat-menu-item routerLink="/centroreciclaje/reportes/mas_popular">Centro Favorito</button>
+            <button mat-menu-item routerLink="/centroreciclaje/reportes/mas-usuarios">Centro Popular</button>
         </mat-menu>
 
         <!-- Menú Actividad -->
@@ -175,8 +175,8 @@
             <button mat-menu-item routerLink="/actividades/nuevo" *ngIf="isAdmin() || isCliente()">Registrar</button>
         </mat-menu>
         <mat-menu #menuActividadporCentro="matMenu">
-            <button mat-menu-item routerLink="/actividades/reportes/actividadesporcentro">Actividades por Centro <mat-icon>equalizer</mat-icon> </button>
-            <button mat-menu-item routerLink="/actividades/reportes/actividadesporusuario">Actividades por Usuario <mat-icon>equalizer</mat-icon></button>
+            <button mat-menu-item routerLink="/actividades/reportes/actividadesporcentro">Actividades por Centro</button>
+            <button mat-menu-item routerLink="/actividades/reportes/actividadesporusuario">Actividades por Usuario</button>
         </mat-menu>
 
         <!-- Menu Recompensas -->
@@ -199,8 +199,8 @@
             <button mat-menu-item routerLink="/recompensas/nuevo">Registrar</button>
         </mat-menu>
         <mat-menu #menuRecRepo="matMenu">
-            <button mat-menu-item routerLink="/recompensas/reportes/cantidadrecompensas">Cantidad de recompensas reclamadas <mat-icon>equalizer</mat-icon></button>
-            <button mat-menu-item routerLink="/recompensas/reportes/proxvencer">Recompensas Próximas a Vencer <mat-icon>equalizer</mat-icon></button>
+            <button mat-menu-item routerLink="/recompensas/reportes/cantidadrecompensas">Cantidad de recompensas reclamadas</button>
+            <button mat-menu-item routerLink="/recompensas/reportes/proxvencer">Recompensas Próximas a Vencer</button>
         </mat-menu>
 
         <!-- Icono de reciclaje -->
