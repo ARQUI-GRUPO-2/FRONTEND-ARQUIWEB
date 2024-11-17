@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-listarroles',
   standalone: true,
   imports: [MatPaginatorModule, MatCardModule, MatIconModule, RouterLink, CommonModule],
+
   templateUrl: './listarroles.component.html',
   styleUrls: ['./listarroles.component.css'],
 })

@@ -3,7 +3,7 @@
     <div class="title1">
       <h1>Usuarios</h1>
     </div>
-    <div *ngFor="let element of dataSource.data" class="card-container">
+    <div *ngFor="let element of pagedData"  class="card-container">
       <mat-icon class="user-icon">account_circle</mat-icon>
 
       <div class="user-info">
@@ -33,10 +33,11 @@
     </div>
 
     <mat-paginator
-      [pageSize]="2"
-      [pageSizeOptions]="[2, 10, 20]"
-      showFirstLastButtons
-    ></mat-paginator>
+    [length]="usuarios.length"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12]"
+    aria-label="Select page">
+  ></mat-paginator>
   </div>
 
   <div *ngIf="!isAdmi()">

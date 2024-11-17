@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-listartipoactividad',
   standalone: true,
   imports: [MatPaginatorModule, MatCardModule,MatIconModule,RouterLink,CommonModule],
+
+
   templateUrl: './listartipoactividad.component.html',
   styleUrls: ['./listartipoactividad.component.css']
 })
@@ -19,6 +21,7 @@ export class ListartipoactividadComponent implements OnInit {
   pagedData: TipoActividad[] = []; // Datos para la página actual del paginador
   pageSize: number = 6; // Tamaño de la página
   currentPage: number = 0; // Página actual
+
 
   constructor(private taS: TipoactividadService) {}
 

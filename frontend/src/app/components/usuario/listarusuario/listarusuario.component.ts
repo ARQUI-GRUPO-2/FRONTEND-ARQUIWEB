@@ -28,9 +28,11 @@ import { LoginService } from '../../../services/login.service';
     ReactiveFormsModule,
     MatPaginatorModule, MatCardModule],
   templateUrl: './listarusuario.component.html',
-  styleUrl: './listarusuario.component.css',
+  styleUrls: ['./listarusuario.component.css']
 })
 export class ListarusuarioComponent implements OnInit {
+  usuarios: Usuario[] = [];
+  pagedData: Usuario[] = [];
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
 
 
@@ -45,22 +47,32 @@ export class ListarusuarioComponent implements OnInit {
   
     if (this.role === 'ADMI') {
       this.uS.list().subscribe((usuarios) => {
-        this.dataSource.data = usuarios;
-        this.dataSource.paginator = this.paginator;
+        this.usuarios = usuarios;
+        this.updatePagedData();
       });
     } else if (this.role === 'CLIENTE' && userId) {
       this.uS.listId(userId).subscribe((usuario) => {
         this.dataSource.data = [usuario]; 
-        this.dataSource.paginator = this.paginator;
       });
     } else {
       console.error('No se pudo obtener el rol o ID del usuario');
     }
+    this.uS.getList().subscribe((data) => {
+      this.usuarios = data;
+      this.updatePagedData();
+    });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.cdr.detectChanges();
+    this.paginator.page.subscribe(() => {
+      this.updatePagedData();
+    });
+  }
+
+  updatePagedData(): void {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.pagedData = this.usuarios.slice(startIndex, endIndex);
   }
 
 
@@ -69,7 +81,7 @@ export class ListarusuarioComponent implements OnInit {
       this.uS.list().subscribe((data) => {
         this.uS.setList(data);
         this.dataSource.data = data;
-        this.dataSource.paginator = this.paginator;
+        this.updatePagedData();
       });
     });
   }

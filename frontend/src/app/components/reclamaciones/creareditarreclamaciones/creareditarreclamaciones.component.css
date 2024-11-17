@@ -7,7 +7,7 @@ h1 {
 }
 
 mat-form-field{
-    width: 60%;
+    width: 40%;
 }
 
 .custom-button {
@@ -15,6 +15,7 @@ mat-form-field{
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-family: 'Gabarito', sans-serif;
+    
 }
 
 .container {
