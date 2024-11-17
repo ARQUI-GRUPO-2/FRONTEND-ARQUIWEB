@@ -34,7 +34,7 @@ export class CreaeditaactividadComponent implements OnInit {
 
   listaTipoActividad: TipoActividad[]=[];
   role:String='';
-
+  
  
 
   id:number =0;
@@ -60,9 +60,10 @@ export class CreaeditaactividadComponent implements OnInit {
 
       this.init();
     });
+      const fechaActual = new Date();
       this.form=this.formBuilder.group({
       codigo: [''],
-      fecha: [this.getFechaActual(), Validators.required],
+      fecha: [fechaActual, Validators.required],
       puntos: ['', Validators.required],
       cantidad: ['',[Validators.required, Validators.min(5), Validators.max(100)]],
       usuarios: [this.lS.getID(), Validators.required],
@@ -92,10 +93,7 @@ export class CreaeditaactividadComponent implements OnInit {
     
   }
 
-  getFechaActual(): string {
-    const fecha = new Date();
-    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
-  }
+  
   
   insertar(): void {
     if (this.form.invalid) {
@@ -115,12 +113,14 @@ export class CreaeditaactividadComponent implements OnInit {
         this.aS.update(this.actividad).subscribe((data)=>{
           this.aS.list().subscribe((data)=>{
             this.aS.setList(data);
+            this.refreshComponent();
           });
         });
       } else {
         this.aS.insert(this.actividad).subscribe(data=>{
           this.aS.list().subscribe(data=>{
             this.aS.setList(data)
+            this.refreshComponent();
           });
         });
       }
@@ -128,7 +128,11 @@ export class CreaeditaactividadComponent implements OnInit {
   }
   this.router.navigate(['actividades'])
 }
-
+private refreshComponent(): void {
+  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['actividades'])
+  });
+}
 
   init(){
     if(this.edicion){
@@ -142,6 +146,14 @@ export class CreaeditaactividadComponent implements OnInit {
           centros: new FormControl(data.cr.idCentroReciclaje),
           tipoactividad: new FormControl(data.ta.id_tipo_actividad)
 
+        });
+        this.form.get('cantidad')?.valueChanges.subscribe((cantidad: number) => {
+          if (cantidad) {
+            const puntos = cantidad * 2; // Lógica para calcular los puntos
+            this.form.get('puntos')?.setValue(puntos, { emitEvent: true }); // Actualiza sin emitir otro evento
+          } else {
+            this.form.get('puntos')?.setValue(1, { emitEvent: true }); // Valor predeterminado
+          }
         });
       });
     }

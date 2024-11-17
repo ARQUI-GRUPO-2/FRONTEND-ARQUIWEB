@@ -206,4 +206,5 @@ export class CreareditarcentroreciclajeComponent implements OnInit, AfterViewIni
   isAdmi(): boolean {
     return this.role === 'ADMI';
   }
+
 }
