@@ -96,10 +96,7 @@ export class CreareditarreclamacionesComponent {
         });
       }
       this.navigateAfterAction();
-
     }
-
-    
   }
 
   navigateAfterAction(): void {

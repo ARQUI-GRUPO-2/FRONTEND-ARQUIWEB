@@ -1,7 +1,7 @@
 <div class="container" style="text-align: center; margin: 2%">
     <div>
       <h1>
-        {{ edicion ? "¡Actualiza tu centro favorito!" : "¡Asigna como favorito un centro de recicalje!" }}
+        {{ edicion ? "¡Actualiza tu centro favorito!" : "¡Asigna un centro de recicalje como tu favorito!" }}
       </h1>
     </div>
     <div>
@@ -15,26 +15,30 @@
         </mat-form-field>
         <br/>
   
+        <div *ngIf="isAdmi()">
         <mat-form-field>
             <mat-label>Username</mat-label>
             <mat-select formControlName="husuario" >
-              <mat-option *ngFor="let m of listaUsuario" [value]="m.idUser">{{ m.username }}</mat-option>
+              @for (u of listaUsuarios; track u) {
+              <mat-option [value]="u.idUser">{{ u.username }}</mat-option>
+              }
             </mat-select>
             <mat-error *ngIf="form.get('husuario')?.hasError('required')">
               Asignar un usuario es obligatorio
             </mat-error>
           </mat-form-field>
+        </div>
           <br />
 
           <mat-form-field>
-            <mat-label>Centro de Reciclaje</mat-label>
+            <mat-label>Seleccionar centro de Reciclaje</mat-label>
             <mat-select formControlName="hcentro" >
               @for (m of listaCentros; track m) {
               <mat-option [value]="m.idCentroReciclaje">{{ m.direccion }}</mat-option>
               }
             </mat-select>
             <mat-error *ngIf="form.get('hcentro')?.hasError('required')"
-                >Asignar un centro de reciclaje es obligatorio.</mat-error>
+                >Seleccionar un centro de reciclaje es obligatorio.</mat-error>
           </mat-form-field>
           <br/>
   

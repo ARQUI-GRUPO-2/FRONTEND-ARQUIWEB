@@ -10,19 +10,7 @@
     <!-- Contenedor de tarjetas -->
     <div class="cards-container">
       <mat-card *ngFor="let centro of dataSource.data" class="card">
-        <!-- Parte superior: Información -->
        
-
-      <!-- Ícono de corazón -->
-      <mat-icon
-      (click)="toggleFavorite(centro.idCentroReciclaje)"
-      class="heart-icon"
-      [style.color]="(centro.idCentroReciclaje) ?  'gray':'red'" 
-    >
-      favorite
-    </mat-icon>
-    
-
         <!-- Parte inferior: Dirección -->
         <div class="direccion">
           {{ centro.direccion }}
