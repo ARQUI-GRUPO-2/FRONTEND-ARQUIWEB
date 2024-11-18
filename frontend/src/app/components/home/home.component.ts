@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
       htelefono: ['', Validators.required],
       hcorreo: ['', Validators.required],
       hpassword: ['', Validators.required],
-      henabled: [false, Validators.required],
+      henabled: [true, Validators.required],
       hroles: [''],
     });
 

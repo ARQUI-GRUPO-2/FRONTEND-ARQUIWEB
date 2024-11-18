@@ -14,7 +14,7 @@
     align-items: center;
     gap: 10px;
     background-color: #c6f5c6;
-    padding: 10px;
+    padding: 18px;
     border-radius: 10px;
     margin-bottom: 20px;
   }
@@ -52,26 +52,20 @@
   mat-form-field {
     width: 100%;
   }
-
-  mat-form-field input,
-mat-form-field textarea,
-mat-form-field select {
-  background-color: white;
-  border-radius: 10px;
-  padding: 8px;
-  border: 1px solid #ffffff;
-}
-
-mat-form-field input:focus,
-mat-form-field textarea:focus,
-mat-form-field select:focus {
-  outline: none;
-  border-color: #4caf50; /* Cambia el color al enfocarse */
-}
   
   .custom-button {
     background-color: #c6f5c6;
     color: black;
     grid-column: span 2;
+    align-items: center;
+    width: 550px;
   }
   
+  .example-margin{
+    margin-left: 220px;
+    margin-top: -20px;
+  }
+  .roldiv .rol{
+    margin-left: 30px;
+    width: 502px;
+  }

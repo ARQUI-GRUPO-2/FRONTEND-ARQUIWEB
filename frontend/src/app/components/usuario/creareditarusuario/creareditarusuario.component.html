@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="profile-header">
     <div class="profile-icon">
       <span class="material-icons">account_circle</span>
@@ -66,10 +66,19 @@
 
     <mat-form-field>
       <mat-label>Telefono</mat-label>
-      <input matInput placeholder="987654321" formControlName="htelefono" />
-      <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
-        El teléfono es obligatorio
-      </mat-error>
+          <input matInput placeholder="987654321" formControlName="htelefono" />
+          <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
+            El telefono es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('minlength')">
+            El telefono debe tener 9 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('maxlength')">
+            ㅤㅤㅤㅤSolo 9 caracteres.
+          </mat-error>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('pattern')">
+            ㅤㅤㅤㅤ(solo numeros)
+          </mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -105,15 +114,41 @@
         El password es obligatorio
       </mat-error>
     </mat-form-field>
+
+    <div *ngIf="isAdmi()">
+      <mat-form-field class="rol">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="hroles">
+          @for (r of listaRoles; track r) {
+          <mat-option [value]="r.idRol">{{ r.nombreRol }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('hroles')?.hasError('required')">
+          Asignar un rol es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    
+    <mat-checkbox class="example-margin" formControlName="henabled" matInput *ngIf="isAdmi()">
+      Activado
+    </mat-checkbox>
+
     <button mat-flat-button class="custom-button">
-      <strong>{{ edicion ? "Actualizar" : "Registrar" }}</strong>
+      {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
     </button>
   </form>
-</div>
+</div> -->
 
-<!-- <div class="container">
-  <div>
-    <h1>{{ edicion ? "Actualizar usuario" : "Registrar usuario" }}</h1>
+<div class="container">
+  <div class="profile-header">
+    <div class="profile-icon">
+      <span class="material-icons">account_circle</span>
+    </div>
+    <div class="profile-info">
+      <span class="username">Username</span>
+      <mat-icon class="edit-button">edit</mat-icon>
+    </div>
   </div>
   <div>
     <form [formGroup]="form" (submit)="insertar()" novalidate>
@@ -263,19 +298,19 @@
         </mat-form-field>
       </div>
 
-      <div *ngIf="isAdmi()">
-      <mat-form-field class="rol">
-        <mat-label>Rol</mat-label>
-        <mat-select formControlName="hroles">
-          @for (r of listaRoles; track r) {
-          <mat-option [value]="r.idRol">{{ r.nombreRol }}</mat-option>
-          }
-        </mat-select>
-        <mat-error *ngIf="form.get('hroles')?.hasError('required')">
-          Asignar un rol es obligatorio
-        </mat-error>
-      </mat-form-field>
-    </div>
+      <div class="roldiv" *ngIf="isAdmi()">
+        <mat-form-field class="rol">
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="hroles">
+            @for (r of listaRoles; track r) {
+            <mat-option [value]="r.idRol">{{ r.nombreRol }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('hroles')?.hasError('required')">
+            Asignar un rol es obligatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
       <br />
 
       <mat-checkbox class="example-margin" formControlName="henabled" matInput>
@@ -284,9 +319,9 @@
 
       <div>
         <button mat-flat-button class="custom-button">
-          {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }}
+          <strong> {{ edicion ? "ACTUALIZAR" : "REGISTRAR" }} </strong>
         </button>
       </div>
     </form>
   </div>
-</div> -->
+</div>
