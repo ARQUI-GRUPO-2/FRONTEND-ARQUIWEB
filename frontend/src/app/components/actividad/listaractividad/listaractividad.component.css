@@ -123,7 +123,12 @@ h1 {
 
 /* Paginador debajo de las tarjetas */
 .paginator-container {
+    background-color: #dfe6e9;
     display: flex;
     justify-content: center;
     margin-top: 40px;
+}
+mat-paginator {
+    background-color: #dfe6e9; /* Fondo verde claro */
+    border-radius: 10px;
 }

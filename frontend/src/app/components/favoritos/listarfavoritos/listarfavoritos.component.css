@@ -119,7 +119,7 @@ tr:hover td {
 }
 
 mat-paginator {
-  background-color: rgb(242 242 242); /* Fondo verde claro */
+  background-color: #dfe6e9; /* Fondo verde claro */
   border-radius: 8px; /* Bordes redondeados */
   padding: 8px;
   display: flex;
