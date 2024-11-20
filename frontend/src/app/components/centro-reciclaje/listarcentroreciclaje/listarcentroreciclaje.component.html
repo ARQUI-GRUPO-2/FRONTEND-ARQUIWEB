@@ -35,7 +35,8 @@
 
         <!-- Mostrar coordenadas de latitud y longitud -->
         <div class="location">
-          <p>{{ getFormattedLocation(element) }}</p>
+          <p> <br> </p>
+          <!-- <p>{{ getFormattedLocation(element) }}</p> -->
           <button
             mat-button
             (click)="showOnMap(element.latitud, element.longitud)"
@@ -49,7 +50,7 @@
   <!-- Paginador -->
   <mat-paginator
     [length]="centros.length"
-    [pageSize]="6"
+    [pageSize]="3"
     [pageSizeOptions]="[3, 6, 9]"
     aria-label="Select page"
   ></mat-paginator>

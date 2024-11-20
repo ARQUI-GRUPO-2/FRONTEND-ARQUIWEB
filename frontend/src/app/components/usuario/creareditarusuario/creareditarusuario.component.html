@@ -153,13 +153,13 @@
   <div>
     <form [formGroup]="form" (submit)="insertar()" novalidate>
       <div class="form-grid">
-        <mat-form-field *ngIf="edicion">
+        <!-- <mat-form-field *ngIf="edicion">
           <mat-label>Codigo</mat-label>
           <input matInput formControlName="hcodigo" />
           <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
             El codigo es obligatorio
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
 
         <mat-form-field>
           <mat-label>Nombres</mat-label>

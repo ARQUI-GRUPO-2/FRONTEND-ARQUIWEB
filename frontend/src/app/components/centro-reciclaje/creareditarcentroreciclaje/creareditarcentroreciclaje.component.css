@@ -29,6 +29,8 @@ mat-form-field{
 .map-container {
   display: flex;
   justify-content: center; 
+  margin-bottom: 40px;
+  width: 100%;
   
 }
 

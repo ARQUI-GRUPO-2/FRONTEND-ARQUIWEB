@@ -79,8 +79,11 @@ export class CreareditarnotificacionComponent implements OnInit {
   }
 
   getFechaActual(): string {
-    const fecha = new Date();
-    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    const fecha = new Date;
+    const year = fecha.getFullYear();
+    const month = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const day = fecha.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   insertar(): void {

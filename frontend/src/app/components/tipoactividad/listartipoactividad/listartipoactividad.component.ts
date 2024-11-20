@@ -33,12 +33,14 @@ export class ListartipoactividadComponent implements OnInit{
 
 
   eliminar(id: number): void {
-    this.taS.delete(id).subscribe(() => {
+    this.taS.delete(id).subscribe((data) => {
       this.taS.list().subscribe(data => {
         this.taS.setList(data);
         this.dataSource.data = data; // Actualiza los datos
       });
-    });
+      
+    },
+    (error) => { console.error('Error al eliminar:', error); });
   }
 
 }

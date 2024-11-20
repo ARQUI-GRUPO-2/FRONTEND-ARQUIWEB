@@ -27,7 +27,7 @@ h1 {
     background-color: #f1f1f1;
     border-radius: 8px; /* Bordes redondeados */
     height: 250px; /* Altura del mapa */
-    width: 920px; /* Ancho total del contenedor */
+    width: 1092px; /* Ancho total del contenedor */
     overflow: hidden;
     border: #2d3436 solid 1px; /* Borde con color primordial */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
