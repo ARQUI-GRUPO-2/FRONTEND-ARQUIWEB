@@ -5,7 +5,6 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
@@ -13,6 +12,7 @@ import {
   withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { routes } from './app.routes';
 
 export function tokenGetter() {
   return sessionStorage.getItem('token');
