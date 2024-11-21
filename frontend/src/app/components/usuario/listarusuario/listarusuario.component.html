@@ -3,7 +3,7 @@
     <div class="title1">
       <h1>Usuarios</h1>
     </div>
-    <div *ngFor="let element of dataSource.data" class="card-container">
+    <div *ngFor="let element of pagedData"  class="card-container">
       <mat-icon class="user-icon">account_circle</mat-icon>
 
       <div class="user-info">
@@ -33,34 +33,37 @@
     </div>
 
     <mat-paginator
-      [pageSize]="2"
-      [pageSizeOptions]="[2, 10, 20]"
-      showFirstLastButtons
-    ></mat-paginator>
+    [length]="usuarios.length"
+    [pageSize]="3"
+    [pageSizeOptions]="[3, 6, 9]"
+    aria-label="Select page">
+  ></mat-paginator>
   </div>
 
   <div *ngIf="!isAdmi()">
     <div class="title2">
       <h1>Perfil</h1>
     </div>
-    <div *ngFor="let element of dataSource.data" class="card-container">
-      <mat-icon class="user-icon">account_circle</mat-icon>
+    <div *ngFor="let element of dataSource.data" class="card-container2">
+      <mat-icon class="user-icon2">account_circle</mat-icon>
 
-      <div class="user-info">
+      <div class="user-info2">
         <p>Username: {{ element.username }}</p>
         <p>Nombre: {{ element.nombres }}</p>
         <p>Apellidos: {{ element.apellidos }}</p>
         <p>Correo: {{ element.correo }}</p>
         <p>Edad: {{ element.edad }}</p>
-        <p>Rol: {{ element.rol.nombreRol }}</p>
+        <p>Distrito: {{ element.distrito }}</p>
+        <p>Género: {{ element.genero }}</p>
+        <p>Número de teléfono: {{ element.telefono }}</p>
       </div>
-      <div class="action-buttons">
+      <div class="action-buttons2">
         <button
-          class="mat-icon-button"
+          class="mat-icon-button2"
           [routerLink]="['ediciones', element.idUser]"
           aria-label="Editar usuario"
         >
-          <mat-icon class="accion">edit</mat-icon>
+          <mat-icon class="accion2">edit</mat-icon>
         </button>
       </div>
     </div>

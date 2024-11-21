@@ -40,6 +40,10 @@ export class ListarfavoritosComponent implements OnInit {
       this.favoritos = data;
       this.updatePagedData(); // Asegúrate de llamar a updatePagedData cuando los datos estén disponibles
     });
+    this.fS.getList().subscribe((data) => {
+      this.favoritos = data;
+      this.updatePagedData(); // Asegúrate de llamar a updatePagedData cuando los datos estén disponibles
+    });
 
   }
   ngAfterViewInit(): void{
@@ -57,6 +61,7 @@ export class ListarfavoritosComponent implements OnInit {
   eliminar(id: number) {
     this.fS.delete(id).subscribe((data) => {
       this.fS.list().subscribe((data) => {
+        this.fS.setList(data);
         this.favoritos = data;
         this.fS.updatePagedData();
       });

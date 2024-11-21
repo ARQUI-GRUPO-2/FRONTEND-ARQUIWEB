@@ -41,6 +41,10 @@ export class ListarnoticiasComponent implements OnInit {
       this.noticias = data;
       this.updatePagedData();
     });
+    this.nS.getList().subscribe((data) => {
+      this.noticias = data;
+      this.updatePagedData();
+    });
   }
 
   ngAfterViewInit() {
@@ -59,6 +63,7 @@ export class ListarnoticiasComponent implements OnInit {
   eliminar(id: number) {
     this.nS.delete(id).subscribe((data) => {
       this.nS.list().subscribe((data) => {
+        this.nS.setList(data);
         this.noticias = data;
         this.updatePagedData();
       });

@@ -22,6 +22,7 @@ import { Rol } from '../../../models/Rol';
 import { RolService } from '../../../services/rol.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-creareditarusuario',
@@ -44,6 +45,8 @@ export class creareditarusuarioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaRoles: Rol[]=[];
   usuario: Usuario = new Usuario();
+  role:String='';
+
 
   hidePassword: boolean = true; 
 
@@ -61,9 +64,11 @@ export class creareditarusuarioComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route:ActivatedRoute,
-    private rS: RolService
+    private rS: RolService,
+    private lS:LoginService
   ) {}
   ngOnInit(): void {
+    this.role = this.lS.showRole(); 
     this.route.params.subscribe((data: Params) => {
       this.id = data['id']
       this.edicion = data['id'] != null
@@ -138,17 +143,24 @@ export class creareditarusuarioComponent implements OnInit {
         this.uS.update(this.usuario).subscribe((data) => {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);
+            this.refreshComponent();
           });
         });
       } else {
         this.uS.insert(this.usuario).subscribe((data) => {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);
+            this.refreshComponent();
           });
         });
       }
     }
     this.router.navigate(['usuarios']);
+  }
+  private refreshComponent(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['usuarios'])
+    });
   }
   init() {
     if (this.edicion) {
@@ -170,5 +182,9 @@ export class creareditarusuarioComponent implements OnInit {
         });
       });
     }
+  }
+
+  isAdmi(): boolean {
+    return this.role === 'ADMI';
   }
 }

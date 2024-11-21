@@ -4,19 +4,19 @@
   </div>
   <div>
     <form [formGroup]="form" (submit)="insertar()">
-      <mat-form-field class="example-full-width" *ngIf="edicion">
+      <!-- <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Código</mat-label>
         <input matInput formControlName="codigo" />
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
           El codigo es obligatorio
         </mat-error>
       </mat-form-field>
-      <br />
+      <br /> -->
 
       <div *ngIf="isAdmi()">
         <mat-form-field>
           <mat-label>Seleccione una fecha</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha" />
+          <input matInput [matDatepicker]="picker" formControlName="fecha" [max]="maxFecha"/>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
@@ -31,7 +31,7 @@
       <br />
 
       <mat-form-field class="example-full-width">
-        <mat-label>Cantidad de botellas o amigos</mat-label>
+        <mat-label>Cantidad de botellas</mat-label>
         <input matInput placeholder="5,6,7 ..." formControlName="cantidad" />
         <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
           La cantidad es obligatoria.
@@ -76,7 +76,7 @@
       <br />
       <mat-form-field class="example-full-width">
         <mat-label>Puntos</mat-label>
-        <input matInput placeholder="123..." formControlName="puntos" />
+        <input matInput placeholder="123..." formControlName="puntos" readonly/>
         <mat-error *ngIf="form.get('puntos')?.hasError('required')">
           Los puntos son obligatorios.
         </mat-error>

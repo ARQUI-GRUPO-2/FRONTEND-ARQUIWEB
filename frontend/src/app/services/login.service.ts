@@ -14,7 +14,8 @@ export class LoginService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   login(request: JwtRequest){
-    return this.http.post('http://localhost:8080/login', request)
+    return this.http.post('https://grupo-2arqui-production-backend.up.railway.app/login', request)
+    //return this.http.post('http://localhost:8080/login', request)
   }
   verificar() {
     let token = sessionStorage.getItem('token');

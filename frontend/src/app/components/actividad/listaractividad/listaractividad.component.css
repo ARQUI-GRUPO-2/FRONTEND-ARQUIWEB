@@ -21,11 +21,14 @@ h1 {
 /* Contenedor de tarjetas */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas adaptativas */
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr); /* 3 tarjetas por fila */
+    gap: 10px;
     justify-items: center;
     padding: 0; /* Eliminar el padding superior */
     margin-bottom: 20px;
+    background-color: #ffffff; /* Fondo color claro para el contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
     
 }
 .location a {
@@ -34,14 +37,15 @@ h1 {
 }
 /* Tarjetas */
 .card {
-    width: 320px; /* Ancho fijo para cada tarjeta */
-    height: 400px; /* Alto fijo para cada tarjeta */
+    width: 420px; /* Ancho fijo para cada tarjeta */
+    height: 320px; /* Alto fijo para cada tarjeta */
     justify-content: space-between;
     background-color: #dfe6e9;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     padding: 15px;
     transition: transform 0.2s ease-in-out;
+    margin-top: 15px;
     
 }
 
@@ -55,7 +59,7 @@ h1 {
     font-size: 0.9rem;
     font-weight: bold;
     text-align: left;
-    color: #2d3436;
+    color: #000000;
     margin-bottom: 8px;
 }
 .ubi{
@@ -77,7 +81,7 @@ h1 {
     right: 10px;
     cursor: pointer;
     font-size: 22px;
-    color: #bdc3c7;
+    color: #000000;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -110,6 +114,7 @@ h1 {
     padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
 }
 
 .location button:hover {
@@ -118,7 +123,12 @@ h1 {
 
 /* Paginador debajo de las tarjetas */
 .paginator-container {
+    background-color: #dfe6e9;
     display: flex;
     justify-content: center;
     margin-top: 40px;
+}
+mat-paginator {
+    background-color: #dfe6e9; /* Fondo verde claro */
+    border-radius: 10px;
 }

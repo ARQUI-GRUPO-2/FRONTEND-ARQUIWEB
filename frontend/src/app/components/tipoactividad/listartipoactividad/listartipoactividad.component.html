@@ -1,37 +1,19 @@
 <div class="container">
-    <div><h1>Tipo de Actividades</h1></div>
-    <div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <h1>Tipo de Actividades</h1>
+  <div class="card-container">
+    <div class="card" *ngFor="let element of dataSource.data">
+      <div class="card-header">
+        <h2>{{ element.descripcion }}</h2>
+      </div>
 
-            <ng-container matColumnDef="c1">           
-             <th mat-header-cell *matHeaderCellDef>Código</th>     
-             <td mat-cell *matCellDef="let element"> {{element.id_tipo_actividad}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="c2">          
-             <th mat-header-cell *matHeaderCellDef>Descripción</th>          
-             <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>          
-            </ng-container>
-           
-
-            <ng-container matColumnDef="accion01">
-                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-                <td mat-cell *matCellDef="let element" (click)="eliminar(element.id_tipo_actividad)">
-                  <mat-icon style="color:#27ae60">delete</mat-icon>
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="accion02">
-                <th mat-header-cell *matHeaderCellDef>Editar</th>
-                <td mat-cell *matCellDef="let element" [routerLink]="['ediciones',element.id_tipo_actividad]">
-                  <mat-icon style="color:#27ae60">edit</mat-icon>
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-           
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-           
-           </table>
+      <div class="card-actions">
+        <button class="delete-btn" (click)="eliminar(element.id_tipo_actividad)">
+          <mat-icon>delete</mat-icon> 
+        </button>
+        <button class="edit-btn" [routerLink]="['ediciones', element.id_tipo_actividad]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
     </div>
+  </div>
 </div>

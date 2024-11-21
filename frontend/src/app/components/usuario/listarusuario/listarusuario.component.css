@@ -20,7 +20,7 @@
   justify-content: space-between;
   padding: 15px;
   margin: 10px 0;
-  background-color: #eaf3e4;
+  background-color: #dfe6e9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -71,3 +71,85 @@
   transform: scale(3.5);
 
 }
+
+
+
+
+
+.card-container2 {
+  background-color: #d9f5d9; /* Color de fondo verde claro */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
+}
+
+.user-icon2 {
+  font-size: 40px;
+  color: #000;
+  padding-right: 70px;
+  transform: scale(2);
+  height: 80px;
+  padding-top: 19px;
+  margin-left: 30px;
+}
+
+.user-info2 p {
+  margin: 5px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.action-buttons2 {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.mat-icon-button2 {
+  background-color: #a5d6a7;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.mat-icon-button2:hover {
+  background-color: #81c784;
+}
+
+.accion2 {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* input[type="text"], input[type="password"], select {
+  display: block;
+  width: calc(50% - 10px);
+  margin: 10px 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+} */
+
+.title2 {
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+mat-paginator {
+  background-color: #dfe6e9; /* Fondo verde claro */
+  border-radius: 10px;
+}
+
+

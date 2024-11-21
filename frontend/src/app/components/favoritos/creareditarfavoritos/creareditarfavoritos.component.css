@@ -3,6 +3,8 @@ h1 {
     font-family: 'Gabarito', sans-serif;
     font-size: 2.5rem;
     margin-top: 30px;
+    text-align: left;
+    padding-left: 200px;
     
 }
 
@@ -21,7 +23,6 @@ mat-form-field{
     display: flex;
     flex-direction: column;
     align-items: left;
-    padding: 16px;
-    margin-left: 160px;
-
+    padding-left: 160px;
+    padding-top: 30px;    
 }

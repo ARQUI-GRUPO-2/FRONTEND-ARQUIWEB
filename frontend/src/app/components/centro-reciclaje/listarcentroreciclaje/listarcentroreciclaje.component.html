@@ -9,19 +9,37 @@
   <div class="cards-containermax">
     <!-- Contenedor de tarjetas -->
     <div class="cards-container">
-      <mat-card *ngFor="let centro of dataSource.data" class="card">
-       
+      <mat-card *ngFor="let element of pagedData" class="card">
+
+        <!-- Ícono para eliminar -->
+      <div *ngIf="isAdmi()">
+        <mat-icon
+        (click)="eliminar(element.idCentroReciclaje)"
+        class="delete-icon"
+        style="color:#000000">
+        delete
+       </mat-icon>
+      </div>
+    
+       <!-- Botón de editar -->
+      <div *ngIf="isAdmi()">
+        <a [routerLink]="['ediciones',element.idCentroReciclaje]" mat-button>
+          <mat-icon style="color: #000000;" class="edit-icon">edit</mat-icon>
+        </a>
+      </div>
+
         <!-- Parte inferior: Dirección -->
         <div class="direccion">
-          {{ centro.direccion }}
+          {{ element.direccion }}
         </div>
 
         <!-- Mostrar coordenadas de latitud y longitud -->
         <div class="location">
-          <p>{{ getFormattedLocation(centro) }}</p>
+          <p> <br> </p>
+          <!-- <p>{{ getFormattedLocation(element) }}</p> -->
           <button
             mat-button
-            (click)="showOnMap(centro.latitud, centro.longitud)"
+            (click)="showOnMap(element.latitud, element.longitud)"
           >
             Ver en el mapa
           </button>
@@ -31,8 +49,8 @@
 
   <!-- Paginador -->
   <mat-paginator
-    [length]="dataSource.data.length"
-    [pageSize]="6"
+    [length]="centros.length"
+    [pageSize]="3"
     [pageSizeOptions]="[3, 6, 9]"
     aria-label="Select page"
   ></mat-paginator>

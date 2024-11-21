@@ -1,65 +1,66 @@
 h1 {
-    color: #2c3e50;
-    font-family: 'Gabarito', sans-serif;
-    font-size: 2.5rem;
-    margin-top: 30px;
-    
+  color: #2c3e50;
+  font-family: 'Gabarito', sans-serif;
+  font-size: 2.5rem;
+  margin-top: 30px;
+  
 }
 
 mat-form-field{
-    width: 60%;
+  width: 60%;
 }
 
 .custom-button {
-    background-color: rgb(93, 166, 59);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-family: 'Gabarito', sans-serif;
+  background-color: rgb(93, 166, 59);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-family: 'Gabarito', sans-serif;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 16px;
-    margin-left: 160px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-left: 160px;
+  padding-top: 30px;
+  
 }
 /* Estilo del contenedor principal para centrar el mapa */
 .map-container {
-    display: flex;
-    justify-content: center; 
-    
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 40px;
+  width: 100%;
+  
 }
 
 
 /* Ocultamos el checkbox pero lo mantenemos en el formulario */
 .hidden-checkbox {
-    display: none;
-  }
-  
-  /* Estilos para el ícono del corazón */
-  .favorite-icon-container {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    font-size: 80px;
-    margin-bottom: 15px;
-  }
-  
-  .favorite-icon {
-    font-size: 25px;
-    color: #9b0335; /* Color del corazón */
-    margin-right: 8px; /* Espacio entre el ícono y el texto */
-  }
-  
-  /* Estilo para el texto */
-  .favorite-icon-container span {
-    font-size: 16px;
-  }
-  
-  /* Opcional: Estilos para el hover del ícono */
-  .favorite-icon:hover {
-    color: #d81b60;
-  }
-  
+  display: none;
+}
+
+/* Estilos para el ícono del corazón */
+.favorite-icon-container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 80px;
+  margin-bottom: 15px;
+}
+
+.favorite-icon {
+  font-size: 25px;
+  color: #9b0335; /* Color del corazón */
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para el texto */
+.favorite-icon-container span {
+  font-size: 16px;
+}
+
+/* Opcional: Estilos para el hover del ícono */
+.favorite-icon:hover {
+  color: #d81b60;
+}

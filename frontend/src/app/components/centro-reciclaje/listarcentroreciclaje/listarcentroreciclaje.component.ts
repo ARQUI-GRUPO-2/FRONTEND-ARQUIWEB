@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { FavoritosService } from '../../../services/favoritos.service';
+import { LoginService } from '../../../services/login.service';
 
 // Google Maps typings
 declare var google: any;
@@ -20,25 +20,28 @@ declare var google: any;
   styleUrls: ['./listarcentroreciclaje.component.css']
 })
 export class ListarcentroreciclajeComponent implements OnInit {
-  dataSource: MatTableDataSource<CentroReciclaje> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'accion01', 'accion02'];
-
+ 
+  centros: CentroReciclaje[] = [];
+  pagedData: CentroReciclaje[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   private map: any;
   private marker: any;
+  role:String='';
 
-
-  constructor(private cS: CentroReciclajeService, private router: Router) { }
+  constructor(private cS: CentroReciclajeService, private router: Router, private lS: LoginService) { }
 
   ngOnInit(): void {
+    this.role = this.lS.showRole();
     this.cS.list().subscribe(data => {
-      this.dataSource.data = data;
+      this.centros = data;
+      this.updatePagedData();
+    });
+    this.cS.getList().subscribe((data) => {
+      this.centros = data;
+      this.updatePagedData();
     });
 
-    this.cS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
 
     this.initMap();
   }
@@ -74,18 +77,36 @@ export class ListarcentroreciclajeComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // Actualizar los datos cuando se cambia de página
+    this.paginator.page.subscribe(() => {
+      this.updatePagedData();
+    });
+  }
+
+  
+  // Función para actualizar los datos según la página actual
+  updatePagedData(): void {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.pagedData = this.centros.slice(startIndex, endIndex);
   }
 
   getFormattedLocation(element: CentroReciclaje): string {
     return `(${element.latitud}, ${element.longitud})`;
   }
+  
 
-    eliminar(id: number) {
+  eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
         this.cS.setList(data);
-      });
+        this.centros = data;
+        this.updatePagedData();
+        });
     });
+  }
+
+  isAdmi(){
+    return this.role === 'ADMI';
   }
 }

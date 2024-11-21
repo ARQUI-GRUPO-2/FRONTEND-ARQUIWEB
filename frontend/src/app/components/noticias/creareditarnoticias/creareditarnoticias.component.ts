@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-creareditarnoticias',
@@ -34,6 +35,7 @@ import { CommonModule } from '@angular/common';
 export class CreareditarnoticiasComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   noticias: Noticias = new Noticias();
+  role: String = '';
 
   id: number = 0;
   edicion: boolean = false;
@@ -42,10 +44,12 @@ export class CreareditarnoticiasComponent implements OnInit {
     private nS: NoticiasService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ls: LoginService
   ) {}
 
   ngOnInit(): void {
+    this.role = this.ls.showRole();
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
@@ -62,8 +66,12 @@ export class CreareditarnoticiasComponent implements OnInit {
   }
 
   getFechaActual(): string {
-    const fecha = new Date();
-    return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    const fecha = new Date;
+    const year = fecha.getFullYear();
+    const month = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const day = fecha.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+    //return fecha.toISOString().split('T')[0]; // Formato YYYY-MM-DD
   }
 
   insertar(): void {
@@ -106,5 +114,9 @@ export class CreareditarnoticiasComponent implements OnInit {
         });
       });
     }
+  }
+
+  isAdmi() {
+    return this.role === 'ADMI';
   }
 }
